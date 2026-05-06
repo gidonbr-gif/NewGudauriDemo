@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ניו גודאורי — הלב הפועם של אתר הסקי. גונדולה ראשית, קזינו, בריכות, מסעדות, ציוד סקי מקצועי ואופני שלג. כל מה שחייבים לדעת." />
+  <title>ניו גודאורי — הלב של האתר | GudauriSkiIL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-slate:     #1E293B;
+      --slate-900:      #0F172A;
+      --slate-800:      #1E293B;
+      --slate-700:      #334155;
+      --slate-600:      #475569;
+      --slate-400:      #94A3B8;
+      --slate-200:      #E2E8F0;
+      --electric:       #0EA5E9;
+      --electric-light: #38BDF8;
+      --electric-dark:  #0284C7;
+      --snow:           #F8FAFC;
+      --white:          #FFFFFF;
+      --glass-bg:       rgba(255,255,255,0.05);
+      --glass-border:   rgba(255,255,255,0.10);
+      --nav-h:          72px;
+      --radius:         16px;
+      --transition:     200ms ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: var(--slate-900);
+      color: var(--snow);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .electric { color: var(--electric); }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(48px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(-48px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; inset-inline: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #nav.scrolled {
+      background: rgba(15,23,42,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--glass-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-logo-text { font-size: 1.125rem; font-weight: 800; color: var(--snow); letter-spacing: -0.02em; }
+    .nav-logo-text span { color: var(--electric); }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: 0.9375rem; font-weight: 500;
+      color: var(--slate-400);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--snow); }
+    .nav-links a.active { color: var(--electric); font-weight: 700; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--electric); color: var(--white);
+      font-size: 0.9375rem; font-weight: 700;
+      padding: 10px 22px; border-radius: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--electric-dark);
+      box-shadow: 0 4px 20px rgba(14,165,233,0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--snow);
+      font-size: 0.9375rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1.5px solid var(--glass-border);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-ghost:hover {
+      border-color: var(--electric);
+      background: rgba(14,165,233,0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: transparent; padding: 4px;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--snow); border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed; top: var(--nav-h); inset-inline: 0;
+      background: rgba(15,23,42,0.97);
+      backdrop-filter: blur(16px);
+      padding: 24px; flex-direction: column; gap: 20px;
+      border-top: 1px solid var(--glass-border);
+      z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1.125rem; font-weight: 500;
+      color: var(--slate-200); padding: 8px 0;
+      border-bottom: 1px solid var(--glass-border);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover, .nav-mobile a.active { color: var(--electric); }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta-desktop { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .ng-hero {
+      position: relative;
+      height: 70vh; min-height: 520px;
+      display: flex; align-items: flex-end;
+      padding-bottom: 88px; overflow: hidden;
+    }
+    .ng-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.04);
+      transition: transform 0.1s linear;
+    }
+    .ng-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(9,18,36,0.35) 0%,
+        rgba(9,18,36,0.55) 50%,
+        rgba(9,18,36,0.90) 100%
+      );
+    }
+    .ng-hero-content { position: relative; z-index: 2; }
+
+    .ng-hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--electric-light);
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.25);
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .ng-hero-title {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900; line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .ng-hero-title .accent { color: var(--electric); display: block; }
+    .ng-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--slate-200); max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── SPLIT SECTION ── */
+    .split-section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .split-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .split-inner.flipped { direction: ltr; }
+    .split-inner.flipped .split-text { direction: rtl; }
+    .split-inner.flipped .split-image { direction: rtl; }
+
+    .split-text { }
+    .split-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .split-body {
+      font-size: 1.0625rem;
+      color: rgba(248,250,252,0.75);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .split-features {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .split-feat {
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .split-feat-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.22);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .split-feat-text { font-size: 0.9375rem; color: var(--slate-200); padding-top: 6px; }
+    .split-feat-text strong { color: var(--white); }
+
+    .split-image {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+    }
+    .split-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .split-image:hover img { transform: scale(1.04); }
+    .split-img-badge {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      background: rgba(9,18,36,0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.8125rem; font-weight: 700;
+      color: var(--electric-light);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 860px) {
+      .split-inner, .split-inner.flipped { grid-template-columns: 1fr; direction: rtl; gap: 40px; }
+      .split-image { order: -1; aspect-ratio: 16/9; }
+    }
+
+    /* ── APARTMENTS CARDS ── */
+    .apts-section { padding: 96px 0; border-bottom: 1px solid var(--glass-border); }
+    .section-header { margin-bottom: 56px; }
+    .section-title {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.075rem; color: var(--slate-400);
+      max-width: 560px; line-height: 1.7;
+    }
+
+    .apt-types {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .apt-type-card {
+      background: rgba(30,41,59,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .apt-type-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(14,165,233,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .apt-type-card:hover {
+      border-color: rgba(14,165,233,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(14,165,233,0.1);
+    }
+    .apt-type-icon {
+      font-size: 2.25rem;
+      width: 64px; height: 64px;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .apt-type-title {
+      font-size: 1.25rem; font-weight: 800;
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    .apt-type-body {
+      font-size: 0.9375rem;
+      color: rgba(248,250,252,0.65);
+      line-height: 1.7;
+    }
+    .apt-type-tag {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--electric);
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.2);
+      padding: 4px 10px; border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .apt-types { grid-template-columns: 1fr; }
+    }
+
+    /* ── VILLAGE GRID ── */
+    .village-section { padding: 96px 0; border-bottom: 1px solid var(--glass-border); }
+    .village-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .village-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 28px 22px;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    }
+    .village-card:hover {
+      border-color: rgba(14,165,233,0.3);
+      transform: translateY(-4px);
+      background: rgba(14,165,233,0.05);
+    }
+    .village-icon {
+      font-size: 1.75rem;
+      width: 52px; height: 52px;
+      background: rgba(14,165,233,0.09);
+      border: 1px solid rgba(14,165,233,0.18);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .village-card-title {
+      font-size: 1.0625rem; font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .village-card-body {
+      font-size: 0.9rem;
+      color: rgba(248,250,252,0.6);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) { .village-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .village-grid { grid-template-columns: 1fr; } }
+
+    /* ── STAT BAR ── */
+    .stat-bar {
+      padding: 64px 0;
+      background: linear-gradient(135deg, rgba(14,165,233,0.07) 0%, rgba(2,132,199,0.04) 100%);
+      border-top: 1px solid rgba(14,165,233,0.12);
+      border-bottom: 1px solid rgba(14,165,233,0.12);
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px; text-align: center;
+    }
+    .stat-item { }
+    .stat-num {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; color: var(--electric);
+      letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.875rem; color: var(--slate-400); }
+
+    @media (max-width: 640px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── BTN WHATSAPP ── */
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white; font-size: 0.9375rem; font-weight: 700;
+      padding: 12px 22px; border-radius: 10px; flex: 1;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn-whatsapp:hover {
+      opacity: 0.91; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+
+    /* ── CTA BANNER ── */
+    #cta-banner { padding: 80px 0; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(14,165,233,0.12) 0%, rgba(14,165,233,0.03) 100%);
+      border: 1px solid rgba(14,165,233,0.22);
+      border-radius: 24px; padding: 60px 48px; text-align: center;
+    }
+    .cta-box-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900; margin-bottom: 16px;
+    }
+    .cta-box-sub {
+      font-size: 1.0625rem; color: var(--slate-400);
+      max-width: 460px; margin-inline: auto; margin-bottom: 36px;
+    }
+    .cta-box-btns {
+      display: flex; gap: 12px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .cta-box-btns .btn-whatsapp,
+    .cta-box-btns .btn-ghost { min-width: 190px; }
+    @media (max-width: 520px) {
+      .cta-box { padding: 36px 20px; }
+      .cta-box-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--slate-900);
+      border-top: 1px solid var(--glass-border);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px; margin-bottom: 56px;
+    }
+    .footer-brand .footer-logo {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    }
+    .footer-brand .footer-logo svg { width: 32px; height: 32px; }
+    .footer-brand .footer-logo-text { font-size: 1.0625rem; font-weight: 800; }
+    .footer-brand .footer-logo-text span { color: var(--electric); }
+    .footer-tagline { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-link {
+      width: 38px; height: 38px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--slate-400);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .social-link:hover { color: var(--electric); border-color: var(--electric); background: rgba(14,165,233,0.1); }
+    .social-link svg { width: 16px; height: 16px; }
+    .footer-heading {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 0.9375rem; color: var(--slate-400); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--electric); }
+    .newsletter-form { display: flex; gap: 8px; margin-top: 16px; }
+    .newsletter-input {
+      flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 8px; padding: 10px 14px;
+      font-family: 'Heebo', sans-serif; font-size: 0.9375rem;
+      color: var(--snow); direction: rtl;
+      transition: border-color var(--transition);
+    }
+    .newsletter-input:focus { outline: none; border-color: var(--electric); }
+    .newsletter-input::placeholder { color: var(--slate-600); }
+    .newsletter-submit {
+      background: var(--electric); color: white;
+      font-size: 0.875rem; font-weight: 700;
+      padding: 10px 18px; border-radius: 8px;
+      transition: background var(--transition);
+    }
+    .newsletter-submit:hover { background: var(--electric-dark); }
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.875rem; color: var(--slate-600); }
+    .footer-copy a:hover { color: var(--slate-400); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.8125rem; color: var(--slate-600); transition: color var(--transition); }
+    .footer-legal a:hover { color: var(--slate-400); }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    *:focus-visible { outline: 2px solid var(--electric); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav" role="navigation" aria-label="ניווט ראשי">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="design-1-epic.html" class="nav-logo" aria-label="GudauriSkiIL - דף הבית">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+          </svg>
+          <span class="nav-logo-text">Gudauri<span>Ski</span>IL</span>
+        </a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="design-1-epic.html#why">על גודאורי</a></li>
+          <li><a href="design-1-epic.html#activities">פעילויות</a></li>
+          <li><a href="design-1-epic.html#new-gudauri" class="active" aria-current="page">ניו גודאורי</a></li>
+          <li><a href="lina.html">לינה</a></li>
+          <li><a href="design-1-epic.html#footer">צרו קשר</a></li>
+        </ul>
+
+        <a href="lina.html" class="btn-primary nav-cta-desktop" aria-label="הזמן לינה">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          הזמן לינה
+        </a>
+
+        <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
+    <a href="design-1-epic.html#why" onclick="closeMobileMenu()">על גודאורי</a>
+    <a href="design-1-epic.html#activities" onclick="closeMobileMenu()">פעילויות</a>
+    <a href="design-1-epic.html#new-gudauri" class="active" onclick="closeMobileMenu()">ניו גודאורי</a>
+    <a href="lina.html" onclick="closeMobileMenu()">לינה</a>
+    <a href="design-1-epic.html#footer" onclick="closeMobileMenu()">צרו קשר</a>
+    <a href="lina.html" class="btn-primary" onclick="closeMobileMenu()">הזמן לינה</a>
+  </div>
+
+
+  <!-- ═══ HERO ═══ -->
+  <section class="ng-hero" aria-labelledby="ng-hero-title">
+    <div class="ng-hero-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="ng-hero-overlay" aria-hidden="true"></div>
+    <div class="ng-hero-content container">
+      <div class="ng-hero-kicker">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        New Gudauri · 2,200m · הלב של האתר
+      </div>
+      <h1 class="ng-hero-title" id="ng-hero-title">
+        ניו גודאורי
+        <span class="accent">הלב שלא מפסיק לפעום</span>
+      </h1>
+      <p class="ng-hero-sub">
+        כל מה שמגדיר את הטיול שלך — נמצא כאן. לא בעיר, לא מרחוק. בדיוק כאן.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══ STAT BAR ═══ -->
+  <div class="stat-bar" aria-label="עובדות על ניו גודאורי">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num">1</div>
+          <div class="stat-label">קזינו בכל ניו גודאורי</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.08s">
+          <div class="stat-num">3</div>
+          <div class="stat-label">סוגי בניינים עם מתקנים שונים</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.16s">
+          <div class="stat-num">60s</div>
+          <div class="stat-label">מהדלת לגונדולה הראשית</div>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.24s">
+          <div class="stat-num">0</div>
+          <div class="stat-label">מלונות — רק דירות פרטיות</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ 1. GONDOLA ═══ -->
+  <section class="split-section" aria-labelledby="gondola-title">
+    <div class="container">
+      <div class="split-inner">
+        <div class="split-text">
+          <span class="section-label reveal">הגונדולה הראשית</span>
+          <h2 class="split-title reveal" id="gondola-title">
+            60 שניות מהדלת<br/>לפסגה.
+          </h2>
+          <p class="split-body reveal">
+            ניו גודאורי לא נבנתה ממש ליד מחנה הגונדולה במקרה. זו הייתה הכוונה.
+            אתה יוצא מהדלת, בתוך דקה אחת אתה בגונדולה — ובתוך כמה דקות נוספות
+            אתה בגבהים שמרוב אירופה לא נגישים בכלל. אין הסעות. אין המתנה לשאטל.
+            יש רק הר, ואתה עליו.
+          </p>
+          <div class="split-features reveal">
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🚡</div>
+              <div class="split-feat-text"><strong>גישה ישירה</strong> — מהבניינים לסל הגונדולה ברגל</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">⛷️</div>
+              <div class="split-feat-text"><strong>סקי-אין / סקי-אאוט</strong> — חלק מהבניינים צמודים למדרון</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🏔️</div>
+              <div class="split-feat-text"><strong>76 ק״מ מסלולים</strong> — כולם נגישים מהגונדולה הראשית</div>
+            </div>
+          </div>
+        </div>
+        <div class="split-image reveal-left" role="img" aria-label="גונדולה בניו גודאורי עם נוף הרים">
+          <img
+            src="https://res.cloudinary.com/dmw14gcns/image/upload/v1760648160/xvdzhrzm6ofiit0tvbiu.png"
+            alt="תא גונדולה מעל מדרונות שלג עם נוף הרים"
+            loading="lazy"
+          />
+          <div class="split-img-badge">הגונדולה הראשית · ניו גודאורי</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 2. CASINO ═══ -->
+  <section class="split-section" aria-labelledby="casino-title">
+    <div class="container">
+      <div class="split-inner flipped">
+        <div class="split-image reveal-right" role="img" aria-label="קזינו מפואר בלילה">
+          <img
+            src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=900&q=80"
+            alt="עיצוב פנים מפואר של קזינו עם תאורה דרמטית"
+            loading="lazy"
+          />
+          <div class="split-img-badge">הקזינו היחיד · New Gudauri</div>
+        </div>
+        <div class="split-text">
+          <span class="section-label reveal">הקזינו היחיד</span>
+          <h2 class="split-title reveal" id="casino-title">
+            בכל ניו גודאורי —<br/><span class="electric">קזינו אחד בלבד.</span>
+          </h2>
+          <p class="split-body reveal">
+            הוא לא נמצא בשום שרשרת מלונות — כי בניו גודאורי אין מלונות בכלל.
+            הוא נמצא בבניין דירות אחד ספציפי, ושם הלילה לא נגמר כשהמדרונות נסגרים.
+            אחרי יום שלם שמנצל כל גרם אדרנלין — הריגוש ממשיך פנימה, בחום,
+            עם cocktail ביד.
+          </p>
+          <div class="split-features reveal">
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🎰</div>
+              <div class="split-feat-text"><strong>הקזינו היחיד</strong> בכל שטח New Gudauri</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🥂</div>
+              <div class="split-feat-text"><strong>בר ומסעדה</strong> — ישירות בבניין, בלי לצאת לקור</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🌙</div>
+              <div class="split-feat-text"><strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 3. APARTMENTS ═══ -->
+  <section class="apts-section" aria-labelledby="apts-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">לינה ב-New Gudauri</span>
+        <h2 class="section-title reveal" id="apts-title">
+          אין מלונות. רק דירות.<br/><span class="electric">וזה יתרון.</span>
+        </h2>
+        <p class="section-sub reveal">
+          כשאין לובי מלון, אין ביורוקרטיה. יש דירה שהיא שלך.
+          שלושה סוגי בניינים — כל אחד עם האישיות שלו. בחר לפי מה שחשוב לך.
+        </p>
+      </div>
+      <div class="apt-types">
+
+        <div class="apt-type-card reveal">
+          <div class="apt-type-icon" aria-hidden="true">🏊</div>
+          <div class="apt-type-title">בניין עם בריכה מקורה</div>
+          <p class="apt-type-body">
+            שחייה וסאונה מתחת לגג — בלי שהקור מבחוץ מגיע אליך.
+            אחרי יום על המדרונות, הגוף מבקש בדיוק את זה.
+          </p>
+          <span class="apt-type-tag">בריכה מקורה · ספא</span>
+        </div>
+
+        <div class="apt-type-card reveal" style="transition-delay:0.1s">
+          <div class="apt-type-icon" aria-hidden="true">🎰</div>
+          <div class="apt-type-title">בניין עם קזינו</div>
+          <p class="apt-type-body">
+            הבניין היחיד בניו גודאורי עם קזינו ישירות בפנים.
+            המעלית יורדת לקומת הקזינו. ועולה בחזרה לדירה שלך.
+          </p>
+          <span class="apt-type-tag">קזינו · בר · מסעדה</span>
+        </div>
+
+        <div class="apt-type-card reveal" style="transition-delay:0.2s">
+          <div class="apt-type-icon" aria-hidden="true">♨️</div>
+          <div class="apt-type-title">בניין עם בריכה חיצונית מחוממת</div>
+          <p class="apt-type-body">
+            טבילה בבריכה חמה בטמפרטורת -10° בחוץ, עם נוף הרי הקווקז מסביב.
+            זו לא חוויה — זו זיכרון לכל החיים.
+          </p>
+          <span class="apt-type-tag">בריכה חיצונית מחוממת</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 4. VILLAGE AMENITIES ═══ -->
+  <section class="village-section" aria-labelledby="village-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">חיי הכפר</span>
+        <h2 class="section-title reveal" id="village-title">
+          כל מה שצריך —<br/>בין בניין לבניין.
+        </h2>
+        <p class="section-sub reveal">
+          ניו גודאורי לא תלויה בשום דבר מבחוץ. הכל כאן, ברגל, בלי לנסוע לשום מקום.
+        </p>
+      </div>
+      <div class="village-grid">
+
+        <div class="village-card reveal">
+          <div class="village-icon" aria-hidden="true">🛒</div>
+          <h3 class="village-card-title">קרפור</h3>
+          <p class="village-card-body">
+            סופרמרקט Carrefour ישירות בלב הכפר — בין הבניינים.
+            הכל טרי, הכל זמין, הכל שני צעדים מהדלת.
+          </p>
+        </div>
+
+        <div class="village-card reveal" style="transition-delay:0.08s">
+          <div class="village-icon" aria-hidden="true">✂️</div>
+          <h3 class="village-card-title">ספר</h3>
+          <p class="village-card-body">
+            כי גם בהרים, מסתפרים. ספר מקצועי בין הבניינים —
+            כי כל פרט בטיול צריך להיות כמו שצריך.
+          </p>
+        </div>
+
+        <div class="village-card reveal" style="transition-delay:0.16s">
+          <div class="village-icon" aria-hidden="true">👶</div>
+          <h3 class="village-card-title">בייביסיטר לילדים</h3>
+          <p class="village-card-body">
+            שירות בייביסיטר בניו גודאורי — כי כל אחד בטיול מגיע ליהנות בדרכו.
+            תסקי בלי לדאוג. הילדים בידיים טובות.
+          </p>
+        </div>
+
+        <div class="village-card reveal" style="transition-delay:0.24s">
+          <div class="village-icon" aria-hidden="true">🍽️</div>
+          <h3 class="village-card-title">המסעדות הכי טובות</h3>
+          <p class="village-card-body">
+            האוכל הגאורגי הכי אמיתי ורציני באתר כולו — בניו גודאורי.
+            ח׳ינקלי, חצ׳פורי, ויין מהגפן שגדלה ממש שם.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 5. SKI EQUIPMENT + SNOW BIKES ═══ -->
+  <section class="split-section" aria-labelledby="ski-title">
+    <div class="container">
+      <div class="split-inner">
+        <div class="split-text">
+          <span class="section-label reveal">ציוד וחוויות</span>
+          <h2 class="split-title reveal" id="ski-title">
+            הכי טוב באתר.<br/>לא מקרה.
+          </h2>
+          <p class="split-body reveal">
+            החנויות והשכרת הציוד הטובות ביותר בגודאורי כולה נמצאות בניו גודאורי.
+            מותגים בינלאומיים, ציוד מקצועי, וצוות שיודע לפגוע בדיוק.
+            ולמי שרוצה לשבור שגרה — יש גם אופני שלג.
+            חוויה שונה לגמרי, ישירות מהכפר.
+          </p>
+          <div class="split-features reveal">
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">⛷️</div>
+              <div class="split-feat-text"><strong>השכרת ציוד סקי מקצועי</strong> — הטובה ביותר באתר</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🚲</div>
+              <div class="split-feat-text"><strong>אופני שלג</strong> — אטרקציה ייחודית, חוויה שונה לגמרי</div>
+            </div>
+            <div class="split-feat">
+              <div class="split-feat-icon" aria-hidden="true">🛍️</div>
+              <div class="split-feat-text"><strong>חנויות סקי</strong> — מותגים בינלאומיים וציוד מתקדם</div>
+            </div>
+          </div>
+        </div>
+        <div class="split-image reveal-left" role="img" aria-label="ציוד סקי ואופני שלג בניו גודאורי">
+          <img
+            src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=900&q=80"
+            alt="שכרת ציוד סקי מקצועי עם מדרונות שלג ברקע"
+            loading="lazy"
+          />
+          <div class="split-img-badge">ציוד מקצועי · אופני שלג</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section id="cta-banner" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;">מוכנים לסקי?</span>
+        <h2 class="cta-box-title" id="cta-heading">
+          מצאו לינה בלב ניו גודאורי
+        </h2>
+        <p class="cta-box-sub">
+          מקומות מוגבלים לעונת 25/26. פנו אלינו עכשיו לבדיקת זמינות — תוך שעות.
+        </p>
+        <div class="cta-box-btns">
+          <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ לשאלות על לינה">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <a href="mailto:info@gudauriskiil.com?subject=%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" class="btn-ghost" aria-label="שלח אימייל">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            אימייל
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="footer" aria-label="פוטר">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="design-1-epic.html" class="footer-logo" aria-label="GudauriSkiIL - חזרה לדף הבית">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            </svg>
+            <span class="footer-logo-text">Gudauri<span>Ski</span>IL</span>
+          </a>
+          <p class="footer-tagline">
+            גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה,
+            לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.
+          </p>
+          <div class="footer-social" aria-label="רשתות חברתיות">
+            <a href="#" class="social-link" aria-label="אינסטגרם של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="פייסבוק של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="טיקטוק של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+            </a>
+            <a href="https://wa.me/972557790955" class="social-link" aria-label="וואטסאפ של GudauriSkiIL" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="קישורים מהירים">
+          <h3 class="footer-heading">ניווט</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="design-1-epic.html#why">על גודאורי</a></li>
+            <li><a href="design-1-epic.html#activities">פעילויות</a></li>
+            <li><a href="design-1-epic.html#new-gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html">לינה</a></li>
+            <li><a href="design-1-epic.html#testimonials">חוות דעת</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" aria-label="פרטי קשר">
+          <h3 class="footer-heading">קשר</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:info@gudauriskiil.com">info@gudauriskiil.com</a></li>
+            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer">וואטסאפ זמין</a></li>
+            <li style="margin-top:12px; color:var(--slate-600); font-size:0.875rem;">תל אביב, ישראל</li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter" aria-labelledby="newsletter-heading">
+          <h3 class="footer-heading" id="newsletter-heading">עדכונים ומבצעים</h3>
+          <p style="font-size:0.9375rem; color:var(--slate-400); line-height:1.65;">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
+            <label for="nl-email" class="sr-only">כתובת אימייל</label>
+            <input
+              type="email"
+              id="nl-email"
+              class="newsletter-input"
+              placeholder="האימייל שלך"
+              required
+              autocomplete="email"
+              dir="ltr"
+            />
+            <button type="submit" class="newsletter-submit" aria-label="הרשמה לניוזלטר">הרשם</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2025 <a href="design-1-epic.html">GudauriSkiIL</a>. כל הזכויות שמורות.
+        </p>
+        <nav class="footer-legal" aria-label="קישורים משפטיים">
+          <a href="#">מדיניות פרטיות</a>
+          <a href="#">תנאי שימוש</a>
+          <a href="#">נגישות</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hero parallax
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      heroBg.style.transform = `scale(1.04) translateY(${window.scrollY * 0.25}px)`;
+    }, { passive: true });
+
+    // Mobile menu
+    const burger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('navMobile');
+    let menuOpen = false;
+
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      burger.setAttribute('aria-expanded', String(menuOpen));
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', e => {
+      if (menuOpen && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => ro.observe(el));
+
+    // Newsletter
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.newsletter-submit');
+      const input = document.getElementById('nl-email');
+      btn.textContent = 'נרשמת!';
+      btn.style.background = '#16A34A';
+      input.value = '';
+      setTimeout(() => { btn.textContent = 'הרשם'; btn.style.background = ''; }, 3000);
+    }
+
+    // Reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+</body>
+</html>
