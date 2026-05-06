@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GudauriSkiIL — מעל לעננים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --snow:        #F8FAFC;
+      --slate:       #1E293B;
+      --slate-mid:   #334155;
+      --slate-light: #64748B;
+      --sky:         #0EA5E9;
+      --sky-light:   #E0F2FE;
+      --white:       #FFFFFF;
+      --font:        'Heebo', sans-serif;
+      --max-w:       1240px;
+      --section-pad: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+      --transition-nav:   background 0.35s ease, box-shadow 0.35s ease;
+      --transition-hover: all 0.25s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--snow);
+      color: var(--slate);
+      direction: rtl;
+      text-align: right;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sky);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 1.8rem;
+      height: 1px;
+      background: var(--sky);
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--slate);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ============================================================
+       REVEAL ANIMATIONS (directional slide-ins)
+    ============================================================ */
+    .reveal-left  { --tx: -60px; --ty: 0px; }
+    .reveal-right { --tx:  60px; --ty: 0px; }
+    .reveal-up    { --tx: 0px;  --ty: 40px; }
+
+    .reveal-left,
+    .reveal-right,
+    .reveal-up {
+      opacity: 0;
+      transform: translate(var(--tx, 0px), var(--ty, 40px));
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal-left.visible,
+    .reveal-right.visible,
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translate(0px, 0px);
+    }
+
+    .reveal-up.delay-1  { transition-delay: 0.1s; }
+    .reveal-up.delay-2  { transition-delay: 0.2s; }
+    .reveal-up.delay-3  { transition-delay: 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-left,
+      .reveal-right,
+      .reveal-up {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: none;
+      }
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: transparent;
+      transition: var(--transition-nav);
+      padding: 1.4rem 0;
+    }
+
+    .nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 1px 0 rgba(30,41,59,0.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav__logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-transform: uppercase;
+      transition: color 0.35s ease;
+    }
+    .nav.scrolled .nav__logo { color: var(--slate); }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.85);
+      transition: var(--transition-hover);
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .nav.scrolled .nav__links a { color: var(--slate-mid); }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--sky);
+      transition: width 0.25s ease;
+    }
+    .nav__links a:hover::after  { width: 100%; }
+    .nav__links a:hover         { color: var(--white); }
+    .nav.scrolled .nav__links a:hover { color: var(--sky); }
+
+    .nav__cta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white) !important;
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      transition: var(--transition-hover);
+      cursor: pointer;
+    }
+    .nav.scrolled .nav__cta { color: var(--slate) !important; border-color: var(--slate); }
+    .nav__cta:hover          { background: rgba(255,255,255,0.15); }
+    .nav.scrolled .nav__cta:hover { background: var(--slate); color: var(--white) !important; }
+    .nav__cta::after         { display: none !important; }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: background 0.35s ease;
+    }
+    .nav.scrolled .nav__hamburger span { background: var(--slate); }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: 0 8px 24px rgba(30,41,59,0.1);
+      }
+      .nav__links.open  { display: flex; }
+      .nav__links li    { width: 100%; }
+      .nav__links a {
+        display: block;
+        padding: 0.85rem 2rem;
+        color: var(--slate-mid) !important;
+        font-size: 0.9rem;
+      }
+      .nav__links a::after { display: none; }
+      .nav__hamburger      { display: flex; }
+    }
+
+    /* ============================================================
+       STICKY SIDE PROGRESS BAR
+    ============================================================ */
+    .section-progress {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .section-progress { display: none; } }
+
+    .sp-line {
+      position: absolute;
+      width: 1px;
+      top: 4px;
+      bottom: 4px;
+      left: 50%;
+      background: rgba(30,41,59,0.12);
+    }
+
+    .sp-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(30,41,59,0.2);
+      border: 1px solid rgba(30,41,59,0.25);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .sp-dot.active { background: var(--sky); border-color: var(--sky); transform: scale(1.5); }
+    .sp-dot:hover  { background: var(--sky); border-color: var(--sky); }
+
+    /* ============================================================
+       HERO — FULL-BLEED PARALLAX
+    ============================================================ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-parallax-bg {
+      position: absolute;
+      top: -30%;
+      left: 0;
+      width: 100%;
+      height: 160%;
+      background-image: url('https://images.unsplash.com/photo-1577701122197-c9607038bd90?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(30,41,59,0.6) 0%,
+        rgba(30,41,59,0.2) 60%,
+        rgba(30,41,59,0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner { padding-top: 80px; }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .hero-headline {
+      font-size: clamp(5rem, 12vw, 11rem);
+      font-weight: 900;
+      color: #F8FAFC;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-weight: 300;
+      color: rgba(248,250,252,0.85);
+      margin-bottom: 44px;
+      max-width: 36ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--sky);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border-radius: 2px;
+      transition: background 0.25s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #0284C7; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(248,250,252,0.88);
+      border-bottom: 1px solid rgba(248,250,252,0.35);
+      padding-bottom: 3px;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .btn-ghost:hover { color: var(--sky); border-color: var(--sky); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+      color: rgba(248,250,252,0.65);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--sky), transparent);
+      margin: 10px auto 0;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.2); }
+    }
+
+    /* ============================================================
+       STATEMENT
+    ============================================================ */
+    .statement {
+      background: var(--snow);
+      padding: var(--section-pad);
+      text-align: center;
+    }
+
+    .statement__eyebrow {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 2.5rem;
+    }
+
+    .statement__quote {
+      font-size: clamp(1.45rem, 3.2vw, 2.55rem);
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--slate);
+      max-width: 820px;
+      margin-inline: auto;
+      letter-spacing: -0.01em;
+    }
+    .statement__quote strong { font-weight: 700; }
+
+    .statement__divider {
+      width: 3rem;
+      height: 1px;
+      background: var(--sky);
+      margin: 3rem auto 0;
+    }
+
+    /* ============================================================
+       STATS
+    ============================================================ */
+    .stats {
+      background: var(--white);
+      padding: clamp(4rem, 7vw, 6.5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .stats__inner {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stats__item {
+      padding: 2rem 2.5rem;
+      border-inline-start: 1px solid rgba(30,41,59,0.1);
+      cursor: default;
+    }
+    .stats__item:last-child { border-inline-end: 1px solid rgba(30,41,59,0.1); }
+
+    .stats__num {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--sky);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .stats__label {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--slate-mid);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+    }
+
+    .stats__sub {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--slate-light);
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .stats__inner { grid-template-columns: repeat(2, 1fr); }
+      .stats__item:nth-child(2) { border-inline-end: 1px solid rgba(30,41,59,0.1); }
+      .stats__item:nth-child(3) { border-top: 1px solid rgba(30,41,59,0.1); }
+      .stats__item:nth-child(4) { border-top: 1px solid rgba(30,41,59,0.1); }
+    }
+
+    @media (max-width: 480px) {
+      .stats__inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================
+       ACTIVITIES — Editorial Asymmetric Grid
+    ============================================================ */
+    .activities {
+      background: var(--snow);
+      padding: var(--section-pad);
+    }
+
+    .activities__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .activities__grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+
+    .act-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .act-card--large  { grid-row: span 2; min-height: 560px; }
+    .act-card--medium { min-height: 270px; }
+
+    .act-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s ease;
+    }
+    .act-card:hover .act-card__img { transform: scale(1.045); }
+
+    .act-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,15,30,0.72) 0%, rgba(5,15,30,0.08) 60%);
+      transition: background 0.35s ease;
+    }
+
+    .act-card__body {
+      position: absolute;
+      bottom: 0; right: 0; left: 0;
+      padding: 1.75rem;
+    }
+
+    .act-card__tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.55rem;
+    }
+
+    .act-card__title {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .act-card--large .act-card__title { font-size: clamp(1.4rem, 2.8vw, 2rem); }
+
+    .act-card__desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.6;
+      max-width: 38ch;
+    }
+
+    .activities__small-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .act-card--small { min-height: 200px; }
+    .act-card--small .act-card__body  { padding: 1.1rem; }
+    .act-card--small .act-card__title { font-size: 0.95rem; }
+    .act-card--small .act-card__desc  { display: none; }
+
+    @media (max-width: 900px) {
+      .activities__grid { grid-template-columns: 1fr 1fr; }
+      .act-card--large  { grid-row: span 1; min-height: 320px; }
+      .activities__small-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .activities__grid { grid-template-columns: 1fr; }
+      .activities__small-grid { grid-template-columns: 1fr 1fr; }
+      .act-card--small  { min-height: 160px; }
+    }
+
+    /* ============================================================
+       WHY GUDAURI — Editorial Splits
+    ============================================================ */
+    .why-editorial { background: var(--white); }
+
+    .why-intro-band {
+      background: var(--white);
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem) 0;
+      text-align: center;
+    }
+
+    .why-intro-band h2 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--slate);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 680px;
+      margin: 0.75rem auto 1.5rem;
+    }
+
+    .why-intro-band p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--slate-mid);
+      max-width: 480px;
+      margin-inline: auto;
+      line-height: 1.75;
+    }
+
+    /* Split section */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 72vh;
+    }
+
+    /* Flip photo/text order for reverse splits */
+    .split-reverse {
+      direction: ltr; /* swap column order */
+    }
+    .split-reverse .split-text {
+      direction: rtl; /* keep text RTL */
+      text-align: right;
+    }
+
+    .split-photo {
+      background-size: cover;
+      background-position: center;
+      min-height: 420px;
+    }
+
+    .split-text {
+      padding: clamp(48px, 8vw, 120px) clamp(32px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--white);
+    }
+
+    .split-text h2 {
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      font-weight: 900;
+      color: var(--slate);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .split-text p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--slate-mid);
+      line-height: 1.75;
+      max-width: 40ch;
+    }
+
+    .split-quote {
+      font-size: 0.95rem !important;
+      font-style: italic;
+      color: var(--sky) !important;
+      border-right: 3px solid var(--sky);
+      padding-right: 16px;
+      margin-top: 24px;
+    }
+
+    .split-num {
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(14,165,233,0.1);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .split-section        { grid-template-columns: 1fr; }
+      .split-reverse        { direction: rtl; }
+      .split-photo          { min-height: 280px; order: -1; }
+      .split-text           { padding: 48px 28px; }
+      .split-text p         { max-width: none; }
+    }
+
+    /* ============================================================
+       NEW GUDAURI — Timeline / Journey
+    ============================================================ */
+    .new-gudauri-timeline { background: var(--snow); }
+
+    .ng-timeline-hero {
+      height: 60vh;
+      min-height: 420px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .ng-timeline-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,41,59,0.85) 0%, rgba(30,41,59,0.15) 70%);
+    }
+
+    .ng-timeline-title {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 60px;
+    }
+
+    .ng-timeline-title h2 {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 900;
+      color: #F8FAFC;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .ng-timeline-title p {
+      color: rgba(248,250,252,0.82);
+      max-width: 480px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .ng-journey {
+      padding: clamp(60px, 8vw, 100px) clamp(1.5rem, 5vw, 4rem);
+      max-width: var(--max-w);
+      margin-inline: auto;
+    }
+
+    .journey-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+      margin-bottom: clamp(60px, 8vw, 96px);
+    }
+    .journey-item:last-child { margin-bottom: 0; }
+
+    .journey-item-alt .journey-img     { order: 2; }
+    .journey-item-alt .journey-content { order: 1; }
+
+    .journey-img {
+      aspect-ratio: 4 / 3;
+      background-size: cover;
+      background-position: center;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .journey-marker {
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: rgba(14,165,233,0.18);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .journey-content h3 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--slate);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .journey-content p {
+      color: var(--slate-light);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .journey-item,
+      .journey-item-alt             { grid-template-columns: 1fr; gap: 24px; }
+      .journey-item-alt .journey-img     { order: 0; }
+      .journey-item-alt .journey-content { order: 0; }
+    }
+
+    /* ============================================================
+       EXPERIENCE — split layout
+    ============================================================ */
+    .experience {
+      background: var(--snow);
+    }
+
+    .experience-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: 65vh;
+    }
+
+    .experience-photo {
+      background-image: url('https://images.unsplash.com/photo-1569498283068-140e58143192?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      min-height: 380px;
+    }
+
+    .experience-text {
+      padding: clamp(48px, 8vw, 100px) clamp(32px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--slate);
+    }
+
+    .experience-text .section-label { color: var(--sky); }
+
+    .experience-text h2 {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .experience-text p {
+      font-size: 0.95rem;
+      color: rgba(248,250,252,0.75);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 40ch;
+      margin-bottom: 16px;
+    }
+
+    .experience-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .experience-list li {
+      font-size: 0.88rem;
+      color: rgba(248,250,252,0.7);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .experience-list li::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--sky);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .experience-inner { grid-template-columns: 1fr; }
+      .experience-photo { min-height: 260px; }
+      .experience-text  { padding: 48px 28px; }
+    }
+
+    /* ============================================================
+       ACCOMMODATION
+    ============================================================ */
+    .accommodation {
+      background: var(--white);
+    }
+
+    .accommodation-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      min-height: 65vh;
+      direction: ltr; /* flip for visual variety */
+    }
+
+    .accommodation-text {
+      padding: clamp(48px, 8vw, 100px) clamp(32px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      direction: rtl;
+    }
+
+    .accommodation-text h2 {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 900;
+      color: var(--slate);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .accommodation-text p {
+      font-size: 0.95rem;
+      color: var(--slate-mid);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 40ch;
+      margin-bottom: 16px;
+    }
+
+    .accommodation-photo {
+      background-image: url('https://images.unsplash.com/photo-1641591562985-f509c34fa235?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      min-height: 380px;
+    }
+
+    @media (max-width: 768px) {
+      .accommodation-inner { grid-template-columns: 1fr; direction: rtl; }
+      .accommodation-photo { min-height: 260px; }
+      .accommodation-text  { padding: 48px 28px; }
+    }
+
+    /* ============================================================
+       PANORAMIC STATS BG
+    ============================================================ */
+    .stats-panoramic {
+      position: relative;
+      padding: clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+      background-image: url('https://images.unsplash.com/photo-1548873903-d93dc8c9723e?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    @media (max-width: 768px) { .stats-panoramic { background-attachment: scroll; } }
+
+    .stats-panoramic-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,41,59,0.7);
+    }
+
+    .stats-panoramic-inner {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+
+    .stat-pan-item {
+      padding: 2rem 1.5rem;
+      border-inline-start: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-pan-item:last-child { border-inline-end: 1px solid rgba(255,255,255,0.12); }
+
+    .stat-pan-num {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--sky);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .stat-pan-label {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(248,250,252,0.75);
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 768px) {
+      .stats-panoramic-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-pan-item:nth-child(2) { border-inline-end: 1px solid rgba(255,255,255,0.12); }
+      .stat-pan-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.12); }
+      .stat-pan-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.12); }
+    }
+
+    /* ============================================================
+       TESTIMONIALS — Editorial Pull-Quote Style
+    ============================================================ */
+    .testimonials-editorial {}
+
+    .te-item {
+      position: relative;
+      padding: clamp(80px, 10vw, 120px) 0;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    @media (max-width: 768px) { .te-item { background-attachment: scroll; } }
+
+    .te-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,41,59,0.78);
+    }
+
+    .te-content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+    }
+
+    .te-quote {
+      font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+      font-weight: 300;
+      color: #F8FAFC;
+      line-height: 1.55;
+      margin-bottom: 36px;
+      border-right: 4px solid var(--sky);
+      padding-right: 24px;
+    }
+
+    .te-author {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      color: rgba(248,250,252,0.78);
+    }
+
+    .te-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 14px;
+      border: 2px solid rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    .te-author strong {
+      display: block;
+      color: #F8FAFC;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .te-author span {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    /* Section header before testimonials */
+    .testimonials-header-band {
+      background: var(--snow);
+      padding: clamp(4rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 5vw, 5rem);
+      text-align: center;
+    }
+
+    /* ============================================================
+       CONTACT / NEWSLETTER
+    ============================================================ */
+    .newsletter {
+      background: var(--slate);
+      padding: clamp(4rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .newsletter__inner {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .newsletter__headline {
+      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .newsletter__sub {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.7;
+    }
+
+    .newsletter__form { display: flex; gap: 0; }
+
+    .newsletter__input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-inline-end: none;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      padding: 1rem 1.25rem;
+      outline: none;
+      transition: border-color 0.25s ease;
+      text-align: right;
+    }
+    .newsletter__input::placeholder { color: rgba(255,255,255,0.35); }
+    .newsletter__input:focus         { border-color: var(--sky); }
+
+    .newsletter__btn {
+      background: var(--sky);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--sky);
+      padding: 1rem 1.75rem;
+      cursor: pointer;
+      transition: var(--transition-hover);
+      white-space: nowrap;
+    }
+    .newsletter__btn:hover { background: #0284C7; border-color: #0284C7; }
+
+    @media (max-width: 760px) {
+      .newsletter__inner  { grid-template-columns: 1fr; gap: 2rem; }
+      .newsletter__form   { flex-direction: column; gap: 0.75rem; }
+      .newsletter__input  { border-inline-end: 1px solid rgba(255,255,255,0.15); }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--white);
+      border-top: 2px solid var(--sky);
+      padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .footer__inner {
+      max-width: var(--max-w);
+      margin-inline: auto;
+    }
+
+    .footer__top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer__brand-name {
+      font-size: 1.0rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer__tagline {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--slate-light);
+      line-height: 1.7;
+      max-width: 24ch;
+    }
+
+    .footer__col-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    .footer__col-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer__col-links a {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--slate-light);
+      transition: color 0.2s ease;
+    }
+    .footer__col-links a:hover { color: var(--sky); }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(30,41,59,0.08);
+      padding-top: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer__copy {
+      font-size: 0.75rem;
+      color: var(--slate-light);
+      font-weight: 300;
+    }
+
+    .footer__social { display: flex; gap: 1.25rem; }
+
+    .footer__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(30,41,59,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition-hover);
+      color: var(--slate-mid);
+    }
+    .footer__social a:hover { border-color: var(--sky); color: var(--sky); }
+    .footer__social svg { width: 15px; height: 15px; fill: currentColor; }
+
+    @media (max-width: 900px) {
+      .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .footer__top   { grid-template-columns: 1fr; gap: 1.75rem; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY SIDE PROGRESS BAR
+  ============================================================ -->
+  <nav class="section-progress" aria-label="ניווט מקטעים">
+    <div class="sp-line" aria-hidden="true"></div>
+    <div class="sp-dot active" data-section="hero"        title="פתיחה"></div>
+    <div class="sp-dot"       data-section="why"          title="למה גודאורי"></div>
+    <div class="sp-dot"       data-section="activities"   title="פעילויות"></div>
+    <div class="sp-dot"       data-section="new-gudauri"  title="ניו גודאורי"></div>
+    <div class="sp-dot"       data-section="experience"   title="החוויה"></div>
+    <div class="sp-dot"       data-section="testimonials" title="חוויות"></div>
+    <div class="sp-dot"       data-section="contact"      title="צור קשר"></div>
+  </nav>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="nav" id="mainNav" role="navigation" aria-label="ניווט ראשי">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo" aria-label="GudauriSkiIL - דף הבית">GudauriSkiIL</a>
+
+        <button class="nav__hamburger" id="navToggle" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav__links" id="navLinks" role="list">
+          <li><a href="#activities">פעילויות</a></li>
+          <li><a href="#why">למה גודאורי</a></li>
+          <li><a href="#new-gudauri">ניו גודאורי</a></li>
+          <li><a href="#testimonials">חוויות</a></li>
+          <li><a href="#contact" class="nav__cta">לתכנן עכשיו</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO — PARALLAX FULL-BLEED
+  ============================================================ -->
+  <section class="hero" id="hero" aria-label="כותרת ראשית">
+    <div class="hero-parallax-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content container">
+      <div class="hero-inner">
+        <span class="hero-kicker">גאורגיה · קווקז · 3,279 מ׳</span>
+        <h1 class="hero-headline">מעל<br/>לעננים</h1>
+        <p class="hero-sub">גודאורי. ההר שמשנה תפיסות.</p>
+        <div class="hero-ctas">
+          <a href="#contact"     class="btn-primary">תכנן את הטיול</a>
+          <a href="#new-gudauri" class="btn-ghost">גלה את ניו גודאורי ↓</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>גלול לגלות</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATEMENT
+  ============================================================ -->
+  <section class="statement" aria-labelledby="statementQuote">
+    <div class="container">
+      <p class="statement__eyebrow reveal-up">ניגוד בשיאו</p>
+      <blockquote class="statement__quote reveal-up delay-1" id="statementQuote">
+        גודאורי אינה סתם אתר סקי.<br/>
+        היא <strong>ניגוד</strong>.<br/>
+        שקט מוחלט ועוצמה בלתי נגמרת.<br/>
+        חוויה שאי אפשר להסביר — <strong>רק לחיות.</strong>
+      </blockquote>
+      <div class="statement__divider reveal-up delay-2" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS
+  ============================================================ -->
+  <section class="stats" aria-label="נתוני האתר">
+    <div class="stats__inner">
+      <div class="stats__item reveal-up">
+        <div class="stats__num">76 ק״מ</div>
+        <div class="stats__label">מסלולי סקי</div>
+        <div class="stats__sub">לכל רמות הגולשים</div>
+      </div>
+      <div class="stats__item reveal-up delay-1">
+        <div class="stats__num">3,279 מ׳</div>
+        <div class="stats__label">גובה שיא</div>
+        <div class="stats__sub">מעל פני הים</div>
+      </div>
+      <div class="stats__item reveal-up delay-2">
+        <div class="stats__num">300+</div>
+        <div class="stats__label">ימי שמש בשנה</div>
+        <div class="stats__sub">יותר מכל אתר אירופאי</div>
+      </div>
+      <div class="stats__item reveal-up delay-3">
+        <div class="stats__num">18</div>
+        <div class="stats__label">מתקני רכבל Doppelmayr</div>
+        <div class="stats__sub">טכנולוגיה אוסטרית מתקדמת</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACTIVITIES
+  ============================================================ -->
+  <section class="activities" id="activities" aria-labelledby="activitiesTitle">
+    <div class="container">
+      <div class="activities__header">
+        <div>
+          <p class="section-eyebrow reveal-up">פעילויות</p>
+          <h2 class="section-title reveal-up delay-1" id="activitiesTitle">מה עושים<br/>בגודאורי?</h2>
+        </div>
+      </div>
+
+      <div class="activities__grid reveal-up delay-1">
+        <!-- Large card -->
+        <article class="act-card act-card--large" tabindex="0">
+          <img
+            class="act-card__img"
+            src="https://images.unsplash.com/photo-1610394295702-00b39272459d?auto=format&fit=crop&w=900&q=80"
+            alt="גלישת סקי על מסלולים בגודאורי עם נוף הרים מרהיב"
+            loading="lazy"
+          />
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">האטרקציה הראשית</span>
+            <h3 class="act-card__title">סקי אלפיני</h3>
+            <p class="act-card__desc">76 קילומטר של מסלולים — מהמתחיל שמגלה את השלג ועד לגולש שמחפש את הקצה.</p>
+          </div>
+        </article>
+
+        <!-- Medium card: Heliski -->
+        <article class="act-card act-card--medium" tabindex="0">
+          <img
+            class="act-card__img"
+            src="https://images.unsplash.com/photo-1590413814002-1a29258d5c79?auto=format&fit=crop&w=700&q=80"
+            alt="הליסקי בקווקז — גישה למדרונות בתולים מהאוויר"
+            loading="lazy"
+          />
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">לאלה שרוצים עוד</span>
+            <h3 class="act-card__title">הליסקי</h3>
+            <p class="act-card__desc">מהאוויר ישר אל הלא נגוע.</p>
+          </div>
+        </article>
+
+        <!-- Medium card: Paragliding -->
+        <article class="act-card act-card--medium" tabindex="0">
+          <img
+            class="act-card__img"
+            src="https://images.unsplash.com/photo-1641591562985-f509c34fa235?auto=format&fit=crop&w=700&q=80"
+            alt="פאראגליידינג מעל גבעות גודאורי"
+            loading="lazy"
+          />
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">תעופה חופשית</span>
+            <h3 class="act-card__title">פאראגליידינג</h3>
+            <p class="act-card__desc">תעופו מעל הקווקז. הרוח יודעת לאן.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Small grid -->
+      <div class="activities__small-grid reveal-up delay-2">
+        <article class="act-card act-card--small" tabindex="0">
+          <img class="act-card__img" src="https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=400&q=80" alt="ספידריידינג" loading="lazy"/>
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">אדרנלין</span>
+            <h3 class="act-card__title">ספידריידינג</h3>
+          </div>
+        </article>
+        <article class="act-card act-card--small" tabindex="0">
+          <img class="act-card__img" src="https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=400&q=80" alt="שבילי שלג" loading="lazy"/>
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">טבע פראי</span>
+            <h3 class="act-card__title">שבילי שלג</h3>
+          </div>
+        </article>
+        <article class="act-card act-card--small" tabindex="0">
+          <img class="act-card__img" src="https://images.unsplash.com/photo-1644236330809-2b6956d8662a?auto=format&fit=crop&w=400&q=80" alt="טביליסי" loading="lazy"/>
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">120 ק״מ</span>
+            <h3 class="act-card__title">טביליסי</h3>
+          </div>
+        </article>
+        <article class="act-card act-card--small" tabindex="0">
+          <img class="act-card__img" src="https://images.unsplash.com/photo-1546706068-32c97afa07ed?auto=format&fit=crop&w=400&q=80" alt="מטבח גאורגי" loading="lazy"/>
+          <div class="act-card__overlay" aria-hidden="true"></div>
+          <div class="act-card__body">
+            <span class="act-card__tag">תרבות</span>
+            <h3 class="act-card__title">מטבח גאורגי</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY GUDAURI — Editorial Splits
+  ============================================================ -->
+  <section class="why-editorial" id="why" aria-labelledby="whyTitle">
+
+    <div class="why-intro-band">
+      <p class="section-eyebrow reveal-up" style="justify-content:center">למה גודאורי</p>
+      <h2 class="reveal-up delay-1" id="whyTitle">מה שתמצאו כאן<br/>לא תמצאו באלפים</h2>
+      <p class="reveal-up delay-2">האתר שמשלב שלג מושלם, שמש קווקזית ומחירים שמפתיעים — אפילו את עצמנו.</p>
+    </div>
+
+    <!-- Split 1: photo right (default RTL), text left -->
+    <div class="split-section reveal-left">
+      <div class="split-photo" style="background-image: url('https://images.unsplash.com/photo-1590413814002-1a29258d5c79?auto=format&fit=crop&w=1200&q=80')" role="img" aria-label="מסלולי סקי בגודאורי"></div>
+      <div class="split-text">
+        <div class="split-num" aria-hidden="true">01</div>
+        <span class="section-label">מחיר שמפתיע</span>
+        <h2>60% זול<br/>מהאלפים</h2>
+        <p>אותן מעליות אוסטריות. אותו שלג. חצי המחיר. מסלולי Doppelmayr זהים לאלה שבזרמאט — רק ב-Lari ולא ב-Euro.</p>
+        <p class="split-quote">"ידינו לא האמינו לעצמה כשראינו את החשבון"</p>
+      </div>
+    </div>
+
+    <!-- Split 2: reversed — photo left, text right -->
+    <div class="split-section split-reverse reveal-right">
+      <div class="split-photo" style="background-image: url('https://images.unsplash.com/photo-1641591562985-f509c34fa235?auto=format&fit=crop&w=1200&q=80')" role="img" aria-label="שמש קווקזית בגודאורי"></div>
+      <div class="split-text">
+        <div class="split-num" aria-hidden="true">02</div>
+        <span class="section-label">שמש קווקזית</span>
+        <h2>300 יום<br/>שמש</h2>
+        <p>גודאורי נחשב לאחד האתרים הסוניים בעולם. בזמן שאלפי אירופה שקועים בערפל, כאן זורח. תמיד כמעט זורח.</p>
+        <p class="split-quote">"שמש וסקי — לא ציפינו לשניהם ביחד"</p>
+      </div>
+    </div>
+
+    <!-- Split 3: photo right -->
+    <div class="split-section reveal-left">
+      <div class="split-photo" style="background-image: url('https://images.unsplash.com/photo-1569498283068-140e58143192?auto=format&fit=crop&w=1200&q=80')" role="img" aria-label="עונת סקי ארוכה בגודאורי"></div>
+      <div class="split-text">
+        <div class="split-num" aria-hidden="true">03</div>
+        <span class="section-label">עונה ארוכה</span>
+        <h2>דצמבר<br/>עד אפריל</h2>
+        <p>כשהאלפים כבר אפורים, גודאורי עדיין לבן. חמישה חודשים של שלג מובטח. לא פחות. ועונת הקיץ — פשוט מתחילה.</p>
+        <p class="split-quote">"חזרנו בפסח. שלג טרי. לא ייאמן"</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       NEW GUDAURI — TIMELINE / JOURNEY
+  ============================================================ -->
+  <section class="new-gudauri-timeline" id="new-gudauri" aria-labelledby="ngTitle">
+
+    <div class="ng-timeline-hero" style="background-image: url('https://images.unsplash.com/photo-1699894068149-7a1f43e33a6b?auto=format&fit=crop&w=1920&q=80')">
+      <div class="ng-timeline-overlay" aria-hidden="true"></div>
+      <div class="container ng-timeline-title">
+        <span class="section-label" style="color: var(--sky)">מהפסגה לכפר</span>
+        <h2 id="ngTitle">ניו גודאורי</h2>
+        <p>כפר האתר המודרני, 2,200 מ׳, מחובר לפסגות בגונדולה. כאן מתחיל ומסתיים כל יום מושלם.</p>
+      </div>
+    </div>
+
+    <div class="ng-journey">
+
+      <div class="journey-item reveal-right">
+        <div class="journey-img" style="background-image: url('https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="פסגות הקווקז בבוקר"></div>
+        <div class="journey-content">
+          <div class="journey-marker" aria-hidden="true">01</div>
+          <h3>בוקר על הפסגות</h3>
+          <p>הגונדולה מוציאה אותך ל-3,279 מ׳ עם קפה ביד. משם — 76 ק״מ של מסלולים לבחירה. אף תור. אף המתנה.</p>
+        </div>
+      </div>
+
+      <div class="journey-item journey-item-alt reveal-left">
+        <div class="journey-img" style="background-image: url('https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gudauri Hut על המדרון"></div>
+        <div class="journey-content">
+          <div class="journey-marker" aria-hidden="true">02</div>
+          <h3>Gudauri Hut</h3>
+          <p>בר ומסעדה היישר על המדרון. אוכל גאורגי, ח׳ינקלי ו-Chacha בצהריים. האנשים שנשארים לשתות עוד סקי עד הסגירה.</p>
+        </div>
+      </div>
+
+      <div class="journey-item reveal-right">
+        <div class="journey-img" style="background-image: url('https://images.unsplash.com/photo-1644236330809-2b6956d8662a?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Panorama Terrace — 360 על הרכס הקווקזי"></div>
+        <div class="journey-content">
+          <div class="journey-marker" aria-hidden="true">03</div>
+          <h3>Panorama Terrace</h3>
+          <p>360° על כל הרכס הקווקזי. שקיעת השמש שתצטלם ותפרסם. הנוף שאין לו מקבילה במערב אירופה.</p>
+        </div>
+      </div>
+
+      <div class="journey-item journey-item-alt reveal-left">
+        <div class="journey-img" style="background-image: url('https://images.unsplash.com/photo-1546706068-32c97afa07ed?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Adventure Center — הלי-סקי וסנומוביל"></div>
+        <div class="journey-content">
+          <div class="journey-marker" aria-hidden="true">04</div>
+          <h3>Adventure Center</h3>
+          <p>הלי-סקי, סנומוביל, פרגליידינג מעל ענני הקווקז. לא סתם ספורט — עניין של זכרון לכל החיים.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE (split: photo + dark text panel)
+  ============================================================ -->
+  <section class="experience" id="experience" aria-labelledby="expTitle">
+    <div class="experience-inner">
+      <div class="experience-photo" role="img" aria-label="נוף חורף בהרי הקווקז"></div>
+      <div class="experience-text reveal-left">
+        <span class="section-label">החוויה</span>
+        <h2 id="expTitle">לא רק סקי.<br/>אורח חיים.</h2>
+        <p>גודאורי היא לא טיול בחבילה. היא בחירה לחיות שבוע אחד אחרת. להתעורר עם ההר. לאכול ברוח הקווקז. לישון מותשים מאושרים.</p>
+        <ul class="experience-list" role="list">
+          <li>גונדולה לפסגה — בלי פקקים, בלי תורים</li>
+          <li>אוכל גאורגי אותנטי: ח׳ינקלי, מצ׳פורי, Chacha</li>
+          <li>SPA ובריכות מחוממות בסוף יום השלג</li>
+          <li>חיי לילה: בארים על המדרון, מוזיקה חיה</li>
+          <li>שיעורי סקי בעברית עם מדריכים ישראלים</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACCOMMODATION (split reversed)
+  ============================================================ -->
+  <section class="accommodation" id="accommodation" aria-labelledby="accTitle">
+    <div class="accommodation-inner">
+      <div class="accommodation-text reveal-right">
+        <span class="section-label">לינה ואירוח</span>
+        <h2 id="accTitle">היכן<br/>שוכנים.</h2>
+        <p>דירות ניו גודאורי ממוקמות 50 מטר מהמעלית. מתעוררים, לובשים מגפיים, יוצאים לגלוש. כל כך פשוט.</p>
+        <p>בחרו מסוויטות יוקרה עם נוף לפסגות ועד לדירות משפחתיות עם מטבח מאובזר — תמיד במחיר שלא תאמינו לו.</p>
+      </div>
+      <div class="accommodation-photo" role="img" aria-label="דירות ניו גודאורי עם נוף לפסגות"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANORAMIC STATS (parallax bg)
+  ============================================================ -->
+  <section class="stats-panoramic" aria-label="נתוני גודאורי בפנורמה">
+    <div class="stats-panoramic-overlay" aria-hidden="true"></div>
+    <div class="stats-panoramic-inner">
+      <div class="stat-pan-item reveal-up">
+        <div class="stat-pan-num">76</div>
+        <div class="stat-pan-label">ק״מ מסלולים</div>
+      </div>
+      <div class="stat-pan-item reveal-up delay-1">
+        <div class="stat-pan-num">3,279</div>
+        <div class="stat-pan-label">מטרים גובה שיא</div>
+      </div>
+      <div class="stat-pan-item reveal-up delay-2">
+        <div class="stat-pan-num">60%</div>
+        <div class="stat-pan-label">זול מהאלפים</div>
+      </div>
+      <div class="stat-pan-item reveal-up delay-3">
+        <div class="stat-pan-num">4×</div>
+        <div class="stat-pan-label">ישראלים חוזרים שוב</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS — Editorial Pull-Quote
+  ============================================================ -->
+  <section class="testimonials-editorial" id="testimonials" aria-labelledby="testimonialsTitle">
+
+    <div class="testimonials-header-band">
+      <p class="section-eyebrow reveal-up" style="justify-content:center">חוויות גולשים</p>
+      <h2 class="section-title reveal-up delay-1" id="testimonialsTitle" style="margin-top:0.75rem">מה אומרים<br/>מי שכבר היו שם</h2>
+    </div>
+
+    <!-- Testimonial 1 -->
+    <div class="te-item" style="background-image: url('https://images.unsplash.com/photo-1594748526885-d184fe0259a0?auto=format&fit=crop&w=1920&q=80')">
+      <div class="te-overlay" aria-hidden="true"></div>
+      <div class="container te-content">
+        <blockquote class="te-quote reveal-up">"גודאורי שינתה את הדרך שאנחנו חושבים על חופשת סקי. שילמנו פחות ממחצית ממה שהיינו משלמים בצרפת — וחזרנו עם פי שניים זכרונות."</blockquote>
+        <div class="te-author reveal-up delay-1">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="יונתן כ." class="te-avatar" loading="lazy"/>
+          <div>
+            <strong>יונתן כ.</strong>
+            <span>תל אביב | עונה 2024–25</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="te-item" style="background-image: url('https://images.unsplash.com/photo-1548873903-d93dc8c9723e?auto=format&fit=crop&w=1920&q=80')">
+      <div class="te-overlay" aria-hidden="true"></div>
+      <div class="container te-content">
+        <blockquote class="te-quote reveal-up">"הנוף. האוכל. המחיר. חיפשנו חלופה לאירופה — מצאנו משהו טוב ממנה. ניסינו לא לספר לחברים, אבל לא הצלחנו לשתוק."</blockquote>
+        <div class="te-author reveal-up delay-1">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="נועה ומיכל ש." class="te-avatar" loading="lazy"/>
+          <div>
+            <strong>נועה ומיכל ש.</strong>
+            <span>חיפה | ינואר 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="te-item" style="background-image: url('https://images.unsplash.com/photo-1577701122197-c9607038bd90?auto=format&fit=crop&w=1920&q=80')">
+      <div class="te-overlay" aria-hidden="true"></div>
+      <div class="container te-content">
+        <blockquote class="te-quote reveal-up">"חשבתי שהכרתי אתרי סקי. גודאורי לימדה אותי מחדש מה זה הר. אין תורים, יש שמש, האוכל פנטסטי — ובחצי מחיר של ורביה."</blockquote>
+        <div class="te-author reveal-up delay-1">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="ליאור כ." class="te-avatar" loading="lazy"/>
+          <div>
+            <strong>ליאור כ.</strong>
+            <span>תל אביב | עונה שנייה ברצף</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       CONTACT / NEWSLETTER
+  ============================================================ -->
+  <section class="newsletter" id="contact" aria-labelledby="newsletterTitle">
+    <div class="newsletter__inner">
+      <div class="reveal-up">
+        <h2 class="newsletter__headline" id="newsletterTitle">קבלו את העונה<br/>לפני כולם.</h2>
+        <p class="newsletter__sub">
+          מבצעי טיסות, פתיחת רכבלים, מדריכי גולשים —<br/>
+          ישר לתיבה שלכם.
+        </p>
+      </div>
+      <div class="reveal-up delay-2">
+        <form class="newsletter__form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
+          <label for="emailInput" class="visually-hidden">כתובת אימייל</label>
+          <input
+            type="email"
+            id="emailInput"
+            class="newsletter__input"
+            placeholder="האימייל שלכם"
+            required
+            autocomplete="email"
+            aria-label="הכניסו את כתובת האימייל שלכם"
+          />
+          <button type="submit" class="newsletter__btn">הצטרפו</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand-name">GudauriSkiIL</div>
+          <p class="footer__tagline">
+            גודאורי. עבור אלה שיודעים.<br/>
+            יעד הסקי הפרימיום של ישראל בקווקז.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">האתר</h3>
+          <ul class="footer__col-links" role="list">
+            <li><a href="#activities">פעילויות</a></li>
+            <li><a href="#why">למה גודאורי</a></li>
+            <li><a href="#new-gudauri">ניו גודאורי</a></li>
+            <li><a href="#testimonials">חוויות גולשים</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">מידע</h3>
+          <ul class="footer__col-links" role="list">
+            <li><a href="#">מפת המסלולים</a></li>
+            <li><a href="#">דירות ומלונות</a></li>
+            <li><a href="#">שיעורי סקי</a></li>
+            <li><a href="#">הגעה לגודאורי</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title">צרו קשר</h3>
+          <ul class="footer__col-links" role="list">
+            <li><a href="mailto:info@gudauriski.il">info@gudauriski.il</a></li>
+            <li><a href="https://wa.me/972501234567">וואטסאפ</a></li>
+            <li><a href="#">אינסטגרם</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2025 GudauriSkiIL · כל הזכויות שמורות · עונת 2024–2025</p>
+        <div class="footer__social" aria-label="רשתות חברתיות">
+          <a href="#" aria-label="אינסטגרם">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="פייסבוק">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="טיקטוק">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ---- Hero parallax ---- */
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y < window.innerHeight * 1.5) {
+          heroBg.style.transform = `translateY(${y * 0.38}px)`;
+        }
+      }, { passive: true });
+    }
+
+    /* ---- Nav scroll effect ---- */
+    const nav = document.getElementById('mainNav');
+
+    function updateNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    /* ---- Mobile nav toggle ---- */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---- Section progress dots ---- */
+    const dots       = document.querySelectorAll('.sp-dot');
+    const sectionIds = Array.from(dots).map(d => d.dataset.section);
+    const sections   = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    function updateProgress() {
+      const scrollMid = window.scrollY + window.innerHeight * 0.4;
+      let current = 0;
+      sections.forEach((sec, i) => {
+        if (sec && sec.offsetTop <= scrollMid) current = i;
+      });
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        sections[i]?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    /* ---- Reveal animations (directional slide-ins) ---- */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const revealEls = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(el => revealObserver.observe(el));
+    } else {
+      document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+
+    /* ---- Newsletter form ---- */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = document.getElementById('emailInput');
+      const btn   = e.target.querySelector('button[type="submit"]');
+      const orig  = btn.textContent;
+
+      btn.textContent       = 'תודה!';
+      btn.style.background  = '#059669';
+      btn.style.borderColor = '#059669';
+      btn.disabled          = true;
+      input.value           = '';
+
+      setTimeout(() => {
+        btn.textContent       = orig;
+        btn.style.background  = '';
+        btn.style.borderColor = '';
+        btn.disabled          = false;
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
