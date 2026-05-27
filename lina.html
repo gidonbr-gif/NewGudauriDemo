@@ -1009,10 +1009,18 @@
         <div class="footer-newsletter" aria-labelledby="newsletter-heading">
           <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter.heading">עדכונים ומבצעים</h3>
           <p style="font-size:0.9375rem;color:var(--slate-400);" data-i18n="footer.newsletter.text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
-          <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר" style="flex-wrap:wrap;">
             <label for="nl-email" class="sr-only">כתובת אימייל</label>
             <input type="email" id="nl-email" class="newsletter-input" placeholder="האימייל שלך" required autocomplete="email" dir="ltr" data-i18n-placeholder="footer.newsletter.placeholder" />
             <button type="submit" class="newsletter-submit" data-i18n="footer.newsletter.submit">הרשם</button>
+            <div style="flex-basis:100%; display:flex; align-items:flex-start; gap:8px; margin-top:10px;">
+              <input type="checkbox" id="nl-marketing-consent" required
+                style="margin-top:3px; flex-shrink:0; accent-color:#0EA5E9; cursor:pointer; width:15px; height:15px;" />
+              <label for="nl-marketing-consent" style="font-size:12px; color:#94A3B8; cursor:pointer; line-height:1.5;">
+                אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.
+                <a href="privacy-policy.html" style="color:#38BDF8;">מדיניות פרטיות</a>
+              </label>
+            </div>
           </form>
         </div>
 
@@ -1021,9 +1029,9 @@
       <div class="footer-bottom">
         <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.</p>
         <nav class="footer-legal" aria-label="קישורים משפטיים">
-          <a href="#" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
-          <a href="#" data-i18n="footer.legal.terms">תנאי שימוש</a>
-          <a href="#" data-i18n="footer.legal.access">נגישות</a>
+          <a href="privacy-policy.html" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
+          <a href="terms.html" data-i18n="footer.legal.terms">תנאי שימוש</a>
+          <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;" data-i18n="footer.legal.cookies">הגדרות קוקיז</a>
         </nav>
       </div>
 

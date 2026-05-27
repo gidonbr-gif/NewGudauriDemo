@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="מדיניות הפרטיות של NewGudauri — כיצד אנו אוספים, משתמשים ומגנים על המידע שלך." />
+  <title>מדיניות פרטיות — NewGudauri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate-900: #0F172A; --slate-800: #1E293B; --slate-700: #334155;
+      --slate-600: #475569; --slate-400: #94A3B8; --slate-200: #E2E8F0;
+      --electric: #0EA5E9; --electric-light: #38BDF8;
+      --snow: #F8FAFC; --white: #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif; direction: rtl; text-align: right;
+      background: var(--slate-900); color: var(--snow); line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: var(--electric-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,23,42,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px; font-weight: 800; color: var(--snow);
+      letter-spacing: -0.5px; text-decoration: none;
+    }
+    .nav-logo span { color: var(--electric); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--slate-400); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--snow); text-decoration: none; }
+    .nav-back {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--electric-light);
+      padding: 8px 16px; border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 8px; transition: all 0.15s;
+    }
+    .nav-back:hover { background: rgba(56,189,248,0.08); text-decoration: none; }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #0c1523 0%, #0f172a 50%, #0c1e35 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .page-hero .badge {
+      display: inline-block; background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.3); color: var(--electric);
+      border-radius: 20px; padding: 4px 14px; font-size: 13px;
+      font-weight: 600; margin-bottom: 16px;
+    }
+    .page-hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; color: var(--snow); margin-bottom: 12px; }
+    .page-hero p { font-size: 15px; color: var(--slate-400); }
+
+    /* CONTENT */
+    .content-wrap {
+      max-width: 780px; margin: 0 auto; padding: 56px 24px 80px;
+    }
+    .section { margin-bottom: 48px; }
+    .section h2 {
+      font-size: 20px; font-weight: 700; color: var(--snow);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section p { color: var(--slate-400); margin-bottom: 12px; font-size: 15px; }
+    .section ul { color: var(--slate-400); font-size: 15px; padding-inline-start: 20px; }
+    .section ul li { margin-bottom: 8px; }
+    .section strong { color: var(--snow); }
+
+    /* Info box */
+    .info-box {
+      background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 12px; padding: 16px 20px; margin: 20px 0; font-size: 14px;
+      color: var(--slate-200);
+    }
+    .info-box strong { color: var(--electric-light); }
+
+    /* Table */
+    .cookie-table {
+      width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px;
+    }
+    .cookie-table th {
+      text-align: right; color: var(--slate-400); font-weight: 600;
+      padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.02);
+    }
+    .cookie-table td {
+      color: var(--slate-400); padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Last updated chip */
+    .updated-chip {
+      display: inline-block; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;
+      padding: 4px 10px; font-size: 12px; color: var(--slate-600);
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      background: var(--slate-800); border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--slate-600);
+    }
+    .page-footer a { color: var(--slate-400); margin: 0 8px; }
+    .page-footer a:hover { color: var(--snow); }
+    .footer-sep { margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <a href="index.html" class="nav-logo">New<span>Gudauri</span></a>
+    <a href="index.html" class="nav-back">
+      ← חזרה לאתר
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="badge">🔒 מסמך משפטי</div>
+    <h1>מדיניות פרטיות</h1>
+    <p>כיצד אנו אוספים, משתמשים ומגנים על המידע שלך</p>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="content-wrap" id="main">
+
+    <div class="updated-chip">עודכן לאחרונה: מאי 2025 · גרסה 1.0</div>
+
+    <div class="section">
+      <h2>1. כללי</h2>
+      <p>
+        ברוכים הבאים לאתר <strong>NewGudauri / GudauriSkiIL</strong> (להלן: "האתר"), המופעל על ידי
+        <strong>NewGudauri</strong> (להלן: "אנחנו", "החברה").
+      </p>
+      <p>
+        מדיניות פרטיות זו מתארת כיצד אנו אוספים, משתמשים, מאחסנים ומגנים על מידע אישי של מבקרים באתר,
+        בהתאם ל<strong>חוק הגנת הפרטיות התשמ"א–1981</strong> ותקנותיו, ובמידה הרלוונטית —
+        <strong>תקנות הגנת המידע האירופיות (GDPR)</strong>.
+      </p>
+      <p>
+        השימוש באתר מהווה הסכמה למדיניות פרטיות זו. אם אינך מסכים/ה לתנאים, אנא הימנע/י מהשימוש באתר.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. מידע שאנו אוספים</h2>
+      <p><strong>מידע שאתה מוסר לנו ישירות:</strong></p>
+      <ul>
+        <li><strong>כתובת דואר אלקטרוני</strong> — כשאתה נרשם לניוזלטר שלנו לצורך קבלת עדכונים ומבצעים.</li>
+        <li><strong>הסכמה לשיווק</strong> — תיעוד הסכמתך לקבל חומר שיווקי, כולל תאריך ושיטת הסכמה.</li>
+      </ul>
+      <p style="margin-top:16px;"><strong>מידע הנאסף אוטומטית:</strong></p>
+      <ul>
+        <li><strong>כתובת IP</strong> — לצורכי אבטחה וניתוח תנועה.</li>
+        <li><strong>נתוני גלישה</strong> — עמודים שנצפו, זמן שהייה, מכשיר ודפדפן.</li>
+        <li><strong>קוקיז ועוגיות</strong> — ראה סעיף 5 להלן.</li>
+      </ul>
+      <div class="info-box">
+        <strong>חשוב:</strong> אנו <strong>אינם</strong> אוספים מספרי כרטיסי אשראי, מספרי זהות, מידע רפואי
+        או כל מידע רגיש אחר. כל עסקאות התשלום מתבצעות ישירות דרך ספקי הלינה (Airbnb, Booking.com וכד').
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>3. כיצד אנו משתמשים במידע</h2>
+      <ul>
+        <li><strong>ניוזלטר ועדכונים</strong> — שליחת עדכוני עונת סקי, מבצעים והצעות מיוחדות (בכפוף להסכמתך בלבד).</li>
+        <li><strong>שיפור האתר</strong> — ניתוח דפוסי שימוש כדי לשפר את חוויית הגלישה.</li>
+        <li><strong>אבטחה</strong> — זיהוי ומניעת שימוש לרעה.</li>
+        <li><strong>ציות לחוק</strong> — עמידה בדרישות חוקיות ורגולטוריות.</li>
+      </ul>
+      <p>אנו <strong>לא</strong> מוכרים, משכירים או מעבירים את המידע שלך לצדדים שלישיים לצרכי שיווק.</p>
+    </div>
+
+    <div class="section">
+      <h2>4. בסיס חוקי לעיבוד מידע (GDPR)</h2>
+      <p>אנו מסתמכים על הבסיסים החוקיים הבאים:</p>
+      <ul>
+        <li><strong>הסכמה</strong> — לניוזלטר ושיווק ישיר (ניתן לביטול בכל עת).</li>
+        <li><strong>אינטרס לגיטימי</strong> — לאבטחת האתר ושיפורו.</li>
+        <li><strong>ציות לחוק</strong> — עמידה בחובות משפטיות.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. קוקיז ועוגיות</h2>
+      <p>האתר משתמש בקוקיז. ניתן לנהל את הגדרות הקוקיז בכל עת דרך כפתור "הגדרות קוקיז" בתחתית האתר.</p>
+      <table class="cookie-table">
+        <thead>
+          <tr><th>קטגוריה</th><th>מטרה</th><th>ניתן לבטל</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>חיוניים</td><td>תפקוד האתר, שמירת העדפות הסכמה</td><td>לא</td></tr>
+          <tr><td>פונקציונליים</td><td>שפה מועדפת, ווידג'ט נגישות (Tabnav)</td><td>כן</td></tr>
+          <tr><td>אנליטיקה</td><td>ניתוח תנועה אנונימי</td><td>כן</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>6. שירותי צד שלישי</h2>
+      <p>האתר משתמש בשירותים חיצוניים הבאים:</p>
+      <ul>
+        <li>
+          <strong>Google Fonts</strong> — לטעינת גופנים. Google עשויה לאסוף כתובות IP.
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">מדיניות פרטיות של Google</a>
+        </li>
+        <li>
+          <strong>Tabnav</strong> — ווידג'ט נגישות בהתאם לתקן הישראלי 5568.
+          <a href="https://tabnav.com/he" target="_blank" rel="noopener">אתר Tabnav</a>
+        </li>
+        <li>
+          <strong>GitHub Pages</strong> — אחסון האתר. תנועה עשויה להירשם.
+          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">מדיניות GitHub</a>
+        </li>
+        <li>
+          <strong>WhatsApp</strong> — ליצירת קשר ישיר. שימוש כפוף למדיניות Meta.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. אחסון ואבטחה</h2>
+      <p>
+        המידע שלך נשמר בשרתים מאובטחים. אנו נוקטים באמצעים טכנולוגיים וארגוניים סבירים להגן על המידע
+        מפני גישה בלתי מורשית, אובדן או שינוי.
+      </p>
+      <p><strong>תקופות שמירה:</strong></p>
+      <ul>
+        <li>כתובת אימייל לניוזלטר — עד לביטול ההרשמה.</li>
+        <li>הסכמות שיווקיות — 3 שנים מיום ההסכמה (לצרכי הוכחה חוקית).</li>
+        <li>קוקיז — בהתאם לתקופה המצוינת בהגדרות הקוקיז.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>8. זכויות המשתמש</h2>
+      <p>בהתאם לחוק הישראלי ו-GDPR, יש לך הזכויות הבאות:</p>
+      <ul>
+        <li><strong>עיון</strong> — לבקש לראות את המידע שנשמר עליך.</li>
+        <li><strong>תיקון</strong> — לתקן מידע שגוי.</li>
+        <li><strong>מחיקה</strong> — לבקש מחיקת המידע שלך ("הזכות להישכח").</li>
+        <li><strong>התנגדות</strong> — להתנגד לעיבוד המידע לצרכי שיווק.</li>
+        <li><strong>ביטול הסכמה</strong> — לבטל הסכמה בכל עת (לא ישפיע על חוקיות עיבוד המידע בעבר).</li>
+        <li><strong>ניידות</strong> — לקבל את המידע שלך בפורמט קריא.</li>
+      </ul>
+      <p>
+        לממש זכויות אלה, פנה אלינו בכתובת:
+        <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a>
+      </p>
+      <p>
+        <strong>ביטול הרשמה לניוזלטר:</strong> כל אימייל כולל קישור "הסר מהרשימה". ניתן גם לבקש ביטול ישירות.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>9. העברת מידע לחו"ל</h2>
+      <p>
+        חלק מהשירותים החיצוניים (Google, GitHub) מאחסנים מידע בשרתים מחוץ לישראל.
+        העברה זו מתבצעת בהתאם למנגנוני הגנה מתאימים (כגון Standard Contractual Clauses של האיחוד האירופי).
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>10. ילדים</h2>
+      <p>
+        האתר אינו מיועד לילדים מתחת לגיל 16. אנו לא אוספים ביודעין מידע אישי מקטינים.
+        אם גילית שקטין מסר לנו מידע, אנא צור קשר ונמחק אותו מיד.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>11. שינויים במדיניות</h2>
+      <p>
+        אנו עשויים לעדכן מדיניות זו מעת לעת. שינויים מהותיים יפורסמו באתר עם תאריך העדכון.
+        המשך השימוש באתר לאחר פרסום השינויים מהווה הסכמה למדיניות המעודכנת.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>12. יצירת קשר</h2>
+      <p>לכל שאלה, בקשה או תלונה בנוגע לפרטיות:</p>
+      <ul>
+        <li><strong>אימייל:</strong> <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
+        <li><strong>וואטסאפ:</strong> <a href="https://wa.me/972557790955" target="_blank" rel="noopener">+972-55-779-0955</a></li>
+      </ul>
+      <p>נשתדל לענות תוך 30 ימי עבודה.</p>
+    </div>
+
+    <div class="info-box" style="text-align:center; margin-top:40px;">
+      ראה גם: <a href="terms.html">תקנון האתר</a> &nbsp;·&nbsp;
+      <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;">הגדרות קוקיז</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div>
+      <a href="index.html">דף הבית</a>
+      <a href="lina.html">לינה</a>
+      <a href="privacy-policy.html">מדיניות פרטיות</a>
+      <a href="terms.html">תקנון</a>
+    </div>
+    <div class="footer-sep">© 2025 NewGudauri · כל הזכויות שמורות</div>
+    <div>
+      <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <script src="cookie-consent.js" defer></script>
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+</body>
+</html>

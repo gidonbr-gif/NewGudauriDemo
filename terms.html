@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="תקנון האתר של NewGudauri — תנאי השימוש, זכויות יוצרים ומגבלות אחריות." />
+  <title>תקנון האתר — NewGudauri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate-900: #0F172A; --slate-800: #1E293B; --slate-700: #334155;
+      --slate-600: #475569; --slate-400: #94A3B8; --slate-200: #E2E8F0;
+      --electric: #0EA5E9; --electric-light: #38BDF8;
+      --snow: #F8FAFC; --white: #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif; direction: rtl; text-align: right;
+      background: var(--slate-900); color: var(--snow); line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: var(--electric-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,23,42,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 20px; font-weight: 800; color: var(--snow); letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--electric); }
+    .nav-back {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--electric-light);
+      padding: 8px 16px; border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 8px; transition: all 0.15s;
+    }
+    .nav-back:hover { background: rgba(56,189,248,0.08); text-decoration: none; }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #0c1523 0%, #0f172a 50%, #0c1e35 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 24px 56px; text-align: center;
+    }
+    .page-hero .badge {
+      display: inline-block; background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.3); color: var(--electric);
+      border-radius: 20px; padding: 4px 14px; font-size: 13px;
+      font-weight: 600; margin-bottom: 16px;
+    }
+    .page-hero h1 { font-size: clamp(28px,5vw,42px); font-weight: 800; color: var(--snow); margin-bottom: 12px; }
+    .page-hero p { font-size: 15px; color: var(--slate-400); }
+
+    /* CONTENT */
+    .content-wrap { max-width: 780px; margin: 0 auto; padding: 56px 24px 80px; }
+    .section { margin-bottom: 48px; }
+    .section h2 {
+      font-size: 20px; font-weight: 700; color: var(--snow);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section p { color: var(--slate-400); margin-bottom: 12px; font-size: 15px; }
+    .section ul { color: var(--slate-400); font-size: 15px; padding-inline-start: 20px; }
+    .section ul li { margin-bottom: 8px; }
+    .section strong { color: var(--snow); }
+
+    .warn-box {
+      background: rgba(251,146,60,0.08); border: 1px solid rgba(251,146,60,0.25);
+      border-radius: 12px; padding: 16px 20px; margin: 20px 0;
+      font-size: 14px; color: var(--slate-200);
+    }
+    .warn-box strong { color: #fb923c; }
+
+    .info-box {
+      background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 12px; padding: 16px 20px; margin: 20px 0;
+      font-size: 14px; color: var(--slate-200);
+    }
+    .info-box strong { color: var(--electric-light); }
+
+    .updated-chip {
+      display: inline-block; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;
+      padding: 4px 10px; font-size: 12px; color: var(--slate-600);
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      background: var(--slate-800); border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--slate-600);
+    }
+    .page-footer a { color: var(--slate-400); margin: 0 8px; }
+    .page-footer a:hover { color: var(--snow); }
+    .footer-sep { margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <a href="index.html" class="nav-logo">New<span>Gudauri</span></a>
+    <a href="index.html" class="nav-back">← חזרה לאתר</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="badge">📋 מסמך משפטי</div>
+    <h1>תקנון האתר</h1>
+    <p>תנאי השימוש, זכויות יוצרים ומגבלות אחריות</p>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="content-wrap" id="main">
+
+    <div class="updated-chip">עודכן לאחרונה: מאי 2025 · גרסה 1.0</div>
+
+    <div class="section">
+      <h2>1. הסכמה לתנאים</h2>
+      <p>
+        ברוכים הבאים לאתר <strong>NewGudauri / GudauriSkiIL</strong> (להלן: "האתר").
+        הגלישה והשימוש באתר מהווים הסכמה מלאה לתנאי שימוש אלה.
+        אם אינך מסכים/ה לתנאים — אנא הימנע/י מהשימוש באתר.
+      </p>
+      <p>
+        תנאים אלה מנוסחים בלשון זכר לשם הנוחות בלבד ומתייחסים לכל המינים.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. מהות השירות</h2>
+      <p>
+        האתר מספק <strong>מידע תיירותי</strong> אודות אתר הסקי גודאורי, גיאורגיה, לרבות:
+        מסלולי סקי, פעילויות, מידע על שכונת ניו גודאורי ואפשרויות לינה.
+      </p>
+      <p>
+        האתר <strong>אינו</strong> סוכנות נסיעות, אינו מבצע הזמנות תיירות ואינו גובה תשלומים.
+        כל הזמנות לינה מתבצעות ישירות מול בעלי הנכסים דרך פלטפורמות חיצוניות (Airbnb, Booking.com וכד').
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>3. קניין רוחני</h2>
+      <p>
+        כל התכנים באתר — לרבות טקסטים, תמונות, עיצוב, לוגואים, קוד תוכנה ומידע —
+        הם קניינו של <strong>NewGudauri</strong> או בעלי רישיון, ומוגנים בחוק זכויות יוצרים.
+      </p>
+      <ul>
+        <li>אסור להעתיק, לשכפל, להפיץ או לפרסם תכנים מהאתר ללא אישור בכתב מראש.</li>
+        <li>מותר לשתף קישורים לאתר לצרכים אישיים ולא מסחריים.</li>
+        <li>שימוש בתמונות מהאתר ללא אישור מהווה הפרת זכויות יוצרים.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. שימוש אסור</h2>
+      <p>בשימוש באתר הינך מתחייב/ת להימנע מ:</p>
+      <ul>
+        <li>שימוש לכל מטרה בלתי חוקית או פוגענית.</li>
+        <li>ניסיון לפרוץ, לפגוע או לשבש את תפקוד האתר.</li>
+        <li>הפצת תוכן שקרי, מטעה או פוגע.</li>
+        <li>איסוף נתונים אוטומטי (scraping) ללא אישור.</li>
+        <li>התחזות לגורם אחר.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. מדיניות ניוזלטר ושיווק</h2>
+      <p>
+        הרשמה לניוזלטר מהווה הסכמה מפורשת לקבלת עדכונים שיווקיים, הצעות מיוחדות ומידע על גודאורי.
+      </p>
+      <ul>
+        <li>ניתן לבטל את ההרשמה בכל עת דרך קישור ה"הסר מרשימה" בכל אימייל.</li>
+        <li>לא נשתמש בכתובת האימייל שלך לשום מטרה אחרת מלבד האמור לעיל.</li>
+        <li>לא נמכור את פרטיך לצדדים שלישיים לצרכי שיווק.</li>
+      </ul>
+      <div class="info-box">
+        לפרטים נוספים על איסוף ועיבוד מידע, ראה את <a href="privacy-policy.html">מדיניות הפרטיות שלנו</a>.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>6. הגבלת אחריות</h2>
+      <div class="warn-box">
+        <strong>שימו לב:</strong> המידע באתר מסופק "כפי שהוא" ללא אחריות מכל סוג.
+      </div>
+      <p>NewGudauri אינה אחראית ל:</p>
+      <ul>
+        <li>שינויים בתנאי האתר (שלג, מזג אוויר, פתיחת מסלולים) — יש לבדוק עם אתר הסקי הרשמי.</li>
+        <li>מחירים ותנאי לינה — יש לאמת מול ספקי הלינה ישירות.</li>
+        <li>נזקים ישירים, עקיפים או תוצאתיים הנובעים משימוש במידע מהאתר.</li>
+        <li>תכנים של אתרים חיצוניים שאליהם מקשר האתר.</li>
+        <li>הפרעות בזמינות האתר, שגיאות טכניות או אובדן מידע.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. קישורים חיצוניים</h2>
+      <p>
+        האתר מכיל קישורים לאתרים חיצוניים (Airbnb, Booking.com, Ski Gudauri וכד').
+        קישורים אלה מסופקים לנוחיותך בלבד. NewGudauri אינה אחראית לתוכן, מדיניות הפרטיות
+        או שירותים של אתרים אלה.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>8. זמינות האתר</h2>
+      <p>
+        אנו שואפים לזמינות מקסימלית, אך אין אנו מתחייבים לזמינות רציפה ללא הפרעות.
+        שמורה לנו הזכות לבצע תחזוקה, שינויים או להשעות את האתר ללא הודעה מוקדמת.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>9. שינויים בתקנון</h2>
+      <p>
+        NewGudauri שומרת לעצמה את הזכות לשנות תקנון זה בכל עת.
+        שינויים יפורסמו באתר עם תאריך העדכון. המשך השימוש באתר לאחר פרסום שינויים
+        מהווה הסכמה לתנאים המעודכנים.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>10. דין ושיפוט</h2>
+      <p>
+        תקנון זה כפוף <strong>לדין הישראלי</strong> בלבד.
+        כל מחלוקת תידון בבתי המשפט המוסמכים ב<strong>תל אביב-יפו</strong>, ישראל,
+        ולהם תהיה סמכות שיפוט ייחודית.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>11. יצירת קשר</h2>
+      <p>לשאלות, הבהרות או פניות משפטיות:</p>
+      <ul>
+        <li><strong>אימייל:</strong> <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
+        <li><strong>וואטסאפ:</strong> <a href="https://wa.me/972557790955" target="_blank" rel="noopener">+972-55-779-0955</a></li>
+      </ul>
+    </div>
+
+    <div class="info-box" style="text-align:center; margin-top:40px;">
+      ראה גם: <a href="privacy-policy.html">מדיניות פרטיות</a> &nbsp;·&nbsp;
+      <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;">הגדרות קוקיז</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <div>
+      <a href="index.html">דף הבית</a>
+      <a href="lina.html">לינה</a>
+      <a href="privacy-policy.html">מדיניות פרטיות</a>
+      <a href="terms.html">תקנון</a>
+    </div>
+    <div class="footer-sep">© 2025 NewGudauri · כל הזכויות שמורות</div>
+    <div>
+      <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <script src="cookie-consent.js" defer></script>
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+</body>
+</html>
