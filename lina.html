@@ -550,6 +550,18 @@
     }
 
     *:focus-visible { outline: 2px solid var(--electric); outline-offset: 3px; }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher { display: flex; align-items: center; gap: 4px; }
+    .lang-btn {
+      background: transparent; border: 1px solid transparent;
+      border-radius: 4px; padding: 3px 5px; cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      line-height: 0; font-family: inherit;
+    }
+    .lang-btn:hover { border-color: var(--glass-border); background: var(--glass-bg); }
+    .lang-btn.lang-active { border-color: var(--electric); }
+    .lang-btn img { display: block; border-radius: 2px; }
   </style>
 </head>
 <body>
@@ -570,17 +582,25 @@
         </a>
 
         <ul class="nav-links" role="list">
-          <li><a href="index.html#why">על גודאורי</a></li>
-          <li><a href="index.html#activities">פעילויות</a></li>
-          <li><a href="index.html#new-gudauri">ניו גודאורי</a></li>
-          <li><a href="lina.html" class="active" aria-current="page">לינה</a></li>
-          <li><a href="index.html#footer">צרו קשר</a></li>
+          <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
+          <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
+          <li><a href="index.html#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+          <li><a href="lina.html" class="active" aria-current="page" data-i18n="nav.accommodation">לינה</a></li>
+          <li><a href="index.html#footer" data-i18n="nav.contact">צרו קשר</a></li>
         </ul>
 
         <a href="#apartments" class="btn-primary nav-cta-desktop" aria-label="הזמן לינה">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          הזמן לינה
+          <span data-i18n="nav.cta">הזמן לינה</span>
         </a>
+
+        <!-- Language switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language / שפה">
+          <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+          <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+          <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+        </div>
 
         <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
           <span></span><span></span><span></span>
@@ -591,12 +611,18 @@
   </nav>
 
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
-    <a href="index.html#why" onclick="closeMobileMenu()">על גודאורי</a>
-    <a href="index.html#activities" onclick="closeMobileMenu()">פעילויות</a>
-    <a href="index.html#new-gudauri" onclick="closeMobileMenu()">ניו גודאורי</a>
-    <a href="lina.html" class="active" onclick="closeMobileMenu()">לינה</a>
-    <a href="index.html#footer" onclick="closeMobileMenu()">צרו קשר</a>
-    <a href="#apartments" class="btn-primary" onclick="closeMobileMenu()">הזמן לינה</a>
+    <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
+    <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
+    <a href="index.html#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="lina.html" class="active" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="index.html#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="#apartments" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">הזמן לינה</span></a>
+    <div class="lang-switcher" role="group" aria-label="Language / שפה">
+      <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
+      <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
+      <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+    </div>
   </div>
 
 
@@ -607,12 +633,12 @@
     <div class="lina-hero-content container">
       <div class="lina-hero-kicker">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        ניו גודאורי · דירות CozyCasa
+        <span data-i18n="lina.hero.kicker">ניו גודאורי · דירות CozyCasa</span>
       </div>
       <h1 class="lina-hero-title" id="lina-hero-title">
-        לינה<br/><span class="accent">בגובה 3,279 מ׳</span>
+        <span data-i18n="lina.hero.title">לינה</span><br/><span class="accent" data-i18n="lina.hero.accent">בגובה 3,279 מ׳</span>
       </h1>
-      <p class="lina-hero-sub">
+      <p class="lina-hero-sub" data-i18n="lina.hero.sub">
         שתי דירות פרמיום בלב הכפר — 50-100 מ׳ מהגונדולה, נוף הרים, ופינוק אמיתי.
       </p>
     </div>
@@ -624,11 +650,11 @@
     <div class="container">
 
       <header class="apts-header reveal">
-        <span class="section-label">הדירות שלנו</span>
-        <h2 class="apts-title" id="apts-heading">
+        <span class="section-label" data-i18n="lina.apts.label">הדירות שלנו</span>
+        <h2 class="apts-title" id="apts-heading" data-i18n-html="lina.apts.title">
           שתי דירות. שני בניינים.<br/>חוויה אחת בלתי נשכחת.
         </h2>
-        <p class="apts-sub">
+        <p class="apts-sub" data-i18n="lina.apts.sub">
           כל דירה עוצבה למקסם את חוויית הסקי — גישה ישירה למדרונות, עיצוב מודרני, ושירות אישי בעברית.
         </p>
       </header>
@@ -658,57 +684,57 @@
             <button class="gallery-dot" onclick="goToSlide('atrium',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('atrium',3)" aria-label="תמונה 4"></button>
           </div>
-          <div class="gallery-badge">✦ מרפסת + נוף</div>
+          <div class="gallery-badge" data-i18n="lina.atrium.badge">✦ מרפסת + נוף</div>
         </div>
 
         <div class="apt-info">
           <div>
             <div class="apt-building-tag">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
-              בניין אטריום · ניו גודאורי
+              <span data-i18n="lina.atrium.building">בניין אטריום · ניו גודאורי</span>
             </div>
             <h3 class="apt-name" id="apt1-name">CozyCasa<br/>Atrium Premium</h3>
             <p class="apt-location">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              100 מ׳ מהגונדולה · 150 מ׳ ממרכז הכפר
+              <span data-i18n="lina.atrium.location">100 מ׳ מהגונדולה · 150 מ׳ ממרכז הכפר</span>
             </p>
             <div class="apt-tags">
-              <span class="apt-tag">🛏️ מיטה זוגית</span>
-              <span class="apt-tag">📐 36 מ"ר</span>
-              <span class="apt-tag">🏂 Ski-in/Ski-out</span>
-              <span class="apt-tag">🏔️ נוף מהמרפסת</span>
+              <span class="apt-tag" data-i18n="lina.atrium.tag1">🛏️ מיטה זוגית</span>
+              <span class="apt-tag" data-i18n="lina.atrium.tag2">📐 36 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.atrium.tag3">🏂 Ski-in/Ski-out</span>
+              <span class="apt-tag" data-i18n="lina.atrium.tag4">🏔️ נוף מהמרפסת</span>
             </div>
-            <p class="apt-desc">
+            <p class="apt-desc" data-i18n="lina.atrium.desc">
               סטודיו נעים ומרופד בבניין האטריום היוקרתי — מיטה זוגית, מטבחון מאובזר, מקלחת ושירותים, וסלון מעוצב.
               מהמרפסת: נוף ישיר על מדרונות הסקי וההרים המושלגים. בוקר קפה עם נוף כזה — לא שוכחים.
             </p>
             <div class="apt-amenities">
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Ski Depot בבניין
+                <span data-i18n="lina.atrium.am1">Ski Depot בבניין</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                בריכה מקורה + ג'קוזי
+                <span data-i18n="lina.atrium.am2">בריכה מקורה + ג'קוזי</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                ספא וסאונה
+                <span data-i18n="lina.atrium.am3">ספא וסאונה</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                קבלה ואבטחה 24/7
+                <span data-i18n="lina.atrium.am4">קבלה ואבטחה 24/7</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                מסעדה באתר
+                <span data-i18n="lina.atrium.am5">מסעדה באתר</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                ארוחת בוקר (בתוספת)
+                <span data-i18n="lina.atrium.am6">ארוחת בוקר (בתוספת)</span>
               </div>
             </div>
-            <div class="apt-note">
+            <div class="apt-note" data-i18n-html="lina.atrium.note">
               ℹ️ <strong>לתשומת לבכם:</strong> בריכה, ספא ומסעדה נפתחים בדצמבר 2025 (עם פתיחת העונה). ג'קוזי ובריכה בתשלום נוסף.
             </div>
           </div>
@@ -716,11 +742,11 @@
           <div class="apt-footer-panel">
             <div class="apt-price-row">
               <div>
-                <div class="apt-price-label">מחיר ללילה</div>
+                <div class="apt-price-label" data-i18n="lina.atrium.price_label">מחיר ללילה</div>
                 <div class="apt-price-amount"><small>החל מ-</small>₪370</div>
               </div>
               <div>
-                <div style="font-size:0.72rem;color:var(--slate-600);margin-bottom:5px;text-align:left;">דירוג Airbnb</div>
+                <div style="font-size:0.72rem;color:var(--slate-600);margin-bottom:5px;text-align:left;" data-i18n="lina.airbnb_rating">דירוג Airbnb</div>
                 <div class="apt-stars">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -733,11 +759,11 @@
             <div class="apt-ctas">
               <a href="https://he.airbnb.com/rooms/1231282986705944000" target="_blank" rel="noopener noreferrer" class="btn-airbnb" aria-label="הזמן דירת Atrium ב-Airbnb">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 2c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 4c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm-4.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v.5H7.5V16z"/></svg>
-                הזמן ב-Airbnb
+                <span data-i18n="lina.book_airbnb">הזמן ב-Airbnb</span>
               </a>
               <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%93%D7%99%D7%A8%D7%AA%20%D7%94%D7%90%D7%98%D7%A8%D7%99%D7%95%D7%9D%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על דירת Atrium">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                וואטסאפ
+                <span data-i18n="lina.whatsapp">וואטסאפ</span>
               </a>
             </div>
           </div>
@@ -771,56 +797,56 @@
             <button class="gallery-dot" onclick="goToSlide('suits',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('suits',3)" aria-label="תמונה 4"></button>
           </div>
-          <div class="gallery-badge" style="right:auto;left:16px;">✦ 50 מ׳ מהגונדולה</div>
+          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.suits.badge">✦ 50 מ׳ מהגונדולה</div>
         </div>
 
         <div class="apt-info">
           <div>
             <div class="apt-building-tag">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
-              בניין Suits · ניו גודאורי
+              <span data-i18n="lina.suits.building">בניין Suits · ניו גודאורי</span>
             </div>
             <h3 class="apt-name" id="apt2-name">CozyCasa<br/>Suits Premium</h3>
             <p class="apt-location">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              50 מ׳ מהגונדולה · קומה 4 שקטה
+              <span data-i18n="lina.suits.location">50 מ׳ מהגונדולה · קומה 4 שקטה</span>
             </p>
             <div class="apt-tags">
-              <span class="apt-tag">🛏️ Queen + ספה</span>
-              <span class="apt-tag">👥 עד 3 אורחים</span>
-              <span class="apt-tag">🎰 קזינו בבניין</span>
-              <span class="apt-tag">✨ משופץ לחלוטין</span>
+              <span class="apt-tag" data-i18n="lina.suits.tag1">🛏️ Queen + ספה</span>
+              <span class="apt-tag" data-i18n="lina.suits.tag2">👥 עד 3 אורחים</span>
+              <span class="apt-tag" data-i18n="lina.suits.tag3">🎰 קזינו בבניין</span>
+              <span class="apt-tag" data-i18n="lina.suits.tag4">✨ משופץ לחלוטין</span>
             </div>
-            <p class="apt-desc">
+            <p class="apt-desc" data-i18n="lina.suits.desc">
               דירה חדשה לגמרי, משופצת ברמה גבוהה — בדיוק 50 מ׳ מהגונדולה. מיטה זוגית + ספת נוח לאורח שלישי, מטבח מלא מודרני, חדר אמבטיה מפנק. אין מרפסת — אבל קזינו, מסעדה, ספא ובריכה ממש בבניין.
             </p>
             <div class="apt-amenities">
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                קזינו בבניין
+                <span data-i18n="lina.suits.am1">קזינו בבניין</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                ספא ובריכה
+                <span data-i18n="lina.suits.am2">ספא ובריכה</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Ski Depot
+                <span data-i18n="lina.suits.am3">Ski Depot</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                מסעדה ובר
+                <span data-i18n="lina.suits.am4">מסעדה ובר</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                קבלה 24/7
+                <span data-i18n="lina.suits.am5">קבלה 24/7</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                חנויות ו-après-ski
+                <span data-i18n="lina.suits.am6">חנויות ו-après-ski</span>
               </div>
             </div>
-            <div class="apt-note">
+            <div class="apt-note" data-i18n-html="lina.suits.note">
               ℹ️ <strong>שימו לב:</strong> הדירה ללא מרפסת. קומה 4 — שקטה ומרוחקת מרחש הכניסה.
             </div>
           </div>
@@ -828,11 +854,11 @@
           <div class="apt-footer-panel">
             <div class="apt-price-row">
               <div>
-                <div class="apt-price-label">מחיר</div>
-                <div class="apt-price-contact">לפי פנייה ישירה</div>
+                <div class="apt-price-label" data-i18n="lina.suits.price_label">מחיר</div>
+                <div class="apt-price-contact" data-i18n="lina.suits.price_contact">לפי פנייה ישירה</div>
               </div>
               <div>
-                <div style="font-size:0.72rem;color:var(--slate-600);margin-bottom:5px;text-align:left;">דירוג Airbnb</div>
+                <div style="font-size:0.72rem;color:var(--slate-600);margin-bottom:5px;text-align:left;" data-i18n="lina.airbnb_rating">דירוג Airbnb</div>
                 <div class="apt-stars">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -845,11 +871,11 @@
             <div class="apt-ctas">
               <a href="https://he.airbnb.com/rooms/1496598809721427846" target="_blank" rel="noopener noreferrer" class="btn-airbnb" aria-label="הזמן דירת Suits ב-Airbnb">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 2c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 4c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm-4.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v.5H7.5V16z"/></svg>
-                הזמן ב-Airbnb
+                <span data-i18n="lina.book_airbnb">הזמן ב-Airbnb</span>
               </a>
               <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%93%D7%99%D7%A8%D7%AA%20%D7%94-Suits%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על דירת Suits">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                וואטסאפ
+                <span data-i18n="lina.whatsapp">וואטסאפ</span>
               </a>
             </div>
           </div>
@@ -867,32 +893,32 @@
       <div class="trust-inner reveal">
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">🏔️</div>
-          <div class="trust-label">50-100 מ׳ מהגונדולה</div>
-          <div class="trust-sub">גישה ישירה למדרונות</div>
+          <div class="trust-label" data-i18n="lina.trust.t1_label">50-100 מ׳ מהגונדולה</div>
+          <div class="trust-sub" data-i18n="lina.trust.t1_sub">גישה ישירה למדרונות</div>
         </div>
         <div class="trust-div" aria-hidden="true"></div>
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">⭐</div>
-          <div class="trust-label">מדורגות ב-Airbnb</div>
-          <div class="trust-sub">CozyCasa — ניו גודאורי</div>
+          <div class="trust-label" data-i18n="lina.trust.t2_label">מדורגות ב-Airbnb</div>
+          <div class="trust-sub" data-i18n="lina.trust.t2_sub">CozyCasa — ניו גודאורי</div>
         </div>
         <div class="trust-div" aria-hidden="true"></div>
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">🛋️</div>
-          <div class="trust-label">פרמיום ומשופץ</div>
-          <div class="trust-sub">עיצוב מודרני ונוחות מרבית</div>
+          <div class="trust-label" data-i18n="lina.trust.t3_label">פרמיום ומשופץ</div>
+          <div class="trust-sub" data-i18n="lina.trust.t3_sub">עיצוב מודרני ונוחות מרבית</div>
         </div>
         <div class="trust-div" aria-hidden="true"></div>
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">💬</div>
-          <div class="trust-label">שירות בעברית</div>
-          <div class="trust-sub">WhatsApp עד הדלת שלכם</div>
+          <div class="trust-label" data-i18n="lina.trust.t4_label">שירות בעברית</div>
+          <div class="trust-sub" data-i18n="lina.trust.t4_sub">WhatsApp עד הדלת שלכם</div>
         </div>
         <div class="trust-div" aria-hidden="true"></div>
         <div class="trust-item">
           <div class="trust-icon" aria-hidden="true">🔒</div>
-          <div class="trust-label">הזמנה בטוחה</div>
-          <div class="trust-sub">Airbnb או ישירות</div>
+          <div class="trust-label" data-i18n="lina.trust.t5_label">הזמנה בטוחה</div>
+          <div class="trust-sub" data-i18n="lina.trust.t5_sub">Airbnb או ישירות</div>
         </div>
       </div>
     </div>
@@ -903,11 +929,11 @@
   <section id="cta-banner" aria-labelledby="cta-heading">
     <div class="container">
       <div class="cta-box reveal">
-        <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;">מוכנים לסקי?</span>
-        <h2 class="cta-box-title" id="cta-heading">
+        <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;" data-i18n="lina.cta.label">מוכנים לסקי?</span>
+        <h2 class="cta-box-title" id="cta-heading" data-i18n="lina.cta.title">
           שריינו את הדירה לעונת 25/26
         </h2>
-        <p class="cta-box-sub">
+        <p class="cta-box-sub" data-i18n="lina.cta.sub">
           מקומות מוגבלים לעונה. פנו אלינו עכשיו לבדיקת זמינות ומחירים — תוך שעות.
         </p>
         <div class="cta-box-btns">
@@ -917,7 +943,7 @@
           </a>
           <a href="mailto:gogudauri@newgudauri.net?subject=%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" class="btn-ghost" aria-label="שלח אימייל">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            אימייל
+            <span data-i18n="lina.cta.email">אימייל</span>
           </a>
         </div>
       </div>
@@ -939,7 +965,7 @@
             </svg>
             <span class="footer-logo-text">Gudauri<span>Ski</span>IL</span>
           </a>
-          <p class="footer-tagline">
+          <p class="footer-tagline" data-i18n="footer.tagline">
             גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה,
             לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.
           </p>
@@ -960,44 +986,44 @@
         </div>
 
         <nav class="footer-nav" aria-label="קישורים מהירים">
-          <h3 class="footer-heading">ניווט</h3>
+          <h3 class="footer-heading" data-i18n="footer.nav.heading">ניווט</h3>
           <ul class="footer-links" role="list">
-            <li><a href="index.html#why">על גודאורי</a></li>
-            <li><a href="index.html#activities">פעילויות</a></li>
-            <li><a href="index.html#new-gudauri">ניו גודאורי</a></li>
-            <li><a href="lina.html">לינה</a></li>
-            <li><a href="index.html#testimonials">חוות דעת</a></li>
+            <li><a href="index.html#why" data-i18n="footer.nav.about">על גודאורי</a></li>
+            <li><a href="index.html#activities" data-i18n="footer.nav.activities">פעילויות</a></li>
+            <li><a href="index.html#new-gudauri" data-i18n="footer.nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html" data-i18n="footer.nav.accommodation">לינה</a></li>
+            <li><a href="index.html#testimonials" data-i18n="footer.nav.testimonials">חוות דעת</a></li>
           </ul>
         </nav>
 
         <div class="footer-contact" aria-label="פרטי קשר">
-          <h3 class="footer-heading">קשר</h3>
+          <h3 class="footer-heading" data-i18n="footer.contact.heading">קשר</h3>
           <ul class="footer-links" role="list">
             <li><a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
             <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer">+972 55-779-0955</a></li>
-            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer">וואטסאפ זמין</a></li>
+            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer" data-i18n="footer.contact.wa">וואטסאפ זמין</a></li>
             <li style="margin-top:12px;color:var(--slate-600);font-size:0.875rem;">תל אביב, ישראל</li>
           </ul>
         </div>
 
         <div class="footer-newsletter" aria-labelledby="newsletter-heading">
-          <h3 class="footer-heading" id="newsletter-heading">עדכונים ומבצעים</h3>
-          <p style="font-size:0.9375rem;color:var(--slate-400);">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
+          <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter.heading">עדכונים ומבצעים</h3>
+          <p style="font-size:0.9375rem;color:var(--slate-400);" data-i18n="footer.newsletter.text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
           <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
             <label for="nl-email" class="sr-only">כתובת אימייל</label>
-            <input type="email" id="nl-email" class="newsletter-input" placeholder="האימייל שלך" required autocomplete="email" dir="ltr" />
-            <button type="submit" class="newsletter-submit">הרשם</button>
+            <input type="email" id="nl-email" class="newsletter-input" placeholder="האימייל שלך" required autocomplete="email" dir="ltr" data-i18n-placeholder="footer.newsletter.placeholder" />
+            <button type="submit" class="newsletter-submit" data-i18n="footer.newsletter.submit">הרשם</button>
           </form>
         </div>
 
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.</p>
+        <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.</p>
         <nav class="footer-legal" aria-label="קישורים משפטיים">
-          <a href="#">מדיניות פרטיות</a>
-          <a href="#">תנאי שימוש</a>
-          <a href="#">נגישות</a>
+          <a href="#" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
+          <a href="#" data-i18n="footer.legal.terms">תנאי שימוש</a>
+          <a href="#" data-i18n="footer.legal.access">נגישות</a>
         </nav>
       </div>
 
@@ -1085,6 +1111,241 @@
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
   </script>
+
+  <!-- ═══ i18n ═══ -->
+  <script>
+    window.TRANSLATIONS = {
+      he: {
+        dir: 'rtl', lang: 'he',
+        'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי',
+        'nav.accommodation': 'לינה', 'nav.contact': 'צרו קשר', 'nav.cta': 'הזמן לינה',
+        'lina.hero.kicker': 'ניו גודאורי · דירות CozyCasa',
+        'lina.hero.title': 'לינה', 'lina.hero.accent': 'בגובה 3,279 מ׳',
+        'lina.hero.sub': 'שתי דירות פרמיום בלב הכפר — 50-100 מ׳ מהגונדולה, נוף הרים, ופינוק אמיתי.',
+        'lina.apts.label': 'הדירות שלנו',
+        'lina.apts.title': 'שתי דירות. שני בניינים.<br/>חוויה אחת בלתי נשכחת.',
+        'lina.apts.sub': 'כל דירה עוצבה למקסם את חוויית הסקי — גישה ישירה למדרונות, עיצוב מודרני, ושירות אישי בעברית.',
+        'lina.atrium.building': 'בניין אטריום · ניו גודאורי',
+        'lina.atrium.location': '100 מ׳ מהגונדולה · 150 מ׳ ממרכז הכפר',
+        'lina.atrium.tag1': '🛏️ מיטה זוגית', 'lina.atrium.tag2': '📐 36 מ"ר',
+        'lina.atrium.tag3': '🏂 Ski-in/Ski-out', 'lina.atrium.tag4': '🏔️ נוף מהמרפסת',
+        'lina.atrium.desc': 'סטודיו נעים ומרופד בבניין האטריום היוקרתי — מיטה זוגית, מטבחון מאובזר, מקלחת ושירותים, וסלון מעוצב. מהמרפסת: נוף ישיר על מדרונות הסקי וההרים המושלגים. בוקר קפה עם נוף כזה — לא שוכחים.',
+        'lina.atrium.am1': 'Ski Depot בבניין', 'lina.atrium.am2': 'בריכה מקורה + ג\'קוזי',
+        'lina.atrium.am3': 'ספא וסאונה', 'lina.atrium.am4': 'קבלה ואבטחה 24/7',
+        'lina.atrium.am5': 'מסעדה באתר', 'lina.atrium.am6': 'ארוחת בוקר (בתוספת)',
+        'lina.atrium.note': 'ℹ️ <strong>לתשומת לבכם:</strong> בריכה, ספא ומסעדה נפתחים בדצמבר 2025 (עם פתיחת העונה). ג\'קוזי ובריכה בתשלום נוסף.',
+        'lina.atrium.badge': '✦ מרפסת + נוף', 'lina.atrium.price_label': 'מחיר ללילה',
+        'lina.airbnb_rating': 'דירוג Airbnb', 'lina.book_airbnb': 'הזמן ב-Airbnb', 'lina.whatsapp': 'וואטסאפ',
+        'lina.suits.building': 'בניין Suits · ניו גודאורי',
+        'lina.suits.location': '50 מ׳ מהגונדולה · קומה 4 שקטה',
+        'lina.suits.tag1': '🛏️ Queen + ספה', 'lina.suits.tag2': '👥 עד 3 אורחים',
+        'lina.suits.tag3': '🎰 קזינו בבניין', 'lina.suits.tag4': '✨ משופץ לחלוטין',
+        'lina.suits.desc': 'דירה חדשה לגמרי, משופצת ברמה גבוהה — בדיוק 50 מ׳ מהגונדולה. מיטה זוגית + ספת נוח לאורח שלישי, מטבח מלא מודרני, חדר אמבטיה מפנק. אין מרפסת — אבל קזינו, מסעדה, ספא ובריכה ממש בבניין.',
+        'lina.suits.am1': 'קזינו בבניין', 'lina.suits.am2': 'ספא ובריכה', 'lina.suits.am3': 'Ski Depot',
+        'lina.suits.am4': 'מסעדה ובר', 'lina.suits.am5': 'קבלה 24/7', 'lina.suits.am6': 'חנויות ו-après-ski',
+        'lina.suits.note': 'ℹ️ <strong>שימו לב:</strong> הדירה ללא מרפסת. קומה 4 — שקטה ומרוחקת מרחש הכניסה.',
+        'lina.suits.badge': '✦ 50 מ׳ מהגונדולה', 'lina.suits.price_label': 'מחיר', 'lina.suits.price_contact': 'לפי פנייה ישירה',
+        'lina.trust.t1_label': '50-100 מ׳ מהגונדולה', 'lina.trust.t1_sub': 'גישה ישירה למדרונות',
+        'lina.trust.t2_label': 'מדורגות ב-Airbnb', 'lina.trust.t2_sub': 'CozyCasa — ניו גודאורי',
+        'lina.trust.t3_label': 'פרמיום ומשופץ', 'lina.trust.t3_sub': 'עיצוב מודרני ונוחות מרבית',
+        'lina.trust.t4_label': 'שירות בעברית', 'lina.trust.t4_sub': 'WhatsApp עד הדלת שלכם',
+        'lina.trust.t5_label': 'הזמנה בטוחה', 'lina.trust.t5_sub': 'Airbnb או ישירות',
+        'lina.cta.label': 'מוכנים לסקי?', 'lina.cta.title': 'שריינו את הדירה לעונת 25/26',
+        'lina.cta.sub': 'מקומות מוגבלים לעונה. פנו אלינו עכשיו לבדיקת זמינות ומחירים — תוך שעות.',
+        'lina.cta.email': 'אימייל',
+        'footer.tagline': 'גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.',
+        'footer.nav.heading': 'ניווט', 'footer.nav.about': 'על גודאורי', 'footer.nav.activities': 'פעילויות',
+        'footer.nav.new_gudauri': 'ניו גודאורי', 'footer.nav.accommodation': 'לינה', 'footer.nav.testimonials': 'חוות דעת',
+        'footer.contact.heading': 'קשר', 'footer.contact.wa': 'וואטסאפ זמין',
+        'footer.newsletter.heading': 'עדכונים ומבצעים',
+        'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
+        'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.',
+        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.access': 'נגישות',
+      },
+      en: {
+        dir: 'ltr', lang: 'en',
+        'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri',
+        'nav.accommodation': 'Accommodation', 'nav.contact': 'Contact', 'nav.cta': 'Book Stay',
+        'lina.hero.kicker': 'New Gudauri · CozyCasa Apartments',
+        'lina.hero.title': 'Stay', 'lina.hero.accent': 'at 3,279 m',
+        'lina.hero.sub': 'Two premium apartments in the heart of the village — 50–100 m from the gondola, mountain views, and real comfort.',
+        'lina.apts.label': 'Our Apartments',
+        'lina.apts.title': 'Two Apartments. Two Buildings.<br/>One Unforgettable Experience.',
+        'lina.apts.sub': 'Each apartment is designed to maximize your ski experience — ski-in/ski-out access, modern design, and personal service.',
+        'lina.atrium.building': 'Atrium Building · New Gudauri',
+        'lina.atrium.location': '100 m from gondola · 150 m from village center',
+        'lina.atrium.tag1': '🛏️ Double Bed', 'lina.atrium.tag2': '📐 36 m²',
+        'lina.atrium.tag3': '🏂 Ski-in/Ski-out', 'lina.atrium.tag4': '🏔️ Balcony View',
+        'lina.atrium.desc': 'A cozy, well-appointed studio in the prestigious Atrium building — double bed, equipped kitchenette, bathroom, and a stylish living area. From the balcony: direct views of the ski slopes and snowy mountains. A morning coffee with that view — unforgettable.',
+        'lina.atrium.am1': 'Ski Depot in building', 'lina.atrium.am2': 'Indoor pool + Jacuzzi',
+        'lina.atrium.am3': 'Spa & Sauna', 'lina.atrium.am4': 'Reception & security 24/7',
+        'lina.atrium.am5': 'On-site restaurant', 'lina.atrium.am6': 'Breakfast (additional)',
+        'lina.atrium.note': 'ℹ️ <strong>Note:</strong> Pool, spa & restaurant open December 2025 (season start). Jacuzzi & pool have additional fee.',
+        'lina.atrium.badge': '✦ Balcony + View', 'lina.atrium.price_label': 'Price per night',
+        'lina.airbnb_rating': 'Airbnb Rating', 'lina.book_airbnb': 'Book on Airbnb', 'lina.whatsapp': 'WhatsApp',
+        'lina.suits.building': 'Suits Building · New Gudauri',
+        'lina.suits.location': '50 m from gondola · Quiet 4th floor',
+        'lina.suits.tag1': '🛏️ Queen + Sofa', 'lina.suits.tag2': '👥 Up to 3 guests',
+        'lina.suits.tag3': '🎰 Casino in building', 'lina.suits.tag4': '✨ Fully renovated',
+        'lina.suits.desc': 'A brand new, high-end renovated apartment — exactly 50 m from the gondola. Queen bed + comfortable sofa for a third guest, full modern kitchen, luxurious bathroom. No balcony — but casino, restaurant, spa and pool right in the building.',
+        'lina.suits.am1': 'Casino in building', 'lina.suits.am2': 'Spa & Pool', 'lina.suits.am3': 'Ski Depot',
+        'lina.suits.am4': 'Restaurant & Bar', 'lina.suits.am5': 'Reception 24/7', 'lina.suits.am6': 'Shops & après-ski',
+        'lina.suits.note': 'ℹ️ <strong>Note:</strong> Apartment has no balcony. 4th floor — quiet, away from lobby noise.',
+        'lina.suits.badge': '✦ 50 m from Gondola', 'lina.suits.price_label': 'Price', 'lina.suits.price_contact': 'Contact us for rates',
+        'lina.trust.t1_label': '50–100 m from gondola', 'lina.trust.t1_sub': 'Direct slope access',
+        'lina.trust.t2_label': 'Rated on Airbnb', 'lina.trust.t2_sub': 'CozyCasa — New Gudauri',
+        'lina.trust.t3_label': 'Premium & Renovated', 'lina.trust.t3_sub': 'Modern design and maximum comfort',
+        'lina.trust.t4_label': 'Personal Service', 'lina.trust.t4_sub': 'WhatsApp direct to your door',
+        'lina.trust.t5_label': 'Safe Booking', 'lina.trust.t5_sub': 'Via Airbnb or directly',
+        'lina.cta.label': 'Ready to ski?', 'lina.cta.title': 'Reserve Your Apartment for Season 25/26',
+        'lina.cta.sub': 'Limited spots for the season. Contact us now to check availability and rates — within hours.',
+        'lina.cta.email': 'Email',
+        'footer.tagline': 'Gudauri isn\'t just a destination. It\'s how travelers discovered you can ski like in Europe, pay reasonable prices, and feel like you found a hidden treasure.',
+        'footer.nav.heading': 'Navigation', 'footer.nav.about': 'About Gudauri', 'footer.nav.activities': 'Activities',
+        'footer.nav.new_gudauri': 'New Gudauri', 'footer.nav.accommodation': 'Accommodation', 'footer.nav.testimonials': 'Reviews',
+        'footer.contact.heading': 'Contact', 'footer.contact.wa': 'WhatsApp available',
+        'footer.newsletter.heading': 'Updates & Deals',
+        'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
+        'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. All rights reserved.',
+        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.access': 'Accessibility',
+      },
+      ru: {
+        dir: 'ltr', lang: 'ru',
+        'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури',
+        'nav.accommodation': 'Жильё', 'nav.contact': 'Контакты', 'nav.cta': 'Забронировать',
+        'lina.hero.kicker': 'Новый Гудаури · Апартаменты CozyCasa',
+        'lina.hero.title': 'Проживание', 'lina.hero.accent': 'на высоте 3 279 м',
+        'lina.hero.sub': 'Два премиальных апартамента в центре деревни — 50–100 м от гондолы, горные виды и настоящий комфорт.',
+        'lina.apts.label': 'Наши апартаменты',
+        'lina.apts.title': 'Два апартамента. Два здания.<br/>Один незабываемый опыт.',
+        'lina.apts.sub': 'Каждый апартамент создан для максимизации горнолыжного опыта — прямой доступ к склонам, современный дизайн и персональный сервис.',
+        'lina.atrium.building': 'Здание Atrium · Новый Гудаури',
+        'lina.atrium.location': '100 м от гондолы · 150 м от центра деревни',
+        'lina.atrium.tag1': '🛏️ Двуспальная кровать', 'lina.atrium.tag2': '📐 36 м²',
+        'lina.atrium.tag3': '🏂 Ski-in/Ski-out', 'lina.atrium.tag4': '🏔️ Вид с балкона',
+        'lina.atrium.desc': 'Уютная студия в престижном здании Atrium — двуспальная кровать, кухня, ванная и стильная гостиная. С балкона: прямой вид на горнолыжные склоны и заснеженные горы. Утренний кофе с таким видом — незабываемо.',
+        'lina.atrium.am1': 'Ski Depot в здании', 'lina.atrium.am2': 'Крытый бассейн + джакузи',
+        'lina.atrium.am3': 'Спа и сауна', 'lina.atrium.am4': 'Ресепшен и охрана 24/7',
+        'lina.atrium.am5': 'Ресторан на месте', 'lina.atrium.am6': 'Завтрак (доп. услуга)',
+        'lina.atrium.note': 'ℹ️ <strong>Примечание:</strong> Бассейн, спа и ресторан откроются в декабре 2025. Джакузи и бассейн за доп. плату.',
+        'lina.atrium.badge': '✦ Балкон + Вид', 'lina.atrium.price_label': 'Цена за ночь',
+        'lina.airbnb_rating': 'Рейтинг Airbnb', 'lina.book_airbnb': 'Забронировать на Airbnb', 'lina.whatsapp': 'WhatsApp',
+        'lina.suits.building': 'Здание Suits · Новый Гудаури',
+        'lina.suits.location': '50 м от гондолы · Тихий 4-й этаж',
+        'lina.suits.tag1': '🛏️ Queen + диван', 'lina.suits.tag2': '👥 До 3 гостей',
+        'lina.suits.tag3': '🎰 Казино в здании', 'lina.suits.tag4': '✨ Полный ремонт',
+        'lina.suits.desc': 'Совершенно новый апартамент с ремонтом высокого класса — ровно в 50 м от гондолы. Кровать queen + удобный диван для третьего гостя, полная кухня, шикарная ванная. Нет балкона — зато казино, ресторан, спа и бассейн прямо в здании.',
+        'lina.suits.am1': 'Казино в здании', 'lina.suits.am2': 'Спа и бассейн', 'lina.suits.am3': 'Ski Depot',
+        'lina.suits.am4': 'Ресторан и бар', 'lina.suits.am5': 'Ресепшн 24/7', 'lina.suits.am6': 'Магазины и après-ski',
+        'lina.suits.note': 'ℹ️ <strong>Примечание:</strong> В апартаменте нет балкона. 4-й этаж — тихий, вдали от шума холла.',
+        'lina.suits.badge': '✦ 50 м от гондолы', 'lina.suits.price_label': 'Цена', 'lina.suits.price_contact': 'По запросу',
+        'lina.trust.t1_label': '50–100 м от гондолы', 'lina.trust.t1_sub': 'Прямой доступ к склонам',
+        'lina.trust.t2_label': 'Оценки на Airbnb', 'lina.trust.t2_sub': 'CozyCasa — Новый Гудаури',
+        'lina.trust.t3_label': 'Премиум и ремонт', 'lina.trust.t3_sub': 'Современный дизайн и максимальный комфорт',
+        'lina.trust.t4_label': 'Персональный сервис', 'lina.trust.t4_sub': 'WhatsApp прямо до вашей двери',
+        'lina.trust.t5_label': 'Безопасное бронирование', 'lina.trust.t5_sub': 'Через Airbnb или напрямую',
+        'lina.cta.label': 'Готовы кататься?', 'lina.cta.title': 'Забронируйте апартамент на сезон 25/26',
+        'lina.cta.sub': 'Ограниченное количество мест. Свяжитесь с нами сейчас для проверки наличия и цен — в течение нескольких часов.',
+        'lina.cta.email': 'Email',
+        'footer.tagline': 'Гудаури — не просто курорт. Это то, как путешественники открыли: можно кататься как в Европе, платить разумные цены, и чувствовать, что нашёл сокровище.',
+        'footer.nav.heading': 'Навигация', 'footer.nav.about': 'О Гудаури', 'footer.nav.activities': 'Активности',
+        'footer.nav.new_gudauri': 'Новый Гудаури', 'footer.nav.accommodation': 'Жильё', 'footer.nav.testimonials': 'Отзывы',
+        'footer.contact.heading': 'Контакты', 'footer.contact.wa': 'WhatsApp доступен',
+        'footer.newsletter.heading': 'Новости и акции',
+        'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
+        'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. Все права защищены.',
+        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.access': 'Доступность',
+      },
+      ka: {
+        dir: 'ltr', lang: 'ka',
+        'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური',
+        'nav.accommodation': 'განთავსება', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაჯავშნე',
+        'lina.hero.kicker': 'ახალი გუდაური · CozyCasa სახლები',
+        'lina.hero.title': 'განთავსება', 'lina.hero.accent': '3,279 მ სიმაღლეზე',
+        'lina.hero.sub': 'ორი პრემიუმ სახლი სოფლის გულში — 50–100 მ გონდოლიდან, მთის ხედები და ნამდვილი კომფორტი.',
+        'lina.apts.label': 'ჩვენი სახლები',
+        'lina.apts.title': 'ორი სახლი. ორი შენობა.<br/>ერთი დასამახსოვრებელი გამოცდილება.',
+        'lina.apts.sub': 'თითოეული სახლი შექმნილია სასრიალო გამოცდილების მაქსიმალიზაციისთვის — ფერდობებზე პირდაპირი წვდომა, თანამედროვე დიზაინი და პერსონალური სერვისი.',
+        'lina.atrium.building': 'Atrium შენობა · ახალი გუდაური',
+        'lina.atrium.location': '100 მ გონდოლიდან · 150 მ სოფლის ცენტრიდან',
+        'lina.atrium.tag1': '🛏️ ორადგილიანი საწოლი', 'lina.atrium.tag2': '📐 36 მ²',
+        'lina.atrium.tag3': '🏂 Ski-in/Ski-out', 'lina.atrium.tag4': '🏔️ ბალკონის ხედი',
+        'lina.atrium.desc': 'მყუდრო სტუდია პრესტიჟულ Atrium შენობაში — ორადგილიანი საწოლი, სამზარეულო, სააბაზანო და სტილური მისაღები. ბალკონიდან: ფერდობებისა და თოვლიანი მთების პირდაპირი ხედი. ასეთი ხედით კავა — დასამახსოვრებელია.',
+        'lina.atrium.am1': 'Ski Depot შენობაში', 'lina.atrium.am2': 'სახურავიანი აუზი + ჯაკუზი',
+        'lina.atrium.am3': 'სპა და სანა', 'lina.atrium.am4': 'რეგისტრატურა და დაცვა 24/7',
+        'lina.atrium.am5': 'რესტორანი ადგილზე', 'lina.atrium.am6': 'საუზმე (დამატებით)',
+        'lina.atrium.note': 'ℹ️ <strong>შენიშვნა:</strong> აუზი, სპა და რესტორანი 2025 წლის დეკემბერში გაიხსნება. ჯაკუზი და აუზი დამატებით ფასიანია.',
+        'lina.atrium.badge': '✦ ბალკონი + ხედი', 'lina.atrium.price_label': 'ფასი ღამეში',
+        'lina.airbnb_rating': 'Airbnb-ის რეიტინგი', 'lina.book_airbnb': 'Airbnb-ზე დაჯავშნე', 'lina.whatsapp': 'WhatsApp',
+        'lina.suits.building': 'Suits შენობა · ახალი გუდაური',
+        'lina.suits.location': '50 მ გონდოლიდან · მშვიდი მე-4 სართული',
+        'lina.suits.tag1': '🛏️ Queen + დივანი', 'lina.suits.tag2': '👥 3-მდე სტუმარი',
+        'lina.suits.tag3': '🎰 კაზინო შენობაში', 'lina.suits.tag4': '✨ სრული რემონტი',
+        'lina.suits.desc': 'სრულიად ახალი, მაღალი ხარისხის სახლი — ზუსტად 50 მ გონდოლიდან. Queen საწოლი + კომფორტული დივანი მესამე სტუმრისთვის, სრული სამზარეულო, ფუფუნებური სააბაზანო. ბალკონი არ არის — მაგრამ კაზინო, რესტორანი, სპა და აუზი პირდაპირ შენობაში.',
+        'lina.suits.am1': 'კაზინო შენობაში', 'lina.suits.am2': 'სპა და აუზი', 'lina.suits.am3': 'Ski Depot',
+        'lina.suits.am4': 'რესტორანი და ბარი', 'lina.suits.am5': 'რეგისტრატურა 24/7', 'lina.suits.am6': 'მაღაზიები და après-ski',
+        'lina.suits.note': 'ℹ️ <strong>შენიშვნა:</strong> სახლს ბალკონი არ აქვს. მე-4 სართული — მშვიდი, შესასვლელის ხმაურისგან შორს.',
+        'lina.suits.badge': '✦ 50 მ გონდოლიდან', 'lina.suits.price_label': 'ფასი', 'lina.suits.price_contact': 'მოთხოვნით',
+        'lina.trust.t1_label': '50–100 მ გონდოლიდან', 'lina.trust.t1_sub': 'პირდაპირი წვდომა ფერდობებზე',
+        'lina.trust.t2_label': 'Airbnb-ზე შეფასებული', 'lina.trust.t2_sub': 'CozyCasa — ახალი გუდაური',
+        'lina.trust.t3_label': 'პრემიუმ და გარემონტებული', 'lina.trust.t3_sub': 'თანამედროვე დიზაინი და მაქსიმალური კომფორტი',
+        'lina.trust.t4_label': 'პერსონალური სერვისი', 'lina.trust.t4_sub': 'WhatsApp პირდაპირ თქვენს კართან',
+        'lina.trust.t5_label': 'უსაფრთხო ჯავშანი', 'lina.trust.t5_sub': 'Airbnb-ის გზით ან პირდაპირ',
+        'lina.cta.label': 'მზად ხარ სრიალობისთვის?', 'lina.cta.title': 'დაჯავშნე სახლი 25/26 სეზონისთვის',
+        'lina.cta.sub': 'ადგილები შეზღუდულია. დაგვიკავშირდი ახლა ხელმისაწვდომობისა და ფასების შესამოწმებლად.',
+        'lina.cta.email': 'ელ-ფოსტა',
+        'footer.tagline': 'გუდაური მხოლოდ კურორტი არ არის. ეს ის გზაა, რომლითაც მოგზაურებმა აღმოაჩინეს: სრიალობა ევროპულ დონეზე, გონივრული ფასებით, და განცდა, რომ საგანძური იპოვე.',
+        'footer.nav.heading': 'ნავიგაცია', 'footer.nav.about': 'გუდაურის შესახებ', 'footer.nav.activities': 'აქტივობები',
+        'footer.nav.new_gudauri': 'ახალი გუდაური', 'footer.nav.accommodation': 'განთავსება', 'footer.nav.testimonials': 'შეფასებები',
+        'footer.contact.heading': 'კონტაქტი', 'footer.contact.wa': 'WhatsApp ხელმისაწვდომია',
+        'footer.newsletter.heading': 'განახლებები და შეთავაზებები',
+        'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები.',
+        'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. ყველა უფლება დაცულია.',
+        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.access': 'ხელმისაწვდომობა',
+      }
+    };
+
+    function setLanguage(lang) {
+      var t = window.TRANSLATIONS[lang];
+      if (!t) return;
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.body.style.textAlign = t.dir === 'rtl' ? 'right' : 'left';
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+      localStorage.setItem('gudauri-lang', lang);
+    }
+
+    (function() {
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var savedLang = localStorage.getItem('gudauri-lang');
+      var lang = (urlLang && window.TRANSLATIONS[urlLang]) ? urlLang
+               : (savedLang && window.TRANSLATIONS[savedLang]) ? savedLang
+               : 'he';
+      setLanguage(lang);
+    })();
+  </script>
+
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
 </body>
 </html>

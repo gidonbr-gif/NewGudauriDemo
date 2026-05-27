@@ -569,6 +569,26 @@
     }
 
     *:focus-visible { outline: 2px solid var(--electric); outline-offset: 3px; }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 5px;
+      margin-inline-start: 14px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+      border-radius: 6px; padding: 3px 7px;
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: inherit; font-size: 0.72rem; font-weight: 700;
+      color: var(--slate-400); cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+    .lang-btn img { width: 18px; height: 13px; border-radius: 2px; object-fit: cover; }
+    .lang-btn:hover { border-color: var(--electric); color: var(--snow); }
+    .lang-btn.lang-active { border-color: var(--electric); color: var(--electric); }
+    .nav-mobile .lang-switcher { margin-inline-start: 0; justify-content: flex-start; padding-top: 8px; }
   </style>
 </head>
 <body>
@@ -589,17 +609,32 @@
         </a>
 
         <ul class="nav-links" role="list">
-          <li><a href="index.html#why">על גודאורי</a></li>
-          <li><a href="index.html#activities">פעילויות</a></li>
-          <li><a href="index.html#new-gudauri" class="active" aria-current="page">ניו גודאורי</a></li>
-          <li><a href="lina.html">לינה</a></li>
-          <li><a href="index.html#footer">צרו קשר</a></li>
+          <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
+          <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
+          <li><a href="index.html#new-gudauri" class="active" aria-current="page" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+          <li><a href="lina.html" data-i18n="nav.accommodation">לינה</a></li>
+          <li><a href="index.html#footer" data-i18n="nav.contact">צרו קשר</a></li>
         </ul>
 
         <a href="lina.html" class="btn-primary nav-cta-desktop" aria-label="הזמן לינה">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          הזמן לינה
+          <span data-i18n="nav.cta">הזמן לינה</span>
         </a>
+
+        <div class="lang-switcher" role="group" aria-label="בחר שפה">
+          <button class="lang-btn lang-active" onclick="setLanguage('he')" aria-label="עברית" data-lang="he">
+            <img src="https://flagcdn.com/w20/il.png" alt="ישראל" width="18" height="13" loading="lazy"> HE
+          </button>
+          <button class="lang-btn" onclick="setLanguage('en')" aria-label="English" data-lang="en">
+            <img src="https://flagcdn.com/w20/us.png" alt="USA" width="18" height="13" loading="lazy"> EN
+          </button>
+          <button class="lang-btn" onclick="setLanguage('ru')" aria-label="Русский" data-lang="ru">
+            <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
+          </button>
+          <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
+            <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> KA
+          </button>
+        </div>
 
         <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
           <span></span><span></span><span></span>
@@ -610,12 +645,26 @@
   </nav>
 
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
-    <a href="index.html#why" onclick="closeMobileMenu()">על גודאורי</a>
-    <a href="index.html#activities" onclick="closeMobileMenu()">פעילויות</a>
-    <a href="index.html#new-gudauri" class="active" onclick="closeMobileMenu()">ניו גודאורי</a>
-    <a href="lina.html" onclick="closeMobileMenu()">לינה</a>
-    <a href="index.html#footer" onclick="closeMobileMenu()">צרו קשר</a>
-    <a href="lina.html" class="btn-primary" onclick="closeMobileMenu()">הזמן לינה</a>
+    <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
+    <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
+    <a href="index.html#new-gudauri" class="active" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="index.html#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">הזמן לינה</span></a>
+    <div class="lang-switcher" role="group" aria-label="בחר שפה">
+      <button class="lang-btn lang-active" onclick="setLanguage('he')" aria-label="עברית" data-lang="he">
+        <img src="https://flagcdn.com/w20/il.png" alt="ישראל" width="18" height="13" loading="lazy"> HE
+      </button>
+      <button class="lang-btn" onclick="setLanguage('en')" aria-label="English" data-lang="en">
+        <img src="https://flagcdn.com/w20/us.png" alt="USA" width="18" height="13" loading="lazy"> EN
+      </button>
+      <button class="lang-btn" onclick="setLanguage('ru')" aria-label="Русский" data-lang="ru">
+        <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
+      </button>
+      <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
+        <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> KA
+      </button>
+    </div>
   </div>
 
 
@@ -626,13 +675,13 @@
     <div class="ng-hero-content container">
       <div class="ng-hero-kicker">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        New Gudauri · 2,200m · הלב של האתר
+        <span data-i18n="ng.hero.kicker">New Gudauri · 2,200m · הלב של האתר</span>
       </div>
       <h1 class="ng-hero-title" id="ng-hero-title">
-        ניו גודאורי
-        <span class="accent">הלב שלא מפסיק לפעום</span>
+        <span data-i18n="ng.hero.title">ניו גודאורי</span>
+        <span class="accent" data-i18n="ng.hero.accent">הלב שלא מפסיק לפעום</span>
       </h1>
-      <p class="ng-hero-sub">
+      <p class="ng-hero-sub" data-i18n="ng.hero.sub">
         כל מה שמגדיר את הטיול שלך — נמצא כאן. לא בעיר, לא מרחוק. בדיוק כאן.
       </p>
     </div>
@@ -645,19 +694,19 @@
       <div class="stat-grid">
         <div class="stat-item reveal">
           <div class="stat-num">1</div>
-          <div class="stat-label">קזינו בכל ניו גודאורי</div>
+          <div class="stat-label" data-i18n="ng.stat1.label">קזינו בכל ניו גודאורי</div>
         </div>
         <div class="stat-item reveal" style="transition-delay:0.08s">
           <div class="stat-num">3</div>
-          <div class="stat-label">סוגי בניינים עם מתקנים שונים</div>
+          <div class="stat-label" data-i18n="ng.stat2.label">סוגי בניינים עם מתקנים שונים</div>
         </div>
         <div class="stat-item reveal" style="transition-delay:0.16s">
           <div class="stat-num">60s</div>
-          <div class="stat-label">מהדלת לגונדולה הראשית</div>
+          <div class="stat-label" data-i18n="ng.stat3.label">מהדלת לגונדולה הראשית</div>
         </div>
         <div class="stat-item reveal" style="transition-delay:0.24s">
           <div class="stat-num">0</div>
-          <div class="stat-label">מלונות — רק דירות פרטיות</div>
+          <div class="stat-label" data-i18n="ng.stat4.label">מלונות — רק דירות פרטיות</div>
         </div>
       </div>
     </div>
@@ -669,11 +718,11 @@
     <div class="container">
       <div class="split-inner">
         <div class="split-text">
-          <span class="section-label reveal">הגונדולה הראשית</span>
-          <h2 class="split-title reveal" id="gondola-title">
+          <span class="section-label reveal" data-i18n="ng.gondola.label">הגונדולה הראשית</span>
+          <h2 class="split-title reveal" id="gondola-title" data-i18n-html="ng.gondola.title">
             60 שניות מהדלת<br/>לפסגה.
           </h2>
-          <p class="split-body reveal">
+          <p class="split-body reveal" data-i18n="ng.gondola.body">
             ניו גודאורי לא נבנתה ממש ליד מחנה הגונדולה במקרה. זו הייתה הכוונה.
             אתה יוצא מהדלת, בתוך דקה אחת אתה בגונדולה — ובתוך כמה דקות נוספות
             אתה בגבהים שמרוב אירופה לא נגישים בכלל. אין הסעות. אין המתנה לשאטל.
@@ -682,15 +731,15 @@
           <div class="split-features reveal">
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🚡</div>
-              <div class="split-feat-text"><strong>גישה ישירה</strong> — מהבניינים לסל הגונדולה ברגל</div>
+              <div class="split-feat-text" data-i18n-html="ng.gondola.f1"><strong>גישה ישירה</strong> — מהבניינים לסל הגונדולה ברגל</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">⛷️</div>
-              <div class="split-feat-text"><strong>סקי-אין / סקי-אאוט</strong> — חלק מהבניינים צמודים למדרון</div>
+              <div class="split-feat-text" data-i18n-html="ng.gondola.f2"><strong>סקי-אין / סקי-אאוט</strong> — חלק מהבניינים צמודים למדרון</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🏔️</div>
-              <div class="split-feat-text"><strong>76 ק״מ מסלולים</strong> — כולם נגישים מהגונדולה הראשית</div>
+              <div class="split-feat-text" data-i18n-html="ng.gondola.f3"><strong>76 ק״מ מסלולים</strong> — כולם נגישים מהגונדולה הראשית</div>
             </div>
           </div>
         </div>
@@ -700,7 +749,7 @@
             alt="תא גונדולה מעל מדרונות שלג עם נוף הרים"
             loading="lazy"
           />
-          <div class="split-img-badge">הגונדולה הראשית · ניו גודאורי</div>
+          <div class="split-img-badge" data-i18n="ng.gondola.badge">הגונדולה הראשית · ניו גודאורי</div>
         </div>
       </div>
     </div>
@@ -717,14 +766,14 @@
             alt="עיצוב פנים מפואר של קזינו עם תאורה דרמטית"
             loading="lazy"
           />
-          <div class="split-img-badge">הקזינו היחיד · New Gudauri</div>
+          <div class="split-img-badge" data-i18n="ng.casino.badge">הקזינו היחיד · New Gudauri</div>
         </div>
         <div class="split-text">
-          <span class="section-label reveal">הקזינו היחיד</span>
-          <h2 class="split-title reveal" id="casino-title">
+          <span class="section-label reveal" data-i18n="ng.casino.label">הקזינו היחיד</span>
+          <h2 class="split-title reveal" id="casino-title" data-i18n-html="ng.casino.title">
             בכל ניו גודאורי —<br/><span class="electric">קזינו אחד בלבד.</span>
           </h2>
-          <p class="split-body reveal">
+          <p class="split-body reveal" data-i18n="ng.casino.body">
             הוא לא נמצא בשום שרשרת מלונות — כי בניו גודאורי אין מלונות בכלל.
             הוא נמצא בבניין דירות אחד ספציפי, ושם הלילה לא נגמר כשהמדרונות נסגרים.
             אחרי יום שלם שמנצל כל גרם אדרנלין — הריגוש ממשיך פנימה, בחום,
@@ -733,15 +782,15 @@
           <div class="split-features reveal">
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🎰</div>
-              <div class="split-feat-text"><strong>הקזינו היחיד</strong> בכל שטח New Gudauri</div>
+              <div class="split-feat-text" data-i18n-html="ng.casino.f1"><strong>הקזינו היחיד</strong> בכל שטח New Gudauri</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🥂</div>
-              <div class="split-feat-text"><strong>בר ומסעדה</strong> — ישירות בבניין, בלי לצאת לקור</div>
+              <div class="split-feat-text" data-i18n-html="ng.casino.f2"><strong>בר ומסעדה</strong> — ישירות בבניין, בלי לצאת לקור</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🌙</div>
-              <div class="split-feat-text"><strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי</div>
+              <div class="split-feat-text" data-i18n-html="ng.casino.f3"><strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי</div>
             </div>
           </div>
         </div>
@@ -754,11 +803,11 @@
   <section class="apts-section" aria-labelledby="apts-title">
     <div class="container">
       <div class="section-header">
-        <span class="section-label reveal">לינה ב-New Gudauri</span>
-        <h2 class="section-title reveal" id="apts-title">
+        <span class="section-label reveal" data-i18n="ng.apts.label">לינה ב-New Gudauri</span>
+        <h2 class="section-title reveal" id="apts-title" data-i18n-html="ng.apts.title">
           אין מלונות. רק דירות.<br/><span class="electric">וזה יתרון.</span>
         </h2>
-        <p class="section-sub reveal">
+        <p class="section-sub reveal" data-i18n="ng.apts.sub">
           כשאין לובי מלון, אין ביורוקרטיה. יש דירה שהיא שלך.
           שלושה סוגי בניינים — כל אחד עם האישיות שלו. בחר לפי מה שחשוב לך.
         </p>
@@ -767,32 +816,32 @@
 
         <div class="apt-type-card reveal">
           <div class="apt-type-icon" aria-hidden="true">🏊</div>
-          <div class="apt-type-title">בניין עם בריכה מקורה</div>
-          <p class="apt-type-body">
+          <div class="apt-type-title" data-i18n="ng.apt1.title">בניין עם בריכה מקורה</div>
+          <p class="apt-type-body" data-i18n="ng.apt1.body">
             שחייה וסאונה מתחת לגג — בלי שהקור מבחוץ מגיע אליך.
             אחרי יום על המדרונות, הגוף מבקש בדיוק את זה.
           </p>
-          <span class="apt-type-tag">בריכה מקורה · ספא</span>
+          <span class="apt-type-tag" data-i18n="ng.apt1.tag">בריכה מקורה · ספא</span>
         </div>
 
         <div class="apt-type-card reveal" style="transition-delay:0.1s">
           <div class="apt-type-icon" aria-hidden="true">🎰</div>
-          <div class="apt-type-title">בניין עם קזינו</div>
-          <p class="apt-type-body">
+          <div class="apt-type-title" data-i18n="ng.apt2.title">בניין עם קזינו</div>
+          <p class="apt-type-body" data-i18n="ng.apt2.body">
             הבניין היחיד בניו גודאורי עם קזינו ישירות בפנים.
             המעלית יורדת לקומת הקזינו. ועולה בחזרה לדירה שלך.
           </p>
-          <span class="apt-type-tag">קזינו · בר · מסעדה</span>
+          <span class="apt-type-tag" data-i18n="ng.apt2.tag">קזינו · בר · מסעדה</span>
         </div>
 
         <div class="apt-type-card reveal" style="transition-delay:0.2s">
           <div class="apt-type-icon" aria-hidden="true">♨️</div>
-          <div class="apt-type-title">בניין עם בריכה חיצונית מחוממת</div>
-          <p class="apt-type-body">
+          <div class="apt-type-title" data-i18n="ng.apt3.title">בניין עם בריכה חיצונית מחוממת</div>
+          <p class="apt-type-body" data-i18n="ng.apt3.body">
             טבילה בבריכה חמה בטמפרטורת -10° בחוץ, עם נוף הרי הקווקז מסביב.
             זו לא חוויה — זו זיכרון לכל החיים.
           </p>
-          <span class="apt-type-tag">בריכה חיצונית מחוממת</span>
+          <span class="apt-type-tag" data-i18n="ng.apt3.tag">בריכה חיצונית מחוממת</span>
         </div>
 
       </div>
@@ -804,11 +853,11 @@
   <section class="village-section" aria-labelledby="village-title">
     <div class="container">
       <div class="section-header">
-        <span class="section-label reveal">חיי הכפר</span>
-        <h2 class="section-title reveal" id="village-title">
+        <span class="section-label reveal" data-i18n="ng.village.label">חיי הכפר</span>
+        <h2 class="section-title reveal" id="village-title" data-i18n-html="ng.village.title">
           כל מה שצריך —<br/>בין בניין לבניין.
         </h2>
-        <p class="section-sub reveal">
+        <p class="section-sub reveal" data-i18n="ng.village.sub">
           ניו גודאורי לא תלויה בשום דבר מבחוץ. הכל כאן, ברגל, בלי לנסוע לשום מקום.
         </p>
       </div>
@@ -816,8 +865,8 @@
 
         <div class="village-card reveal">
           <div class="village-icon" aria-hidden="true">🛒</div>
-          <h3 class="village-card-title">קרפור</h3>
-          <p class="village-card-body">
+          <h3 class="village-card-title" data-i18n="ng.v1.title">קרפור</h3>
+          <p class="village-card-body" data-i18n="ng.v1.body">
             סופרמרקט Carrefour ישירות בלב הכפר — בין הבניינים.
             הכל טרי, הכל זמין, הכל שני צעדים מהדלת.
           </p>
@@ -825,8 +874,8 @@
 
         <div class="village-card reveal" style="transition-delay:0.08s">
           <div class="village-icon" aria-hidden="true">✂️</div>
-          <h3 class="village-card-title">ספר</h3>
-          <p class="village-card-body">
+          <h3 class="village-card-title" data-i18n="ng.v2.title">ספר</h3>
+          <p class="village-card-body" data-i18n="ng.v2.body">
             כי גם בהרים, מסתפרים. ספר מקצועי בין הבניינים —
             כי כל פרט בטיול צריך להיות כמו שצריך.
           </p>
@@ -834,8 +883,8 @@
 
         <div class="village-card reveal" style="transition-delay:0.16s">
           <div class="village-icon" aria-hidden="true">👶</div>
-          <h3 class="village-card-title">בייביסיטר לילדים</h3>
-          <p class="village-card-body">
+          <h3 class="village-card-title" data-i18n="ng.v3.title">בייביסיטר לילדים</h3>
+          <p class="village-card-body" data-i18n="ng.v3.body">
             שירות בייביסיטר בניו גודאורי — כי כל אחד בטיול מגיע ליהנות בדרכו.
             תסקי בלי לדאוג. הילדים בידיים טובות.
           </p>
@@ -843,8 +892,8 @@
 
         <div class="village-card reveal" style="transition-delay:0.24s">
           <div class="village-icon" aria-hidden="true">🍽️</div>
-          <h3 class="village-card-title">המסעדות הכי טובות</h3>
-          <p class="village-card-body">
+          <h3 class="village-card-title" data-i18n="ng.v4.title">המסעדות הכי טובות</h3>
+          <p class="village-card-body" data-i18n="ng.v4.body">
             האוכל הגאורגי הכי אמיתי ורציני באתר כולו — בניו גודאורי.
             ח׳ינקלי, חצ׳פורי, ויין מהגפן שגדלה ממש שם.
           </p>
@@ -860,11 +909,11 @@
     <div class="container">
       <div class="split-inner">
         <div class="split-text">
-          <span class="section-label reveal">ציוד וחוויות</span>
-          <h2 class="split-title reveal" id="ski-title">
+          <span class="section-label reveal" data-i18n="ng.ski.label">ציוד וחוויות</span>
+          <h2 class="split-title reveal" id="ski-title" data-i18n-html="ng.ski.title">
             הכי טוב באתר.<br/>לא מקרה.
           </h2>
-          <p class="split-body reveal">
+          <p class="split-body reveal" data-i18n="ng.ski.body">
             החנויות והשכרת הציוד הטובות ביותר בגודאורי כולה נמצאות בניו גודאורי.
             מותגים בינלאומיים, ציוד מקצועי, וצוות שיודע לפגוע בדיוק.
             ולמי שרוצה לשבור שגרה — יש גם אופני שלג.
@@ -873,15 +922,15 @@
           <div class="split-features reveal">
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">⛷️</div>
-              <div class="split-feat-text"><strong>השכרת ציוד סקי מקצועי</strong> — הטובה ביותר באתר</div>
+              <div class="split-feat-text" data-i18n-html="ng.ski.f1"><strong>השכרת ציוד סקי מקצועי</strong> — הטובה ביותר באתר</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🚲</div>
-              <div class="split-feat-text"><strong>אופני שלג</strong> — אטרקציה ייחודית, חוויה שונה לגמרי</div>
+              <div class="split-feat-text" data-i18n-html="ng.ski.f2"><strong>אופני שלג</strong> — אטרקציה ייחודית, חוויה שונה לגמרי</div>
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">🛍️</div>
-              <div class="split-feat-text"><strong>חנויות סקי</strong> — מותגים בינלאומיים וציוד מתקדם</div>
+              <div class="split-feat-text" data-i18n-html="ng.ski.f3"><strong>חנויות סקי</strong> — מותגים בינלאומיים וציוד מתקדם</div>
             </div>
           </div>
         </div>
@@ -891,7 +940,7 @@
             alt="שכרת ציוד סקי מקצועי עם מדרונות שלג ברקע"
             loading="lazy"
           />
-          <div class="split-img-badge">ציוד מקצועי · אופני שלג</div>
+          <div class="split-img-badge" data-i18n="ng.ski.badge">ציוד מקצועי · אופני שלג</div>
         </div>
       </div>
     </div>
@@ -902,21 +951,21 @@
   <section id="cta-banner" aria-labelledby="cta-heading">
     <div class="container">
       <div class="cta-box reveal">
-        <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;">מוכנים לסקי?</span>
-        <h2 class="cta-box-title" id="cta-heading">
+        <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;" data-i18n="ng.cta.label">מוכנים לסקי?</span>
+        <h2 class="cta-box-title" id="cta-heading" data-i18n="ng.cta.title">
           מצאו לינה בלב ניו גודאורי
         </h2>
-        <p class="cta-box-sub">
+        <p class="cta-box-sub" data-i18n="ng.cta.sub">
           מקומות מוגבלים לעונת 25/26. פנו אלינו עכשיו לבדיקת זמינות — תוך שעות.
         </p>
         <div class="cta-box-btns">
           <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ לשאלות על לינה">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp
+            <span data-i18n="ng.cta.whatsapp">WhatsApp</span>
           </a>
           <a href="mailto:gogudauri@newgudauri.net?subject=%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%93%D7%99%D7%A8%D7%95%D7%AA%20%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" class="btn-ghost" aria-label="שלח אימייל">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            אימייל
+            <span data-i18n="ng.cta.email">אימייל</span>
           </a>
         </div>
       </div>
@@ -938,7 +987,7 @@
             </svg>
             <span class="footer-logo-text">Gudauri<span>Ski</span>IL</span>
           </a>
-          <p class="footer-tagline">
+          <p class="footer-tagline" data-i18n="footer.tagline">
             גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה,
             לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.
           </p>
@@ -959,28 +1008,28 @@
         </div>
 
         <nav class="footer-nav" aria-label="קישורים מהירים">
-          <h3 class="footer-heading">ניווט</h3>
+          <h3 class="footer-heading" data-i18n="footer.nav_heading">ניווט</h3>
           <ul class="footer-links" role="list">
-            <li><a href="index.html#why">על גודאורי</a></li>
-            <li><a href="index.html#activities">פעילויות</a></li>
-            <li><a href="index.html#new-gudauri">ניו גודאורי</a></li>
-            <li><a href="lina.html">לינה</a></li>
-            <li><a href="index.html#testimonials">חוות דעת</a></li>
+            <li><a href="index.html#why" data-i18n="footer.nav.about">על גודאורי</a></li>
+            <li><a href="index.html#activities" data-i18n="footer.nav.activities">פעילויות</a></li>
+            <li><a href="index.html#new-gudauri" data-i18n="footer.nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html" data-i18n="footer.nav.accommodation">לינה</a></li>
+            <li><a href="index.html#testimonials" data-i18n="footer.nav.testimonials">חוות דעת</a></li>
           </ul>
         </nav>
 
         <div class="footer-contact" aria-label="פרטי קשר">
-          <h3 class="footer-heading">קשר</h3>
+          <h3 class="footer-heading" data-i18n="footer.contact_heading">קשר</h3>
           <ul class="footer-links" role="list">
             <li><a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
-            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer">וואטסאפ זמין</a></li>
+            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer" data-i18n="footer.wa">וואטסאפ זמין</a></li>
             <li style="margin-top:12px; color:var(--slate-600); font-size:0.875rem;">תל אביב, ישראל</li>
           </ul>
         </div>
 
         <div class="footer-newsletter" aria-labelledby="newsletter-heading">
-          <h3 class="footer-heading" id="newsletter-heading">עדכונים ומבצעים</h3>
-          <p style="font-size:0.9375rem; color:var(--slate-400); line-height:1.65;">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
+          <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.nl_heading">עדכונים ומבצעים</h3>
+          <p style="font-size:0.9375rem; color:var(--slate-400); line-height:1.65;" data-i18n="footer.nl_text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
           <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
             <label for="nl-email" class="sr-only">כתובת אימייל</label>
             <input
@@ -988,24 +1037,25 @@
               id="nl-email"
               class="newsletter-input"
               placeholder="האימייל שלך"
+              data-i18n-placeholder="footer.nl_placeholder"
               required
               autocomplete="email"
               dir="ltr"
             />
-            <button type="submit" class="newsletter-submit" aria-label="הרשמה לניוזלטר">הרשם</button>
+            <button type="submit" class="newsletter-submit" aria-label="הרשמה לניוזלטר" data-i18n="footer.nl_submit">הרשם</button>
           </form>
         </div>
 
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">
+        <p class="footer-copy" data-i18n-html="footer.copy">
           &copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.
         </p>
         <nav class="footer-legal" aria-label="קישורים משפטיים">
-          <a href="#">מדיניות פרטיות</a>
-          <a href="#">תנאי שימוש</a>
-          <a href="#">נגישות</a>
+          <a href="#" data-i18n="footer.privacy">מדיניות פרטיות</a>
+          <a href="#" data-i18n="footer.terms">תנאי שימוש</a>
+          <a href="#" data-i18n="footer.accessibility">נגישות</a>
         </nav>
       </div>
 
@@ -1062,10 +1112,16 @@
       e.preventDefault();
       const btn = e.target.querySelector('.newsletter-submit');
       const input = document.getElementById('nl-email');
-      btn.textContent = 'נרשמת!';
+      const lang = document.documentElement.lang || 'he';
+      const successMsg = { he: 'נרשמת!', en: 'Subscribed!', ru: 'Подписались!', ka: 'გამოიწერე!' };
+      btn.textContent = successMsg[lang] || 'נרשמת!';
       btn.style.background = '#16A34A';
       input.value = '';
-      setTimeout(() => { btn.textContent = 'הרשם'; btn.style.background = ''; }, 3000);
+      setTimeout(() => {
+        const t = window.TRANSLATIONS && window.TRANSLATIONS[lang];
+        btn.textContent = (t && t['footer.nl_submit']) || 'הרשם';
+        btn.style.background = '';
+      }, 3000);
     }
 
     // Reduced motion
@@ -1073,6 +1129,430 @@
       revealEls.forEach(el => el.classList.add('visible'));
     }
   </script>
+
+  <!-- ═══ i18n ═══ -->
+  <script>
+    window.TRANSLATIONS = {
+      he: {
+        'nav.about': 'על גודאורי',
+        'nav.activities': 'פעילויות',
+        'nav.new_gudauri': 'ניו גודאורי',
+        'nav.accommodation': 'לינה',
+        'nav.contact': 'צרו קשר',
+        'nav.cta': 'הזמן לינה',
+
+        'ng.hero.kicker': 'New Gudauri · 2,200m · הלב של האתר',
+        'ng.hero.title': 'ניו גודאורי',
+        'ng.hero.accent': 'הלב שלא מפסיק לפעום',
+        'ng.hero.sub': 'כל מה שמגדיר את הטיול שלך — נמצא כאן. לא בעיר, לא מרחוק. בדיוק כאן.',
+
+        'ng.stat1.label': 'קזינו בכל ניו גודאורי',
+        'ng.stat2.label': 'סוגי בניינים עם מתקנים שונים',
+        'ng.stat3.label': 'מהדלת לגונדולה הראשית',
+        'ng.stat4.label': 'מלונות — רק דירות פרטיות',
+
+        'ng.gondola.label': 'הגונדולה הראשית',
+        'ng.gondola.title': '60 שניות מהדלת<br/>לפסגה.',
+        'ng.gondola.body': 'ניו גודאורי לא נבנתה ממש ליד מחנה הגונדולה במקרה. זו הייתה הכוונה. אתה יוצא מהדלת, בתוך דקה אחת אתה בגונדולה — ובתוך כמה דקות נוספות אתה בגבהים שמרוב אירופה לא נגישים בכלל. אין הסעות. אין המתנה לשאטל. יש רק הר, ואתה עליו.',
+        'ng.gondola.f1': '<strong>גישה ישירה</strong> — מהבניינים לסל הגונדולה ברגל',
+        'ng.gondola.f2': '<strong>סקי-אין / סקי-אאוט</strong> — חלק מהבניינים צמודים למדרון',
+        'ng.gondola.f3': '<strong>76 ק״מ מסלולים</strong> — כולם נגישים מהגונדולה הראשית',
+        'ng.gondola.badge': 'הגונדולה הראשית · ניו גודאורי',
+
+        'ng.casino.label': 'הקזינו היחיד',
+        'ng.casino.title': 'בכל ניו גודאורי —<br/><span class="electric">קזינו אחד בלבד.</span>',
+        'ng.casino.body': 'הוא לא נמצא בשום שרשרת מלונות — כי בניו גודאורי אין מלונות בכלל. הוא נמצא בבניין דירות אחד ספציפי, ושם הלילה לא נגמר כשהמדרונות נסגרים. אחרי יום שלם שמנצל כל גרם אדרנלין — הריגוש ממשיך פנימה, בחום, עם cocktail ביד.',
+        'ng.casino.f1': '<strong>הקזינו היחיד</strong> בכל שטח New Gudauri',
+        'ng.casino.f2': '<strong>בר ומסעדה</strong> — ישירות בבניין, בלי לצאת לקור',
+        'ng.casino.f3': '<strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי',
+        'ng.casino.badge': 'הקזינו היחיד · New Gudauri',
+
+        'ng.apts.label': 'לינה ב-New Gudauri',
+        'ng.apts.title': 'אין מלונות. רק דירות.<br/><span class="electric">וזה יתרון.</span>',
+        'ng.apts.sub': 'כשאין לובי מלון, אין ביורוקרטיה. יש דירה שהיא שלך. שלושה סוגי בניינים — כל אחד עם האישיות שלו. בחר לפי מה שחשוב לך.',
+        'ng.apt1.title': 'בניין עם בריכה מקורה',
+        'ng.apt1.body': 'שחייה וסאונה מתחת לגג — בלי שהקור מבחוץ מגיע אליך. אחרי יום על המדרונות, הגוף מבקש בדיוק את זה.',
+        'ng.apt1.tag': 'בריכה מקורה · ספא',
+        'ng.apt2.title': 'בניין עם קזינו',
+        'ng.apt2.body': 'הבניין היחיד בניו גודאורי עם קזינו ישירות בפנים. המעלית יורדת לקומת הקזינו. ועולה בחזרה לדירה שלך.',
+        'ng.apt2.tag': 'קזינו · בר · מסעדה',
+        'ng.apt3.title': 'בניין עם בריכה חיצונית מחוממת',
+        'ng.apt3.body': 'טבילה בבריכה חמה בטמפרטורת -10° בחוץ, עם נוף הרי הקווקז מסביב. זו לא חוויה — זו זיכרון לכל החיים.',
+        'ng.apt3.tag': 'בריכה חיצונית מחוממת',
+
+        'ng.village.label': 'חיי הכפר',
+        'ng.village.title': 'כל מה שצריך —<br/>בין בניין לבניין.',
+        'ng.village.sub': 'ניו גודאורי לא תלויה בשום דבר מבחוץ. הכל כאן, ברגל, בלי לנסוע לשום מקום.',
+        'ng.v1.title': 'קרפור',
+        'ng.v1.body': 'סופרמרקט Carrefour ישירות בלב הכפר — בין הבניינים. הכל טרי, הכל זמין, הכל שני צעדים מהדלת.',
+        'ng.v2.title': 'ספר',
+        'ng.v2.body': 'כי גם בהרים, מסתפרים. ספר מקצועי בין הבניינים — כי כל פרט בטיול צריך להיות כמו שצריך.',
+        'ng.v3.title': 'בייביסיטר לילדים',
+        'ng.v3.body': 'שירות בייביסיטר בניו גודאורי — כי כל אחד בטיול מגיע ליהנות בדרכו. תסקי בלי לדאוג. הילדים בידיים טובות.',
+        'ng.v4.title': 'המסעדות הכי טובות',
+        'ng.v4.body': 'האוכל הגאורגי הכי אמיתי ורציני באתר כולו — בניו גודאורי. ח׳ינקלי, חצ׳פורי, ויין מהגפן שגדלה ממש שם.',
+
+        'ng.ski.label': 'ציוד וחוויות',
+        'ng.ski.title': 'הכי טוב באתר.<br/>לא מקרה.',
+        'ng.ski.body': 'החנויות והשכרת הציוד הטובות ביותר בגודאורי כולה נמצאות בניו גודאורי. מותגים בינלאומיים, ציוד מקצועי, וצוות שיודע לפגוע בדיוק. ולמי שרוצה לשבור שגרה — יש גם אופני שלג. חוויה שונה לגמרי, ישירות מהכפר.',
+        'ng.ski.f1': '<strong>השכרת ציוד סקי מקצועי</strong> — הטובה ביותר באתר',
+        'ng.ski.f2': '<strong>אופני שלג</strong> — אטרקציה ייחודית, חוויה שונה לגמרי',
+        'ng.ski.f3': '<strong>חנויות סקי</strong> — מותגים בינלאומיים וציוד מתקדם',
+        'ng.ski.badge': 'ציוד מקצועי · אופני שלג',
+
+        'ng.cta.label': 'מוכנים לסקי?',
+        'ng.cta.title': 'מצאו לינה בלב ניו גודאורי',
+        'ng.cta.sub': 'מקומות מוגבלים לעונת 25/26. פנו אלינו עכשיו לבדיקת זמינות — תוך שעות.',
+        'ng.cta.whatsapp': 'WhatsApp',
+        'ng.cta.email': 'אימייל',
+
+        'footer.tagline': 'גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.',
+        'footer.nav_heading': 'ניווט',
+        'footer.nav.about': 'על גודאורי',
+        'footer.nav.activities': 'פעילויות',
+        'footer.nav.new_gudauri': 'ניו גודאורי',
+        'footer.nav.accommodation': 'לינה',
+        'footer.nav.testimonials': 'חוות דעת',
+        'footer.contact_heading': 'קשר',
+        'footer.wa': 'וואטסאפ זמין',
+        'footer.nl_heading': 'עדכונים ומבצעים',
+        'footer.nl_text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
+        'footer.nl_placeholder': 'האימייל שלך',
+        'footer.nl_submit': 'הרשם',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.',
+        'footer.privacy': 'מדיניות פרטיות',
+        'footer.terms': 'תנאי שימוש',
+        'footer.accessibility': 'נגישות'
+      },
+
+      en: {
+        'nav.about': 'About Gudauri',
+        'nav.activities': 'Activities',
+        'nav.new_gudauri': 'New Gudauri',
+        'nav.accommodation': 'Stay',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Book Stay',
+
+        'ng.hero.kicker': 'New Gudauri · 2,200m · Heart of the Resort',
+        'ng.hero.title': 'New Gudauri',
+        'ng.hero.accent': 'The Heart That Never Stops Beating',
+        'ng.hero.sub': 'Everything that defines your trip — is right here. Not in town, not far away. Exactly here.',
+
+        'ng.stat1.label': 'Casino in all New Gudauri',
+        'ng.stat2.label': 'Building types with different amenities',
+        'ng.stat3.label': 'From door to main gondola',
+        'ng.stat4.label': 'Hotels — only private apartments',
+
+        'ng.gondola.label': 'Main Gondola',
+        'ng.gondola.title': '60 Seconds from Your Door<br/>to the Summit.',
+        'ng.gondola.body': "New Gudauri wasn't built right next to the gondola station by accident. That was the intention. You walk out the door, within one minute you're on the gondola — and within a few more minutes you're at altitudes inaccessible to most of Europe. No shuttles. No waiting for transfers. Just the mountain, and you on it.",
+        'ng.gondola.f1': '<strong>Direct access</strong> — from the buildings to the gondola on foot',
+        'ng.gondola.f2': '<strong>Ski-in / Ski-out</strong> — some buildings are right next to the slope',
+        'ng.gondola.f3': '<strong>76 km of trails</strong> — all accessible from the main gondola',
+        'ng.gondola.badge': 'Main Gondola · New Gudauri',
+
+        'ng.casino.label': 'The Only Casino',
+        'ng.casino.title': 'In all of New Gudauri —<br/><span class="electric">just one casino.</span>',
+        'ng.casino.body': "It's not in any hotel chain — because there are no hotels in New Gudauri at all. It's in one specific apartment building, and there the night doesn't end when the slopes close. After a full day that used every ounce of adrenaline — the excitement continues inside, in the warmth, with a cocktail in hand.",
+        'ng.casino.f1': '<strong>The only casino</strong> in all of New Gudauri',
+        'ng.casino.f2': '<strong>Bar & restaurant</strong> — right in the building, without going out in the cold',
+        'ng.casino.f3': '<strong>Nightlife entertainment</strong> that completes your ski day in a completely different way',
+        'ng.casino.badge': 'The Only Casino · New Gudauri',
+
+        'ng.apts.label': 'Accommodation in New Gudauri',
+        'ng.apts.title': 'No hotels. Just apartments.<br/><span class="electric">And that\'s an advantage.</span>',
+        'ng.apts.sub': "Without a hotel lobby, there's no bureaucracy. There's an apartment that's yours. Three types of buildings — each with its own character. Choose based on what matters to you.",
+        'ng.apt1.title': 'Building with Indoor Pool',
+        'ng.apt1.body': 'Swimming and sauna under one roof — without the cold outside reaching you. After a day on the slopes, your body asks for exactly this.',
+        'ng.apt1.tag': 'Indoor Pool · Spa',
+        'ng.apt2.title': 'Building with Casino',
+        'ng.apt2.body': 'The only building in New Gudauri with a casino right inside. The elevator goes down to the casino floor. And back up to your apartment.',
+        'ng.apt2.tag': 'Casino · Bar · Restaurant',
+        'ng.apt3.title': 'Building with Heated Outdoor Pool',
+        'ng.apt3.body': 'Dipping in a warm pool at -10° outside, with the Caucasus mountain views all around. This isn\'t an experience — it\'s a memory for life.',
+        'ng.apt3.tag': 'Heated Outdoor Pool',
+
+        'ng.village.label': 'Village Life',
+        'ng.village.title': 'Everything you need —<br/>between buildings.',
+        'ng.village.sub': "New Gudauri doesn't depend on anything outside. Everything is here, walkable, without driving anywhere.",
+        'ng.v1.title': 'Carrefour',
+        'ng.v1.body': 'Carrefour supermarket right in the heart of the village — between the buildings. Everything fresh, everything available, everything two steps from the door.',
+        'ng.v2.title': 'Barber',
+        'ng.v2.body': 'Because even in the mountains, people get haircuts. A professional barber between the buildings — because every detail of the trip should be just right.',
+        'ng.v3.title': "Children's Babysitter",
+        'ng.v3.body': 'Babysitting service in New Gudauri — because everyone on the trip deserves to enjoy it their own way. Ski without worry. The kids are in good hands.',
+        'ng.v4.title': 'The Best Restaurants',
+        'ng.v4.body': 'The most authentic Georgian food at the entire resort — in New Gudauri. Khinkali, khachapuri, and wine from the vine that grew right there.',
+
+        'ng.ski.label': 'Equipment & Experiences',
+        'ng.ski.title': 'The Best on the Mountain.<br/>No accident.',
+        'ng.ski.body': 'The best shops and ski equipment rental in all of Gudauri are in New Gudauri. International brands, professional equipment, and a team that knows how to get it exactly right. And for those who want to break the routine — there are also snow bikes. A completely different experience, right from the village.',
+        'ng.ski.f1': '<strong>Professional ski equipment rental</strong> — the best on the mountain',
+        'ng.ski.f2': '<strong>Snow bikes</strong> — a unique attraction, a completely different experience',
+        'ng.ski.f3': '<strong>Ski shops</strong> — international brands and advanced equipment',
+        'ng.ski.badge': 'Professional Equipment · Snow Bikes',
+
+        'ng.cta.label': 'Ready to Ski?',
+        'ng.cta.title': 'Find Accommodation in the Heart of New Gudauri',
+        'ng.cta.sub': 'Limited spots for the 25/26 season. Contact us now to check availability — within hours.',
+        'ng.cta.whatsapp': 'WhatsApp',
+        'ng.cta.email': 'Email',
+
+        'footer.tagline': "Gudauri is not just a destination. It's the way Israelis discovered they can ski like in Europe, pay like in Israel, and feel like they've found a treasure.",
+        'footer.nav_heading': 'Navigation',
+        'footer.nav.about': 'About Gudauri',
+        'footer.nav.activities': 'Activities',
+        'footer.nav.new_gudauri': 'New Gudauri',
+        'footer.nav.accommodation': 'Accommodation',
+        'footer.nav.testimonials': 'Reviews',
+        'footer.contact_heading': 'Contact',
+        'footer.wa': 'WhatsApp Available',
+        'footer.nl_heading': 'Updates & Deals',
+        'footer.nl_text': 'Get updates on the ski season, limited deals, and photos that will make you pack a suitcase.',
+        'footer.nl_placeholder': 'Your email',
+        'footer.nl_submit': 'Subscribe',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. All rights reserved.',
+        'footer.privacy': 'Privacy Policy',
+        'footer.terms': 'Terms of Use',
+        'footer.accessibility': 'Accessibility'
+      },
+
+      ru: {
+        'nav.about': 'О Гудаури',
+        'nav.activities': 'Активности',
+        'nav.new_gudauri': 'Нью Гудаури',
+        'nav.accommodation': 'Жильё',
+        'nav.contact': 'Контакт',
+        'nav.cta': 'Забронировать',
+
+        'ng.hero.kicker': 'Нью Гудаури · 2 200м · Сердце курорта',
+        'ng.hero.title': 'Нью Гудаури',
+        'ng.hero.accent': 'Сердце, которое никогда не останавливается',
+        'ng.hero.sub': 'Всё, что определяет ваше путешествие — прямо здесь. Не в городе, не далеко. Именно здесь.',
+
+        'ng.stat1.label': 'Казино во всём Нью Гудаури',
+        'ng.stat2.label': 'Типа зданий с разными удобствами',
+        'ng.stat3.label': 'От двери до главной гондолы',
+        'ng.stat4.label': 'Отелей — только частные апартаменты',
+
+        'ng.gondola.label': 'Главная гондола',
+        'ng.gondola.title': '60 секунд от двери<br/>до вершины.',
+        'ng.gondola.body': 'Нью Гудаури был построен прямо рядом со станцией гондолы не случайно. Это был замысел. Вы выходите из двери, через минуту вы уже в гондоле — а через несколько минут вы на высотах, недоступных большинству европейцев. Никаких трансферов. Никакого ожидания шаттла. Есть только гора, и вы на ней.',
+        'ng.gondola.f1': '<strong>Прямой доступ</strong> — от зданий до гондолы пешком',
+        'ng.gondola.f2': '<strong>Ски-ин / ски-аут</strong> — некоторые здания примыкают к склону',
+        'ng.gondola.f3': '<strong>76 км трасс</strong> — все доступны с главной гондолы',
+        'ng.gondola.badge': 'Главная гондола · Нью Гудаури',
+
+        'ng.casino.label': 'Единственное казино',
+        'ng.casino.title': 'Во всём Нью Гудаури —<br/><span class="electric">только одно казино.</span>',
+        'ng.casino.body': 'Оно находится не в какой-то гостиничной сети — потому что в Нью Гудаури нет отелей вообще. Оно находится в одном конкретном жилом доме, и там ночь не заканчивается, когда закрываются склоны. После полного дня, использовавшего каждую каплю адреналина — волнение продолжается внутри, в тепле, с коктейлем в руке.',
+        'ng.casino.f1': '<strong>Единственное казино</strong> во всём Нью Гудаури',
+        'ng.casino.f2': '<strong>Бар и ресторан</strong> — прямо в здании, без выхода на холод',
+        'ng.casino.f3': '<strong>Ночные развлечения</strong>, которые завершают лыжный день совершенно иначе',
+        'ng.casino.badge': 'Единственное казино · Нью Гудаури',
+
+        'ng.apts.label': 'Жильё в Нью Гудаури',
+        'ng.apts.title': 'Нет отелей. Только апартаменты.<br/><span class="electric">И это преимущество.</span>',
+        'ng.apts.sub': 'Без гостиничного лобби нет бюрократии. Есть апартаменты, которые принадлежат вам. Три типа зданий — каждое со своим характером. Выбирайте то, что важно вам.',
+        'ng.apt1.title': 'Здание с крытым бассейном',
+        'ng.apt1.body': 'Плавание и сауна под крышей — без холода снаружи. После дня на склонах ваше тело просит именно этого.',
+        'ng.apt1.tag': 'Крытый бассейн · Спа',
+        'ng.apt2.title': 'Здание с казино',
+        'ng.apt2.body': 'Единственное здание в Нью Гудаури с казино прямо внутри. Лифт спускается на этаж казино. И поднимается обратно в ваши апартаменты.',
+        'ng.apt2.tag': 'Казино · Бар · Ресторан',
+        'ng.apt3.title': 'Здание с подогреваемым открытым бассейном',
+        'ng.apt3.body': 'Купание в тёплом бассейне при -10° снаружи, с видом на горы Кавказа вокруг. Это не просто впечатление — это воспоминание на всю жизнь.',
+        'ng.apt3.tag': 'Подогреваемый открытый бассейн',
+
+        'ng.village.label': 'Жизнь в деревне',
+        'ng.village.title': 'Всё необходимое —<br/>между зданиями.',
+        'ng.village.sub': 'Нью Гудаури не зависит ни от чего снаружи. Всё здесь, пешком, без поездок куда-либо.',
+        'ng.v1.title': 'Carrefour',
+        'ng.v1.body': 'Супермаркет Carrefour прямо в сердце деревни — между зданиями. Всё свежее, всё доступно, всё в двух шагах от двери.',
+        'ng.v2.title': 'Барбер',
+        'ng.v2.body': 'Потому что даже в горах стригутся. Профессиональный барбер между зданиями — потому что каждая деталь поездки должна быть на высоте.',
+        'ng.v3.title': 'Няня для детей',
+        'ng.v3.body': 'Услуги няни в Нью Гудаури — потому что каждый в поездке заслуживает наслаждаться по-своему. Катайтесь на лыжах без забот. Дети в надёжных руках.',
+        'ng.v4.title': 'Лучшие рестораны',
+        'ng.v4.body': 'Самая настоящая и серьёзная грузинская кухня на всём курорте — в Нью Гудаури. Хинкали, хачапури и вино из лозы, которая выросла прямо там.',
+
+        'ng.ski.label': 'Снаряжение и развлечения',
+        'ng.ski.title': 'Лучшее на курорте.<br/>Не случайно.',
+        'ng.ski.body': 'Лучшие магазины и прокат лыжного снаряжения во всём Гудаури находятся в Нью Гудаури. Международные бренды, профессиональное оборудование и команда, которая знает как попасть точно в цель. А для тех, кто хочет сломать рутину — есть снежные велосипеды. Совершенно другой опыт, прямо из деревни.',
+        'ng.ski.f1': '<strong>Прокат профессионального лыжного снаряжения</strong> — лучший на курорте',
+        'ng.ski.f2': '<strong>Снежные велосипеды</strong> — уникальная аттракция, совершенно другой опыт',
+        'ng.ski.f3': '<strong>Лыжные магазины</strong> — международные бренды и современное оборудование',
+        'ng.ski.badge': 'Профессиональное снаряжение · Снежные велосипеды',
+
+        'ng.cta.label': 'Готовы на лыжи?',
+        'ng.cta.title': 'Найдите жильё в сердце Нью Гудаури',
+        'ng.cta.sub': 'Ограниченные места на сезон 25/26. Свяжитесь с нами сейчас для проверки доступности — в течение нескольких часов.',
+        'ng.cta.whatsapp': 'WhatsApp',
+        'ng.cta.email': 'Эл. почта',
+
+        'footer.tagline': 'Гудаури — это не просто направление. Это то, как израильтяне обнаружили, что можно кататься на лыжах как в Европе, платить как в Израиле и чувствовать себя, будто нашёл сокровище.',
+        'footer.nav_heading': 'Навигация',
+        'footer.nav.about': 'О Гудаури',
+        'footer.nav.activities': 'Активности',
+        'footer.nav.new_gudauri': 'Нью Гудаури',
+        'footer.nav.accommodation': 'Жильё',
+        'footer.nav.testimonials': 'Отзывы',
+        'footer.contact_heading': 'Контакт',
+        'footer.wa': 'WhatsApp доступен',
+        'footer.nl_heading': 'Обновления и акции',
+        'footer.nl_text': 'Получайте обновления о лыжном сезоне, ограниченные акции и фотографии, которые заставят вас паковать чемодан.',
+        'footer.nl_placeholder': 'Ваш email',
+        'footer.nl_submit': 'Подписаться',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. Все права защищены.',
+        'footer.privacy': 'Политика конфиденциальности',
+        'footer.terms': 'Условия использования',
+        'footer.accessibility': 'Доступность'
+      },
+
+      ka: {
+        'nav.about': 'გუდაური',
+        'nav.activities': 'გართობა',
+        'nav.new_gudauri': 'ახალი გუდაური',
+        'nav.accommodation': 'საცხოვრებელი',
+        'nav.contact': 'კონტაქტი',
+        'nav.cta': 'დაჯავშნა',
+
+        'ng.hero.kicker': 'ახალი გუდაური · 2,200მ · კურორტის გული',
+        'ng.hero.title': 'ახალი გუდაური',
+        'ng.hero.accent': 'გული, რომელიც არასდროს ჩერდება',
+        'ng.hero.sub': 'ყველაფერი, რაც განსაზღვრავს შენს მოგზაურობას — აქ არის. არა ქალაქში, არა შორს. ზუსტად აქ.',
+
+        'ng.stat1.label': 'კაზინო მთელ ახალ გუდაურში',
+        'ng.stat2.label': 'შენობის ტიპი სხვადასხვა კეთილმოწყობით',
+        'ng.stat3.label': 'კარიდან მთავარ გონდოლამდე',
+        'ng.stat4.label': 'სასტუმრო — მხოლოდ კერძო ბინები',
+
+        'ng.gondola.label': 'მთავარი გონდოლა',
+        'ng.gondola.title': '60 წამი კარიდან<br/>მწვერვალამდე.',
+        'ng.gondola.body': 'ახალი გუდაური არ აშენდა გონდოლის სადგურის გვერდით შემთხვევით. ეს განზრახ იყო. კარიდან გამოდი, ერთ წუთში გონდოლაში ხარ — და კიდევ რამდენიმე წუთში სიმაღლეებზე ხარ, სადაც ევროპის უმეტესი ნაწილი ვერ მიაღწევს. სატრანსპორტო საშუალება არ გჭირდება. ავტობუსის ლოდინი არ გჭირდება. მხოლოდ მთა არის, და შენ მასზე.',
+        'ng.gondola.f1': '<strong>პირდაპირი წვდომა</strong> — შენობებიდან გონდოლამდე ფეხით',
+        'ng.gondola.f2': '<strong>სათხილამურო-შესვლა/გამოსვლა</strong> — ზოგიერთი შენობა ფერდობთანაა',
+        'ng.gondola.f3': '<strong>76 კმ ტრასები</strong> — ყველა ხელმისაწვდომია მთავარი გონდოლიდან',
+        'ng.gondola.badge': 'მთავარი გონდოლა · ახალი გუდაური',
+
+        'ng.casino.label': 'ერთადერთი კაზინო',
+        'ng.casino.title': 'მთელ ახალ გუდაურში —<br/><span class="electric">მხოლოდ ერთი კაზინო.</span>',
+        'ng.casino.body': 'ის არ არის სასტუმროს ქსელში — რადგან ახალ გუდაურში სასტუმრო საერთოდ არ არის. ის ერთ კონკრეტულ საცხოვრებელ კორპუსშია, და იქ ღამე არ მთავრდება მაშინ, როცა ფერდობები იხურება. სრული დღის შემდეგ, რომელმაც ყველა ადრენალინის წვეთი ამოწვა — აღგზნება განაგრძობს შენობის შიგნით, სიამტით, კოქტეილი ხელში.',
+        'ng.casino.f1': '<strong>ერთადერთი კაზინო</strong> მთელ ახალ გუდაურში',
+        'ng.casino.f2': '<strong>ბარი და რესტორანი</strong> — პირდაპირ შენობაში, სიცივეში გასვლის გარეშე',
+        'ng.casino.f3': '<strong>ღამის გართობა</strong>, რომელიც სათხილამურო დღეს სულ სხვანაირად ასრულებს',
+        'ng.casino.badge': 'ერთადერთი კაზინო · ახალი გუდაური',
+
+        'ng.apts.label': 'საცხოვრებელი ახალ გუდაურში',
+        'ng.apts.title': 'სასტუმრო არ არის. მხოლოდ ბინები.<br/><span class="electric">და ეს უპირატესობაა.</span>',
+        'ng.apts.sub': 'სასტუმროს ლობი რომ არ არის, ბიუროკრატიაც არ არის. ბინაა, რომელიც შენია. სამი ტიპის შენობა — თითოეულს თავისი ხასიათი აქვს. აირჩიე ის, რაც შენთვის მნიშვნელოვანია.',
+        'ng.apt1.title': 'შენობა სახურავიანი აუზით',
+        'ng.apt1.body': 'ცურვა და საუნა ერთ სახურავქვეშ — გარე სიცივის გარეშე. ფერდობზე გატარებული დღის შემდეგ სხეული ზუსტად ამას ითხოვს.',
+        'ng.apt1.tag': 'სახურავიანი აუზი · სპა',
+        'ng.apt2.title': 'შენობა კაზინოთი',
+        'ng.apt2.body': 'ახალ გუდაურის ერთადერთი შენობა კაზინოთი პირდაპირ შიგნით. ლიფტი კაზინოს სართულამდე ჩადის. და უკან შენს ბინამდე ადის.',
+        'ng.apt2.tag': 'კაზინო · ბარი · რესტორანი',
+        'ng.apt3.title': 'შენობა გათბობილი გარე აუზით',
+        'ng.apt3.body': 'ცხელ აუზში ჩაყვინთვა -10°-ზე გარეთ, კავკასიის მთების ხედით გარშემო. ეს არ არის გამოცდილება — ეს მთელი ცხოვრების მოგონებაა.',
+        'ng.apt3.tag': 'გათბობილი გარე აუზი',
+
+        'ng.village.label': 'სოფლის ცხოვრება',
+        'ng.village.title': 'ყველაფერი, რაც გჭირდება —<br/>შენობებს შორის.',
+        'ng.village.sub': 'ახალი გუდაური გარე არაფერზეა დამოკიდებული. ყველაფერი აქ არის, ფეხით, სადმე სვლის გარეშე.',
+        'ng.v1.title': 'Carrefour',
+        'ng.v1.body': 'Carrefour სუპერმარკეტი პირდაპირ სოფლის გულში — შენობებს შორის. ყველაფერი სუფრეს, ყველაფერი ხელმისაწვდომი, ყველაფერი კარიდან ორ ნაბიჯში.',
+        'ng.v2.title': 'საბარბიო',
+        'ng.v2.body': 'რადგან მთებშიც სთხრიან. პროფესიონალური საბარბიო შენობებს შორის — რადგან მოგზაურობის ყოველი დეტალი უნდა იყოს ისე, როგორც უნდა.',
+        'ng.v3.title': 'ბავშვის ძიძა',
+        'ng.v3.body': 'ძიძის სერვისი ახალ გუდაურში — რადგან მოგზაურობაში ყველა იმსახურებს საკუთარი გზით სიამოვნებას. სათხილამუროდ წადი შეუწუხებლად. ბავშვები კარგ ხელშია.',
+        'ng.v4.title': 'საუკეთესო რესტორნები',
+        'ng.v4.body': 'ყველაზე ნამდვილი და სერიოზული ქართული სამზარეულო მთელ კურორტზე — ახალ გუდაურში. ხინკალი, ხაჭაპური და ღვინო ვაზისგან, რომელიც სწორედ იქ გაიზარდა.',
+
+        'ng.ski.label': 'აღჭურვილობა და გართობა',
+        'ng.ski.title': 'საუკეთესო კურორტზე.<br/>შემთხვევა არ არის.',
+        'ng.ski.body': 'მთელ გუდაურში საუკეთესო მაღაზიები და სათხილამურო აღჭურვილობის გაქირავება ახალ გუდაურშია. საერთაშორისო ბრენდები, პროფესიული აღჭურვილობა და გუნდი, რომელიც ზუსტად იცის. და მათთვის, ვინც რუტინის გარდახვევას ეძებს — თოვლის ველოსიპედებიც არის. სრულიად განსხვავებული გამოცდილება, პირდაპირ სოფლიდან.',
+        'ng.ski.f1': '<strong>პროფესიონალური სათხილამურო აღჭურვილობის გაქირავება</strong> — კურორტზე საუკეთესო',
+        'ng.ski.f2': '<strong>თოვლის ველოსიპედები</strong> — უნიკალური ატრაქცია, სრულიად განსხვავებული გამოცდილება',
+        'ng.ski.f3': '<strong>სათხილამურო მაღაზიები</strong> — საერთაშორისო ბრენდები და თანამედროვე აღჭურვილობა',
+        'ng.ski.badge': 'პროფესიული აღჭურვილობა · თოვლის ველოსიპედები',
+
+        'ng.cta.label': 'მზად ხარ სათხილამუროდ?',
+        'ng.cta.title': 'იპოვეთ საცხოვრებელი ახალი გუდაურის გულში',
+        'ng.cta.sub': 'შეზღუდული ადგილები 25/26 სეზონისთვის. დაგვიკავშირდით ახლა ხელმისაწვდომობის შესამოწმებლად — საათების განმავლობაში.',
+        'ng.cta.whatsapp': 'WhatsApp',
+        'ng.cta.email': 'ელ-ფოსტა',
+
+        'footer.tagline': 'გუდაური მხოლოდ დანიშნულება არ არის. ეს ის გზაა, რომლითაც ისრაელელებმა აღმოაჩინეს, რომ შეიძლება სათხილამურო სეზონი ევროპული სტანდარტებით გქონდეს, ისრაელის ფასებში, და ისე გრძნობდე თავს, თითქოს განძი იპოვე.',
+        'footer.nav_heading': 'ნავიგაცია',
+        'footer.nav.about': 'გუდაური',
+        'footer.nav.activities': 'გართობა',
+        'footer.nav.new_gudauri': 'ახალი გუდაური',
+        'footer.nav.accommodation': 'საცხოვრებელი',
+        'footer.nav.testimonials': 'მიმოხილვები',
+        'footer.contact_heading': 'კონტაქტი',
+        'footer.wa': 'WhatsApp ხელმისაწვდომია',
+        'footer.nl_heading': 'განახლებები და შეთავაზებები',
+        'footer.nl_text': 'მიიღეთ განახლებები სათხილამურო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები, რომლებიც ჩემოდანის შეფუთვის სურვილს გაგიჩენენ.',
+        'footer.nl_placeholder': 'შენი ელ-ფოსტა',
+        'footer.nl_submit': 'გამოწერა',
+        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. ყველა უფლება დაცულია.',
+        'footer.privacy': 'კონფიდენციალურობის პოლიტიკა',
+        'footer.terms': 'გამოყენების პირობები',
+        'footer.accessibility': 'ხელმისაწვდომობა'
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = window.TRANSLATIONS[lang];
+      if (!t) return;
+
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Set direction and lang
+      const isRTL = (lang === 'he');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+      document.body.style.textAlign = isRTL ? 'right' : 'left';
+
+      // Apply textContent translations
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Apply innerHTML translations
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // Apply placeholder translations
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      // Persist
+      try { localStorage.setItem('gudauri-lang', lang); } catch(e) {}
+    }
+
+    // Init
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang');
+      let stored = 'he';
+      try { stored = localStorage.getItem('gudauri-lang') || 'he'; } catch(e) {}
+      const lang = (urlLang && window.TRANSLATIONS[urlLang]) ? urlLang : (window.TRANSLATIONS[stored] ? stored : 'he');
+      setLanguage(lang);
+    })();
+  </script>
+
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
 </body>
 </html>
