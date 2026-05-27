@@ -1,0 +1,3387 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="גודאורי — אתר הסקי הסודי של הישראלים. 75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. זול, פתוח, מרהיב." />
+  <title>GudauriSkiIL — זה גודאורי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-slate:     #1E293B;
+      --slate-900:      #0F172A;
+      --slate-800:      #1E293B;
+      --slate-700:      #334155;
+      --slate-600:      #475569;
+      --slate-400:      #94A3B8;
+      --slate-200:      #E2E8F0;
+      --electric:       #0EA5E9;
+      --electric-light: #38BDF8;
+      --electric-dark:  #0284C7;
+      --snow:           #F8FAFC;
+      --white:          #FFFFFF;
+      --glass-bg:       rgba(255,255,255,0.05);
+      --glass-border:   rgba(255,255,255,0.10);
+      --overlay:        rgba(15,23,42,0.65);
+      --nav-h:          72px;
+      --radius:         16px;
+      --transition:     200ms ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: var(--slate-900);
+      color: var(--snow);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ─── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .electric { color: var(--electric); }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════
+       1. STICKY NAV
+    ═══════════════════════════════════════ */
+    #nav {
+      position: fixed;
+      top: 0; inset-inline: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #nav.scrolled {
+      background: rgba(15,23,42,0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--glass-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-logo-text {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--snow);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-text span { color: var(--electric); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--slate-400);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--snow); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--electric);
+      color: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--electric-dark);
+      box-shadow: 0 4px 20px rgba(14,165,233,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--snow);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: 1.5px solid var(--glass-border);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      border-color: var(--electric);
+      background: rgba(14,165,233,0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--snow);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); inset-inline: 0;
+      background: rgba(15,23,42,0.97);
+      backdrop-filter: blur(16px);
+      padding: 24px;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid var(--glass-border);
+      z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--slate-200);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--glass-border);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover { color: var(--electric); }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-links + .btn-primary { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ═══════════════════════════════════════
+       2. HERO — PARALLAX
+    ═══════════════════════════════════════ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .parallax-scene {
+      position: absolute;
+      inset: 0;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      top: -30%; left: 0;
+      width: 100%; height: 160%;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    .layer-sky {
+      background-image: url('https://images.unsplash.com/photo-1577701122197-c9607038bd90?auto=format&fit=crop&w=1920&q=80');
+      z-index: 1;
+    }
+    .layer-peaks {
+      background-image: url('https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=1920&q=80');
+      z-index: 2;
+      opacity: 0.85;
+    }
+    .layer-ridge {
+      background-image: url('https://images.unsplash.com/photo-1590413814002-1a29258d5c79?auto=format&fit=crop&w=1920&q=80');
+      z-index: 3;
+      opacity: 0.90;
+    }
+    .layer-resort {
+      background-image: url('https://images.unsplash.com/photo-1699894068149-7a1f43e33a6b?auto=format&fit=crop&w=1920&q=80');
+      z-index: 4;
+      opacity: 0.80;
+    }
+    .parallax-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.3) 0%,
+        rgba(15,23,42,0.55) 60%,
+        rgba(15,23,42,0.80) 100%
+      );
+    }
+
+    /* Snow particles */
+    .snow-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      pointer-events: none;
+      z-index: 9;
+      animation: snowfall linear infinite;
+      top: -10px;
+    }
+    @keyframes snowfall {
+      0%   { transform: translateY(-10px) translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(105vh) translateX(20px); opacity: 0; }
+    }
+
+    /* Hero grain overlay */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 860px;
+      padding: 0 24px;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--electric);
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+    .hero-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--electric);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero-headline {
+      font-size: clamp(3.5rem, 11vw, 9rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-headline-accent {
+      background: linear-gradient(135deg, var(--electric) 0%, var(--electric-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub-headline {
+      font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+      font-weight: 500;
+      color: rgba(248,250,252,0.92);
+      max-width: 680px;
+      margin: 20px auto 12px;
+      line-height: 1.5;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.8vw, 1.125rem);
+      font-weight: 400;
+      color: rgba(248,250,252,0.65);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-ctas .btn-primary {
+      font-size: 1rem;
+      padding: 14px 30px;
+      border-radius: 10px;
+    }
+    .hero-ctas .btn-ghost {
+      font-size: 1rem;
+      padding: 14px 30px;
+      border-radius: 10px;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 0 0 0 rgba(37,211,102,0);
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      animation: wa-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+      60%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      animation: none;
+    }
+    .btn-whatsapp svg { flex-shrink: 0; }
+    .lang-btn img { display: block; border-radius: 2px; }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(248,250,252,0.45);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .scroll-mouse {
+      width: 24px; height: 38px;
+      border: 2px solid rgba(248,250,252,0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 6px;
+    }
+    .scroll-wheel {
+      width: 4px; height: 8px;
+      background: var(--electric);
+      border-radius: 2px;
+      animation: scroll-anim 2s ease-in-out infinite;
+    }
+    @keyframes scroll-anim {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(14px); opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════
+       3. STATS BAR
+    ═══════════════════════════════════════ */
+    #stats {
+      background: linear-gradient(90deg, var(--slate-900) 0%, #0C1930 50%, var(--slate-900) 100%);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      padding: 36px 20px;
+      text-align: center;
+      position: relative;
+      transition: background var(--transition);
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 20%; bottom: 20%;
+      left: 0;
+      width: 1px;
+      background: var(--glass-border);
+    }
+    .stat-item:hover { background: rgba(14,165,233,0.05); }
+
+    .stat-value {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 900;
+      color: var(--electric);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-suffix {
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      font-weight: 900;
+      color: var(--electric);
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--slate-400);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       4. WHY GUDAURI
+    ═══════════════════════════════════════ */
+    #why {
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1641591562985-f509c34fa235?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.07;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 900;
+      color: var(--snow);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--slate-400);
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.65;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 901px) {
+      .cards-grid .glass-card:nth-child(4) { grid-column: 1 / 2; }
+      .cards-grid .glass-card:nth-child(5) { grid-column: 2 / 3; }
+    }
+
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      cursor: default;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card-icon {
+      width: 52px; height: 52px;
+      background: rgba(14,165,233,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .card-icon svg { width: 26px; height: 26px; color: var(--electric); }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--snow);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .card-text {
+      font-size: 0.9375rem;
+      color: var(--slate-400);
+      line-height: 1.65;
+    }
+
+    .card-badge {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--electric);
+      background: rgba(14,165,233,0.1);
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+
+    @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
+
+    /* ─── FACTS STRIP ─── */
+    /* ── YouTube Live Card (in cards-grid) ── */
+    .glass-card-yt {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      min-height: 220px;
+      background: #050A12;
+      display: block;
+      text-decoration: none;
+    }
+    .glass-card-yt .yt-thumb {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      transition: opacity 0.35s ease;
+    }
+    .glass-card-yt:hover .yt-thumb { opacity: 0.75; }
+    .glass-card-yt .yt-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px;
+      background: linear-gradient(to top, rgba(5,10,18,0.85) 0%, rgba(5,10,18,0.25) 70%, transparent 100%);
+    }
+    .glass-card-yt:hover { border-color: rgba(255,0,0,0.4); }
+    .glass-card-yt .yt-play {
+      width: 60px; height: 60px;
+      background: #FF0000;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(255,0,0,0.35);
+    }
+    .glass-card-yt:hover .yt-play {
+      transform: scale(1.12);
+      box-shadow: 0 8px 32px rgba(255,0,0,0.55);
+    }
+    .glass-card-yt .yt-play svg { width: 28px; height: 28px; fill: white; }
+    .glass-card-yt .yt-cta-text {
+      font-size: 0.9375rem; font-weight: 700;
+      color: white; letter-spacing: 0.04em;
+      text-align: center;
+    }
+    .glass-card-yt .yt-live-dot {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 700;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .glass-card-yt .yt-live-dot::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: #FF0000;
+      border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.25; }
+    }
+
+    .facts-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--glass-border);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .fact-cell {
+      background: rgba(15,23,42,0.6);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .fact-cell:hover { background: rgba(14,165,233,0.07); }
+
+    .fact-cell-number {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: var(--electric);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+    }
+
+    .fact-cell-number sup {
+      font-size: 1.2rem;
+      font-weight: 700;
+      vertical-align: super;
+    }
+
+    .fact-cell-title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--snow);
+      margin-top: 4px;
+    }
+
+    .fact-cell-desc {
+      font-size: 0.8125rem;
+      color: var(--slate-400);
+      line-height: 1.5;
+    }
+
+    .orange-highlight { color: #fb923c; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .facts-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .facts-strip { grid-template-columns: 1fr; }
+    }
+
+    /* ─── COMPARISON SECTION ─── */
+    .compare-wrap {
+      margin-top: 56px;
+      position: relative;
+      z-index: 2;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      backdrop-filter: blur(8px);
+    }
+
+    .compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .compare-title {
+      font-size: 1.0625rem;
+      font-weight: 800;
+      color: var(--snow);
+    }
+
+    .compare-legend {
+      display: flex;
+      gap: 20px;
+      font-size: 0.8125rem;
+      color: var(--slate-400);
+      align-items: center;
+    }
+
+    .compare-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .compare-row {
+      margin-bottom: 22px;
+    }
+
+    .compare-row:last-child { margin-bottom: 0; }
+
+    .compare-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+    }
+
+    .compare-meta-label { color: var(--slate-400); }
+
+    .compare-meta-value {
+      color: var(--electric);
+      font-weight: 700;
+    }
+
+    .compare-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .compare-bar-wrap {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .compare-bar {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .compare-bar.gudauri {
+      background: linear-gradient(90deg, var(--electric-dark), var(--electric-light));
+    }
+
+    .compare-bar.alps {
+      background: linear-gradient(90deg, #c2410c, #fb923c);
+    }
+
+    /* ═══════════════════════════════════════
+       5. ACTIVITIES — TABS
+    ═══════════════════════════════════════ */
+    #activities {
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activities-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1610394295702-00b39272459d?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+    }
+
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tab-btn {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--slate-400);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 10px 28px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .tab-btn:hover {
+      color: var(--snow);
+      border-color: rgba(14,165,233,0.4);
+    }
+    .tab-btn.active {
+      background: var(--electric);
+      color: var(--white);
+      border-color: var(--electric);
+      box-shadow: 0 4px 16px rgba(14,165,233,0.35);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .activity-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .activity-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .activity-card:hover img { transform: scale(1.07); }
+
+    .activity-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(9,18,36,0.88) 0%, rgba(9,18,36,0.15) 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      transition: background var(--transition);
+    }
+    .activity-card:hover .activity-overlay {
+      background: linear-gradient(0deg, rgba(14,165,233,0.7) 0%, rgba(9,18,36,0.25) 55%);
+    }
+
+    .activity-tag {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--electric-light);
+      margin-bottom: 6px;
+    }
+    .activity-card:hover .activity-tag { color: rgba(255,255,255,0.85); }
+
+    .activity-name {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .activity-desc {
+      font-size: 0.8125rem;
+      color: rgba(248,250,252,0.7);
+      line-height: 1.5;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .activity-card:hover .activity-desc { max-height: 80px; }
+
+    @media (max-width: 768px) {
+      .activities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .activities-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       NEW GUDAURI SECTION
+    ═══════════════════════════════════════ */
+    .new-gudauri {
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
+    }
+
+    .ng-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+    }
+
+    .ng-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(9,18,36,0.95) 0%,
+        rgba(9,18,36,0.85) 50%,
+        rgba(9,18,36,0.75) 100%
+      );
+    }
+
+    .ng-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ng-inner > .section-label {
+      margin-bottom: 12px;
+    }
+
+    .ng-inner > h2 {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+    }
+
+    .ng-desc {
+      font-size: 1.0625rem;
+      color: rgba(248,250,252,0.75);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* NG Psychological CTA Card */
+    .ng-cta-card {
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(2,132,199,0.12) 100%);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 20px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .ng-cta-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(14,165,233,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ng-cta-card:hover {
+      border-color: rgba(14,165,233,0.5);
+      background: linear-gradient(135deg, rgba(14,165,233,0.12) 0%, rgba(2,132,199,0.18) 100%);
+      box-shadow: 0 20px 60px rgba(14,165,233,0.15);
+      transform: translateY(-3px);
+    }
+    .ng-cta-text {
+      position: relative;
+      z-index: 1;
+    }
+    .ng-cta-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 10px;
+    }
+    .ng-cta-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .ng-cta-sub {
+      font-size: 0.9rem;
+      color: rgba(248,250,252,0.6);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+    .ng-cta-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--electric);
+      color: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      padding: 14px 26px;
+      border-radius: 12px;
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .ng-cta-btn:hover {
+      background: var(--electric-dark);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.4);
+      transform: translateX(-4px);
+    }
+    @media (max-width: 768px) {
+      .ng-cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+      }
+      .ng-cta-btn { align-self: flex-start; }
+    }
+
+    /* Slider */
+    .ng-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/7;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 56px;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.6);
+    }
+
+    .ng-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .ng-slide.active { opacity: 1; }
+
+    .ng-slide-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 5;
+    }
+    .ng-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+    .ng-dot.active {
+      background: var(--electric);
+      transform: scale(1.3);
+    }
+
+    /* NG Cards */
+    .ng-attractions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .ng-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .ng-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.35);
+      background: rgba(14,165,233,0.08);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.5);
+    }
+
+    .ng-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .ng-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 800;
+      color: var(--snow);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .ng-card p {
+      font-size: 0.875rem;
+      color: var(--slate-400);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .ng-dist {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--electric);
+      background: rgba(14,165,233,0.1);
+      border-radius: 999px;
+      padding: 3px 10px;
+      display: inline-block;
+    }
+
+    @media (max-width: 900px) {
+      .ng-attractions { grid-template-columns: repeat(2, 1fr); }
+      .ng-slider { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 540px) {
+      .ng-attractions { grid-template-columns: 1fr; }
+      .ng-slider { aspect-ratio: 4/3; }
+    }
+
+    /* ═══════════════════════════════════════
+       6. THE EXPERIENCE — FULL WIDTH
+    ═══════════════════════════════════════ */
+    #experience {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+    }
+
+    .experience-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1590413055563-a7d82ab0ac9a?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .experience-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(9,18,36,0.93) 0%,
+        rgba(9,18,36,0.82) 45%,
+        rgba(9,18,36,0.40) 100%
+      );
+    }
+
+    .experience-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 96px 24px;
+    }
+
+    .experience-title {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+
+    .experience-body {
+      font-size: 1.0625rem;
+      color: rgba(248,250,252,0.8);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .experience-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: rgba(248,250,252,0.85);
+    }
+    .experience-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.4);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%230EA5E9'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       7. ACCOMMODATION CTA
+    ═══════════════════════════════════════ */
+    /* ─── ACCESS STRIP ─── */
+    #access-strip {
+      padding: 64px 0;
+      position: relative;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .access-cell {
+      padding: 40px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: var(--glass-bg);
+      border-inline-start: 1px solid var(--glass-border);
+      transition: background var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .access-cell:first-child { border-inline-start: none; }
+    .access-cell:hover { background: rgba(14,165,233,0.06); }
+
+    .access-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(14,165,233,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .access-icon svg { width: 22px; height: 22px; color: var(--electric); }
+
+    .access-text {}
+
+    .access-value {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--electric);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .access-label {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--snow);
+      margin-top: 6px;
+    }
+
+    .access-desc {
+      font-size: 0.8125rem;
+      color: var(--slate-400);
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .access-grid { grid-template-columns: 1fr; }
+      .access-cell { border-inline-start: none; border-top: 1px solid var(--glass-border); }
+      .access-cell:first-child { border-top: none; }
+    }
+
+    #accommodation {
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .accom-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1569498283068-140e58143192?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+    }
+
+    .accom-inner {
+      background: linear-gradient(135deg, rgba(14,165,233,0.12) 0%, rgba(56,189,248,0.06) 100%);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 24px;
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+
+    .accom-text .accom-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .accom-text .accom-sub {
+      font-size: 1rem;
+      color: var(--slate-400);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .accom-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .accom-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9375rem;
+      color: var(--slate-200);
+    }
+    .accom-feature svg { width: 18px; height: 18px; color: var(--electric); flex-shrink: 0; }
+
+    .accom-image {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .accom-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .accom-image:hover img { transform: scale(1.04); }
+
+    @media (max-width: 768px) {
+      .accom-inner {
+        grid-template-columns: 1fr;
+        padding: 36px 24px;
+      }
+      .accom-image { order: -1; }
+    }
+
+    /* ═══════════════════════════════════════
+       8. TESTIMONIALS
+    ═══════════════════════════════════════ */
+    #testimonials {
+      padding: 96px 0;
+      background: linear-gradient(180deg, #0C1523 0%, var(--slate-900) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .testimonial-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(14,165,233,0.25);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--electric);
+      opacity: 0.4;
+      font-family: Georgia, serif;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      color: var(--slate-200);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(14,165,233,0.3);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--snow);
+    }
+    .author-detail {
+      font-size: 0.8125rem;
+      color: var(--slate-400);
+      margin-top: 2px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars svg { width: 16px; height: 16px; color: #F59E0B; }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       9. FOOTER
+    ═══════════════════════════════════════ */
+    #footer {
+      background: var(--slate-900);
+      border-top: 1px solid var(--glass-border);
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer-brand .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-brand .footer-logo svg { width: 32px; height: 32px; }
+    .footer-brand .footer-logo-text {
+      font-size: 1.0625rem;
+      font-weight: 800;
+      color: var(--snow);
+    }
+    .footer-brand .footer-logo-text span { color: var(--electric); }
+
+    .footer-tagline {
+      font-size: 0.9375rem;
+      color: var(--slate-400);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 260px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .social-link {
+      width: 38px; height: 38px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .social-link:hover {
+      background: rgba(14,165,233,0.12);
+      border-color: rgba(14,165,233,0.35);
+    }
+    .social-link svg { width: 16px; height: 16px; color: var(--slate-400); transition: color var(--transition); }
+    .social-link:hover svg { color: var(--electric); }
+
+    .footer-heading {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate-400);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.9375rem;
+      color: var(--slate-400);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--snow); }
+
+    .footer-newsletter p {
+      font-size: 0.9375rem;
+      color: var(--slate-400);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+    .newsletter-input {
+      flex: 1;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--snow);
+      font-size: 0.875rem;
+      font-family: inherit;
+      direction: rtl;
+      transition: border-color var(--transition);
+      min-width: 0;
+    }
+    .newsletter-input::placeholder { color: var(--slate-600); }
+    .newsletter-input:focus {
+      outline: none;
+      border-color: rgba(14,165,233,0.5);
+    }
+    .newsletter-submit {
+      background: var(--electric);
+      color: var(--white);
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .newsletter-submit:hover { background: var(--electric-dark); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--slate-600);
+    }
+    .footer-copy a { color: var(--slate-400); transition: color var(--transition); }
+    .footer-copy a:hover { color: var(--electric); }
+
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      font-size: 0.8125rem;
+      color: var(--slate-600);
+      transition: color var(--transition);
+    }
+    .footer-legal a:hover { color: var(--slate-400); }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-wheel { animation: none; }
+      .hero-kicker::before { animation: none; }
+      .snow-particle { animation: none; display: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+
+    /* ─── FOCUS STATES ─── */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--electric);
+      outline-offset: 3px;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .nav-end {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid transparent;
+      border-radius: 6px;
+      padding: 4px 6px;
+      cursor: pointer;
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+      display: flex;
+      align-items: center;
+      font-family: inherit;
+    }
+    .lang-btn:hover {
+      border-color: var(--glass-border);
+      background: var(--glass-bg);
+      transform: translateY(-1px);
+    }
+    .lang-btn.lang-active {
+      border-color: var(--electric);
+      background: rgba(14,165,233,0.15);
+    }
+    .nav-mobile .lang-switcher {
+      padding-top: 8px;
+      gap: 8px;
+      justify-content: center;
+    }
+    .nav-mobile .lang-btn {
+      font-size: 1.5rem;
+      padding: 8px 10px;
+    }
+
+    /* ═══════════════════════════════════════
+       MOBILE RESPONSIVE — COMPREHENSIVE FIXES
+    ═══════════════════════════════════════ */
+
+    /* Hero: use svh where supported to avoid address-bar overflow */
+    @supports (height: 100svh) {
+      #hero { height: 100svh; }
+    }
+
+    /* Sections: reduce padding on mobile */
+    @media (max-width: 768px) {
+      #why, #activities, #accommodation, #testimonials {
+        padding: 64px 0;
+      }
+      .new-gudauri { padding: 72px 0; }
+      #access-strip { padding: 48px 0; }
+      #footer { padding: 48px 0 24px; }
+    }
+
+    @media (max-width: 480px) {
+      #why, #activities, #accommodation, #testimonials {
+        padding: 48px 0;
+      }
+      .new-gudauri { padding: 56px 0; }
+    }
+
+    /* Hero content: reduce padding-top on small screens */
+    @media (max-width: 640px) {
+      .hero-content {
+        padding-top: calc(var(--nav-h) + 12px);
+        padding-inline: 16px;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-ghost,
+      .hero-ctas .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Nav: ensure burger touch target is large enough */
+    @media (max-width: 900px) {
+      .nav-burger {
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
+        justify-content: center;
+        align-items: center;
+      }
+      /* Ensure lang-switcher doesn't overflow in nav */
+      .lang-switcher { gap: 1px; }
+      .lang-btn { padding: 3px 4px; }
+    }
+
+    /* Compare wrap: fix padding overflow on mobile */
+    @media (max-width: 640px) {
+      .compare-wrap { padding: 24px 16px; }
+      .compare-legend { flex-wrap: wrap; gap: 8px; }
+      .compare-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Facts strip: ensure min-height cells don't overflow */
+    @media (max-width: 540px) {
+      .fact-cell { padding: 24px 16px; }
+      .fact-cell-number { font-size: 2.25rem; }
+    }
+
+    /* Section headers on mobile */
+    @media (max-width: 480px) {
+      .section-sub { font-size: 0.9375rem; }
+      .section-header { margin-bottom: 40px; }
+    }
+
+    /* Experience section: full width text on mobile */
+    @media (max-width: 768px) {
+      .experience-content {
+        padding: 64px 16px;
+        max-width: 100%;
+      }
+      #experience { min-height: auto; }
+      .experience-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(9,18,36,0.75) 0%,
+          rgba(9,18,36,0.85) 100%
+        );
+      }
+    }
+
+    /* NG slider: reduce height on very small screens */
+    @media (max-width: 380px) {
+      .ng-slider { aspect-ratio: 1/1; }
+    }
+
+    /* Footer newsletter form: stack on very small screens */
+    @media (max-width: 400px) {
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { min-width: 0; }
+    }
+
+    /* Accommodation: ensure accom-inner doesn't overflow */
+    @media (max-width: 480px) {
+      .accom-inner { padding: 28px 16px; }
+    }
+
+    /* Testimonials: add padding for readability */
+    @media (max-width: 480px) {
+      .testimonial-card { padding: 24px 20px; }
+    }
+
+    /* Container padding on very small screens */
+    @media (max-width: 360px) {
+      .container { padding-inline: 12px; }
+    }
+
+    /* Touch targets: ensure all interactive elements are at least 44px */
+    @media (max-width: 900px) {
+      .nav-mobile a {
+        padding: 12px 0;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .tab-btn {
+        min-height: 44px;
+        padding: 10px 20px;
+      }
+    }
+
+    /* Reduce hero headline on very small screens */
+    @media (max-width: 360px) {
+      .hero-headline { font-size: clamp(2.5rem, 14vw, 4rem); }
+    }
+
+    /* Nav links overflow prevention */
+    @media (max-width: 900px) {
+      .nav-end { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       1. STICKY NAV
+  ═══════════════════════════════════════ -->
+  <nav id="nav" role="navigation" aria-label="ניווט ראשי">
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- Logo -->
+        <a href="#" class="nav-logo" aria-label="GudauriSkiIL - דף הבית">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+          </svg>
+          <span class="nav-logo-text">Gudauri<span>Ski</span>IL</span>
+        </a>
+
+        <!-- Nav end group -->
+        <div class="nav-end">
+
+          <!-- Desktop links -->
+          <ul class="nav-links" role="list">
+            <li><a href="#why" data-i18n="nav.about">על גודאורי</a></li>
+            <li><a href="#activities" data-i18n="nav.activities">פעילויות</a></li>
+            <li><a href="#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
+            <li><a href="#footer" data-i18n="nav.contact">צרו קשר</a></li>
+          </ul>
+
+          <!-- Desktop CTA -->
+          <a href="lina.html" data-internal="lina.html" class="btn-primary nav-links" aria-label="תכנן את הטיול">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span data-i18n="nav.cta">תכנן את הטיול</span>
+          </a>
+
+          <!-- Language switcher -->
+          <div class="lang-switcher" role="group" aria-label="Language / שפה">
+            <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+            <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+          </div>
+
+          <!-- Mobile burger -->
+          <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
+            <span></span><span></span><span></span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
+    <a href="#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
+    <a href="#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
+    <a href="#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="lina.html" data-internal="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">תכנן את הטיול</span></a>
+    <div class="lang-switcher" role="group" aria-label="Language / שפה">
+      <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
+      <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
+      <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       2. HERO — PARALLAX
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-labelledby="hero-headline">
+    <div class="parallax-scene" aria-hidden="true">
+      <div class="parallax-layer layer-sky"    data-speed="0.08"></div>
+      <div class="parallax-layer layer-peaks"  data-speed="0.22"></div>
+      <div class="parallax-layer layer-ridge"  data-speed="0.40"></div>
+      <div class="parallax-layer layer-resort" data-speed="0.58"></div>
+      <div class="parallax-overlay"></div>
+    </div>
+    <div class="hero-grain" aria-hidden="true"></div>
+
+    <div class="hero-content container">
+      <div class="hero-kicker" data-i18n="hero.kicker">הר שמשנה תפיסות</div>
+      <h1 class="hero-headline" id="hero-headline">
+        <span data-i18n="hero.headline_1">3,200+ מטר</span><br/>
+        <span class="hero-headline-accent" data-i18n="hero.headline_accent">שלך</span>
+      </h1>
+      <p class="hero-sub-headline" data-i18n="hero.sub_headline">
+        הישראלים שגילו את גודאורי לא מספרים. עכשיו אתה יודע.
+      </p>
+      <p class="hero-sub" data-i18n="hero.sub">
+        75+ ק״מ מסלולים. 300 ימי שמש. בלי תור. בלי הגזמה אירופאית.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/9721234567" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="שלח הודעת וואטסאפ">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.733-.524-5.282-1.435l-.378-.225-3.922 1.037 1.05-3.83-.247-.395A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-i18n="hero.contact_cta">וואטסאפ</span>
+        </a>
+        <a href="#accommodation" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-i18n="hero.plan_cta">תכנן את הטיול</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span data-i18n="hero.scroll">גלול למטה</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       3. STATS BAR
+  ═══════════════════════════════════════ -->
+  <section id="stats" aria-label="נתוני גודאורי">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="stat-item reveal">
+          <span class="stat-value" data-target="75" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="stats.km_label">ק״מ מסלולי סקי</span>
+        </div>
+
+        <div class="stat-item reveal" style="transition-delay:0.1s">
+          <span class="stat-value">3,276</span>
+          <span class="stat-label" data-i18n="stats.altitude_label">מטר גובה מקסימלי</span>
+        </div>
+
+        <div class="stat-item reveal" style="transition-delay:0.2s">
+          <span class="stat-value" data-target="300">0</span>
+          <span class="stat-label" data-i18n="stats.sun_label">ימי שמש בשנה</span>
+        </div>
+
+        <div class="stat-item reveal" style="transition-delay:0.3s">
+          <span class="stat-value" data-target="15">0</span>
+          <span class="stat-label" data-i18n="stats.lifts_label">מתקני רכבל מודרניים</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       4. WHY GUDAURI
+  ═══════════════════════════════════════ -->
+  <section id="why" aria-labelledby="why-title">
+    <div class="why-bg" aria-hidden="true"></div>
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="why.label">למה גודאורי</span>
+        <h2 class="section-title" id="why-title" data-i18n-html="why.title">
+          כל מה שאתה מחפש<br/>
+          <span class="electric">כבר שם</span>
+        </h2>
+        <p class="section-sub" data-i18n="why.sub">שלושה דברים שהופכים את גודאורי לאחד מיעדי הסקי הטובים בעולם — ועדיין הסוד הכי פחות שמור.</p>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="glass-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9.5a3 3 0 00-3-1.5 3 3 0 000 6 3 3 0 010 6 3 3 0 01-3-1.5M12 6v1M12 17v1"/></svg>
+          </div>
+          <h3 class="card-title" data-i18n="card1.title">זול משמעותית מאירופה</h3>
+          <p class="card-text" data-i18n="card1.text">
+            יום סקי מלא בגודאורי — כולל כרטיס לרכבלים, ארוחות וצ'ופר מלון — עולה פחות ממחצית מה שתשלם בזרמט, ורבייה, או קיצבילה.
+            הכסף שחסכת? תוציא אותו על קצת יותר ימים בהרים.
+          </p>
+          <span class="card-badge" data-i18n="card1.badge">עד 60% זול מאירופה</span>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.12s">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </div>
+          <h3 class="card-title" data-i18n="card2.title">שמש ומסלולים פנויים</h3>
+          <p class="card-text" data-i18n="card2.text">
+            300 ימי שמש בשנה — יותר מאלפס האוסטריים, יותר מהדולומיטים. אין עמוסים. אין תורים. בגודאורי אתה רוכב, לא מחכה.
+            כן, גם בסוף השבוע.
+          </p>
+          <span class="card-badge" data-i18n="card2.badge">300+ ימי שמש</span>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.24s">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l4-4 4 4"/><path d="M12 2v10.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 18h6"/></svg>
+          </div>
+          <h3 class="card-title" data-i18n="card3.title">רכבלים אוסטריים מהמשוכללים</h3>
+          <p class="card-text" data-i18n="card3.text">
+            18 מתקני רכבל של Doppelmayr האוסטרית — המותג שמצייד את סנובורד-ורלד בריי, ז׳ינווה ולס. תשתית הרי-קלאס בלב קווקז.
+          </p>
+          <span class="card-badge" data-i18n="card3.badge">Doppelmayr Austria</span>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.36s">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/><path d="M2 12h4M18 12h4M12 18v4M12 2v4"/></svg>
+          </div>
+          <h3 class="card-title" data-i18n="card4.title">שלג יבש ועמוק</h3>
+          <p class="card-text" data-i18n="card4.text">
+            אקלים יבשתי אירו-אסייתי שמייצר פאודר קל ויבש — לא שלג אירופי כבד ולח. עומק שלג ממוצע בעונה: 1–2 מטר. בגודאורי לא "מחפשים" שלג, הוא פשוט שם.
+          </p>
+          <span class="card-badge" data-i18n="card4.badge">1–2 מטר שלג ממוצע</span>
+        </div>
+
+        <a
+          href="https://www.youtube.com/watch?v=muLuTWjOZqs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="glass-card glass-card-yt reveal"
+          style="transition-delay:0.48s"
+          aria-label="צפייה בשידור החי של New Gudauri ביוטיוב">
+          <img
+            class="yt-thumb"
+            src="https://img.youtube.com/vi/muLuTWjOZqs/hqdefault.jpg"
+            alt="New Gudauri Live — תמונת ממוזערת"
+            loading="lazy"
+          />
+          <div class="yt-content">
+            <div class="yt-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="yt-cta-text" data-i18n="yt.cta">צפו בשידור חי</div>
+            <div class="yt-live-dot" aria-hidden="true">New Gudauri Live</div>
+          </div>
+        </a>
+
+        <div class="glass-card reveal" style="transition-delay:0.6s">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </div>
+          <h3 class="card-title" data-i18n="card5.title">מסלולים לכל הרמות</h3>
+          <p class="card-text" data-i18n="card5.text">
+            20 מסלולים מסומנים: 30% כחול (מתחילים), 40% אדום (בינוני), 30% שחור (מתקדם). בנוסף — סקי לילה בשישי ושבת 20:00–22:00. אין אתר שמציע את הכל כך.
+          </p>
+          <span class="card-badge" data-i18n="card5.badge">סקי לילה ש׳–ש׳</span>
+        </div>
+
+      </div><!-- /cards-grid -->
+
+      <!-- FACTS STRIP -->
+      <div class="facts-strip reveal" style="transition-delay:0.3s" aria-label="עובדות מפתח על גודאורי">
+
+        <div class="fact-cell">
+          <span class="fact-cell-number">2.5<sup>שע׳</sup></span>
+          <span class="fact-cell-title" data-i18n="fact1.title">טיסה מישראל</span>
+          <span class="fact-cell-desc" data-i18n="fact1.desc">פחות זמן מטיסה לציריך. אין טרנזיט, אין ויזה, אין כאב ראש.</span>
+        </div>
+
+        <div class="fact-cell">
+          <span class="fact-cell-number">5<sup>חודשים</sup></span>
+          <span class="fact-cell-title" data-i18n="fact2.title">עונת סקי</span>
+          <span class="fact-cell-desc" data-i18n="fact2.desc">אמצע-סוף דצמבר עד אמצע-סוף אפריל. שעות פעילות 10:00–17:00, ♟ סקי לילה שישי ושבת 20:00–22:00.</span>
+        </div>
+
+        <div class="fact-cell">
+          <span class="fact-cell-number" style="font-size:3rem">∞</span>
+          <span class="fact-cell-title" data-i18n="fact3.title">אוף-פיסט ללא גבולות</span>
+          <span class="fact-cell-desc" data-i18n="fact3.desc">שטחים לא מסומנים בלי גדרות — שלג בתולי לכל כיוון שתבחר.</span>
+        </div>
+
+        <div class="fact-cell">
+          <span class="fact-cell-number">0<sup>ויזה</sup></span>
+          <span class="fact-cell-title" data-i18n="fact4.title">כניסה ללא ויזה</span>
+          <span class="fact-cell-desc" data-i18n="fact4.desc">גאורגיה פתוחה לישראלים. נוסעים עם דרכון בלבד, ללא בירוקרטיה.</span>
+        </div>
+
+      </div>
+
+      <!-- COMPARISON -->
+      <div class="compare-wrap reveal" style="transition-delay:0.45s" aria-label="השוואה בין גודאורי לאלפס">
+
+        <div class="compare-header">
+          <span class="compare-title" data-i18n="compare.title">גודאורי מול האלפס — למה זה לא משחק הוגן</span>
+          <div class="compare-legend">
+            <div class="compare-legend-item">
+              <span class="legend-dot" style="background:var(--electric)"></span><span data-i18n="compare.gudauri">גודאורי</span>
+            </div>
+            <div class="compare-legend-item">
+              <span class="legend-dot" style="background:#fb923c"></span><span data-i18n="compare.alps">ממוצע אלפס</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-meta">
+            <span class="compare-meta-label" data-i18n="compare.row1.label">עלות יום סקי מלא (כולל הכל)</span>
+            <span class="compare-meta-value" data-i18n-html="compare.row1.value">250 <span class="orange-highlight">vs 800</span></span>
+          </div>
+          <div class="compare-bars">
+            <div class="compare-bar-wrap"><div class="compare-bar gudauri" data-cw="31"></div></div>
+            <div class="compare-bar-wrap"><div class="compare-bar alps" data-cw="100"></div></div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-meta">
+            <span class="compare-meta-label" data-i18n="compare.row2.label">ימי שמש בשנה</span>
+            <span class="compare-meta-value" data-i18n-html="compare.row2.value">300 <span class="orange-highlight">vs 180</span></span>
+          </div>
+          <div class="compare-bars">
+            <div class="compare-bar-wrap"><div class="compare-bar gudauri" data-cw="100"></div></div>
+            <div class="compare-bar-wrap"><div class="compare-bar alps" data-cw="60"></div></div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-meta">
+            <span class="compare-meta-label" data-i18n="compare.row3.label">עומס על המסלולים בסוף שבוע</span>
+            <span class="compare-meta-value" data-i18n-html="compare.row3.value">כמעט ריק <span class="orange-highlight">vs צפוף מאוד</span></span>
+          </div>
+          <div class="compare-bars">
+            <div class="compare-bar-wrap"><div class="compare-bar gudauri" data-cw="12"></div></div>
+            <div class="compare-bar-wrap"><div class="compare-bar alps" data-cw="92"></div></div>
+          </div>
+        </div>
+
+        <div class="compare-row">
+          <div class="compare-meta">
+            <span class="compare-meta-label" data-i18n="compare.row4.label">זמן טיסה מישראל</span>
+            <span class="compare-meta-value" data-i18n-html="compare.row4.value">2.5 שעות <span class="orange-highlight">vs 4–6 שעות</span></span>
+          </div>
+          <div class="compare-bars">
+            <div class="compare-bar-wrap"><div class="compare-bar gudauri" data-cw="42"></div></div>
+            <div class="compare-bar-wrap"><div class="compare-bar alps" data-cw="100"></div></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       5. ACTIVITIES — TABS
+  ═══════════════════════════════════════ -->
+  <section id="activities" aria-labelledby="activities-title">
+    <div class="activities-bg" aria-hidden="true"></div>
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="activities.label">פעילויות</span>
+        <h2 class="section-title" id="activities-title" data-i18n-html="activities.title">
+          ההרים לא<br/>
+          <span class="electric">רק לסקי</span>
+        </h2>
+        <p class="section-sub" data-i18n="activities.sub">גודאורי היא מגרש משחקים שפועל כל השנה. בחורף ובאביב — תמיד יש מה לעשות.</p>
+      </div>
+
+      <div class="tabs-bar reveal" role="tablist" aria-label="עונות פעילות">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-winter" id="btn-winter" onclick="switchTab('winter')" data-i18n="tab.winter">חורף — דצמבר עד אפריל</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-spring" id="btn-spring" onclick="switchTab('spring')" data-i18n="tab.spring">אביב — אפריל עד דצמבר</button>
+      </div>
+
+      <!-- Winter panel -->
+      <div class="tab-panel active" id="tab-winter" role="tabpanel" aria-labelledby="btn-winter">
+        <div class="activities-grid">
+
+          <div class="activity-card reveal">
+            <img src="https://images.unsplash.com/photo-1590413814002-1a29258d5c79?auto=format&fit=crop&w=600&q=80" alt="סקי אלפיני בגודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag" data-i18n="act.ski.tag">אלפיני</span>
+              <h3 class="activity-name" data-i18n="act.ski.name">סקי אלפיני</h3>
+              <p class="activity-desc" data-i18n="act.ski.desc">75+ ק״מ מסלולים, שלג יבש, וקצב שלא תמצא בשום מקום אחר.</p>
+            </div>
+          </div>
+
+          <div class="activity-card reveal" style="transition-delay:0.08s">
+            <img src="https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=600&q=80" alt="הליסקי בגבהי גודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag">Heli-Ski</span>
+              <h3 class="activity-name" data-i18n="act.heli.name">הליסקי</h3>
+              <p class="activity-desc" data-i18n="act.heli.desc">מסוק מוריד אותך על שלג בתולי בגבהים של 4,000+ מטר. זה לא עוד סקי.</p>
+            </div>
+          </div>
+
+          <div class="activity-card reveal" style="transition-delay:0.16s">
+            <img src="https://images.unsplash.com/photo-1577701122197-c9607038bd90?auto=format&fit=crop&w=600&q=80" alt="סנובורד בגודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag" data-i18n="act.snow.tag">סנובורד</span>
+              <h3 class="activity-name" data-i18n="act.snow.name">סנובורד</h3>
+              <p class="activity-desc" data-i18n="act.snow.desc">פארק, קווארטרפייפ, ופאודר ראן שישנה לך את הגישה לחורף.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Spring panel -->
+      <div class="tab-panel" id="tab-spring" role="tabpanel" aria-labelledby="btn-spring">
+        <div class="activities-grid">
+
+          <div class="activity-card reveal">
+            <img src="https://storage.georgia.travel/images/paraglaiding-in-gudauri-panorama.webp" alt="פאראגליידינג מעל גודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag" data-i18n="act.para.tag">Paragliding</span>
+              <h3 class="activity-name" data-i18n="act.para.name">פאראגליידינג</h3>
+              <p class="activity-desc" data-i18n="act.para.desc">ריחוף מעל עמקי קווקז עם תרמלים חזקים ונוף שלא ישכח.</p>
+            </div>
+          </div>
+
+          <div class="activity-card reveal" style="transition-delay:0.08s">
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" alt="הייקינג ואופני שטח בהרי גודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag" data-i18n="act.speed.tag">Hiking</span>
+              <h3 class="activity-name" data-i18n="act.speed.name">הייקינג</h3>
+              <p class="activity-desc" data-i18n="act.speed.desc">טיולי הרים רגליים לאורך שבילי קווקז, ואופני שטח על מסלולים מרהיבים בין הפסגות.</p>
+            </div>
+          </div>
+
+          <div class="activity-card reveal" style="transition-delay:0.16s">
+            <img src="images/gudauri-ski-village.jpg" alt="כפר הסקי גודאורי" loading="lazy" />
+            <div class="activity-overlay">
+              <span class="activity-tag" data-i18n="act.tbilisi.tag">קומבו מושלם</span>
+              <h3 class="activity-name" data-i18n="act.tbilisi.name">טביליסי + הרים</h3>
+              <p class="activity-desc" data-i18n="act.tbilisi.desc">120 ק״מ מהעיר — בוקר בסלאלום, ערב בבר של האולד טאון. כי למה לבחור?</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       NEW GUDAURI SECTION
+  ═══════════════════════════════════════ -->
+  <section class="new-gudauri" id="new-gudauri" aria-labelledby="ng-title">
+    <div class="ng-bg" role="img" aria-label="ניו גודאורי — כפר האתר המודרני"></div>
+    <div class="ng-overlay" aria-hidden="true"></div>
+    <div class="container ng-inner">
+      <span class="section-label reveal" data-i18n="ng.label">2200 מטר מעל פני הים</span>
+      <h2 id="ng-title" class="reveal" data-i18n-html="ng.title">ניו גודאורי<br><span class="electric">הלב הפועם של האתר</span></h2>
+      <p class="ng-desc reveal" data-i18n="ng.desc">כפר האתר המודרני, נבנה מחדש 2020+, מחובר לגבעות הגבוהות בגונדולה. כאן מתחיל ומסתיים כל יום מושלם בהר.</p>
+
+      <!-- Psychological CTA Card -->
+      <a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" class="ng-cta-card reveal" aria-label="לדף המלא על ניו גודאורי">
+        <div class="ng-cta-text">
+          <span class="ng-cta-label" data-i18n="ng.cta.label">מה שכל מי שמגיע לגודאורי חייב לדעת</span>
+          <h3 class="ng-cta-title" data-i18n="ng.cta.title">ניו גודאורי — לא רק מקום לישון</h3>
+          <p class="ng-cta-sub" data-i18n="ng.cta.sub">קזינו, בריכות, מסעדות, השכרת ציוד מקצועית, ובייביסיטר לילדים. כל הסיבות שבגללן הכל מתחיל ומסתיים כאן.</p>
+        </div>
+        <span class="ng-cta-btn" aria-hidden="true" data-i18n="ng.cta.btn">גלה את כל הסוד ←</span>
+      </a>
+
+      <!-- Attraction Cards -->
+      <div class="ng-attractions">
+
+        <div class="ng-card reveal">
+          <div class="ng-icon" aria-hidden="true">🏔️</div>
+          <h3>Gudauri Restaurants</h3>
+          <p data-i18n="ng.hut.desc">בר ומסעדה על גבעת הסקי, 2,200 מ׳. אוכל גאורגי מסורתי, חוויה ייחודית אחרי יום על המדרונות.</p>
+          <span class="ng-dist" data-i18n="ng.hut.dist">ישירות על המדרון</span>
+        </div>
+
+        <div class="ng-card reveal" style="transition-delay:0.08s">
+          <div class="ng-icon" aria-hidden="true">🎉</div>
+          <h3>Après Ski</h3>
+          <p data-i18n="ng.club.desc">אחרי-סקי ובידור לילי. מוזיקה חיה, cocktails, האווירה הכי חמה בהר הכי קר בקווקז.</p>
+          <span class="ng-dist" data-i18n="ng.club.dist">חמישים מטר מהגונדולה</span>
+        </div>
+
+        <div class="ng-card reveal" style="transition-delay:0.16s">
+          <div class="ng-icon" aria-hidden="true">🌄</div>
+          <h3>New Gudauri Terrace</h3>
+          <p data-i18n="ng.panorama.desc">מרפסת תצפית 270° על כל רכס הקווקז. שקיעות שלא תשכח, נוף שלא קיים באירופה.</p>
+          <span class="ng-dist" data-i18n="ng.panorama.dist">בלב ניו גודאורי</span>
+        </div>
+
+        <div class="ng-card reveal" style="transition-delay:0.24s">
+          <div class="ng-icon" aria-hidden="true">🚁</div>
+          <h3>Adventure Center</h3>
+          <p data-i18n="ng.adventure.desc">בסיס ההרפתקאות: הלי-סקי, סנומוביל, פרגליידינג. כל אדרנלין שחלמת — מכאן.</p>
+          <span class="ng-dist" data-i18n="ng.adventure.dist">5 דקות מהגונדולה</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       6. THE EXPERIENCE
+  ═══════════════════════════════════════ -->
+  <section id="experience" aria-labelledby="experience-title">
+    <div class="experience-bg" role="img" aria-label="נוף ערב בגודאורי עם הרים מושלגים"></div>
+    <div class="experience-overlay" aria-hidden="true"></div>
+    <div class="container">
+      <div class="experience-content">
+        <span class="section-label" data-i18n="exp.label">החוויה</span>
+        <h2 class="experience-title" id="experience-title" data-i18n-html="exp.title">
+          גודאורי היא<br/>לא יעד.<br/>
+          <span class="electric">היא קצב.</span>
+        </h2>
+        <p class="experience-body" data-i18n="exp.body">
+          יש אתרי סקי שאתה מבקר בהם. ויש אתרים שחולים עליך.
+          גודאורי שייכת לקטגוריה השנייה. הרים שמגיעים עד 3,200+ מטר,
+          אוויר שחותך את הגרון בדיוק כמו שצריך, ושמש חורפית שמחזירה לך
+          את האנרגיה אחרי כל ירידה. לא תשאל את עצמך בשביל מה הגעת —
+          תשאל את עצמך למה לא הגעת קודם.
+        </p>
+        <ul class="experience-list" aria-label="יתרונות גודאורי">
+          <li data-i18n="exp.li1">עונה ארוכה: דצמבר עד אפריל — חמישה חודשים של שלג</li>
+          <li data-i18n="exp.li2">120 ק״מ בלבד מטביליסי — הרים + עיר בטיול אחד</li>
+          <li data-i18n="exp.li3">קהילת ישראלים גדלה — כבר לא סוד שמור</li>
+          <li data-i18n="exp.li4">מחירים שמאפשרים שבוע שלם במחיר סוף שבוע באלפס</li>
+        </ul>
+        <a href="#accommodation" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-i18n="exp.cta">תכנן את החופשה שלך</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       6.5 ACCESS & HISTORY STRIP
+  ═══════════════════════════════════════ -->
+  <section id="access-strip" aria-label="נגישות והיסטוריה">
+    <div class="container">
+      <div class="access-grid reveal">
+
+        <div class="access-cell">
+          <div class="access-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="access-text">
+            <div class="access-value" data-i18n="access.year.value">1988</div>
+            <div class="access-label" data-i18n="access.year.label">שנת הקמה</div>
+            <div class="access-desc" data-i18n="access.year.desc">גודאורי הוא אתר הסקי הוותיק ביותר בגאורגיה — ומאז הפך לגדול ומודרני שבהם. תשתית שנבנתה לאורך שנות דור.</div>
+          </div>
+        </div>
+
+        <div class="access-cell">
+          <div class="access-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="access-text">
+            <div class="access-value" data-i18n="access.dist.value">150 ק"מ</div>
+            <div class="access-label" data-i18n="access.dist.label">מטביליסי</div>
+            <div class="access-desc" data-i18n="access.dist.desc">~2 שעות נסיעה מנמל התעופה של טביליסי. תוצאה: יום-יומיים בעיר, ואז ישר להרים. שני מיעדים במחיר אחד.</div>
+          </div>
+        </div>
+
+        <div class="access-cell">
+          <div class="access-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <div class="access-text">
+            <div class="access-value" data-i18n="access.rank.value">#1</div>
+            <div class="access-label" data-i18n="access.rank.label">הגדול בגאורגיה</div>
+            <div class="access-desc" data-i18n="access.rank.desc">הגדול, המודרני, והמפותח ביותר בגאורגיה — תשתית שתומכת בסקי freestyle, אוף-פיסט וסקי לילה תחת תאורה מלאה.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       7. ACCOMMODATION CTA
+  ═══════════════════════════════════════ -->
+  <section id="accommodation" aria-labelledby="accom-title">
+    <div class="accom-bg-img" aria-hidden="true"></div>
+    <div class="container">
+      <div class="accom-inner reveal">
+
+        <div class="accom-text">
+          <span class="section-label" data-i18n="accom.label">לינה ותכנון</span>
+          <h2 class="accom-title" id="accom-title" data-i18n-html="accom.title">
+            תכנן את<br/>
+            <span class="electric">החופשה שלך</span>
+          </h2>
+          <p class="accom-sub" data-i18n="accom.sub">
+            בין אם זה טיול זוגי, חבורת חברים, או משפחה בפעם הראשונה —
+            נסדר לך הכל: טיסות, לינה ליד המסלולים, ציוד השכרה, ומדריך שמדבר עברית.
+          </p>
+          <ul class="accom-features" aria-label="מה כולל החבילה">
+            <li class="accom-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="accom.f1">מלון 50 מטר מהמסלולים</span>
+            </li>
+            <li class="accom-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span data-i18n="accom.f2">ליווי דובר עברית</span>
+            </li>
+            <li class="accom-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              <span data-i18n="accom.f3">הזמנת כרטיסי טיסה</span>
+            </li>
+            <li class="accom-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8zM5.5 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM19.5 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+              <span data-i18n="accom.f4">העברות מטביליסי</span>
+            </li>
+          </ul>
+          <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="lina.html" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span data-i18n="accom.cta1">הזמן עכשיו</span>
+            </a>
+            <a href="https://wa.me/9721234567" class="btn-ghost" style="background:#ffffff; color:#128c3f; border-color:#ffffff;" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#128c3f" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span data-i18n="accom.cta2">וואטסאפ</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="accom-image">
+          <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/5c/bf/39/gudauri-ski-resort-is.jpg" alt="אתר הסקי גודאורי" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       8. TESTIMONIALS
+  ═══════════════════════════════════════ -->
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="test.label">מה אומרים</span>
+        <h2 class="section-title" id="testimonials-title" data-i18n-html="test.title">
+          ישראלים שכבר<br/>
+          <span class="electric">גילו את הסוד</span>
+        </h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="stars" aria-label="דירוג 5 מתוך 5 כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text" data-i18n="test1.text">
+            הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק"מ בלי עצירה
+            ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים
+            גרמו לנו להרגיש שאנחנו מרמים מישהו.
+          </p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="תמונת פרופיל של רון לוי" class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name" data-i18n="test1.author">רון לוי</div>
+              <div class="author-detail" data-i18n="test1.detail">תל אביב · עונה שנייה</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay:0.12s">
+          <div class="stars" aria-label="דירוג 5 מתוך 5 כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text" data-i18n="test2.text">
+            הייתי סקפטית לגבי גאורגיה. חברות שלי שכנעו אותי, ואני שמחה שלא התנגדתי.
+            שלושה ימים בהרים ויומיים בטביליסי — זה לא טיול סקי רגיל.
+            זה חוויה שלמה. כבר הזמנתי את אותה חבורה לפברואר הבא.
+          </p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="תמונת פרופיל של שירה כהן" class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name" data-i18n="test2.author">שירה כהן</div>
+              <div class="author-detail" data-i18n="test2.detail">חיפה · ינואר 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay:0.24s">
+          <div class="stars" aria-label="דירוג 5 מתוך 5 כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="testimonial-text" data-i18n="test3.text">
+            לקחתי חבורה של 12 אנשים — חלקם מתחילים, חלקם ותיקים. גודאורי עובדת לכולם.
+            הרכבלים האוסטרים הם ברמה אירופאית מלאה, ועם מדריך עברית
+            המתחילים תפסו את הקצב תוך יומיים. כולם רוצים לחזור.
+          </p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="תמונת פרופיל של יאיר אביבי" class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name" data-i18n="test3.author">יאיר אביבי</div>
+              <div class="author-detail" data-i18n="test3.detail">ירושלים · קבוצה של 12</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       9. FOOTER
+  ═══════════════════════════════════════ -->
+  <footer id="footer" aria-label="פוטר">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#" class="footer-logo" aria-label="GudauriSkiIL - חזרה לדף הבית">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            </svg>
+            <span class="footer-logo-text">Gudauri<span>Ski</span>IL</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">
+            גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה,
+            לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.
+          </p>
+          <div class="footer-social" aria-label="רשתות חברתיות">
+            <a href="#" class="social-link" aria-label="אינסטגרם של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="פייסבוק של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="טיקטוק של GudauriSkiIL">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+            </a>
+            <a href="https://wa.me/9721234567" class="social-link" aria-label="וואטסאפ של GudauriSkiIL" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="קישורים מהירים">
+          <h3 class="footer-heading" data-i18n="footer.nav.heading">ניווט</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#why" data-i18n="footer.nav.about">על גודאורי</a></li>
+            <li><a href="#activities" data-i18n="footer.nav.activities">פעילויות</a></li>
+            <li><a href="#new-gudauri" data-i18n="footer.nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html" data-internal="lina.html" data-i18n="footer.nav.accommodation">לינה</a></li>
+            <li><a href="#testimonials" data-i18n="footer.nav.testimonials">חוות דעת</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" aria-label="פרטי קשר">
+          <h3 class="footer-heading" data-i18n="footer.contact.heading">קשר</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:info@gudauriskiil.com">info@gudauriskiil.com</a></li>
+            <li><a href="tel:+9721234567">+972 12-345-6789</a></li>
+            <li><a href="https://wa.me/9721234567" target="_blank" rel="noopener noreferrer" data-i18n="footer.contact.wa">וואטסאפ זמין</a></li>
+            <li style="margin-top:12px; color:var(--slate-600); font-size:0.875rem;">תל אביב, ישראל</li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter" aria-labelledby="newsletter-heading">
+          <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter.heading">עדכונים ומבצעים</h3>
+          <p data-i18n="footer.newsletter.text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר">
+            <label for="newsletter-email" class="sr-only">כתובת אימייל</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              class="newsletter-input"
+              placeholder="האימייל שלך"
+              data-i18n-placeholder="footer.newsletter.placeholder"
+              required
+              autocomplete="email"
+              dir="ltr"
+            />
+            <button type="submit" class="newsletter-submit" aria-label="הרשמה לניוזלטר" data-i18n="footer.newsletter.submit">הרשם</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n-html="footer.copy">
+          &copy; 2025 <a href="#">GudauriSkiIL</a>. כל הזכויות שמורות.
+        </p>
+        <nav class="footer-legal" aria-label="קישורים משפטיים">
+          <a href="#" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
+          <a href="#" data-i18n="footer.legal.terms">תנאי שימוש</a>
+          <a href="#" data-i18n="footer.legal.access">נגישות</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Sticky nav scroll state ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    const burger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('navMobile');
+    let menuOpen = false;
+
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      burger.setAttribute('aria-expanded', menuOpen);
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (menuOpen && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // ── Activity tabs ──
+    function switchTab(season) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const isActive = btn.id === `btn-${season}`;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive);
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === `tab-${season}`);
+      });
+    }
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Newsletter form ──
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-email');
+      const btn = e.target.querySelector('.newsletter-submit');
+      const lang = localStorage.getItem('gudauri-lang') || 'he';
+      const t = window.TRANSLATIONS && window.TRANSLATIONS[lang];
+      btn.textContent = (t && t['footer.newsletter.success']) || 'נרשמת!';
+      btn.style.background = '#16A34A';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = (t && t['footer.newsletter.submit']) || 'הרשם';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    // ── Reduced motion: disable scroll reveal ──
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── PARALLAX HERO ──
+    (function() {
+      const layers = document.querySelectorAll('.parallax-layer');
+      const hero = document.querySelector('.hero');
+      if (!layers.length || !hero) return;
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            const heroH = hero.offsetHeight;
+            if (scrollY <= heroH * 1.2) {
+              layers.forEach(layer => {
+                const speed = parseFloat(layer.dataset.speed || 0.3);
+                layer.style.transform = `translateY(${scrollY * speed}px)`;
+              });
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ── SNOW PARTICLES ──
+    (function createSnowParticles() {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'snow-particle';
+        p.style.cssText = [
+          'left:' + (Math.random() * 100) + '%',
+          'animation-delay:' + (Math.random() * 8) + 's',
+          'animation-duration:' + (6 + Math.random() * 6) + 's',
+          'width:' + (2 + Math.random() * 3) + 'px',
+          'height:' + (2 + Math.random() * 3) + 'px',
+          'opacity:' + (0.4 + Math.random() * 0.6)
+        ].join(';');
+        frag.appendChild(p);
+      }
+      hero.appendChild(frag);
+    })();
+
+    // ── COUNTING STATS ANIMATION ──
+    function animateCounter(el, target, duration) {
+      duration = duration || 1500;
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const update = function(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target + suffix;
+        }
+      };
+      requestAnimationFrame(update);
+    }
+
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.stat-value[data-target]').forEach(function(el) {
+              animateCounter(el, parseInt(el.dataset.target));
+            });
+            statsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      statsObserver.observe(statsSection);
+    }
+
+    // ── NEW GUDAURI SLIDER ──
+    (function() {
+      const slides = document.querySelectorAll('.ng-slide:not(.ng-slide-dots)');
+      const dots = document.querySelectorAll('.ng-dot');
+      let current = 0;
+      let timer = null;
+
+      function goToSlide(idx) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      // expose globally for onclick
+      window.goToSlide = goToSlide;
+
+      function autoPlay() {
+        timer = setInterval(function() {
+          goToSlide(current + 1);
+        }, 4000);
+      }
+
+      // Pause on hover
+      const sliderEl = document.querySelector('.ng-slider');
+      if (sliderEl) {
+        sliderEl.addEventListener('mouseenter', function() {
+          clearInterval(timer);
+        });
+        sliderEl.addEventListener('mouseleave', function() {
+          autoPlay();
+        });
+      }
+
+      autoPlay();
+    })();
+
+    // ── COMPARISON BARS ANIMATION ──
+    (function() {
+      const bars = document.querySelectorAll('.compare-bar[data-cw]');
+      if (!bars.length) return;
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            // stagger each bar slightly
+            bars.forEach(function(bar, i) {
+              setTimeout(function() {
+                bar.style.width = bar.dataset.cw + '%';
+              }, i * 80);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const wrap = document.querySelector('.compare-wrap');
+      if (wrap) observer.observe(wrap);
+    })();
+
+    // ══════════════════════════════════════════
+    //  LANGUAGE SWITCHER
+    // ══════════════════════════════════════════
+    window.TRANSLATIONS = {
+      he: {
+        dir: 'rtl', lang: 'he',
+        'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי',
+        'nav.accommodation': 'לינה', 'nav.contact': 'צרו קשר', 'nav.cta': 'תכנן את הטיול',
+        'hero.kicker': 'הר שמשנה תפיסות', 'hero.headline_1': '3,200+ מטר', 'hero.headline_accent': 'שלך',
+        'hero.sub_headline': 'הישראלים שגילו את גודאורי לא מספרים. עכשיו אתה יודע.',
+        'hero.sub': '75+ ק״מ מסלולים. 300 ימי שמש. בלי תור. בלי הגזמה אירופאית.',
+        'hero.plan_cta': 'תכנן את הטיול', 'hero.contact_cta': 'וואטסאפ', 'hero.scroll': 'גלול למטה',
+        'stats.km_label': 'ק״מ מסלולי סקי', 'stats.altitude_label': 'מטר גובה מקסימלי',
+        'stats.sun_label': 'ימי שמש בשנה', 'stats.lifts_label': 'מתקני רכבל מודרניים',
+        'why.label': 'למה גודאורי',
+        'why.title': 'כל מה שאתה מחפש<br/><span class="electric">כבר שם</span>',
+        'why.sub': 'שלושה דברים שהופכים את גודאורי לאחד מיעדי הסקי הטובים בעולם — ועדיין הסוד הכי פחות שמור.',
+        'card1.title': 'זול משמעותית מאירופה',
+        'card1.text': 'יום סקי מלא בגודאורי — כולל כרטיס לרכבלים, ארוחות וצ\'ופר מלון — עולה פחות ממחצית מה שתשלם בזרמט, ורבייה, או קיצבילה. הכסף שחסכת? תוציא אותו על קצת יותר ימים בהרים.',
+        'card1.badge': 'עד 60% זול מאירופה',
+        'card2.title': 'שמש ומסלולים פנויים',
+        'card2.text': '300 ימי שמש בשנה — יותר מאלפס האוסטריים, יותר מהדולומיטים. אין עמוסים. אין תורים. בגודאורי אתה רוכב, לא מחכה. כן, גם בסוף השבוע.',
+        'card2.badge': '300+ ימי שמש',
+        'card3.title': 'רכבלים אוסטריים מהמשוכללים',
+        'card3.text': '18 מתקני רכבל של Doppelmayr האוסטרית — המותג שמצייד את סנובורד-ורלד בריי, ז׳ינווה ולס. תשתית הרי-קלאס בלב קווקז.',
+        'card3.badge': 'Doppelmayr Austria',
+        'card4.title': 'שלג יבש ועמוק',
+        'card4.text': 'אקלים יבשתי אירו-אסייתי שמייצר פאודר קל ויבש — לא שלג אירופי כבד ולח. עומק שלג ממוצע בעונה: 1–2 מטר. בגודאורי לא "מחפשים" שלג, הוא פשוט שם.',
+        'card4.badge': '1–2 מטר שלג ממוצע',
+        'card5.title': 'מסלולים לכל הרמות',
+        'card5.text': '20 מסלולים מסומנים: 30% כחול (מתחילים), 40% אדום (בינוני), 30% שחור (מתקדם). בנוסף — סקי לילה בשישי ושבת 20:00–22:00. אין אתר שמציע את הכל כך.',
+        'card5.badge': 'סקי לילה ש׳–ש׳',
+        'yt.cta': 'צפו בשידור חי',
+        'fact1.title': 'טיסה מישראל', 'fact1.desc': 'פחות זמן מטיסה לציריך. אין טרנזיט, אין ויזה, אין כאב ראש.',
+        'fact2.title': 'עונת סקי', 'fact2.desc': 'אמצע-סוף דצמבר עד אמצע-סוף אפריל. שעות פעילות 10:00–17:00, ♟ סקי לילה שישי ושבת 20:00–22:00.',
+        'fact3.title': 'אוף-פיסט ללא גבולות', 'fact3.desc': 'שטחים לא מסומנים בלי גדרות — שלג בתולי לכל כיוון שתבחר.',
+        'fact4.title': 'כניסה ללא ויזה', 'fact4.desc': 'גאורגיה פתוחה לישראלים. נוסעים עם דרכון בלבד, ללא בירוקרטיה.',
+        'compare.title': 'גודאורי מול האלפס — למה זה לא משחק הוגן',
+        'compare.gudauri': 'גודאורי', 'compare.alps': 'ממוצע אלפס',
+        'compare.row1.label': 'עלות יום סקי מלא (כולל הכל)', 'compare.row1.value': '250 <span class="orange-highlight">vs 800</span>',
+        'compare.row2.label': 'ימי שמש בשנה', 'compare.row2.value': '300 <span class="orange-highlight">vs 180</span>',
+        'compare.row3.label': 'עומס על המסלולים בסוף שבוע', 'compare.row3.value': 'כמעט ריק <span class="orange-highlight">vs צפוף מאוד</span>',
+        'compare.row4.label': 'זמן טיסה מישראל', 'compare.row4.value': '2.5 שעות <span class="orange-highlight">vs 4–6 שעות</span>',
+        'activities.label': 'פעילויות',
+        'activities.title': 'ההרים לא<br/><span class="electric">רק לסקי</span>',
+        'activities.sub': 'גודאורי היא מגרש משחקים שפועל כל השנה. בחורף ובאביב — תמיד יש מה לעשות.',
+        'tab.winter': 'חורף — דצמבר עד אפריל', 'tab.spring': 'אביב — אפריל עד דצמבר',
+        'act.ski.tag': 'אלפיני', 'act.ski.name': 'סקי אלפיני', 'act.ski.desc': '75+ ק״מ מסלולים, שלג יבש, וקצב שלא תמצא בשום מקום אחר.',
+        'act.heli.name': 'הליסקי', 'act.heli.desc': 'מסוק מוריד אותך על שלג בתולי בגבהים של 4,000+ מטר. זה לא עוד סקי.',
+        'act.snow.tag': 'סנובורד', 'act.snow.name': 'סנובורד', 'act.snow.desc': 'פארק, קווארטרפייפ, ופאודר ראן שישנה לך את הגישה לחורף.',
+        'act.para.tag': 'Paragliding', 'act.para.name': 'פאראגליידינג', 'act.para.desc': 'ריחוף מעל עמקי קווקז עם תרמלים חזקים ונוף שלא ישכח.',
+        'act.speed.tag': 'Hiking', 'act.speed.name': 'הייקינג', 'act.speed.desc': 'טיולי הרים רגליים לאורך שבילי קווקז, ואופני שטח על מסלולים מרהיבים בין הפסגות.',
+        'act.tbilisi.tag': 'קומבו מושלם', 'act.tbilisi.name': 'טביליסי + הרים', 'act.tbilisi.desc': '120 ק״מ מהעיר — בוקר בסלאלום, ערב בבר של האולד טאון. כי למה לבחור?',
+        'ng.label': '2200 מטר מעל פני הים',
+        'ng.title': 'ניו גודאורי<br><span class="electric">הלב הפועם של האתר</span>',
+        'ng.desc': 'כפר האתר המודרני, נבנה מחדש 2020+, מחובר לגבעות הגבוהות בגונדולה. כאן מתחיל ומסתיים כל יום מושלם בהר.',
+        'ng.cta.label': 'מה שכל מי שמגיע לגודאורי חייב לדעת',
+        'ng.cta.title': 'ניו גודאורי — לא רק מקום לישון',
+        'ng.cta.sub': 'קזינו, בריכות, מסעדות, השכרת ציוד מקצועית, ובייביסיטר לילדים. כל הסיבות שבגללן הכל מתחיל ומסתיים כאן.',
+        'ng.cta.btn': 'גלה את כל הסוד ←',
+        'ng.hut.desc': 'בר ומסעדה על גבעת הסקי, 2,200 מ׳. אוכל גאורגי מסורתי, חוויה ייחודית אחרי יום על המדרונות.', 'ng.hut.dist': 'ישירות על המדרון',
+        'ng.club.desc': 'אחרי-סקי ובידור לילי. מוזיקה חיה, cocktails, האווירה הכי חמה בהר הכי קר בקווקז.', 'ng.club.dist': 'חמישים מטר מהגונדולה',
+        'ng.panorama.desc': 'מרפסת תצפית 270° על כל רכס הקווקז. שקיעות שלא תשכח, נוף שלא קיים באירופה.', 'ng.panorama.dist': 'בלב ניו גודאורי',
+        'ng.adventure.desc': 'בסיס ההרפתקאות: הלי-סקי, סנומוביל, פרגליידינג. כל אדרנלין שחלמת — מכאן.', 'ng.adventure.dist': '5 דקות מהגונדולה',
+        'exp.label': 'החוויה',
+        'exp.title': 'גודאורי היא<br/>לא יעד.<br/><span class="electric">היא קצב.</span>',
+        'exp.body': 'יש אתרי סקי שאתה מבקר בהם. ויש אתרים שחולים עליך. גודאורי שייכת לקטגוריה השנייה. הרים שמגיעים עד 3,200+ מטר, אוויר שחותך את הגרון בדיוק כמו שצריך, ושמש חורפית שמחזירה לך את האנרגיה אחרי כל ירידה. לא תשאל את עצמך בשביל מה הגעת — תשאל את עצמך למה לא הגעת קודם.',
+        'exp.li1': 'עונה ארוכה: דצמבר עד אפריל — חמישה חודשים של שלג',
+        'exp.li2': '120 ק״מ בלבד מטביליסי — הרים + עיר בטיול אחד',
+        'exp.li3': 'קהילת ישראלים גדלה — כבר לא סוד שמור',
+        'exp.li4': 'מחירים שמאפשרים שבוע שלם במחיר סוף שבוע באלפס',
+        'exp.cta': 'תכנן את החופשה שלך',
+        'access.year.value': '1988', 'access.year.label': 'שנת הקמה', 'access.year.desc': 'גודאורי הוא אתר הסקי הוותיק ביותר בגאורגיה — ומאז הפך לגדול ומודרני שבהם. תשתית שנבנתה לאורך שנות דור.',
+        'access.dist.value': '150 ק"מ', 'access.dist.label': 'מטביליסי', 'access.dist.desc': '~2 שעות נסיעה מנמל התעופה של טביליסי. תוצאה: יום-יומיים בעיר, ואז ישר להרים. שני מיעדים במחיר אחד.',
+        'access.rank.value': '#1', 'access.rank.label': 'הגדול בגאורגיה', 'access.rank.desc': 'הגדול, המודרני, והמפותח ביותר בגאורגיה — תשתית שתומכת בסקי freestyle, אוף-פיסט וסקי לילה תחת תאורה מלאה.',
+        'accom.label': 'לינה ותכנון',
+        'accom.title': 'תכנן את<br/><span class="electric">החופשה שלך</span>',
+        'accom.sub': 'בין אם זה טיול זוגי, חבורת חברים, או משפחה בפעם הראשונה — נסדר לך הכל: טיסות, לינה ליד המסלולים, ציוד השכרה, ומדריך שמדבר עברית.',
+        'accom.f1': 'מלון 50 מטר מהמסלולים', 'accom.f2': 'ליווי דובר עברית', 'accom.f3': 'הזמנת כרטיסי טיסה', 'accom.f4': 'העברות מטביליסי',
+        'accom.cta1': 'הזמן עכשיו', 'accom.cta2': 'וואטסאפ',
+        'test.label': 'מה אומרים',
+        'test.title': 'ישראלים שכבר<br/><span class="electric">גילו את הסוד</span>',
+        'test1.text': 'הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק"מ בלי עצירה ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים גרמו לנו להרגיש שאנחנו מרמים מישהו.',
+        'test1.author': 'רון לוי', 'test1.detail': 'תל אביב · עונה שנייה',
+        'test2.text': 'הייתי סקפטית לגבי גאורגיה. חברות שלי שכנעו אותי, ואני שמחה שלא התנגדתי. שלושה ימים בהרים ויומיים בטביליסי — זה לא טיול סקי רגיל. זה חוויה שלמה. כבר הזמנתי את אותה חבורה לפברואר הבא.',
+        'test2.author': 'שירה כהן', 'test2.detail': 'חיפה · ינואר 2024',
+        'test3.text': 'לקחתי חבורה של 12 אנשים — חלקם מתחילים, חלקם ותיקים. גודאורי עובדת לכולם. הרכבלים האוסטרים הם ברמה אירופאית מלאה, ועם מדריך עברית המתחילים תפסו את הקצב תוך יומיים. כולם רוצים לחזור.',
+        'test3.author': 'יאיר אביבי', 'test3.detail': 'ירושלים · קבוצה של 12',
+        'footer.tagline': 'גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.',
+        'footer.nav.heading': 'ניווט', 'footer.nav.about': 'על גודאורי', 'footer.nav.activities': 'פעילויות',
+        'footer.nav.new_gudauri': 'ניו גודאורי', 'footer.nav.accommodation': 'לינה', 'footer.nav.testimonials': 'חוות דעת',
+        'footer.contact.heading': 'קשר', 'footer.contact.wa': 'וואטסאפ זמין',
+        'footer.newsletter.heading': 'עדכונים ומבצעים',
+        'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
+        'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
+        'footer.copy': '&copy; 2025 <a href="#">GudauriSkiIL</a>. כל הזכויות שמורות.',
+        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.access': 'נגישות',
+      },
+
+      en: {
+        dir: 'ltr', lang: 'en',
+        'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri',
+        'nav.accommodation': 'Accommodation', 'nav.contact': 'Contact', 'nav.cta': 'Plan Your Trip',
+        'hero.kicker': 'A Mountain That Changes Everything', 'hero.headline_1': '3,200+ m', 'hero.headline_accent': 'Yours',
+        'hero.sub_headline': 'Those who found Gudauri keep it secret. Now you know.',
+        'hero.sub': '75+ km of runs. 300 sunny days. No queues. No European price tags.',
+        'hero.plan_cta': 'Plan Your Trip', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'Scroll down',
+        'stats.km_label': 'km of ski runs', 'stats.altitude_label': 'meters max elevation',
+        'stats.sun_label': 'sunny days per year', 'stats.lifts_label': 'modern ski lifts',
+        'why.label': 'Why Gudauri',
+        'why.title': 'Everything You\'re Looking For<br/><span class="electric">Is Already There</span>',
+        'why.sub': 'Three things that make Gudauri one of the best ski resorts in the world — and still the best-kept secret.',
+        'card1.title': 'Dramatically Cheaper Than the Alps',
+        'card1.text': 'A full ski day in Gudauri — lift pass, meals, hotel transfer — costs less than half of what you\'d pay in Zermatt, Verbier, or Kitzbühel. Save the difference? Use it for more days on the mountain.',
+        'card1.badge': 'Up to 60% cheaper than Alps',
+        'card2.title': 'Sun and Empty Runs',
+        'card2.text': '300 sunny days per year — more than the Austrian Alps, more than the Dolomites. No crowds. No queues. In Gudauri you ski, you don\'t wait. Even on weekends.',
+        'card2.badge': '300+ sunny days',
+        'card3.title': 'World-Class Austrian Lifts',
+        'card3.text': '18 Doppelmayr lifts — the brand that equips Breckenridge, Chamonix and Whistler. World-class infrastructure at the heart of the Caucasus.',
+        'card3.badge': 'Doppelmayr Austria',
+        'card4.title': 'Deep, Dry Powder Snow',
+        'card4.text': 'Euro-Asian continental climate produces light, dry powder — not the heavy wet snow of Europe. Average seasonal snow depth: 1–2 meters. In Gudauri you don\'t search for snow — it\'s simply there.',
+        'card4.badge': '1–2 m average snow depth',
+        'card5.title': 'Runs for Every Level',
+        'card5.text': '20 marked runs: 30% blue (beginner), 40% red (intermediate), 30% black (advanced). Plus — night skiing on Fridays and Saturdays 20:00–22:00. No resort offers everything like this.',
+        'card5.badge': 'Night ski Fri–Sat',
+        'yt.cta': 'Watch Live Stream',
+        'fact1.title': 'Flight from Israel', 'fact1.desc': 'Less flight time than Zurich. No transit, no visa, no hassle.',
+        'fact2.title': 'Ski Season', 'fact2.desc': 'Mid-December to mid-April. Operating hours 10:00–17:00, night skiing Fri & Sat 20:00–22:00.',
+        'fact3.title': 'Unlimited Off-Piste', 'fact3.desc': 'Unmarked terrain with no fences — virgin powder in every direction you choose.',
+        'fact4.title': 'Visa Free', 'fact4.desc': 'Georgia is open to Israelis — travel with passport only, no bureaucracy.',
+        'compare.title': 'Gudauri vs. the Alps — Why It\'s Not a Fair Fight',
+        'compare.gudauri': 'Gudauri', 'compare.alps': 'Alps average',
+        'compare.row1.label': 'Full ski day cost (all-in)', 'compare.row1.value': '$250 <span class="orange-highlight">vs $800</span>',
+        'compare.row2.label': 'Sunny days per year', 'compare.row2.value': '300 <span class="orange-highlight">vs 180</span>',
+        'compare.row3.label': 'Weekend crowd on pistes', 'compare.row3.value': 'Nearly empty <span class="orange-highlight">vs very crowded</span>',
+        'compare.row4.label': 'Flight time from Israel', 'compare.row4.value': '2.5 hrs <span class="orange-highlight">vs 4–6 hrs</span>',
+        'activities.label': 'Activities',
+        'activities.title': 'The Mountains Are<br/><span class="electric">More Than Skiing</span>',
+        'activities.sub': 'Gudauri is a year-round playground. In winter and spring — there\'s always something to do.',
+        'tab.winter': 'Winter — December to March', 'tab.spring': 'Spring — March to April',
+        'act.ski.tag': 'Alpine', 'act.ski.name': 'Alpine Skiing', 'act.ski.desc': '75+ km of runs, dry powder, and a pace you won\'t find anywhere else.',
+        'act.heli.name': 'Heli-Skiing', 'act.heli.desc': 'A helicopter drops you on virgin snow at 4,000+ meters. This is not just skiing.',
+        'act.snow.tag': 'Snowboard', 'act.snow.name': 'Snowboarding', 'act.snow.desc': 'Park, quarterpipe, and powder runs that will change your relationship with winter.',
+        'act.para.tag': 'Paragliding', 'act.para.name': 'Paragliding', 'act.para.desc': 'Soaring over Caucasus valleys with strong thermals and unforgettable views.',
+        'act.speed.tag': 'Speed Riding', 'act.speed.name': 'Speed Riding', 'act.speed.desc': 'A fusion of paragliding and skiing. Landing on vertical snow walls. Yes, it\'s fun.',
+        'act.tbilisi.tag': 'Perfect Combo', 'act.tbilisi.name': 'Tbilisi + Mountains', 'act.tbilisi.desc': '120 km from the city — morning on the slopes, evening in Old Town bars. Why choose?',
+        'ng.label': '2,200 meters above sea level',
+        'ng.title': 'New Gudauri<br><span class="electric">The Beating Heart of the Resort</span>',
+        'ng.desc': 'The modern resort village, rebuilt 2020+, connected to the upper slopes by gondola. Every perfect mountain day starts and ends here.',
+        'ng.cta.label': 'What every Gudauri visitor must know',
+        'ng.cta.title': 'New Gudauri — More Than Just a Place to Sleep',
+        'ng.cta.sub': 'Casino, pools, restaurants, professional equipment rental, and babysitting. Every reason why everything begins and ends here.',
+        'ng.cta.btn': 'Discover the Secret →',
+        'ng.hut.desc': 'Bar and restaurant on the ski slope at 2,200 m. Traditional Georgian food — a unique experience after a day on the mountain.', 'ng.hut.dist': 'Right on the piste',
+        'ng.club.desc': 'Après-ski and nightlife. Live music, cocktails, the warmest atmosphere on the coldest mountain in the Caucasus.', 'ng.club.dist': '200 m from the lifts',
+        'ng.panorama.desc': '360° observation terrace over the entire Caucasus range. Sunsets you\'ll never forget, views that don\'t exist in Europe.', 'ng.panorama.dist': 'In the heart of New Gudauri',
+        'ng.adventure.desc': 'Adventure base: heli-ski, snowmobile, paragliding. Every adrenaline rush you\'ve dreamed of — from here.', 'ng.adventure.dist': '5 min from the gondola',
+        'exp.label': 'The Experience',
+        'exp.title': 'Gudauri Isn\'t<br/>a Destination.<br/><span class="electric">It\'s a Rhythm.</span>',
+        'exp.body': 'Some ski resorts you visit. Others get under your skin. Gudauri belongs to the second category. Mountains reaching 3,200+ meters, air that cuts clean, and winter sun that recharges you after every run. You won\'t ask yourself why you came — you\'ll ask yourself why you didn\'t come sooner.',
+        'exp.li1': 'Long season: December to April — five months of snow',
+        'exp.li2': 'Just 120 km from Tbilisi — mountains + city in one trip',
+        'exp.li3': 'Growing Israeli community — no longer a secret',
+        'exp.li4': 'Prices that let you afford a full week for the cost of an Alps weekend',
+        'exp.cta': 'Plan Your Vacation',
+        'access.year.value': '1988', 'access.year.label': 'Founded', 'access.year.desc': 'Gudauri is Georgia\'s oldest ski resort — and since then has become its largest and most modern. Infrastructure built over a generation.',
+        'access.dist.value': '150 km', 'access.dist.label': 'From Tbilisi', 'access.dist.desc': '~2 hours drive from Tbilisi airport. Result: a day or two in the city, then straight to the mountains. Two destinations for the price of one.',
+        'access.rank.value': '#1', 'access.rank.label': 'Largest in Georgia', 'access.rank.desc': 'The largest, most modern, and most developed resort in Georgia — infrastructure supporting freestyle skiing, off-piste, and night skiing under full lighting.',
+        'accom.label': 'Stay & Plan',
+        'accom.title': 'Plan Your<br/><span class="electric">Perfect Getaway</span>',
+        'accom.sub': 'Whether it\'s a couple\'s trip, a group of friends, or a family first-timer — we\'ll arrange everything: flights, ski-in/ski-out accommodation, rental gear, and a guide.',
+        'accom.f1': 'Hotel 50 m from the slopes', 'accom.f2': 'English-speaking guide', 'accom.f3': 'Lift passes included', 'accom.f4': 'Transfers from Tbilisi',
+        'accom.cta1': 'Contact Us Now', 'accom.cta2': 'WhatsApp',
+        'test.label': 'What People Say',
+        'test.title': 'Israelis Who Already<br/><span class="electric">Discovered the Secret</span>',
+        'test1.text': 'We went to Gudauri as a trial run. Now it\'s our permanent spot. We managed 8 km without stopping on day two — in Verbier that takes a week. The people are warm, the snow is incredible, and the prices made us feel like we were getting away with something.',
+        'test1.author': 'Ron Levi', 'test1.detail': 'Tel Aviv · Second season',
+        'test2.text': 'I was skeptical about Georgia. My friends convinced me, and I\'m glad I didn\'t resist. Three days in the mountains and two days in Tbilisi — this isn\'t a regular ski trip. It\'s a complete experience. I\'ve already booked the same crew for next February.',
+        'test2.author': 'Shira Cohen', 'test2.detail': 'Haifa · January 2024',
+        'test3.text': 'I took a group of 12 — some beginners, some veterans. Gudauri works for everyone. The Austrian lifts are full European standard, and with a guide the beginners found their rhythm within two days. Everyone wants to come back.',
+        'test3.author': 'Yair Avivi', 'test3.detail': 'Jerusalem · Group of 12',
+        'footer.tagline': 'Gudauri isn\'t just a destination. It\'s how travelers discovered you can ski like in Europe, pay reasonable prices, and feel like you found a hidden treasure.',
+        'footer.nav.heading': 'Navigation', 'footer.nav.about': 'About Gudauri', 'footer.nav.activities': 'Activities',
+        'footer.nav.new_gudauri': 'New Gudauri', 'footer.nav.accommodation': 'Accommodation', 'footer.nav.testimonials': 'Reviews',
+        'footer.contact.heading': 'Contact', 'footer.contact.wa': 'WhatsApp available',
+        'footer.newsletter.heading': 'Updates & Deals',
+        'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
+        'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
+        'footer.copy': '&copy; 2025 <a href="#">GudauriSkiIL</a>. All rights reserved.',
+        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.access': 'Accessibility',
+      },
+
+      ru: {
+        dir: 'ltr', lang: 'ru',
+        'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури',
+        'nav.accommodation': 'Проживание', 'nav.contact': 'Контакты', 'nav.cta': 'Спланировать поездку',
+        'hero.kicker': 'Гора, которая меняет всё', 'hero.headline_1': '3 279 м', 'hero.headline_accent': 'Ваш',
+        'hero.sub_headline': 'Те, кто открыл для себя Гудаури, молчат об этом. Теперь вы знаете.',
+        'hero.sub': '75+ км трасс. 300 солнечных дней. Без очередей. Без европейских цен.',
+        'hero.plan_cta': 'Спланировать поездку', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'Прокрутить вниз',
+        'stats.km_label': 'км горнолыжных трасс', 'stats.altitude_label': 'метров макс. высота',
+        'stats.sun_label': 'солнечных дней в году', 'stats.lifts_label': 'современных подъёмников',
+        'why.label': 'Почему Гудаури',
+        'why.title': 'Всё, что вы ищете,<br/><span class="electric">уже там</span>',
+        'why.sub': 'Три причины, по которым Гудаури — один из лучших горнолыжных курортов мира, и всё ещё лучший секрет.',
+        'card1.title': 'Значительно дешевле Альп',
+        'card1.text': 'Полный день катания в Гудаури — ски-пасс, питание, трансфер от отеля — стоит меньше половины цены в Церматте, Вербье или Китцбюэле. Сэкономленные деньги? Потратьте их на больше дней в горах.',
+        'card1.badge': 'До 60% дешевле Альп',
+        'card2.title': 'Солнце и свободные трассы',
+        'card2.text': '300 солнечных дней в году — больше, чем в австрийских Альпах, больше, чем в Доломитах. Никакой толпы. Никаких очередей. В Гудаури вы катаетесь, а не ждёте. Даже в выходные.',
+        'card2.badge': '300+ солнечных дней',
+        'card3.title': 'Австрийские подъёмники мирового уровня',
+        'card3.text': '18 подъёмников Doppelmayr — бренд, который оснащает Брекенридж, Шамони и Уистлер. Инфраструктура мирового класса в сердце Кавказа.',
+        'card3.badge': 'Doppelmayr Austria',
+        'card4.title': 'Глубокий сухой снег',
+        'card4.text': 'Евроазиатский континентальный климат создаёт лёгкий сухой порошок — не тяжёлый мокрый европейский снег. Средняя глубина снежного покрова за сезон: 1–2 метра. В Гудаури снег не ищут — он просто есть.',
+        'card4.badge': '1–2 м средний снегопокров',
+        'card5.title': 'Трассы для любого уровня',
+        'card5.text': '20 размеченных трасс: 30% синих (начинающие), 40% красных (средний), 30% чёрных (продвинутый). Плюс — ночное катание в пятницу и субботу 20:00–22:00. Ни один курорт не предлагает всего столько.',
+        'card5.badge': 'Ночное катание пт–сб',
+        'yt.cta': 'Смотреть прямой эфир',
+        'fact1.title': 'Перелёт из Израиля', 'fact1.desc': 'Меньше времени, чем до Цюриха. Без стыковок, без визы, без хлопот.',
+        'fact2.title': 'Горнолыжный сезон', 'fact2.desc': 'С середины декабря до середины апреля. Часы работы 10:00–17:00, ночное катание пт–сб 20:00–22:00.',
+        'fact3.title': 'Безграничное внетрассовое катание', 'fact3.desc': 'Неразмеченные склоны без заборов — нетронутый снег в любом направлении.',
+        'fact4.title': 'Безвизовый въезд', 'fact4.desc': 'Грузия открыта для израильтян — путешествие только с паспортом, без бюрократии.',
+        'compare.title': 'Гудаури против Альп — почему это нечестная борьба',
+        'compare.gudauri': 'Гудаури', 'compare.alps': 'Средние Альпы',
+        'compare.row1.label': 'Стоимость полного дня (всё включено)', 'compare.row1.value': '$250 <span class="orange-highlight">против $800</span>',
+        'compare.row2.label': 'Солнечных дней в году', 'compare.row2.value': '300 <span class="orange-highlight">против 180</span>',
+        'compare.row3.label': 'Загруженность трасс в выходные', 'compare.row3.value': 'Почти пусто <span class="orange-highlight">против очень людно</span>',
+        'compare.row4.label': 'Время перелёта из Израиля', 'compare.row4.value': '2,5 часа <span class="orange-highlight">против 4–6 часов</span>',
+        'activities.label': 'Активности',
+        'activities.title': 'Горы — это<br/><span class="electric">не только лыжи</span>',
+        'activities.sub': 'Гудаури — круглогодичная площадка для приключений. Зимой и весной — всегда есть чем заняться.',
+        'tab.winter': 'Зима — декабрь — март', 'tab.spring': 'Весна — март — апрель',
+        'act.ski.tag': 'Горные лыжи', 'act.ski.name': 'Горные лыжи', 'act.ski.desc': '75+ км трасс, сухой снег и темп, которого вы не найдёте нигде больше.',
+        'act.heli.name': 'Хели-ски', 'act.heli.desc': 'Вертолёт доставляет вас на нетронутый снег на высоте 4000+ метров. Это не просто лыжи.',
+        'act.snow.tag': 'Сноуборд', 'act.snow.name': 'Сноуборд', 'act.snow.desc': 'Парк, квотерпайп и пауэдер-ран, которые изменят ваше отношение к зиме.',
+        'act.para.tag': 'Параглайдинг', 'act.para.name': 'Параглайдинг', 'act.para.desc': 'Полёт над долинами Кавказа с мощными термальными потоками и незабываемыми видами.',
+        'act.speed.tag': 'Спидрайдинг', 'act.speed.name': 'Спидрайдинг', 'act.speed.desc': 'Слияние параглайдинга и лыж. Посадка на вертикальных снежных стенах. Да, это весело.',
+        'act.tbilisi.tag': 'Идеальный комбо', 'act.tbilisi.name': 'Тбилиси + горы', 'act.tbilisi.desc': '120 км от города — утро на трассах, вечер в барах Старого города. Зачем выбирать?',
+        'ng.label': '2200 метров над уровнем моря',
+        'ng.title': 'Новый Гудаури<br><span class="electric">Бьющееся сердце курорта</span>',
+        'ng.desc': 'Современная курортная деревня, перестроенная после 2020 года, соединена с верхними склонами гондолой. Здесь начинается и заканчивается каждый идеальный горный день.',
+        'ng.cta.label': 'Что должен знать каждый гость Гудаури',
+        'ng.cta.title': 'Новый Гудаури — не просто место для сна',
+        'ng.cta.sub': 'Казино, бассейны, рестораны, профессиональный прокат снаряжения и услуги няни. Всё, почему всё начинается и заканчивается здесь.',
+        'ng.cta.btn': 'Открыть секрет →',
+        'ng.hut.desc': 'Бар и ресторан на горнолыжном склоне, 2200 м. Традиционная грузинская кухня — уникальный опыт после дня на склонах.', 'ng.hut.dist': 'Прямо на склоне',
+        'ng.club.desc': 'Après-ski и ночная жизнь. Живая музыка, коктейли, самая тёплая атмосфера на самой холодной горе Кавказа.', 'ng.club.dist': '200 м от подъёмников',
+        'ng.panorama.desc': 'Смотровая терраса 360° над всем Кавказским хребтом. Закаты, которые не забудешь, виды, которых нет в Европе.', 'ng.panorama.dist': 'В центре Нового Гудаури',
+        'ng.adventure.desc': 'База приключений: хели-ски, снегоход, параглайдинг. Любой адреналин, о котором вы мечтали — отсюда.', 'ng.adventure.dist': '5 мин от гондолы',
+        'exp.label': 'Опыт',
+        'exp.title': 'Гудаури — это<br/>не курорт.<br/><span class="electric">Это ритм.</span>',
+        'exp.body': 'Есть курорты, которые посещают. И курорты, которые влюбляют в себя. Гудаури — из второй категории. Горы высотой до 3 279 метров, воздух, который режет чисто, и зимнее солнце, которое перезаряжает вас после каждого спуска. Вы не будете спрашивать себя, зачем приехали — вы будете спрашивать, почему не приехали раньше.',
+        'exp.li1': 'Длинный сезон: декабрь — апрель — пять месяцев снега',
+        'exp.li2': 'Всего 120 км от Тбилиси — горы + город в одной поездке',
+        'exp.li3': 'Растущее сообщество — уже не секрет',
+        'exp.li4': 'Цены, которые позволяют провести целую неделю за стоимость альпийских выходных',
+        'exp.cta': 'Спланировать отпуск',
+        'access.year.value': '1988', 'access.year.label': 'Год основания', 'access.year.desc': 'Гудаури — старейший горнолыжный курорт Грузии, ставший крупнейшим и современнейшим. Инфраструктура, выстроенная за поколение.',
+        'access.dist.value': '150 км', 'access.dist.label': 'От Тбилиси', 'access.dist.desc': '~2 часа езды от аэропорта Тбилиси. Результат: день-два в городе, затем сразу в горы. Два направления по цене одного.',
+        'access.rank.value': '#1', 'access.rank.label': 'Крупнейший в Грузии', 'access.rank.desc': 'Крупнейший, современнейший и самый развитый курорт Грузии — инфраструктура для фристайла, внетрасс и ночного катания с полным освещением.',
+        'accom.label': 'Проживание и планирование',
+        'accom.title': 'Спланируйте<br/><span class="electric">ваш отдых</span>',
+        'accom.sub': 'Пара, компания друзей или семья впервые — мы организуем всё: перелёты, проживание у склонов, прокат снаряжения и русскоязычный гид.',
+        'accom.f1': 'Отель в 50 м от трасс', 'accom.f2': 'Русскоязычный гид', 'accom.f3': 'Ски-пассы включены', 'accom.f4': 'Трансфер из Тбилиси',
+        'accom.cta1': 'Связаться с нами', 'accom.cta2': 'WhatsApp',
+        'test.label': 'Отзывы',
+        'test.title': 'Туристы, которые уже<br/><span class="electric">открыли секрет</span>',
+        'test1.text': 'Мы поехали в Гудаури на пробу. Теперь это наше постоянное место. Во второй день мы проехали 8 км без остановки — в Вербье на это уходит неделя. Люди тёплые, снег отличный, а цены заставили чувствовать себя так, будто мы поймали удачу.',
+        'test1.author': 'Рон Леви', 'test1.detail': 'Тель-Авив · Второй сезон',
+        'test2.text': 'Я была скептически настроена насчёт Грузии. Подруги убедили меня, и я рада, что не сопротивлялась. Три дня в горах и два дня в Тбилиси — это не обычная лыжная поездка. Это полноценный опыт. Я уже забронировала ту же компанию на следующий февраль.',
+        'test2.author': 'Шира Коэн', 'test2.detail': 'Хайфа · Январь 2024',
+        'test3.text': 'Я взял группу из 12 человек — часть новички, часть опытные. Гудаури подошёл всем. Австрийские подъёмники соответствуют полному европейскому стандарту, а с гидом новички нашли ритм за два дня. Все хотят вернуться.',
+        'test3.author': 'Яир Авиви', 'test3.detail': 'Иерусалим · Группа из 12',
+        'footer.tagline': 'Гудаури — не просто курорт. Это то, как путешественники открыли для себя: можно кататься как в Европе, платить разумные цены, и чувствовать, что нашёл сокровище.',
+        'footer.nav.heading': 'Навигация', 'footer.nav.about': 'О Гудаури', 'footer.nav.activities': 'Активности',
+        'footer.nav.new_gudauri': 'Новый Гудаури', 'footer.nav.accommodation': 'Проживание', 'footer.nav.testimonials': 'Отзывы',
+        'footer.contact.heading': 'Контакты', 'footer.contact.wa': 'WhatsApp доступен',
+        'footer.newsletter.heading': 'Новости и акции',
+        'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
+        'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
+        'footer.copy': '&copy; 2025 <a href="#">GudauriSkiIL</a>. Все права защищены.',
+        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.access': 'Доступность',
+      },
+
+      ka: {
+        dir: 'ltr', lang: 'ka',
+        'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური',
+        'nav.accommodation': 'განთავსება', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაგეგმე მოგზაურობა',
+        'hero.kicker': 'მთა, რომელიც ყველაფერს ცვლის', 'hero.headline_1': '3,200+ მ', 'hero.headline_accent': 'შენია',
+        'hero.sub_headline': 'ვინც გუდაური აღმოაჩინა — დუმს. ახლა შენ იცი.',
+        'hero.sub': '75+ კმ ფერდობი. 300 მზიანი დღე. რიგების გარეშე. ევროპული ფასების გარეშე.',
+        'hero.plan_cta': 'დაგეგმე მოგზაურობა', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'გადაახვიე ქვევით',
+        'stats.km_label': 'კმ სასლალომო ბილიკი', 'stats.altitude_label': 'მეტრი მაქს. სიმაღლე',
+        'stats.sun_label': 'მზიანი დღე წელიწადში', 'stats.lifts_label': 'თანამედროვე ლიფტი',
+        'why.label': 'რატომ გუდაური',
+        'why.title': 'ყველაფერი, რასაც ეძებ,<br/><span class="electric">უკვე იქ არის</span>',
+        'why.sub': 'სამი მიზეზი, რის გამოც გუდაური მსოფლიოს საუკეთესო სამთო-სასრიალო კურორტებს შორის არის — და მაინც საიდუმლოდ რჩება.',
+        'card1.title': 'მნიშვნელოვნად უფრო იაფი ვიდრე ალპები',
+        'card1.text': 'სრული სასრიალო დღე გუდაურში — ლიფტის ბილეთი, კვება, სასტუმროს ტრანსფერი — ორჯერ ნაკლები ღირს ვიდრე ცერმატში, ვერბიეში ან კიცბიუელში. დაზოგული ფული? გამოიყენე მეტი დღისთვის მთაში.',
+        'card1.badge': '60%-მდე იაფია ალპებთან შედარებით',
+        'card2.title': 'მზე და თავისუფალი ფერდობები',
+        'card2.text': '300 მზიანი დღე წელიწადში — ავსტრიულ ალპებზე მეტი, დოლომიტებზე მეტი. არც გადატვირთვა, არც რიგები. გუდაურში სრიალობ, არ ელოდები. კვირაბოლოსაც.',
+        'card2.badge': '300+ მზიანი დღე',
+        'card3.title': 'მსოფლიო კლასის ავსტრიული ლიფტები',
+        'card3.text': '18 Doppelmayr-ის ლიფტი — ბრენდი, რომელიც ბრეკენრიჯს, შამონის და ვისტლერს ამარაგებს. მსოფლიო კლასის ინფრასტრუქტურა კავკასიის გულში.',
+        'card3.badge': 'Doppelmayr Austria',
+        'card4.title': 'ღრმა, მშრალი ფხვიერი თოვლი',
+        'card4.text': 'ევრო-აზიური კონტინენტური კლიმატი ქმნის მსუბუქ, მშრალ ფხვიერ თოვლს — არა ევროპის მძიმე, სველ თოვლს. სეზონური საშუალო სიღრმე: 1–2 მეტრი. გუდაურში თოვლს არ ეძებ — ის უბრალოდ იქ არის.',
+        'card4.badge': '1–2 მ საშუალო სიღრმე',
+        'card5.title': 'ტრასები ყველა დონისთვის',
+        'card5.text': '20 მონიშნული ტრასა: 30% ლურჯი (დამწყები), 40% წითელი (საშუალო), 30% შავი (მოწინავე). პლუს — ღამის სრიალობა პარასკევ-შაბათს 20:00–22:00.',
+        'card5.badge': 'ღამის სრიალობა პარ–შაბ',
+        'yt.cta': 'პირდაპირი ეთერის ყურება',
+        'fact1.title': 'ფრენა ისრაელიდან', 'fact1.desc': 'ნაკლები ფრენის დრო ვიდრე ციურიხში. ტრანზიტის, ვიზის, ჩხუბის გარეშე.',
+        'fact2.title': 'სასრიალო სეზონი', 'fact2.desc': 'დეკემბრის შუიდან აპრილის შუამდე. სამუშაო საათები 10:00–17:00, ღამის სრიალობა პარ–შაბ 20:00–22:00.',
+        'fact3.title': 'შეუზღუდავი Off-Piste', 'fact3.desc': 'მოუნიშნავი ტერიტორია ღობის გარეშე — ხელუხლებელი თოვლი ნებისმიერი მიმართულებით.',
+        'fact4.title': 'უვიზო შესვლა', 'fact4.desc': 'საქართველო ღია დგას ისრაელელთათვის — მხოლოდ პასპორტით, ბიუროკრატიის გარეშე.',
+        'compare.title': 'გუდაური ალპებთან — რატომ არ არის ეს სამართლიანი ბრძოლა',
+        'compare.gudauri': 'გუდაური', 'compare.alps': 'ალპების საშუალო',
+        'compare.row1.label': 'სრული სრიალო დღის ღირებულება', 'compare.row1.value': '$250 <span class="orange-highlight">vs $800</span>',
+        'compare.row2.label': 'მზიანი დღე წელიწადში', 'compare.row2.value': '300 <span class="orange-highlight">vs 180</span>',
+        'compare.row3.label': 'გადატვირთვა კვირაბოლოს', 'compare.row3.value': 'თითქმის ცარიელი <span class="orange-highlight">vs ძალიან სავსე</span>',
+        'compare.row4.label': 'ფრენის დრო ისრაელიდან', 'compare.row4.value': '2.5 სთ <span class="orange-highlight">vs 4–6 სთ</span>',
+        'activities.label': 'აქტივობები',
+        'activities.title': 'მთები<br/><span class="electric">მხოლოდ სრიალობისთვის კი არ არის</span>',
+        'activities.sub': 'გუდაური არის მრავალეროვანი გართობის ადგილი მთელი წლის განმავლობაში. ზამთარსა და გაზაფხულზე — ყოველთვის არის სასიამოვნო.',
+        'tab.winter': 'ზამთარი — დეკემბერი - მარტი', 'tab.spring': 'გაზაფხული — მარტი - აპრილი',
+        'act.ski.tag': 'ალპური', 'act.ski.name': 'ალპური სრიალობა', 'act.ski.desc': '75+ კმ ტრასა, მშრალი თოვლი და ტემპი, რომელსაც სხვაგან ვერ ნახავ.',
+        'act.heli.name': 'ჰელი-სქი', 'act.heli.desc': 'ვერტმფრენი გიყვანს ხელუხლებელ თოვლზე 4000+ მეტრის სიმაღლეზე. ეს მხოლოდ სრიალობა არ არის.',
+        'act.snow.tag': 'სნოუბორდი', 'act.snow.name': 'სნოუბორდი', 'act.snow.desc': 'პარკი, კვარტერპაიპი და ფხვიერ თოვლის ტრასა, რომელიც ზამთრის შეხედულებას შეგიცვლის.',
+        'act.para.tag': 'პარაგლაიდინგი', 'act.para.name': 'პარაგლაიდინგი', 'act.para.desc': 'ფრენა კავკასიის ხეობებზე ძლიერი ტერმალებით და დასამახსოვრებელი ხედებით.',
+        'act.speed.tag': 'სპიდ-რაიდინგი', 'act.speed.name': 'სპიდ-რაიდინგი', 'act.speed.desc': 'პარაგლაიდინგისა და სრიალობის შერწყმა. დაჯდომა ვერტიკალური თოვლის კედლებზე. კი, სახალისოა.',
+        'act.tbilisi.tag': 'სრულყოფილი კომბო', 'act.tbilisi.name': 'თბილისი + მთები', 'act.tbilisi.desc': '120 კმ ქალაქიდან — დილა ტრასაზე, საღამო ძველი ქალაქის ბარებში. რატომ ირჩევ?',
+        'ng.label': '2200 მეტრი ზღვის დონიდან',
+        'ng.title': 'ახალი გუდაური<br><span class="electric">კურორტის ცემდები გული</span>',
+        'ng.desc': 'თანამედროვე კურორტული სოფელი, ხელახლა აშენებული 2020+ წლებიდან, გონდოლით დაკავშირებული ზედა ფერდობებთან. ყოველი სრულყოფილი მთის დღე აქ იწყება და მთავრდება.',
+        'ng.cta.label': 'რაც ყველამ, ვინც გუდაურში მოდის, უნდა იცოდეს',
+        'ng.cta.title': 'ახალი გუდაური — მხოლოდ ძილის ადგილი კი არ არის',
+        'ng.cta.sub': 'კაზინო, აუზები, რესტორანები, პროფესიული ინვენტარის გაქირავება და ბავშვთა მომვლელი. ყველა მიზეზი, რის გამოც ყველაფერი აქ იწყება და მთავრდება.',
+        'ng.cta.btn': 'საიდუმლოს გახსნა →',
+        'ng.hut.desc': 'ბარი და რესტორანი სასრიალო ფერდობზე, 2200 მ. ტრადიციული ქართული სამზარეულო — უნიკალური გამოცდილება ფერდობებზე დღის შემდეგ.', 'ng.hut.dist': 'პირდაპირ ფერდობზე',
+        'ng.club.desc': 'Après-ski და ღამის გართობა. ცოცხალი მუსიკა, კოქტეილები, კავკასიის ყველაზე ცივ მთაზე ყველაზე თბილი ატმოსფერო.', 'ng.club.dist': '200 მ ლიფტებიდან',
+        'ng.panorama.desc': '360° სათვალთვალო ტერასა მთელ კავკასიის ქედზე. დასამახსოვრებელი მზის ჩასვლები, ხედები, რომლებიც ევროპაში არ არსებობს.', 'ng.panorama.dist': 'ახალი გუდაურის გულში',
+        'ng.adventure.desc': 'სათავგადასავლო ბაზა: ჰელი-სქი, სნოუმობილი, პარაგლაიდინგი. ნებისმიერი ადრენალინი, რაზეც ოცნებობდი — აქიდან.', 'ng.adventure.dist': '5 წუთი გონდოლიდან',
+        'exp.label': 'გამოცდილება',
+        'exp.title': 'გუდაური<br/>მხოლოდ კურორტი<br/><span class="electric">კი არ არის.</span>',
+        'exp.body': 'არის სასრიალო კურორტები, სადაც მიდიხარ. და არის კურორტები, რომლებიც შენში ჩარჩება. გუდაური მეორე კატეგორიას მიეკუთვნება. 3,200+ მეტრამდე მთები, სუფთად მჭრელი ჰაერი და ზამთრის მზე, რომელიც ენერგიას გიბრუნებს ყოველი ჩამოსვლის შემდეგ. არ იკითხავ — რატომ მოვედი, იკითხავ — რატომ ადრე არ მოვედი.',
+        'exp.li1': 'გრძელი სეზონი: დეკემბერი - აპრილი — თოვლის ხუთი თვე',
+        'exp.li2': 'სულ 120 კმ თბილისიდან — მთები + ქალაქი ერთ მოგზაურობაში',
+        'exp.li3': 'მზარდი საერთაშორისო თემი — აღარ არის საიდუმლო',
+        'exp.li4': 'ფასები, რომლებიც მთელი კვირის ღირებულებას ალპური კვირაბოლოს ფასში იძლევა',
+        'exp.cta': 'დაგეგმე შვებულება',
+        'access.year.value': '1988', 'access.year.label': 'დაარსების წელი', 'access.year.desc': 'გუდაური საქართველოს უძველესი სასრიალო კურორტია — და მას შემდეგ ყველაზე დიდი და თანამედროვე გახდა. ინფრასტრუქტურა, რომელიც ერთი თაობის განმავლობაში შეიქმნა.',
+        'access.dist.value': '150 კმ', 'access.dist.label': 'თბილისიდან', 'access.dist.desc': '~2 საათი თბილისის აეროპორტიდან. შედეგი: ერთი-ორი დღე ქალაქში, შემდეგ პირდაპირ მთებში. ორი მიმართულება ერთის ფასად.',
+        'access.rank.value': '#1', 'access.rank.label': 'ყველაზე დიდი საქართველოში', 'access.rank.desc': 'ყველაზე დიდი, თანამედროვე და განვითარებული კურორტი საქართველოში — ინფრასტრუქტურა, რომელიც მხარს უჭერს ფრისტაილ სქის, off-piste-ს და ღამის სრიალობას სრული განათებით.',
+        'accom.label': 'განთავსება და დაგეგმვა',
+        'accom.title': 'დაგეგმე<br/><span class="electric">შენი შვებულება</span>',
+        'accom.sub': 'წყვილის მოგზაურობა, მეგობართა ჯგუფი, თუ ოჯახი პირველად — ყველაფერს მოვაგვარებთ: ფრენები, განთავსება ფერდობებთან, ინვენტარის გაქირავება და გიდი.',
+        'accom.f1': 'სასტუმრო ფერდობებიდან 50 მ', 'accom.f2': 'ქართულენოვანი გიდი', 'accom.f3': 'ლიფტის ბილეთები შედის', 'accom.f4': 'ტრანსფერი თბილისიდან',
+        'accom.cta1': 'დაგვიკავშირდი ახლა', 'accom.cta2': 'WhatsApp',
+        'test.label': 'მოსაზრებები',
+        'test.title': 'ვინც<br/><span class="electric">საიდუმლო უკვე იცის</span>',
+        'test1.text': 'გუდაურში პირველ ჯერზე გამოსაცდელად წავედით. ახლა ეს ჩვენი მუდმივი ადგილია. მეორე დღეს 8 კმ გავიარეთ გაჩერების გარეშე — ვერბიეში ამას კვირა სჭირდება. ადამიანები თბილები არიან, თოვლი ფანტასტიკურია, ხოლო ფასებმა ისეთი შეგრძნება შეგვიქმნა, თითქოს ვინმეს ვატყუებდით.',
+        'test1.author': 'რონ ლევი', 'test1.detail': 'თელ-ავივი · მეორე სეზონი',
+        'test2.text': 'საქართველოს მიმართ სკეპტიკური ვიყავი. მეგობრებმა დამარწმუნეს და სიხარულით, რომ წავედი. სამი დღე მთებში და ორი დღე თბილისში — ეს ჩვეულებრივი სასრიალო მოგზაურობა არ არის. ეს სრული გამოცდილებაა. უკვე ვჯავშნი იმავე ჯგუფს მომავალი თებერვლისთვის.',
+        'test2.author': 'შირა კოენი', 'test2.detail': 'ჰაიფა · იანვარი 2024',
+        'test3.text': '12 ადამიანის ჯგუფი წამოვიყვანე — ნაწილი დამწყებები, ნაწილი გამოცდილები. გუდაური ყველასთვის სრულყოფილია. ავსტრიული ლიფტები სრული ევროპული სტანდარტის არიან, ხოლო გიდის დახმარებით დამწყებებმა ორ დღეში ჩაიჭიდეს ტემპი. ყველა დაბრუნებას ისურვებს.',
+        'test3.author': 'იაირ ავივი', 'test3.detail': 'იერუსალიმი · 12 კაციანი ჯგუფი',
+        'footer.tagline': 'გუდაური მხოლოდ კურორტი არ არის. ეს ის გზაა, რომლითაც მოგზაურებმა აღმოაჩინეს: შეიძლება სრიალობა ევროპულ დონეზე, გონივრული ფასებით, და განცდა, რომ საგანძური იპოვე.',
+        'footer.nav.heading': 'ნავიგაცია', 'footer.nav.about': 'გუდაურის შესახებ', 'footer.nav.activities': 'აქტივობები',
+        'footer.nav.new_gudauri': 'ახალი გუდაური', 'footer.nav.accommodation': 'განთავსება', 'footer.nav.testimonials': 'შეფასებები',
+        'footer.contact.heading': 'კონტაქტი', 'footer.contact.wa': 'WhatsApp ხელმისაწვდომია',
+        'footer.newsletter.heading': 'განახლებები და შეთავაზებები',
+        'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები, რომლებიც ჩამოსვლის სურვილს გაგიჩენს.',
+        'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
+        'footer.copy': '&copy; 2025 <a href="#">GudauriSkiIL</a>. ყველა უფლება დაცულია.',
+        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.access': 'ხელმისაწვდომობა',
+      }
+    };
+
+    function setLanguage(lang) {
+      var t = window.TRANSLATIONS[lang];
+      if (!t) return;
+
+      // Update html dir/lang
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.body.style.textAlign = t.dir === 'rtl' ? 'right' : 'left';
+
+      // textContent elements
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // innerHTML elements (titles with <br>, <span class="electric">, etc.)
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // placeholder elements
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      // Update active lang button
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Update internal page links to carry the language param
+      document.querySelectorAll('a[data-internal]').forEach(function(a) {
+        var base = a.getAttribute('data-internal');
+        a.href = lang !== 'he' ? base + '?lang=' + lang : base;
+      });
+
+      localStorage.setItem('gudauri-lang', lang);
+    }
+
+    // Init: read from URL param or localStorage
+    (function() {
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var savedLang = localStorage.getItem('gudauri-lang');
+      var lang = (urlLang && window.TRANSLATIONS[urlLang]) ? urlLang
+               : (savedLang && window.TRANSLATIONS[savedLang]) ? savedLang
+               : 'he';
+      setLanguage(lang);
+    })();
+  </script>
+
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+</body>
+</html>
