@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="לינה בגודאורי — שתי דירות פרמיום בניו גודאורי. CozyCasa Atrium ו-CozyCasa Suits — 50-100 מ׳ מהגונדולה." />
-  <title>לינה בגודאורי — GudauriSkiIL</title>
+  <title>לינה בגודאורי — Gudauri Helper</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -417,6 +417,100 @@
       box-shadow: 0 8px 24px rgba(37,211,102,0.35);
     }
 
+    .btn-direct {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: white; font-size: 0.9375rem; font-weight: 700;
+      padding: 12px 20px; border-radius: 10px; cursor: pointer; border: none;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap; font-family: inherit; position: relative;
+    }
+    .btn-direct:hover {
+      opacity: 0.91; transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(245,158,11,0.45);
+    }
+    .apt-direct-callout {
+      font-size: 0.775rem; color: #4ADE80; font-weight: 600;
+      margin-bottom: 9px; letter-spacing: 0.01em;
+    }
+    .pay-direct-trust {
+      font-size: 0.71rem; color: var(--slate-500);
+      margin-top: 8px;
+    }
+
+    /* ── PAYMENT MODAL ── */
+    .pay-modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(2,6,23,0.84); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .pay-modal-box {
+      background: #1E293B; border-radius: 18px;
+      width: 100%; max-width: 480px; max-height: 90vh;
+      overflow-y: auto; position: relative;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 28px 64px rgba(0,0,0,0.55);
+    }
+    .pay-modal-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .pay-modal-title { font-size: 1.125rem; font-weight: 700; color: var(--snow); }
+    .pay-modal-close {
+      background: none; border: none; color: var(--slate-400);
+      cursor: pointer; font-size: 1.1rem; padding: 5px 9px;
+      border-radius: 6px; line-height: 1; font-family: inherit;
+      transition: background var(--transition), color var(--transition);
+    }
+    .pay-modal-close:hover { background: rgba(255,255,255,0.07); color: var(--snow); }
+    .pay-modal-body { padding: 22px 24px 28px; }
+    .pay-form-row { margin-bottom: 14px; }
+    .pay-form-label {
+      display: block; font-size: 0.8125rem; font-weight: 600;
+      color: var(--slate-400); margin-bottom: 5px;
+    }
+    .pay-form-input {
+      width: 100%; background: rgba(255,255,255,0.05);
+      border: 1.5px solid var(--glass-border); border-radius: 9px;
+      color: var(--snow); font-size: 0.9375rem; padding: 10px 13px;
+      font-family: inherit; transition: border-color var(--transition);
+      box-sizing: border-box;
+    }
+    .pay-form-input:focus { outline: none; border-color: var(--electric); }
+    .pay-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .pay-summary-box {
+      background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 11px; padding: 14px 18px; margin-bottom: 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .pay-summary-label { font-size: 0.875rem; color: var(--slate-400); margin-bottom: 2px; }
+    .pay-summary-nights { font-size: 1.1rem; font-weight: 700; color: var(--snow); }
+    .pay-summary-total  { font-size: 1.35rem; font-weight: 800; color: var(--snow); }
+    .pay-apt-display {
+      font-size: 0.9375rem; font-weight: 700; color: var(--electric);
+      margin-bottom: 18px;
+    }
+    .pay-submit-btn {
+      width: 100%; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: white; border: none; border-radius: 11px;
+      font-size: 1rem; font-weight: 700; padding: 14px;
+      cursor: pointer; font-family: inherit; margin-top: 6px;
+      transition: opacity var(--transition), box-shadow var(--transition);
+    }
+    .pay-submit-btn:hover { opacity: 0.91; box-shadow: 0 6px 22px rgba(245,158,11,0.4); }
+    .pay-submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .pay-trust-line  { text-align: center; font-size: 0.75rem; color: var(--slate-500); margin-top: 11px; }
+    .pay-saving-line { text-align: center; font-size: 0.78rem; color: #4ADE80; margin-top: 6px; font-weight: 600; }
+    .pay-error-msg {
+      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 9px; padding: 11px 15px; color: #FCA5A5;
+      font-size: 0.875rem; margin-bottom: 14px; display: none;
+    }
+    .pay-iframe-wrap iframe { width: 100%; height: 530px; border: none; display: block; border-radius: 0 0 18px 18px; }
+    .pay-iframe-loading { text-align: center; padding: 48px 0; color: var(--slate-400); font-size: 0.9375rem; }
+
     @media (max-width: 960px) {
       .apt-card, .apt-card.flipped { grid-template-columns: 1fr; direction: rtl; }
       .apt-gallery { min-height: 300px; aspect-ratio: 16/9; }
@@ -571,14 +665,14 @@
     <div class="container">
       <div class="nav-inner">
 
-        <a href="index.html" class="nav-logo" aria-label="GudauriSkiIL - דף הבית">
+        <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
             <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
             <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
             <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
           </svg>
-          <span class="nav-logo-text">Gudauri<span>Ski</span>IL</span>
+          <span class="nav-logo-text">Gudauri Helper</span>
         </a>
 
         <ul class="nav-links" role="list">
@@ -756,7 +850,12 @@
                 </div>
               </div>
             </div>
+            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
             <div class="apt-ctas">
+              <button onclick="openPayModal('atrium')" class="btn-direct" aria-label="הזמן דירת Atrium ישירות">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span data-i18n="lina.book_direct">הזמן ישירות</span>
+              </button>
               <a href="https://he.airbnb.com/rooms/1231282986705944000" target="_blank" rel="noopener noreferrer" class="btn-airbnb" aria-label="הזמן דירת Atrium ב-Airbnb">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 2c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 4c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm-4.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v.5H7.5V16z"/></svg>
                 <span data-i18n="lina.book_airbnb">הזמן ב-Airbnb</span>
@@ -766,6 +865,7 @@
                 <span data-i18n="lina.whatsapp">וואטסאפ</span>
               </a>
             </div>
+            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
           </div>
         </div>
 
@@ -868,7 +968,12 @@
                 </div>
               </div>
             </div>
+            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
             <div class="apt-ctas">
+              <button onclick="openPayModal('suits')" class="btn-direct" aria-label="הזמן דירת Suits ישירות">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span data-i18n="lina.book_direct">הזמן ישירות</span>
+              </button>
               <a href="https://he.airbnb.com/rooms/1496598809721427846" target="_blank" rel="noopener noreferrer" class="btn-airbnb" aria-label="הזמן דירת Suits ב-Airbnb">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 2c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm0 4c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm-4.5 9c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v.5H7.5V16z"/></svg>
                 <span data-i18n="lina.book_airbnb">הזמן ב-Airbnb</span>
@@ -878,6 +983,7 @@
                 <span data-i18n="lina.whatsapp">וואטסאפ</span>
               </a>
             </div>
+            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
           </div>
         </div>
 
@@ -931,7 +1037,7 @@
       <div class="cta-box reveal">
         <span class="section-label" style="display:block;text-align:center;margin-bottom:12px;" data-i18n="lina.cta.label">מוכנים לסקי?</span>
         <h2 class="cta-box-title" id="cta-heading" data-i18n="lina.cta.title">
-          שריינו את הדירה לעונת 25/26
+          שריינו את הדירה לעונת 26/27
         </h2>
         <p class="cta-box-sub" data-i18n="lina.cta.sub">
           מקומות מוגבלים לעונה. פנו אלינו עכשיו לבדיקת זמינות ומחירים — תוך שעות.
@@ -957,13 +1063,13 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="GudauriSkiIL - חזרה לדף הבית">
+          <a href="index.html" class="footer-logo" aria-label="Gudauri Helper - חזרה לדף הבית">
             <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
               <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
               <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
             </svg>
-            <span class="footer-logo-text">Gudauri<span>Ski</span>IL</span>
+            <span class="footer-logo-text">Gudauri Helper</span>
           </a>
           <p class="footer-tagline" data-i18n="footer.tagline">
             גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה,
@@ -1027,7 +1133,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.</p>
+        <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.</p>
         <nav class="footer-legal" aria-label="קישורים משפטיים">
           <a href="privacy-policy.html" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
           <a href="terms.html" data-i18n="footer.legal.terms">תנאי שימוש</a>
@@ -1103,6 +1209,15 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
+    // When navigating directly to #apartments, skip reveal animations and scroll there
+    if (window.location.hash === '#apartments') {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      setTimeout(() => {
+        const target = document.getElementById('apartments');
+        if (target) target.scrollIntoView({ behavior: 'instant' });
+      }, 0);
+    }
+
     // Newsletter
     function handleNewsletter(e) {
       e.preventDefault();
@@ -1117,6 +1232,194 @@
     // Reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+  <!-- ═══ PAYMENT MODAL ═══ -->
+  <div id="payModal" class="pay-modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="payModalTitle">
+    <div class="pay-modal-box">
+      <div class="pay-modal-header">
+        <span class="pay-modal-title" id="payModalTitle" data-i18n="lina.modal.title">הזמנה ישירה</span>
+        <button class="pay-modal-close" onclick="closePayModal()" aria-label="סגור">✕</button>
+      </div>
+      <div class="pay-modal-body">
+
+        <!-- Step 1: Form -->
+        <div id="payStep1">
+          <div class="pay-apt-display" id="payAptDisplay"></div>
+          <div id="payErrMsg" class="pay-error-msg"></div>
+          <form id="payForm" onsubmit="submitPaymentForm(event)" novalidate>
+            <div class="pay-form-grid">
+              <div>
+                <label class="pay-form-label" for="payCheckin" data-i18n="lina.modal.checkin">תאריך כניסה</label>
+                <input type="date" id="payCheckin" class="pay-form-input" required onchange="updatePayTotal()" />
+              </div>
+              <div>
+                <label class="pay-form-label" for="payCheckout" data-i18n="lina.modal.checkout">תאריך יציאה</label>
+                <input type="date" id="payCheckout" class="pay-form-input" required onchange="updatePayTotal()" />
+              </div>
+            </div>
+            <div class="pay-summary-box">
+              <div>
+                <div class="pay-summary-label" data-i18n="lina.modal.nights">לילות</div>
+                <div class="pay-summary-nights" id="payNights">—</div>
+              </div>
+              <div style="text-align:start;">
+                <div class="pay-summary-label" data-i18n="lina.modal.total">סה"כ לתשלום</div>
+                <div class="pay-summary-total" id="payTotal">—</div>
+              </div>
+            </div>
+            <div class="pay-form-row">
+              <label class="pay-form-label" for="payName" data-i18n="lina.modal.name">שם מלא</label>
+              <input type="text" id="payName" class="pay-form-input" required autocomplete="name" />
+            </div>
+            <div class="pay-form-row">
+              <label class="pay-form-label" for="payPhone" data-i18n="lina.modal.phone">טלפון</label>
+              <input type="tel" id="payPhone" class="pay-form-input" required autocomplete="tel" dir="ltr" />
+            </div>
+            <div class="pay-form-row">
+              <label class="pay-form-label" for="payEmail" data-i18n="lina.modal.email">אימייל (אופציונלי)</label>
+              <input type="email" id="payEmail" class="pay-form-input" autocomplete="email" dir="ltr" />
+            </div>
+            <button type="submit" id="paySubmitBtn" class="pay-submit-btn">
+              <span data-i18n="lina.modal.submit">המשך לתשלום →</span>
+            </button>
+          </form>
+          <div class="pay-trust-line" data-i18n="lina.modal.trust">🔒 תשלום מאובטח דרך Cardcom</div>
+          <div class="pay-saving-line" data-i18n="lina.modal.saving">✓ ללא עמלת פלטפורמה — מחיר ישיר מהבעלים</div>
+        </div>
+
+        <!-- Step 2: Cardcom iframe -->
+        <div id="payStep2" style="display:none;">
+          <div class="pay-iframe-loading" data-i18n="lina.modal.loading">מעביר לדף תשלום מאובטח...</div>
+          <div class="pay-iframe-wrap">
+            <iframe id="payIframe"
+              sandbox="allow-top-navigation allow-scripts allow-forms allow-same-origin"
+              title="דף תשלום מאובטח"
+              onload="document.querySelector('.pay-iframe-loading').style.display='none';">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAYMENT JS ═══ -->
+  <script>
+    var _payApt = '';
+    var _payPrices = { atrium: 370, suits: 450 };
+    var _payAptNames = {
+      he: { atrium: 'דירת Atrium — ניו גודאורי', suits: 'דירת Suits — ניו גודאורי' },
+      en: { atrium: 'Atrium Apartment — New Gudauri', suits: 'Suits Apartment — New Gudauri' },
+      ru: { atrium: 'Апартамент Atrium — Новый Гудаури', suits: 'Апартамент Suits — Новый Гудаури' },
+      ka: { atrium: 'Atrium სახლი — ახალი გუდაური', suits: 'Suits სახლი — ახალი გუდაური' },
+    };
+
+    function openPayModal(apt) {
+      _payApt = apt;
+      var modal = document.getElementById('payModal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('payStep1').style.display = 'block';
+      document.getElementById('payStep2').style.display = 'none';
+      document.getElementById('payErrMsg').style.display = 'none';
+      document.getElementById('payForm').reset();
+      document.getElementById('paySubmitBtn').disabled = false;
+
+      var lang = document.documentElement.lang || 'he';
+      var names = _payAptNames[lang] || _payAptNames.he;
+      document.getElementById('payAptDisplay').textContent = names[apt];
+
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById('payCheckin').min = today;
+      document.getElementById('payCheckout').min = today;
+      updatePayTotal();
+    }
+
+    function closePayModal() {
+      document.getElementById('payModal').style.display = 'none';
+      document.body.style.overflow = '';
+      document.getElementById('payIframe').src = '';
+    }
+
+    // Close on overlay click
+    document.getElementById('payModal').addEventListener('click', function(e) {
+      if (e.target === this) closePayModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && document.getElementById('payModal').style.display !== 'none') {
+        closePayModal();
+      }
+    });
+
+    function updatePayTotal() {
+      var checkin  = document.getElementById('payCheckin').value;
+      var checkout = document.getElementById('payCheckout').value;
+      if (checkin && checkout) {
+        var nights = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
+        if (nights > 0) {
+          document.getElementById('payNights').textContent = nights;
+          document.getElementById('payTotal').textContent  = '₪' + (nights * _payPrices[_payApt]).toLocaleString();
+          return;
+        }
+      }
+      document.getElementById('payNights').textContent = '—';
+      document.getElementById('payTotal').textContent  = '—';
+    }
+
+    async function submitPaymentForm(e) {
+      e.preventDefault();
+      var errEl = document.getElementById('payErrMsg');
+      var btn   = document.getElementById('paySubmitBtn');
+      errEl.style.display = 'none';
+
+      var checkin  = document.getElementById('payCheckin').value;
+      var checkout = document.getElementById('payCheckout').value;
+      var nights   = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
+
+      if (!nights || nights < 1) {
+        errEl.textContent = 'נא לבחור תאריכים תקינים';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      var lang = document.documentElement.lang || 'he';
+      var t = window.TRANSLATIONS && window.TRANSLATIONS[lang] ? window.TRANSLATIONS[lang] : {};
+      btn.querySelector('[data-i18n]').textContent = t['lina.modal.loading'] || 'מעביר לדף תשלום...';
+
+      try {
+        var res = await fetch('/api/payment', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            apartment: _payApt,
+            nights:    nights,
+            checkin:   checkin,
+            checkout:  checkout,
+            name:      document.getElementById('payName').value.trim(),
+            phone:     document.getElementById('payPhone').value.trim(),
+            email:     document.getElementById('payEmail').value.trim(),
+          }),
+        });
+
+        var data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'שגיאה');
+
+        document.getElementById('payStep1').style.display = 'none';
+        document.getElementById('payStep2').style.display = 'block';
+        document.querySelector('.pay-iframe-loading').style.display = 'block';
+        document.getElementById('payIframe').src = data.paymentUrl;
+
+      } catch (err) {
+        errEl.textContent = 'שגיאה בפתיחת דף התשלום. נסו שוב או פנו בוואטסאפ.';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.querySelector('[data-i18n]').textContent = t['lina.modal.submit'] || 'המשך לתשלום →';
+      }
     }
   </script>
 
@@ -1144,6 +1447,17 @@
         'lina.atrium.note': 'ℹ️ <strong>לתשומת לבכם:</strong> בריכה, ספא ומסעדה נפתחים בדצמבר 2025 (עם פתיחת העונה). ג\'קוזי ובריכה בתשלום נוסף.',
         'lina.atrium.badge': '✦ מרפסת + נוף', 'lina.atrium.price_label': 'מחיר ללילה',
         'lina.airbnb_rating': 'דירוג Airbnb', 'lina.book_airbnb': 'הזמן ב-Airbnb', 'lina.whatsapp': 'וואטסאפ',
+        'lina.book_direct': 'הזמן ישירות',
+        'lina.direct.callout': '💡 הזמן ישירות — ללא עמלות פלטפורמה',
+        'lina.direct.trust': '🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה',
+        'lina.modal.title': 'הזמנה ישירה — מחיר בעלים',
+        'lina.modal.checkin': 'תאריך כניסה', 'lina.modal.checkout': 'תאריך יציאה',
+        'lina.modal.nights': 'לילות', 'lina.modal.total': 'סה"כ לתשלום',
+        'lina.modal.name': 'שם מלא', 'lina.modal.phone': 'טלפון', 'lina.modal.email': 'אימייל (אופציונלי)',
+        'lina.modal.submit': 'המשך לתשלום →',
+        'lina.modal.loading': 'מעביר לדף תשלום מאובטח...',
+        'lina.modal.trust': '🔒 תשלום מאובטח דרך Cardcom',
+        'lina.modal.saving': '✓ ללא עמלת פלטפורמה — מחיר ישיר מהבעלים',
         'lina.suits.building': 'בניין Suits · ניו גודאורי',
         'lina.suits.location': '50 מ׳ מהגונדולה · קומה 4 שקטה',
         'lina.suits.tag1': '🛏️ Queen + ספה', 'lina.suits.tag2': '👥 עד 3 אורחים',
@@ -1158,7 +1472,7 @@
         'lina.trust.t3_label': 'פרמיום ומשופץ', 'lina.trust.t3_sub': 'עיצוב מודרני ונוחות מרבית',
         'lina.trust.t4_label': 'שירות בעברית', 'lina.trust.t4_sub': 'WhatsApp עד הדלת שלכם',
         'lina.trust.t5_label': 'הזמנה בטוחה', 'lina.trust.t5_sub': 'Airbnb או ישירות',
-        'lina.cta.label': 'מוכנים לסקי?', 'lina.cta.title': 'שריינו את הדירה לעונת 25/26',
+        'lina.cta.label': 'מוכנים לסקי?', 'lina.cta.title': 'שריינו את הדירה לעונת 26/27',
         'lina.cta.sub': 'מקומות מוגבלים לעונה. פנו אלינו עכשיו לבדיקת זמינות ומחירים — תוך שעות.',
         'lina.cta.email': 'אימייל',
         'footer.tagline': 'גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.',
@@ -1168,7 +1482,7 @@
         'footer.newsletter.heading': 'עדכונים ומבצעים',
         'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
         'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
-        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. כל הזכויות שמורות.',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.',
         'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.access': 'נגישות',
       },
       en: {
@@ -1192,6 +1506,17 @@
         'lina.atrium.note': 'ℹ️ <strong>Note:</strong> Pool, spa & restaurant open December 2025 (season start). Jacuzzi & pool have additional fee.',
         'lina.atrium.badge': '✦ Balcony + View', 'lina.atrium.price_label': 'Price per night',
         'lina.airbnb_rating': 'Airbnb Rating', 'lina.book_airbnb': 'Book on Airbnb', 'lina.whatsapp': 'WhatsApp',
+        'lina.book_direct': 'Book Direct',
+        'lina.direct.callout': '💡 Book Direct — No Platform Fees',
+        'lina.direct.trust': '🔒 Secure payment · Free cancellation up to 48h before arrival',
+        'lina.modal.title': 'Direct Booking — Owner\'s Price',
+        'lina.modal.checkin': 'Check-in', 'lina.modal.checkout': 'Check-out',
+        'lina.modal.nights': 'Nights', 'lina.modal.total': 'Total to pay',
+        'lina.modal.name': 'Full Name', 'lina.modal.phone': 'Phone', 'lina.modal.email': 'Email (optional)',
+        'lina.modal.submit': 'Continue to payment →',
+        'lina.modal.loading': 'Redirecting to secure payment...',
+        'lina.modal.trust': '🔒 Secure payment via Cardcom',
+        'lina.modal.saving': '✓ No platform commission — direct owner price',
         'lina.suits.building': 'Suits Building · New Gudauri',
         'lina.suits.location': '50 m from gondola · Quiet 4th floor',
         'lina.suits.tag1': '🛏️ Queen + Sofa', 'lina.suits.tag2': '👥 Up to 3 guests',
@@ -1206,7 +1531,7 @@
         'lina.trust.t3_label': 'Premium & Renovated', 'lina.trust.t3_sub': 'Modern design and maximum comfort',
         'lina.trust.t4_label': 'Personal Service', 'lina.trust.t4_sub': 'WhatsApp direct to your door',
         'lina.trust.t5_label': 'Safe Booking', 'lina.trust.t5_sub': 'Via Airbnb or directly',
-        'lina.cta.label': 'Ready to ski?', 'lina.cta.title': 'Reserve Your Apartment for Season 25/26',
+        'lina.cta.label': 'Ready to ski?', 'lina.cta.title': 'Reserve Your Apartment for Season 26/27',
         'lina.cta.sub': 'Limited spots for the season. Contact us now to check availability and rates — within hours.',
         'lina.cta.email': 'Email',
         'footer.tagline': 'Gudauri isn\'t just a destination. It\'s how travelers discovered you can ski like in Europe, pay reasonable prices, and feel like you found a hidden treasure.',
@@ -1216,7 +1541,7 @@
         'footer.newsletter.heading': 'Updates & Deals',
         'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
         'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
-        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. All rights reserved.',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. All rights reserved.',
         'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.access': 'Accessibility',
       },
       ru: {
@@ -1240,6 +1565,17 @@
         'lina.atrium.note': 'ℹ️ <strong>Примечание:</strong> Бассейн, спа и ресторан откроются в декабре 2025. Джакузи и бассейн за доп. плату.',
         'lina.atrium.badge': '✦ Балкон + Вид', 'lina.atrium.price_label': 'Цена за ночь',
         'lina.airbnb_rating': 'Рейтинг Airbnb', 'lina.book_airbnb': 'Забронировать на Airbnb', 'lina.whatsapp': 'WhatsApp',
+        'lina.book_direct': 'Бронировать напрямую',
+        'lina.direct.callout': '💡 Бронируйте напрямую — без комиссий платформы',
+        'lina.direct.trust': '🔒 Безопасная оплата · Бесплатная отмена за 48 ч до заезда',
+        'lina.modal.title': 'Прямое бронирование — Цена владельца',
+        'lina.modal.checkin': 'Заезд', 'lina.modal.checkout': 'Выезд',
+        'lina.modal.nights': 'Ночей', 'lina.modal.total': 'Итого к оплате',
+        'lina.modal.name': 'Полное имя', 'lina.modal.phone': 'Телефон', 'lina.modal.email': 'Email (необязательно)',
+        'lina.modal.submit': 'К оплате →',
+        'lina.modal.loading': 'Переход к безопасной оплате...',
+        'lina.modal.trust': '🔒 Безопасная оплата через Cardcom',
+        'lina.modal.saving': '✓ Без комиссии платформы — прямая цена от владельца',
         'lina.suits.building': 'Здание Suits · Новый Гудаури',
         'lina.suits.location': '50 м от гондолы · Тихий 4-й этаж',
         'lina.suits.tag1': '🛏️ Queen + диван', 'lina.suits.tag2': '👥 До 3 гостей',
@@ -1254,7 +1590,7 @@
         'lina.trust.t3_label': 'Премиум и ремонт', 'lina.trust.t3_sub': 'Современный дизайн и максимальный комфорт',
         'lina.trust.t4_label': 'Персональный сервис', 'lina.trust.t4_sub': 'WhatsApp прямо до вашей двери',
         'lina.trust.t5_label': 'Безопасное бронирование', 'lina.trust.t5_sub': 'Через Airbnb или напрямую',
-        'lina.cta.label': 'Готовы кататься?', 'lina.cta.title': 'Забронируйте апартамент на сезон 25/26',
+        'lina.cta.label': 'Готовы кататься?', 'lina.cta.title': 'Забронируйте апартамент на сезон 26/27',
         'lina.cta.sub': 'Ограниченное количество мест. Свяжитесь с нами сейчас для проверки наличия и цен — в течение нескольких часов.',
         'lina.cta.email': 'Email',
         'footer.tagline': 'Гудаури — не просто курорт. Это то, как путешественники открыли: можно кататься как в Европе, платить разумные цены, и чувствовать, что нашёл сокровище.',
@@ -1264,7 +1600,7 @@
         'footer.newsletter.heading': 'Новости и акции',
         'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
         'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
-        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. Все права защищены.',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. Все права защищены.',
         'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.access': 'Доступность',
       },
       ka: {
@@ -1288,6 +1624,17 @@
         'lina.atrium.note': 'ℹ️ <strong>შენიშვნა:</strong> აუზი, სპა და რესტორანი 2025 წლის დეკემბერში გაიხსნება. ჯაკუზი და აუზი დამატებით ფასიანია.',
         'lina.atrium.badge': '✦ ბალკონი + ხედი', 'lina.atrium.price_label': 'ფასი ღამეში',
         'lina.airbnb_rating': 'Airbnb-ის რეიტინგი', 'lina.book_airbnb': 'Airbnb-ზე დაჯავშნე', 'lina.whatsapp': 'WhatsApp',
+        'lina.book_direct': 'პირდაპირ დაჯავშნე',
+        'lina.direct.callout': '💡 პირდაპირ დაჯავშნე — პლატფორმის საკომისიოს გარეშე',
+        'lina.direct.trust': '🔒 უსაფრთხო გადახდა · უფასო გაუქმება ჩაძირვამდე 48 სთ-ით ადრე',
+        'lina.modal.title': 'პირდაპირი ჯავშანი — მფლობელის ფასი',
+        'lina.modal.checkin': 'შემოსვლა', 'lina.modal.checkout': 'გასვლა',
+        'lina.modal.nights': 'ღამეები', 'lina.modal.total': 'სულ გადასახდელი',
+        'lina.modal.name': 'სრული სახელი', 'lina.modal.phone': 'ტელეფონი', 'lina.modal.email': 'ელ-ფოსტა (სურვილისამებრ)',
+        'lina.modal.submit': 'გადახდაზე გადასვლა →',
+        'lina.modal.loading': 'უსაფრთხო გადახდის გვერდზე გადამისამართება...',
+        'lina.modal.trust': '🔒 უსაფრთხო გადახდა Cardcom-ის გზით',
+        'lina.modal.saving': '✓ პლატფორმის საკომისიოს გარეშე — პირდაპირი ფასი',
         'lina.suits.building': 'Suits შენობა · ახალი გუდაური',
         'lina.suits.location': '50 მ გონდოლიდან · მშვიდი მე-4 სართული',
         'lina.suits.tag1': '🛏️ Queen + დივანი', 'lina.suits.tag2': '👥 3-მდე სტუმარი',
@@ -1302,7 +1649,7 @@
         'lina.trust.t3_label': 'პრემიუმ და გარემონტებული', 'lina.trust.t3_sub': 'თანამედროვე დიზაინი და მაქსიმალური კომფორტი',
         'lina.trust.t4_label': 'პერსონალური სერვისი', 'lina.trust.t4_sub': 'WhatsApp პირდაპირ თქვენს კართან',
         'lina.trust.t5_label': 'უსაფრთხო ჯავშანი', 'lina.trust.t5_sub': 'Airbnb-ის გზით ან პირდაპირ',
-        'lina.cta.label': 'მზად ხარ სრიალობისთვის?', 'lina.cta.title': 'დაჯავშნე სახლი 25/26 სეზონისთვის',
+        'lina.cta.label': 'მზად ხარ სრიალობისთვის?', 'lina.cta.title': 'დაჯავშნე სახლი 26/27 სეზონისთვის',
         'lina.cta.sub': 'ადგილები შეზღუდულია. დაგვიკავშირდი ახლა ხელმისაწვდომობისა და ფასების შესამოწმებლად.',
         'lina.cta.email': 'ელ-ფოსტა',
         'footer.tagline': 'გუდაური მხოლოდ კურორტი არ არის. ეს ის გზაა, რომლითაც მოგზაურებმა აღმოაჩინეს: სრიალობა ევროპულ დონეზე, გონივრული ფასებით, და განცდა, რომ საგანძური იპოვე.',
@@ -1312,7 +1659,7 @@
         'footer.newsletter.heading': 'განახლებები და შეთავაზებები',
         'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები.',
         'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
-        'footer.copy': '&copy; 2025 <a href="index.html">GudauriSkiIL</a>. ყველა უფლება დაცულია.',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. ყველა უფლება დაცულია.',
         'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.access': 'ხელმისაწვდომობა',
       }
     };
@@ -1361,3 +1708,5 @@
 
 </body>
 </html>
+
+

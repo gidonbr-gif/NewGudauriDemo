@@ -53,7 +53,8 @@ test('buildAirtableFields maps a website lead to the CRM schema', () => {
     service: 'apartments',
     source: 'index hero',
     notes: 'Needs a 2 bedroom apartment',
-    followUpDate: '2026-06-01',
+    email: 'test@example.com',
+    marketingConsent: 'on',
     estimatedValue: '1200'
   });
 
@@ -63,7 +64,8 @@ test('buildAirtableFields maps a website lead to the CRM schema', () => {
   assert.equal(fields['מקור'], 'index hero');
   assert.equal(fields['סטטוס'], 'חדש');
   assert.equal(fields['הערות'], 'Needs a 2 bedroom apartment');
-  assert.equal(fields['תאריך חזרה'], '2026-06-01');
+  assert.equal(fields['מייל'], 'test@example.com');
+  assert.equal(fields['הסכמה שיווקית'], true);
   assert.equal(fields['שווי משוער'], 1200);
 });
 

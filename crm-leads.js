@@ -42,10 +42,14 @@
       '.crm-lead-field label{font-weight:700;color:#1e293b;font-size:.95rem;}',
       '.crm-lead-field input,.crm-lead-field select,.crm-lead-field textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:12px 14px;font:inherit;color:#0f172a;background:#fff;text-align:right;}',
       '.crm-lead-field textarea{min-height:96px;resize:vertical;}',
+      '.crm-lead-checkboxes{display:grid;gap:10px;}',
+      '.crm-lead-checkbox{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.875rem;line-height:1.55;color:#334155;}',
+      '.crm-lead-checkbox input[type="checkbox"]{width:17px;height:17px;margin-top:2px;flex-shrink:0;accent-color:#0ea5e9;cursor:pointer;}',
+      '.crm-lead-checkbox a{color:#0ea5e9;text-decoration:underline;}',
       '.crm-lead-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}',
-      '.crm-submit,.crm-whatsapp{min-height:48px;border-radius:8px;padding:0 18px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}',
-      '.crm-submit{background:#0ea5e9;color:#fff;border:0;cursor:pointer;}',
-      '.crm-whatsapp{background:#128c3f;color:#fff;}',
+      '.crm-submit{min-height:48px;border-radius:8px;padding:0 28px;font-weight:800;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;background:#0ea5e9;color:#fff;border:0;cursor:pointer;transition:background .2s,transform .15s;}',
+      '.crm-submit:hover{background:#0284c7;transform:translateY(-1px);}',
+      '.crm-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}',
       '.crm-lead-status{font-weight:700;min-height:24px;color:#475569;}',
       '.crm-lead-status[data-state="success"]{color:#15803d;}',
       '.crm-lead-status[data-state="error"]{color:#b91c1c;}',
@@ -62,8 +66,8 @@
     section.innerHTML = '' +
       '<div class="crm-lead-wrap">' +
         '<div class="crm-lead-copy">' +
-          '<h2>השאירו פרטים ונחזור אליכם</h2>' +
-          '<p>כל פנייה נכנסת למערכת CRM מסודרת לפי סוג שירות, כדי שנוכל לטפל בה מהר ולחזור אליכם עם תשובה מדויקת.</p>' +
+          '<h2>השאירו פרטים ונחזור אליכם בהקדם האפשרי</h2>' +
+          '<p>שלחו לנו את הפרטים ואחד מנציגינו יחזור אליכם בהקדם עם הצעה מותאמת אישית. כל פנייה מטופלת באופן אישי ומסודר.</p>' +
         '</div>' +
         '<form class="crm-lead-form" novalidate>' +
           '<div class="crm-lead-grid">' +
@@ -77,22 +81,19 @@
               '<option value="apartments">הזמנת דירות</option>' +
               '<option value="investors">ליווי משקיעים</option>' +
             '</select></div>' +
-            '<div class="crm-lead-field"><label for="crm-follow-up">תאריך חזרה מועדף</label><input id="crm-follow-up" name="followUpDate" type="date"></div>' +
+            '<div class="crm-lead-field"><label for="crm-email">כתובת מייל</label><input id="crm-email" name="email" type="email" autocomplete="email" placeholder="example@email.com" dir="ltr"></div>' +
           '</div>' +
           '<div class="crm-lead-field"><label for="crm-notes">הערות</label><textarea id="crm-notes" name="notes" placeholder="ספרו בקצרה מה אתם צריכים"></textarea></div>' +
-          '<div class="crm-lead-actions"><button class="crm-submit" type="submit">שליחת פנייה</button><a class="crm-whatsapp" target="_blank" rel="noopener noreferrer">וואטסאפ</a></div>' +
+          '<div class="crm-lead-checkboxes">' +
+            '<label class="crm-lead-checkbox"><input type="checkbox" name="marketingConsent"><span>אני מסכים/ת לקבלת עדכונים ומבצעים בדוא"ל</span></label>' +
+            '<label class="crm-lead-checkbox"><input type="checkbox" name="termsAccepted"><span>קראתי ואני מסכים/ת ל<a href="/terms.html" target="_blank">תקנון האתר</a> ול<a href="/privacy-policy.html" target="_blank">מדיניות הפרטיות</a></span></label>' +
+          '</div>' +
+          '<div class="crm-lead-actions"><button class="crm-submit" type="submit">שליחת פנייה</button></div>' +
           '<p class="crm-lead-status" aria-live="polite"></p>' +
         '</form>' +
       '</div>';
 
-    var serviceSelect = section.querySelector('[name="service"]');
-    var whatsapp = section.querySelector('.crm-whatsapp');
-    serviceSelect.value = service;
-    whatsapp.href = whatsappUrl(service);
-    serviceSelect.addEventListener('change', function () {
-      whatsapp.href = whatsappUrl(serviceSelect.value);
-    });
-
+    section.querySelector('[name="service"]').value = service;
     section.querySelector('form').addEventListener('submit', submitLead);
     return section;
   }
@@ -111,6 +112,12 @@
       return;
     }
 
+    if (!form.querySelector('[name="termsAccepted"]').checked) {
+      status.dataset.state = 'error';
+      status.textContent = 'יש לאשר את תקנון האתר ומדיניות הפרטיות כדי להמשיך.';
+      return;
+    }
+
     submit.disabled = true;
     status.dataset.state = '';
     status.textContent = 'שולח...';
@@ -125,10 +132,10 @@
       form.reset();
       form.querySelector('[name="service"]').value = pageService();
       status.dataset.state = 'success';
-      status.textContent = 'הפנייה נשלחה. נחזור אליכם בהקדם.';
+      status.textContent = 'הפנייה נשלחה בהצלחה. נחזור אליכם בהקדם האפשרי.';
     } catch (error) {
       status.dataset.state = 'error';
-      status.textContent = 'לא הצלחנו לשלוח כרגע. אפשר לפנות אלינו בוואטסאפ.';
+      status.textContent = 'לא הצלחנו לשלוח כרגע. נסו שוב בעוד מספר דקות.';
     } finally {
       submit.disabled = false;
     }

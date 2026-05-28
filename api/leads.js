@@ -52,7 +52,8 @@ export function buildAirtableFields(input) {
     'תאריך יצירה': new Date().toISOString()
   };
 
-  if (clean(input.followUpDate)) fields['תאריך חזרה'] = clean(input.followUpDate);
+  if (clean(input.email)) fields['מייל'] = clean(input.email);
+  if (input.marketingConsent === 'on') fields['הסכמה שיווקית'] = true;
   if (Number.isFinite(estimatedValue) && estimatedValue > 0) fields['שווי משוער'] = estimatedValue;
 
   return fields;
