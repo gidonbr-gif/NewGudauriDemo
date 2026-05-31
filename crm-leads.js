@@ -32,7 +32,7 @@
   function addStyles() {
     var style = document.createElement('style');
     style.textContent = [
-      '.crm-lead-section{direction:rtl;text-align:right;background:#f8fafc;color:#0f172a;padding:72px 0;}',
+      '.crm-lead-section{direction:rtl;text-align:right;background:#f8fafc;color:#0f172a;padding:72px 0;scroll-margin-top:var(--nav-h,72px);}',
       '.crm-lead-wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto;display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:start;}',
       '.crm-lead-copy h2{font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.15;margin:0 0 12px;color:#0f172a;}',
       '.crm-lead-copy p{margin:0;color:#475569;font-size:1.05rem;line-height:1.8;}',
