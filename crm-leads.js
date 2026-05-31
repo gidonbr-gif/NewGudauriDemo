@@ -32,8 +32,8 @@
   function addStyles() {
     var style = document.createElement('style');
     style.textContent = [
-      '.crm-lead-section{direction:rtl;text-align:right;background:#f8fafc;color:#0f172a;padding:72px 0;scroll-margin-top:var(--nav-h,72px);}',
-      '.crm-lead-wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto;display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:start;}',
+      '.crm-lead-section{direction:rtl;text-align:right;background:#f8fafc;color:#0f172a;padding:72px 0;scroll-margin-top:var(--nav-h,72px);min-height:calc(100dvh - var(--nav-h,72px));display:flex;align-items:center;}',
+      '.crm-lead-wrap{width:min(1120px,calc(100% - 32px));margin-inline:auto;display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:start;width:100%;}',
       '.crm-lead-copy h2{font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.15;margin:0 0 12px;color:#0f172a;}',
       '.crm-lead-copy p{margin:0;color:#475569;font-size:1.05rem;line-height:1.8;}',
       '.crm-lead-form{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:24px;box-shadow:0 16px 42px rgba(15,23,42,.10);display:grid;gap:16px;}',
@@ -141,6 +141,14 @@
     }
   }
 
+  function scrollToForm() {
+    var target = document.getElementById('lead-form');
+    if (!target) return;
+    var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+    var top = target.getBoundingClientRect().top + window.scrollY - navH;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
   function mountForm() {
     if (document.getElementById('lead-form')) return;
     var footer = document.querySelector('footer');
@@ -150,11 +158,18 @@
     } else {
       document.body.appendChild(form);
     }
+    document.querySelectorAll('a[href="#lead-form"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToForm();
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     addStyles();
     enhanceWhatsAppLinks();
     mountForm();
+    if (window.location.hash === '#lead-form') scrollToForm();
   });
 })();
