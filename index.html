@@ -24,7 +24,10 @@
   <meta property="og:url" content="https://www.newgudauri.net/" />
   <meta property="og:title" content="גודאורי סקי — אתר הסקי הסודי של הישראלים" />
   <meta property="og:description" content="75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. הכל על גודאורי — הזול, הפתוח, המרהיב." />
-  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-gondola-hero.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="Gudauri Helper" />
 
@@ -32,7 +35,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="גודאורי סקי — אתר הסקי הסודי של הישראלים" />
   <meta name="twitter:description" content="75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. הזול, הפתוח, המרהיב." />
-  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-gondola-hero.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -757,6 +760,57 @@
       border-radius: 999px;
       padding: 4px 12px;
     }
+
+    /* ─── Expandable "read more" card content ─── */
+    .card-more {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.45s ease;
+      margin-top: 0;
+    }
+    .glass-card.expanded .card-more {
+      max-height: 600px;
+      opacity: 1;
+      margin-top: 14px;
+    }
+    .card-more .card-text { margin-top: 0; }
+    .card-more .card-text + .card-text { margin-top: 12px; }
+
+    .card-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      padding: 7px 14px 7px 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--electric);
+      background: rgba(14,165,233,0.08);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform 0.15s ease;
+    }
+    .card-toggle:hover {
+      background: rgba(14,165,233,0.16);
+      border-color: rgba(14,165,233,0.5);
+    }
+    .card-toggle:active { transform: scale(0.97); }
+    .card-toggle:focus-visible {
+      outline: 2px solid var(--electric);
+      outline-offset: 2px;
+    }
+    .card-toggle .ct-chevron {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .glass-card.expanded .card-toggle .ct-chevron { transform: rotate(180deg); }
+    .card-toggle .ct-less { display: none; }
+    .glass-card.expanded .card-toggle .ct-more { display: none; }
+    .glass-card.expanded .card-toggle .ct-less { display: inline; }
 
     @media (max-width: 900px) { .cards-grid { grid-template-columns: 1fr; } }
 
@@ -2237,7 +2291,15 @@
             יום סקי מלא בגודאורי — כולל כרטיס לרכבלים, ארוחות וצ'ופר מלון — עולה פחות ממחצית מה שתשלם בזרמט, ורבייה, או קיצבילה.
             הכסף שחסכת? תוציא אותו על קצת יותר ימים בהרים.
           </p>
+          <div class="card-more" id="card1-more">
+            <p class="card-text" data-i18n="card1.more">כרטיס יומי למבוגר בגודאורי עולה כ-70 לארי (כ-23 אירו) — לעומת 60–80 אירו ליום באלפים האוסטריים, השווייצריים או האיטלקיים. גם הלינה, השכרת הציוד, שיעורי הסקי והאוכל זולים בהתאם: ארוחה במסעדה על המדרון, צ'ופר מהמלון לרכבל ומדריך פרטי — כל אלה עולים שבריר ממה שתשלם בזרמט או בסנט אנטון. התוצאה: חופשת סקי שלמה בגאורגיה יוצאת לרוב פחות מסוף שבוע ארוך באלפים, מה שמאפשר להישאר יותר ימים על השלג בלי לפוצץ את התקציב.</p>
+          </div>
           <span class="card-badge" data-i18n="card1.badge">עד 60% זול מאירופה</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="card1-more">
+            <span class="ct-more" data-i18n="card.readmore">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.readless">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
 
         <div class="glass-card reveal" style="transition-delay:0.12s">
@@ -2249,7 +2311,15 @@
             300 ימי שמש בשנה — יותר מאלפס האוסטריים, יותר מהדולומיטים. אין עמוסים. אין תורים. בגודאורי אתה רוכב, לא מחכה.
             כן, גם בסוף השבוע.
           </p>
+          <div class="card-more" id="card2-more">
+            <p class="card-text" data-i18n="card2.more">גודאורי ממוקמת על רכס דרום-פונה בהרי הקווקז הגדול, בגובה 1,990–3,279 מטר, ונהנית מאקלים יבשתי שמביא יותר מ-300 ימי שמש בשנה. השמיים הבהירים לא רק נעימים יותר לסקי — הם גם מצוינים לצילום, להליסקי ולאוף-פיסט. ומכיוון שגודאורי עדיין מתחת לרדאר של מרבית התיירים האירופים, גם בסופי שבוע ובחגים המסלולים נשארים פנויים יחסית, בלי התורים הארוכים לרכבלים שמאפיינים את האלפים. פחות זמן בהמתנה, יותר זמן בירידה.</p>
+          </div>
           <span class="card-badge" data-i18n="card2.badge">300+ ימי שמש</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="card2-more">
+            <span class="ct-more" data-i18n="card.readmore">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.readless">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
 
         <div class="glass-card reveal" style="transition-delay:0.24s">
@@ -2260,7 +2330,15 @@
           <p class="card-text" data-i18n="card3.text">
             18 מתקני רכבל של Doppelmayr האוסטרית — המותג שמצייד את סנובורד-ורלד בריי, ז׳ינווה ולס. תשתית הרי-קלאס בלב קווקז.
           </p>
+          <div class="card-more" id="card3-more">
+            <p class="card-text" data-i18n="card3.more">מערך הרכבלים של גודאורי נבנה כולו על ידי Doppelmayr/Garaventa האוסטרית — יצרנית הרכבלים הגדולה בעולם, שמתקניה פועלים בזרמט, ויסטלר ובאלפים האוסטריים. האתר מפעיל מערך מודרני של גונדולות סגורות (כמו Good Aura ו-Kobi) לצד כסליות מהירות ומתקני שטח, שמובילים מתחנת הבסיס ועד פסגת סדזלה בגובה 3,279 מטר. מערכת ההפעלה החדשה מקצרת תורים, פותחת גישה לשטחי אוף-פיסט עצומים, ומחברת את אזור גודאורי לאזור קובי הסמוך — תשתית ברמה אירופית בלב הקווקז.</p>
+          </div>
           <span class="card-badge" data-i18n="card3.badge">Doppelmayr Austria</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="card3-more">
+            <span class="ct-more" data-i18n="card.readmore">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.readless">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
 
         <div class="glass-card reveal" style="transition-delay:0.36s">
@@ -2271,7 +2349,15 @@
           <p class="card-text" data-i18n="card4.text">
             אקלים יבשתי אירו-אסייתי שמייצר פאודר קל ויבש — לא שלג אירופי כבד ולח. עומק שלג ממוצע בעונה: 1–2 מטר. בגודאורי לא "מחפשים" שלג, הוא פשוט שם.
           </p>
+          <div class="card-more" id="card4-more">
+            <p class="card-text" data-i18n="card4.more">בזכות המיקום הגבוה והאקלים היבשתי הרחוק מהים, השלג בגודאורי יבש וקליל במיוחד — אבקה (powder) אמיתית, ולא השלג הכבד והלח המוכר מאזורי האלפים הנמוכים. עומק השלג בעונה נע סביב 1–2 מטר ולעיתים אף יותר, והוא נשמר היטב על המדרונות בזכות הקור היבש. השילוב של אבקה עקבית, מדרונות פתוחים ושטחי אוף-פיסט בלתי-מגודרים הפך את גודאורי ליעד מבוקש לפריירייד ולהליסקי — עם ירידות על שלג בתולי בגבהים של 3,000 מטר ומעלה.</p>
+          </div>
           <span class="card-badge" data-i18n="card4.badge">1–2 מטר שלג ממוצע</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="card4-more">
+            <span class="ct-more" data-i18n="card.readmore">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.readless">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
 
         <a
@@ -2304,7 +2390,15 @@
           <p class="card-text" data-i18n="card5.text">
             20 מסלולים מסומנים: 30% כחול (מתחילים), 40% אדום (בינוני), 30% שחור (מתקדם). בנוסף — סקי לילה בשישי ושבת 20:00–22:00. אין אתר שמציע את הכל כך.
           </p>
+          <div class="card-more" id="card5-more">
+            <p class="card-text" data-i18n="card5.more">גודאורי מציעה מסלולים מסומנים לכל רמה — כחולים נוחים למתחילים, אדומים מאתגרים לרוכבים בינוניים, ושחורים תלולים לוותיקים — לצד שטחי אוף-פיסט אינסופיים למחפשי אדרנלין. הטווח האנכי של 1,283 מטר מאפשר ירידות ארוכות ורציפות, והמסלולים רחבים ומתוחזקים מדי בוקר. בסופי שבוע (שישי ושבת) נפתח סקי לילה תחת תאורה על מסלול Pirveli בין 20:00 ל-22:00, כשהוא כלול במחיר הכרטיס היומי — כך שאפשר להמשיך לרכוב הרבה אחרי השקיעה.</p>
+          </div>
           <span class="card-badge" data-i18n="card5.badge">סקי לילה ש׳–ש׳</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="card5-more">
+            <span class="ct-more" data-i18n="card.readmore">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.readless">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
 
       </div><!-- /cards-grid -->
@@ -3141,6 +3235,12 @@
         'card5.title': 'מסלולים לכל הרמות',
         'card5.text': '20 מסלולים מסומנים: 30% כחול (מתחילים), 40% אדום (בינוני), 30% שחור (מתקדם). בנוסף — סקי לילה בשישי ושבת 20:00–22:00. אין אתר שמציע את הכל כך.',
         'card5.badge': 'סקי לילה ש׳–ש׳',
+        'card.readmore': 'המשך קריאה', 'card.readless': 'הצג פחות',
+        'card1.more': 'כרטיס יומי למבוגר בגודאורי עולה כ-70 לארי (כ-23 אירו) — לעומת 60–80 אירו ליום באלפים האוסטריים, השווייצריים או האיטלקיים. גם הלינה, השכרת הציוד, שיעורי הסקי והאוכל זולים בהתאם: ארוחה במסעדה על המדרון, צ\'ופר מהמלון לרכבל ומדריך פרטי — כל אלה עולים שבריר ממה שתשלם בזרמט או בסנט אנטון. התוצאה: חופשת סקי שלמה בגאורגיה יוצאת לרוב פחות מסוף שבוע ארוך באלפים, מה שמאפשר להישאר יותר ימים על השלג בלי לפוצץ את התקציב.',
+        'card2.more': 'גודאורי ממוקמת על רכס דרום-פונה בהרי הקווקז הגדול, בגובה 1,990–3,279 מטר, ונהנית מאקלים יבשתי שמביא יותר מ-300 ימי שמש בשנה. השמיים הבהירים לא רק נעימים יותר לסקי — הם גם מצוינים לצילום, להליסקי ולאוף-פיסט. ומכיוון שגודאורי עדיין מתחת לרדאר של מרבית התיירים האירופים, גם בסופי שבוע ובחגים המסלולים נשארים פנויים יחסית, בלי התורים הארוכים לרכבלים שמאפיינים את האלפים. פחות זמן בהמתנה, יותר זמן בירידה.',
+        'card3.more': 'מערך הרכבלים של גודאורי נבנה כולו על ידי Doppelmayr/Garaventa האוסטרית — יצרנית הרכבלים הגדולה בעולם, שמתקניה פועלים בזרמט, ויסטלר ובאלפים האוסטריים. האתר מפעיל מערך מודרני של גונדולות סגורות (כמו Good Aura ו-Kobi) לצד כסליות מהירות ומתקני שטח, שמובילים מתחנת הבסיס ועד פסגת סדזלה בגובה 3,279 מטר. מערכת ההפעלה החדשה מקצרת תורים, פותחת גישה לשטחי אוף-פיסט עצומים, ומחברת את אזור גודאורי לאזור קובי הסמוך — תשתית ברמה אירופית בלב הקווקז.',
+        'card4.more': 'בזכות המיקום הגבוה והאקלים היבשתי הרחוק מהים, השלג בגודאורי יבש וקליל במיוחד — אבקה (powder) אמיתית, ולא השלג הכבד והלח המוכר מאזורי האלפים הנמוכים. עומק השלג בעונה נע סביב 1–2 מטר ולעיתים אף יותר, והוא נשמר היטב על המדרונות בזכות הקור היבש. השילוב של אבקה עקבית, מדרונות פתוחים ושטחי אוף-פיסט בלתי-מגודרים הפך את גודאורי ליעד מבוקש לפריירייד ולהליסקי — עם ירידות על שלג בתולי בגבהים של 3,000 מטר ומעלה.',
+        'card5.more': 'גודאורי מציעה מסלולים מסומנים לכל רמה — כחולים נוחים למתחילים, אדומים מאתגרים לרוכבים בינוניים, ושחורים תלולים לוותיקים — לצד שטחי אוף-פיסט אינסופיים למחפשי אדרנלין. הטווח האנכי של 1,283 מטר מאפשר ירידות ארוכות ורציפות, והמסלולים רחבים ומתוחזקים מדי בוקר. בסופי שבוע (שישי ושבת) נפתח סקי לילה תחת תאורה על מסלול Pirveli בין 20:00 ל-22:00, כשהוא כלול במחיר הכרטיס היומי — כך שאפשר להמשיך לרכוב הרבה אחרי השקיעה.',
         'yt.cta': 'צפו בשידור חי',
         'fact1.title': 'טיסה מישראל', 'fact1.desc': 'פחות זמן מטיסה לציריך. אין טרנזיט, אין ויזה, אין כאב ראש.',
         'fact2.title': 'עונת סקי', 'fact2.desc': 'אמצע-סוף דצמבר עד אמצע-סוף אפריל. שעות פעילות 10:00–17:00, ♟ סקי לילה שישי ושבת 20:00–22:00.',
@@ -3236,6 +3336,12 @@
         'card5.title': 'Runs for Every Level',
         'card5.text': '20 marked runs: 30% blue (beginner), 40% red (intermediate), 30% black (advanced). Plus — night skiing on Fridays and Saturdays 20:00–22:00. No resort offers everything like this.',
         'card5.badge': 'Night ski Fri–Sat',
+        'card.readmore': 'Read more', 'card.readless': 'Show less',
+        'card1.more': 'An adult day pass at Gudauri costs about 70 GEL (~€23) — versus €60–80 a day in the Austrian, Swiss or Italian Alps. Accommodation, gear rental, ski lessons and food are cheaper to match: a meal at a slope-side restaurant, a hotel shuttle to the lifts and a private instructor all cost a fraction of what you would pay in Zermatt or St. Anton. The result: a full ski holiday in Georgia often costs less than a long weekend in the Alps — so you can stay more days on the snow without blowing the budget.',
+        'card2.more': 'Gudauri sits on a south-facing ridge of the Greater Caucasus at 1,990–3,279 m and enjoys a dry continental climate with over 300 sunny days a year. The clear skies are not just more pleasant for skiing — they are perfect for photography, heli-skiing and off-piste. And because Gudauri is still under the radar of most European tourists, even on weekends and holidays the runs stay relatively empty, without the long lift queues that define the Alps. Less time waiting, more time riding.',
+        'card3.more': 'Gudauri\'s entire lift network is built by Austria\'s Doppelmayr/Garaventa — the world\'s largest ropeway manufacturer, whose lifts run in Zermatt, Whistler and across the Austrian Alps. The resort runs a modern mix of enclosed gondolas (such as Good Aura and Kobi) alongside high-speed chairlifts and surface lifts, climbing from the base all the way to the Sadzele summit at 3,279 m. The new system shortens queues, opens access to vast off-piste terrain and links the Gudauri area to neighbouring Kobi — European-grade infrastructure in the heart of the Caucasus.',
+        'card4.more': 'Thanks to its high altitude and dry continental climate far from the sea, the snow at Gudauri is unusually light and dry — true powder, not the heavy, wet snow common to the lower Alps. Seasonal snow depth runs around 1–2 metres and sometimes more, and it keeps well on the slopes in the dry cold. The mix of consistent powder, open slopes and unfenced off-piste terrain has made Gudauri a sought-after destination for freeriding and heli-skiing — with descents on virgin snow above 3,000 m.',
+        'card5.more': 'Gudauri offers marked runs for every level — easy blues for beginners, challenging reds for intermediates and steep blacks for veterans — alongside endless off-piste terrain for adrenaline seekers. The 1,283 m vertical drop allows long, continuous descents, and the wide runs are groomed every morning. On weekends (Friday and Saturday) floodlit night skiing opens on the Pirveli run from 20:00 to 22:00, included in the day pass — so you can keep riding long after sunset.',
         'yt.cta': 'Watch Live Stream',
         'fact1.title': 'Flight from Israel', 'fact1.desc': 'Less flight time than Zurich. No transit, no visa, no hassle.',
         'fact2.title': 'Ski Season', 'fact2.desc': 'Mid-December to mid-April. Operating hours 10:00–17:00, night skiing Fri & Sat 20:00–22:00.',
@@ -3331,6 +3437,12 @@
         'card5.title': 'Трассы для любого уровня',
         'card5.text': '20 размеченных трасс: 30% синих (начинающие), 40% красных (средний), 30% чёрных (продвинутый). Плюс — ночное катание в пятницу и субботу 20:00–22:00. Ни один курорт не предлагает всего столько.',
         'card5.badge': 'Ночное катание пт–сб',
+        'card.readmore': 'Читать далее', 'card.readless': 'Свернуть',
+        'card1.more': 'Дневной ски-пасс для взрослого в Гудаури стоит около 70 лари (~23 €) — против 60–80 € в день в австрийских, швейцарских или итальянских Альпах. Проживание, прокат снаряжения, уроки и еда столь же доступны: обед в ресторане на склоне, трансфер от отеля к подъёмнику и частный инструктор обходятся в разы дешевле, чем в Церматте или Санкт-Антоне. В итоге полноценный горнолыжный отпуск в Грузии часто стоит меньше, чем длинные выходные в Альпах — и вы проводите на снегу больше дней, не выходя за рамки бюджета.',
+        'card2.more': 'Гудаури расположен на южном склоне Большого Кавказа на высоте 1990–3279 м и отличается сухим континентальным климатом с более чем 300 солнечными днями в году. Ясное небо не только приятнее для катания — оно идеально для фотографии, хелиски и фрирайда. А поскольку Гудаури всё ещё остаётся в стороне от массового европейского туризма, даже в выходные и праздники склоны относительно свободны, без длинных очередей на подъёмники, типичных для Альп. Меньше ожидания — больше спусков.',
+        'card3.more': 'Вся канатная система Гудаури построена австрийской Doppelmayr/Garaventa — крупнейшим в мире производителем канатных дорог, чьи подъёмники работают в Церматте, Уистлере и по всем австрийским Альпам. Курорт сочетает современные закрытые гондолы (такие как Good Aura и Kobi) со скоростными креслами и бугелями, поднимаясь от базовой станции до вершины Садзеле на высоте 3279 м. Новая система сокращает очереди, открывает доступ к обширному внетрассовому катанию и связывает зону Гудаури с соседним Коби — инфраструктура европейского уровня в сердце Кавказа.',
+        'card4.more': 'Благодаря большой высоте и сухому континентальному климату вдали от моря снег в Гудаури необычайно лёгкий и сухой — настоящий пухляк, а не тяжёлый влажный снег нижних Альп. Глубина снега за сезон составляет около 1–2 метров, а иногда и больше, и он хорошо сохраняется на склонах в сухой мороз. Сочетание стабильного пухляка, открытых склонов и неогороженных внетрассовых зон сделало Гудаури востребованным направлением для фрирайда и хелиски — со спусками по нетронутому снегу на высоте более 3000 м.',
+        'card5.more': 'Гудаури предлагает маркированные трассы для любого уровня — простые синие для новичков, сложные красные для среднего уровня и крутые чёрные для опытных — а также бескрайние внетрассовые зоны для любителей адреналина. Перепад высот 1283 м позволяет совершать длинные непрерывные спуски, а широкие трассы ратрачат каждое утро. По выходным (пятница и суббота) с 20:00 до 22:00 на трассе Pirveli работает вечернее катание под прожекторами, включённое в дневной ски-пасс — так что кататься можно ещё долго после заката.',
         'yt.cta': 'Смотреть прямой эфир',
         'fact1.title': 'Перелёт из Израиля', 'fact1.desc': 'Меньше времени, чем до Цюриха. Без стыковок, без визы, без хлопот.',
         'fact2.title': 'Горнолыжный сезон', 'fact2.desc': 'С середины декабря до середины апреля. Часы работы 10:00–17:00, ночное катание пт–сб 20:00–22:00.',
@@ -3426,6 +3538,12 @@
         'card5.title': 'ტრასები ყველა დონისთვის',
         'card5.text': '20 მონიშნული ტრასა: 30% ლურჯი (დამწყები), 40% წითელი (საშუალო), 30% შავი (მოწინავე). პლუს — ღამის სრიალობა პარასკევ-შაბათს 20:00–22:00.',
         'card5.badge': 'ღამის სრიალობა პარ–შაბ',
+        'card.readmore': 'ვრცლად', 'card.readless': 'დახურვა',
+        'card1.more': 'გუდაურში დღიური სასრიალო ბილეთი ზრდასრულისთვის დაახლოებით 70 ლარი ღირს (~23 €) — ავსტრიის, შვეიცარიისა თუ იტალიის ალპებში დღეში 60–80 €-ის ნაცვლად. შესაბამისად იაფია საცხოვრებელი, ინვენტარის ქირაობა, გაკვეთილები და კვება: სადილი ფერდობზე არსებულ რესტორანში, ტრანსფერი სასტუმროდან საბაგიროსკენ და პირადი ინსტრუქტორი ბევრად ნაკლები ჯდება, ვიდრე ცერმატსა თუ სანტ-ანტონში. შედეგად, სრულფასოვანი სათხილამურო დასვენება საქართველოში ხშირად ნაკლები ჯდება, ვიდრე გრძელი შაბათ-კვირა ალპებში — და მეტ დღეს ატარებთ თოვლზე ბიუჯეტის გადაჭარბების გარეშე.',
+        'card2.more': 'გუდაური მდებარეობს დიდი კავკასიონის სამხრეთ ფერდობზე, 1990–3279 მ სიმაღლეზე, და ხასიათდება მშრალი კონტინენტური კლიმატით — წელიწადში 300-ზე მეტი მზიანი დღით. ნათელი ცა მხოლოდ სასიამოვნო კი არ არის სრიალისთვის — ის იდეალურია ფოტოგრაფიის, ჰელი-სკისა და ოფ-პისტისთვის. და რადგან გუდაური ჯერ კიდევ ევროპელ ტურისტთა უმრავლესობის ყურადღების მიღმაა, შაბათ-კვირასაც კი ფერდობები შედარებით თავისუფალია, ალპებისთვის დამახასიათებელი გრძელი რიგების გარეშე. ნაკლები ლოდინი — მეტი დაშვება.',
+        'card3.more': 'გუდაურის მთელი საბაგირო სისტემა აშენებულია ავსტრიული Doppelmayr/Garaventa-ის მიერ — საბაგიროების მსოფლიოში უმსხვილესი მწარმოებლის, რომლის ლიფტებიც მუშაობს ცერმატში, უისლერსა და ავსტრიის ალპებში. კურორტი აერთიანებს თანამედროვე დახურულ გონდოლებს (მაგ. Good Aura და Kobi), სწრაფ საბაგიროებსა და ბუქსირებს, რომლებიც ბაზიდან სადზელეს მწვერვალამდე, 3279 მ-ზე ადის. ახალი სისტემა ამცირებს რიგებს, ხსნის წვდომას ვრცელ ოფ-პისტ ტერიტორიაზე და აკავშირებს გუდაურის ზონას მეზობელ კობისთან — ევროპული დონის ინფრასტრუქტურა კავკასიის გულში.',
+        'card4.more': 'დიდი სიმაღლისა და ზღვისგან დაშორებული მშრალი კონტინენტური კლიმატის წყალობით, თოვლი გუდაურში უჩვეულოდ მსუბუქი და მშრალია — ნამდვილი ფხვიერი თოვლი (powder), და არა დაბალი ალპებისთვის დამახასიათებელი მძიმე, სველი თოვლი. სეზონზე თოვლის სიღრმე დაახლოებით 1–2 მეტრია, ზოგჯერ მეტიც, და კარგად ნარჩუნდება ფერდობებზე მშრალი ყინვის გამო. სტაბილური ფხვიერი თოვლის, ღია ფერდობებისა და შემოუღობავი ოფ-პისტის ერთობლიობამ გუდაური ფრირაიდისა და ჰელი-სკის მოთხოვნად მიმართულებად აქცია — 3000 მ-ზე მაღლა ხელუხლებელ თოვლზე დაშვებებით.',
+        'card5.more': 'გუდაური გთავაზობთ მონიშნულ ტრასებს ნებისმიერი დონისთვის — მარტივ ლურჯებს დამწყებთათვის, რთულ წითლებს საშუალო დონისთვის და ციცაბო შავებს გამოცდილთათვის — ვრცელ ოფ-პისტ ტერიტორიასთან ერთად ადრენალინის მოყვარულთათვის. 1283 მ პერეპადი გრძელ, უწყვეტ დაშვებებს იძლევა, ხოლო განიერ ტრასებს ყოველ დილით ამუშავებენ. შაბათ-კვირას (პარასკევსა და შაბათს) 20:00-დან 22:00 საათამდე Pirveli-ის ტრასაზე იხსნება ღამის სრიალი პროჟექტორების შუქზე, რომელიც დღიურ ბილეთშია ჩართული — ასე რომ, სრიალის გაგრძელება მზის ჩასვლის შემდეგაც შეგიძლიათ.',
         'yt.cta': 'პირდაპირი ეთერის ყურება',
         'fact1.title': 'ფრენა ისრაელიდან', 'fact1.desc': 'ნაკლები ფრენის დრო ვიდრე ციურიხში. ტრანზიტის, ვიზის, ჩხუბის გარეშე.',
         'fact2.title': 'სასრიალო სეზონი', 'fact2.desc': 'დეკემბრის შუიდან აპრილის შუამდე. სამუშაო საათები 10:00–17:00, ღამის სრიალობა პარ–შაბ 20:00–22:00.',
@@ -3543,6 +3661,20 @@
                : (savedLang && window.TRANSLATIONS[savedLang]) ? savedLang
                : 'he';
       setLanguage(lang);
+    })();
+
+    // ══════════════════════════════════════════
+    //  EXPANDABLE "READ MORE" CARDS
+    // ══════════════════════════════════════════
+    (function() {
+      document.querySelectorAll('.card-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var card = btn.closest('.glass-card');
+          if (!card) return;
+          var open = card.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
     })();
   </script>
 
