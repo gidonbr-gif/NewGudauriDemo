@@ -669,18 +669,16 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <!-- Lottie styles -->
+  <!-- Snow canvas + Lottie icon styles -->
   <style>
-    .lottie-snow {
+    #snow-canvas {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
       z-index: 3;
-      opacity: 0.45;
     }
-    .lottie-snow svg { width: 100% !important; height: 100% !important; }
 
     /* Lottie icon players */
     .split-feat-icon lottie-player { display: block; }
@@ -772,7 +770,7 @@
   <section class="ng-hero" aria-labelledby="ng-hero-title">
     <div class="ng-hero-bg" id="heroBg" aria-hidden="true"></div>
     <div class="ng-hero-overlay" aria-hidden="true"></div>
-    <div id="lottie-snow" class="lottie-snow" aria-hidden="true"></div>
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
     <div class="ng-hero-content container">
       <div class="ng-hero-kicker">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1701,19 +1699,63 @@
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
-  <!-- Lottie Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <!-- Falling snow canvas animation -->
   <script>
     (function () {
-      var el = document.getElementById('lottie-snow');
-      if (el) {
-        lottie.loadAnimation({
-          container: el,
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: 'lotties/snow.json'
-        });
+      var canvas = document.getElementById('snow-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var w, h, flakes = [];
+      var COUNT = 120;
+
+      function resize() {
+        w = canvas.width  = canvas.offsetWidth  || canvas.parentElement.offsetWidth;
+        h = canvas.height = canvas.offsetHeight || canvas.parentElement.offsetHeight;
+      }
+
+      function mkFlake(initial) {
+        return {
+          x: Math.random() * w,
+          y: initial ? Math.random() * h : -8,
+          r: Math.random() * 2.8 + 0.8,
+          speed: Math.random() * 1.2 + 0.4,
+          drift: (Math.random() - 0.5) * 0.4,
+          wobble: Math.random() * Math.PI * 2,
+          ws: Math.random() * 0.018 + 0.006,
+          alpha: Math.random() * 0.55 + 0.25
+        };
+      }
+
+      resize();
+      window.addEventListener('resize', function () { resize(); flakes = []; init(); });
+
+      function init() {
+        for (var i = 0; i < COUNT; i++) flakes.push(mkFlake(true));
+      }
+      init();
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < flakes.length; i++) {
+          var f = flakes[i];
+          f.wobble += f.ws;
+          f.x += f.drift + Math.sin(f.wobble) * 0.35;
+          f.y += f.speed;
+          if (f.y > h + 10) { flakes[i] = mkFlake(false); continue; }
+          if (f.x < -10) f.x = w + 10;
+          if (f.x > w + 10) f.x = -10;
+          ctx.globalAlpha = f.alpha;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        draw();
       }
     })();
   </script>

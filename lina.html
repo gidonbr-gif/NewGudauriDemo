@@ -825,7 +825,6 @@
     </div>
   </div>
 
-
   <!-- ═══ HERO ═══ -->
   <section class="lina-hero" aria-labelledby="lina-hero-title">
     <div class="lina-hero-bg" aria-hidden="true"></div>
@@ -845,7 +844,6 @@
     </div>
   </section>
 
-
   <!-- ═══ APARTMENTS ═══ -->
   <section id="apartments" aria-labelledby="apts-heading">
     <div class="container">
@@ -860,15 +858,123 @@
         </p>
       </header>
 
-      <!-- ─── APARTMENT 1: ATRIUM ─── -->
-      <article class="apt-card reveal" id="apt-atrium" aria-labelledby="apt1-name">
+      <article class="apt-card reveal" id="apt-f2duplex" aria-labelledby="apt6-name">
+
+        <div class="apt-gallery" role="region" aria-label="גלריה - דופלקס F2" aria-roledescription="carousel">
+          <div class="apt-slides" id="f2duplex-slides">
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1707.jpg')" role="img" aria-label="סלון דופלקס - ספה ענקית, אמנות, מדרגות לקומה שנייה"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1706.jpg')" role="img" aria-label="חדר שינה ראשי עם חלון גג + חדר רחצה מפואר"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1708.jpg')" role="img" aria-label="חדר רחצה עם סאונה פרטית ואינפרא אדום"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1702.jpg')" role="img" aria-label="סלון - מטבח, אי אוכל ומדרגות הדופלקס"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1704.jpg')" role="img" aria-label="מטבח מעוצב ואמבטיה עם אמבטיית ספא"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1709.jpg')" role="img" aria-label="חדר שינה 2 - שתי מיטות יחיד עם חלון גג"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1711.jpg')" role="img" aria-label="סאונה + חדר רחצה קומה שנייה"></div>
+            <div class="apt-slide" style="background-image:url('images/f2/IMG_1712.jpg')" role="img" aria-label="קומה שנייה - פרוזדור ומדרגות עם תאורת לד דרמטית"></div>
+          </div>
+          <div class="gallery-shadow" aria-hidden="true"></div>
+          <div class="gallery-arrows" aria-hidden="true">
+            <button class="gallery-arrow" onclick="slideGallery('f2duplex',-1)" aria-label="תמונה קודמת">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="gallery-arrow" onclick="slideGallery('f2duplex',1)" aria-label="תמונה הבאה">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="gallery-dots" id="f2duplex-dots">
+            <button class="gallery-dot active" onclick="goToSlide('f2duplex',0)" aria-label="תמונה 1"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',1)" aria-label="תמונה 2"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',2)" aria-label="תמונה 3"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',3)" aria-label="תמונה 4"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',4)" aria-label="תמונה 5"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',5)" aria-label="תמונה 6"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',6)" aria-label="תמונה 7"></button>
+            <button class="gallery-dot" onclick="goToSlide('f2duplex',7)" aria-label="תמונה 8"></button>
+          </div>
+          <div class="gallery-badge" data-i18n="lina.f2duplex.badge">✦ 130 מ"ר · סאונה</div>
+        </div>
+
+        <div class="apt-info">
+          <div>
+            <div class="apt-building-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
+              <span data-i18n="lina.f2duplex.building">בניין F2 · ניו גודאורי</span>
+            </div>
+            <h3 class="apt-name" id="apt6-name">CozyCasa<br/>F2 Duplex</h3>
+            <p class="apt-location">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="lina.f2duplex.location">בניין F2 · ניו גודאורי</span>
+            </p>
+            <div class="apt-tags">
+              <span class="apt-tag" data-i18n="lina.f2duplex.tag1">🛏️ 4 חדרי שינה</span>
+              <span class="apt-tag" data-i18n="lina.f2duplex.tag2">📐 130 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.f2duplex.tag3">🔥 סאונה + אינפרא אדום</span>
+              <span class="apt-tag" data-i18n="lina.f2duplex.tag4">🚿 3 שירותים + 3 מקלחות</span>
+            </div>
+            <p class="apt-desc" data-i18n="lina.f2duplex.desc">
+              דופלקס יוקרה של 130 מ"ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי. מושלם לקבוצות ומשפחות גדולות.
+            </p>
+            <div class="apt-amenities">
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am1">סאונה פרטית</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am2">אינפרא אדום</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am3">4 חדרי שינה</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am4">3 שירותים + 3 מקלחות</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am5">130 מ"ר על שתי קומות</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.f2duplex.am6">שירות בעברית</span>
+              </div>
+            </div>
+            <div class="apt-note" data-i18n-html="lina.f2duplex.note">
+              ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ"ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.
+            </div>
+          </div>
+          <div class="apt-footer-panel">
+            <div class="apt-price-row">
+              <div>
+                <div class="apt-price-label" data-i18n="lina.f2duplex.price_label">מחיר</div>
+                <div class="apt-price-contact" data-i18n="lina.f2duplex.price_contact">לפי פנייה ישירה</div>
+              </div>
+            </div>
+            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
+            <div class="apt-ctas">
+              <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%93%D7%95%D7%A4%D7%9C%D7%A7%D7%A1%20F2%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על דופלקס F2">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span data-i18n="lina.whatsapp">וואטסאפ</span>
+              </a>
+            </div>
+            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
+          </div>
+        </div>
+
+      </article>
+
+      <article class="apt-card flipped reveal" id="apt-atrium" aria-labelledby="apt1-name">
 
         <div class="apt-gallery" role="region" aria-label="גלריה - דירת Atrium" aria-roledescription="carousel">
           <div class="apt-slides" id="atrium-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1569498283068-140e58143192?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף החוץ - בניין אטריום"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - אטריום"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים מהמרפסת"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר השינה - אטריום"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/f8165cf4-f5d3-4dd0-bbd3-bbad1d79f1b8.JPG')" role="img" aria-label="בניין האטריום - חזית עם נוף הרים"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/60cdc2cd-efdb-4c33-b0f9-564c3d8f7391.JPG')" role="img" aria-label="חדר השינה - מיטה זוגית מלכותית"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/c0b8f620-e3ce-4aed-bbb6-f988f197b349.jpg')" role="img" aria-label="סלון ושינה - מרחב פתוח עם מחיצת עיצוב"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/IMG_9631.jpg')" role="img" aria-label="בריכה מקורה מחוממת עם נוף להרים"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/IMG_9660.jpg')" role="img" aria-label="פינת אח וכורסאות עם נוף לגונדולה"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/97d064a5-5be7-4b70-989b-d4baf955c2c9.jpg')" role="img" aria-label="סלון נוח עם ספה כחולה"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/d3e5d5bf-c9ba-4804-9e4e-51fb4132835c.jpg')" role="img" aria-label="מטבחון מאובזר"></div>
+            <div class="apt-slide" style="background-image:url('images/atrium/99425a4b-4a8c-441b-a8ce-cf5d05162afa.JPG')" role="img" aria-label="חדר רחצה מעוצב עם מקלחת"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
           <div class="gallery-arrows" aria-hidden="true">
@@ -884,8 +990,12 @@
             <button class="gallery-dot" onclick="goToSlide('atrium',1)" aria-label="תמונה 2"></button>
             <button class="gallery-dot" onclick="goToSlide('atrium',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('atrium',3)" aria-label="תמונה 4"></button>
+            <button class="gallery-dot" onclick="goToSlide('atrium',4)" aria-label="תמונה 5"></button>
+            <button class="gallery-dot" onclick="goToSlide('atrium',5)" aria-label="תמונה 6"></button>
+            <button class="gallery-dot" onclick="goToSlide('atrium',6)" aria-label="תמונה 7"></button>
+            <button class="gallery-dot" onclick="goToSlide('atrium',7)" aria-label="תמונה 8"></button>
           </div>
-          <div class="gallery-badge" data-i18n="lina.atrium.badge">✦ מרפסת + נוף</div>
+          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.atrium.badge">✦ מרפסת + נוף</div>
         </div>
 
         <div class="apt-info">
@@ -978,16 +1088,122 @@
 
       </article>
 
+      <article class="apt-card flipped reveal" id="apt-siot" aria-labelledby="apt5-name">
 
-      <!-- ─── APARTMENT 2: SUITS ─── -->
-      <article class="apt-card flipped reveal" id="apt-suits" aria-labelledby="apt2-name">
+        <div class="apt-gallery" role="region" aria-label="גלריה - סיוט" aria-roledescription="carousel">
+          <div class="apt-slides" id="siot-slides">
+            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - סיוט"></div>
+            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="סלון מרווח - סיוט"></div>
+            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חצר/מרפסת - סיוט"></div>
+            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים"></div>
+          </div>
+          <div class="gallery-shadow" aria-hidden="true"></div>
+          <div class="gallery-arrows" aria-hidden="true">
+            <button class="gallery-arrow" onclick="slideGallery('siot',-1)" aria-label="תמונה קודמת">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="gallery-arrow" onclick="slideGallery('siot',1)" aria-label="תמונה הבאה">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="gallery-dots" id="siot-dots">
+            <button class="gallery-dot active" onclick="goToSlide('siot',0)" aria-label="תמונה 1"></button>
+            <button class="gallery-dot" onclick="goToSlide('siot',1)" aria-label="תמונה 2"></button>
+            <button class="gallery-dot" onclick="goToSlide('siot',2)" aria-label="תמונה 3"></button>
+            <button class="gallery-dot" onclick="goToSlide('siot',3)" aria-label="תמונה 4"></button>
+          </div>
+          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.siot.badge">✦ עד 7 נפשות · 60 מ"ר</div>
+        </div>
+
+        <div class="apt-info">
+          <div>
+            <div class="apt-building-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
+              <span data-i18n="lina.siot.building">Suite Block 5 · ניו גודאורי</span>
+            </div>
+            <h3 class="apt-name" id="apt5-name">CozyCasa<br/>Suite Block 5</h3>
+            <p class="apt-location">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="lina.siot.location">50 מ׳ מהגונדולה · ניו גודאורי</span>
+            </p>
+            <div class="apt-tags">
+              <span class="apt-tag" data-i18n="lina.siot.tag1">👥 עד 7 נפשות</span>
+              <span class="apt-tag" data-i18n="lina.siot.tag2">📐 60 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.siot.tag3">🎰 קזינו בבניין</span>
+              <span class="apt-tag" data-i18n="lina.siot.tag4">🏊 בריכה · סאונה · ג׳קוזי</span>
+            </div>
+            <p class="apt-desc" data-i18n="lina.siot.desc">
+              יש דירות שמגיעים אליהן לישון — ויש Suite Block 5. שישים מטר של מרחב, חמישים מטר מהגונדולה, ובניין שמציע קזינו, בריכה מקורה מחוממת, סאונה וג׳קוזי. שתי מיטות זוגיות, ספה שנפתחת למיטה זוגית ומיטה שנפתחת ליחיד — שבעה אנשים, אפס פשרות.
+            </p>
+            <div class="apt-amenities">
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am1">2 מיטות זוגיות</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am2">ספה נפתחת (זוגית) + מיטה נפתחת (יחיד)</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am3">בריכה מקורה מחוממת</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am4">סאונה + ג׳קוזי</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am5">קזינו בתוך הבניין</span>
+              </div>
+              <div class="apt-amenity">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="lina.siot.am6">50 מ׳ מהגונדולה הראשית</span>
+              </div>
+            </div>
+            <div class="apt-note" data-i18n-html="lina.siot.note">
+              ℹ️ <strong>7 נפשות בנוחות מלאה:</strong> 2 מיטות זוגיות + ספה זוגית נפתחת + מיטה בודדת נפתחת. אחת הדירות הגדולות ביותר בניו גודאורי — עם בריכה, סאונה, ג׳קוזי וקזינו צמוד.
+            </div>
+          </div>
+          <div class="apt-footer-panel">
+            <div class="apt-price-row">
+              <div>
+                <div class="apt-price-label" data-i18n="lina.siot.price_label">החל מ</div>
+                <div class="apt-price-amount">₪700 <small data-i18n="lina.per_night">/ לילה</small></div>
+              </div>
+              <div class="apt-stars" aria-label="דירוג 5 כוכבים">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+            </div>
+            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
+            <div class="apt-ctas">
+              <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91-Suite%20Block%205%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על Suite Block 5">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span data-i18n="lina.whatsapp">וואטסאפ</span>
+              </a>
+            </div>
+            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
+          </div>
+        </div>
+
+      </article>
+
+      <article class="apt-card reveal" id="apt-suits" aria-labelledby="apt2-name">
 
         <div class="apt-gallery" role="region" aria-label="גלריה - דירת Suits" aria-roledescription="carousel">
           <div class="apt-slides" id="suits-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - Suits"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר שינה - Suits"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף הבניין מבחוץ"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="מטבח מודרני - Suits"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3605.jpg')" role="img" aria-label="בניין Suits - חזית ביום עם שיפועי סקי"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3612.jpg')" role="img" aria-label="הדירה - מיטה, ספה וסלון מאוחדים"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3611.jpg')" role="img" aria-label="חדר שינה עם תקרת מגרש וחלון גג"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3603.jpg')" role="img" aria-label="לובי הבניין - עץ חם ותאורת LED"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3604.jpg')" role="img" aria-label="מסעדת הבניין עם נוף ישיר לשיפוע"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3606.jpg')" role="img" aria-label="קבלה ולובי - שירות 24/7"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3601.jpg')" role="img" aria-label="ניו גודאורי בלילה - אווירה ותוסס"></div>
+            <div class="apt-slide" style="background-image:url('images/suite/IMG_3610.jpg')" role="img" aria-label="הדירה המלאה - מטבחון וסלון"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
           <div class="gallery-arrows" aria-hidden="true">
@@ -1003,8 +1219,12 @@
             <button class="gallery-dot" onclick="goToSlide('suits',1)" aria-label="תמונה 2"></button>
             <button class="gallery-dot" onclick="goToSlide('suits',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('suits',3)" aria-label="תמונה 4"></button>
+            <button class="gallery-dot" onclick="goToSlide('suits',4)" aria-label="תמונה 5"></button>
+            <button class="gallery-dot" onclick="goToSlide('suits',5)" aria-label="תמונה 6"></button>
+            <button class="gallery-dot" onclick="goToSlide('suits',6)" aria-label="תמונה 7"></button>
+            <button class="gallery-dot" onclick="goToSlide('suits',7)" aria-label="תמונה 8"></button>
           </div>
-          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.suits.badge">✦ 50 מ׳ מהגונדולה</div>
+          <div class="gallery-badge" data-i18n="lina.suits.badge">✦ 50 מ׳ מהגונדולה</div>
         </div>
 
         <div class="apt-info">
@@ -1096,16 +1316,18 @@
 
       </article>
 
-
-      <!-- ─── APARTMENT 3: LOFT 2A ─── -->
-      <article class="apt-card reveal" id="apt-loft2a" aria-labelledby="apt3-name">
+      <article class="apt-card flipped reveal" id="apt-loft2a" aria-labelledby="apt3-name">
 
         <div class="apt-gallery" role="region" aria-label="גלריה - לופט 2א" aria-roledescription="carousel">
           <div class="apt-slides" id="loft2a-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - לופט 2א"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="סלון - לופט 2א"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר שינה - לופט 2א"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0821.JPG')" role="img" aria-label="הדירה מבוימת - מיטה, ספה ושולחן ערוך עם יין"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0814.jpg')" role="img" aria-label="שינה + סלון - קיר טפט כחול גיאומטרי ייחודי"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0816.jpg')" role="img" aria-label="הדירה המלאה - סלון, פינת אוכל ומטבח"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0815.jpg')" role="img" aria-label="מטבח מאובזר וסלון - זווית נוספת"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0820.jpg')" role="img" aria-label="חדר רחצה - מראת LED עגולה ומקלחת"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0819.jpg')" role="img" aria-label="חדר רחצה - כיור ומראת LED"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0817.jpg')" role="img" aria-label="מטבחון מאובזר עם מיקרוגל וכיור"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0818.jpg')" role="img" aria-label="פרוזדור כניסה עם ארון בנוי"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
           <div class="gallery-arrows" aria-hidden="true">
@@ -1121,8 +1343,12 @@
             <button class="gallery-dot" onclick="goToSlide('loft2a',1)" aria-label="תמונה 2"></button>
             <button class="gallery-dot" onclick="goToSlide('loft2a',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('loft2a',3)" aria-label="תמונה 4"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2a',4)" aria-label="תמונה 5"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2a',5)" aria-label="תמונה 6"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2a',6)" aria-label="תמונה 7"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2a',7)" aria-label="תמונה 8"></button>
           </div>
-          <div class="gallery-badge" data-i18n="lina.loft2a.badge">✦ מרפסת + נוף</div>
+          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.loft2a.badge">✦ מרפסת + נוף</div>
         </div>
 
         <div class="apt-info">
@@ -1187,16 +1413,16 @@
 
       </article>
 
-
-      <!-- ─── APARTMENT 4: LOFT 2B ─── -->
-      <article class="apt-card flipped reveal" id="apt-loft2b" aria-labelledby="apt4-name">
+      <article class="apt-card reveal" id="apt-loft2b" aria-labelledby="apt4-name">
 
         <div class="apt-gallery" role="region" aria-label="גלריה - לופט 2ב" aria-roledescription="carousel">
           <div class="apt-slides" id="loft2b-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - לופט 2ב"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר שינה - לופט 2ב"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר שינה שני - לופט 2ב"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0826.jpg')" role="img" aria-label="חדר שינה עם נוף ישיר להרים המושלגים"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0823.jpg')" role="img" aria-label="שינה + סלון + TV - המרחב המלא"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0824.jpg')" role="img" aria-label="סלון, מטבח ופינת אוכל"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0827.jpg')" role="img" aria-label="חדר רחצה - כיור בולי מעוצב עם מגבות"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0825.jpg')" role="img" aria-label="חדר רחצה עם מקלחת ועיצוב ירוק"></div>
+            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0828.jpg')" role="img" aria-label="פרוזדור כניסה ופינת אוכל"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
           <div class="gallery-arrows" aria-hidden="true">
@@ -1212,8 +1438,10 @@
             <button class="gallery-dot" onclick="goToSlide('loft2b',1)" aria-label="תמונה 2"></button>
             <button class="gallery-dot" onclick="goToSlide('loft2b',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('loft2b',3)" aria-label="תמונה 4"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2b',4)" aria-label="תמונה 5"></button>
+            <button class="gallery-dot" onclick="goToSlide('loft2b',5)" aria-label="תמונה 6"></button>
           </div>
-          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.loft2b.badge">✦ לופט 2 · ניו גודאורי</div>
+          <div class="gallery-badge" data-i18n="lina.loft2b.badge">✦ לופט 2 · ניו גודאורי</div>
         </div>
 
         <div class="apt-info">
@@ -1278,199 +1506,10 @@
 
       </article>
 
-
-      <!-- ─── APARTMENT 5: SIOT ─── -->
-      <article class="apt-card reveal" id="apt-siot" aria-labelledby="apt5-name">
-
-        <div class="apt-gallery" role="region" aria-label="גלריה - סיוט" aria-roledescription="carousel">
-          <div class="apt-slides" id="siot-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדירה - סיוט"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="סלון מרווח - סיוט"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חצר/מרפסת - סיוט"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים"></div>
-          </div>
-          <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
-            <button class="gallery-arrow" onclick="slideGallery('siot',-1)" aria-label="תמונה קודמת">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="gallery-arrow" onclick="slideGallery('siot',1)" aria-label="תמונה הבאה">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-          <div class="gallery-dots" id="siot-dots">
-            <button class="gallery-dot active" onclick="goToSlide('siot',0)" aria-label="תמונה 1"></button>
-            <button class="gallery-dot" onclick="goToSlide('siot',1)" aria-label="תמונה 2"></button>
-            <button class="gallery-dot" onclick="goToSlide('siot',2)" aria-label="תמונה 3"></button>
-            <button class="gallery-dot" onclick="goToSlide('siot',3)" aria-label="תמונה 4"></button>
-          </div>
-          <div class="gallery-badge" data-i18n="lina.siot.badge">✦ עד 7 נפשות</div>
-        </div>
-
-        <div class="apt-info">
-          <div>
-            <div class="apt-building-tag">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
-              <span data-i18n="lina.siot.building">Suite / Block 5 · ניו גודאורי</span>
-            </div>
-            <h3 class="apt-name" id="apt5-name">CozyCasa<br/>Suite Block 5</h3>
-            <p class="apt-location">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span data-i18n="lina.siot.location">בניין סיוט · ניו גודאורי</span>
-            </p>
-            <div class="apt-tags">
-              <span class="apt-tag" data-i18n="lina.siot.tag1">👥 עד 7 נפשות</span>
-              <span class="apt-tag" data-i18n="lina.siot.tag2">🏠 קבוצות גדולות</span>
-              <span class="apt-tag" data-i18n="lina.siot.tag3">🏂 Ski-in/Ski-out</span>
-              <span class="apt-tag" data-i18n="lina.siot.tag4">🏔️ גובה 2,200 מ׳</span>
-            </div>
-            <p class="apt-desc" data-i18n="lina.siot.desc">
-              דירה מרווחת בבניין סיוט — מתאימה בצורה מושלמת לקבוצות עד 7 נפשות. אידיאלי למשפחות גדולות וחבורות חברים. תמונות ופרטים נוספים בקרוב.
-            </p>
-            <div class="apt-amenities">
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.siot.am1">מתאים עד 7 נפשות</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.siot.am2">Ski Depot בסביבה</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.siot.am3">WiFi מהיר</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.siot.am4">שירות בעברית</span>
-              </div>
-            </div>
-            <div class="apt-note" data-i18n-html="lina.siot.note">
-              ℹ️ <strong>קבוצות גדולות:</strong> הדירה מתאימה עד 7 נפשות — מושלם למשפחות ולחבורות חברים. פרטים ומחיר — צרו קשר.
-            </div>
-          </div>
-          <div class="apt-footer-panel">
-            <div class="apt-price-row">
-              <div>
-                <div class="apt-price-label" data-i18n="lina.siot.price_label">מחיר</div>
-                <div class="apt-price-contact" data-i18n="lina.siot.price_contact">לפי פנייה ישירה</div>
-              </div>
-            </div>
-            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
-            <div class="apt-ctas">
-              <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%93%D7%99%D7%A8%D7%AA%20%D7%94%D7%A1%D7%99%D7%95%D7%98%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על דירת סיוט">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                <span data-i18n="lina.whatsapp">וואטסאפ</span>
-              </a>
-            </div>
-            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
-          </div>
-        </div>
-
-      </article>
-
-
       <!-- ─── APARTMENT 6: F2 DUPLEX ─── -->
-      <article class="apt-card flipped reveal" id="apt-f2duplex" aria-labelledby="apt6-name">
-
-        <div class="apt-gallery" role="region" aria-label="גלריה - דופלקס F2" aria-roledescription="carousel">
-          <div class="apt-slides" id="f2duplex-slides">
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="פנים הדופלקס - F2"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר שינה ראשי - דופלקס F2"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="חדר אמבטיה - דופלקס F2"></div>
-            <div class="apt-slide" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80')" role="img" aria-label="נוף ההרים"></div>
-          </div>
-          <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
-            <button class="gallery-arrow" onclick="slideGallery('f2duplex',-1)" aria-label="תמונה קודמת">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="gallery-arrow" onclick="slideGallery('f2duplex',1)" aria-label="תמונה הבאה">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-          <div class="gallery-dots" id="f2duplex-dots">
-            <button class="gallery-dot active" onclick="goToSlide('f2duplex',0)" aria-label="תמונה 1"></button>
-            <button class="gallery-dot" onclick="goToSlide('f2duplex',1)" aria-label="תמונה 2"></button>
-            <button class="gallery-dot" onclick="goToSlide('f2duplex',2)" aria-label="תמונה 3"></button>
-            <button class="gallery-dot" onclick="goToSlide('f2duplex',3)" aria-label="תמונה 4"></button>
-          </div>
-          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.f2duplex.badge">✦ 130 מ"ר · סאונה</div>
-        </div>
-
-        <div class="apt-info">
-          <div>
-            <div class="apt-building-tag">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 12h8M8 18h4"/></svg>
-              <span data-i18n="lina.f2duplex.building">בניין F2 · ניו גודאורי</span>
-            </div>
-            <h3 class="apt-name" id="apt6-name">CozyCasa<br/>F2 Duplex</h3>
-            <p class="apt-location">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span data-i18n="lina.f2duplex.location">בניין F2 · ניו גודאורי</span>
-            </p>
-            <div class="apt-tags">
-              <span class="apt-tag" data-i18n="lina.f2duplex.tag1">🛏️ 4 חדרי שינה</span>
-              <span class="apt-tag" data-i18n="lina.f2duplex.tag2">📐 130 מ"ר</span>
-              <span class="apt-tag" data-i18n="lina.f2duplex.tag3">🔥 סאונה + אינפרא אדום</span>
-              <span class="apt-tag" data-i18n="lina.f2duplex.tag4">🚿 3 שירותים + 3 מקלחות</span>
-            </div>
-            <p class="apt-desc" data-i18n="lina.f2duplex.desc">
-              דופלקס יוקרה של 130 מ"ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי. מושלם לקבוצות ומשפחות גדולות.
-            </p>
-            <div class="apt-amenities">
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am1">סאונה פרטית</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am2">אינפרא אדום</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am3">4 חדרי שינה</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am4">3 שירותים + 3 מקלחות</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am5">130 מ"ר על שתי קומות</span>
-              </div>
-              <div class="apt-amenity">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am6">שירות בעברית</span>
-              </div>
-            </div>
-            <div class="apt-note" data-i18n-html="lina.f2duplex.note">
-              ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ"ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.
-            </div>
-          </div>
-          <div class="apt-footer-panel">
-            <div class="apt-price-row">
-              <div>
-                <div class="apt-price-label" data-i18n="lina.f2duplex.price_label">מחיר</div>
-                <div class="apt-price-contact" data-i18n="lina.f2duplex.price_contact">לפי פנייה ישירה</div>
-              </div>
-            </div>
-            <div class="apt-direct-callout" data-i18n="lina.direct.callout">💡 הזמן ישירות — ללא עמלות פלטפורמה</div>
-            <div class="apt-ctas">
-              <a href="https://wa.me/972557790955?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%93%D7%95%D7%A4%D7%9C%D7%A7%D7%A1%20F2%20%D7%91%D7%92%D7%95%D7%93%D7%90%D7%95%D7%A8%D7%99" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="שלח וואטסאפ על דופלקס F2">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                <span data-i18n="lina.whatsapp">וואטסאפ</span>
-              </a>
-            </div>
-            <div class="pay-direct-trust" data-i18n="lina.direct.trust">🔒 תשלום מאובטח · ביטול חינם עד 48 שעות לפני הגעה</div>
-          </div>
-        </div>
-
-      </article>
 
     </div>
   </section>
-
 
   <!-- ═══ TRUST STRIP ═══ -->
   <section id="trust" aria-label="יתרונות ואמינות">
@@ -1509,7 +1548,6 @@
     </div>
   </section>
 
-
   <!-- ═══ CTA BANNER ═══ -->
   <section id="cta-banner" aria-labelledby="cta-heading">
     <div class="container">
@@ -1534,7 +1572,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- ═══ FOOTER ═══ -->
   <footer id="footer" aria-label="פוטר">
@@ -1623,7 +1660,6 @@
     </div>
   </footer>
 
-
   <script>
     // Nav scroll
     const nav = document.getElementById('nav');
@@ -1656,12 +1692,12 @@
 
     // Gallery
     const galleries = {
-      atrium:   { idx: 0, total: 4 },
-      suits:    { idx: 0, total: 4 },
-      loft2a:   { idx: 0, total: 4 },
-      loft2b:   { idx: 0, total: 4 },
+      atrium:   { idx: 0, total: 8 },
+      suits:    { idx: 0, total: 8 },
+      loft2a:   { idx: 0, total: 8 },
+      loft2b:   { idx: 0, total: 6 },
       siot:     { idx: 0, total: 4 },
-      f2duplex: { idx: 0, total: 4 },
+      f2duplex: { idx: 0, total: 8 },
     };
 
     function slideGallery(id, dir) {
@@ -2304,5 +2340,4 @@
 
 </body>
 </html>
-
 
