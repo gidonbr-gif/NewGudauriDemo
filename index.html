@@ -4,7 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="גודאורי — אתר הסקי הסודי של הישראלים. 75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. זול, פתוח, מרהיב." />
-  <title>Gudauri Helper — זה גודאורי</title>
+  <title>גודאורי סקי — אתר הסקי הסודי של הישראלים | Gudauri Helper</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.newgudauri.net/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
+
+  <!-- hreflang — multilingual -->
+  <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/" />
+  <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/" />
+  <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/" />
+  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.newgudauri.net/" />
+  <meta property="og:title" content="גודאורי סקי — אתר הסקי הסודי של הישראלים" />
+  <meta property="og:description" content="75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. הכל על גודאורי — הזול, הפתוח, המרהיב." />
+  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Gudauri Helper" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="גודאורי סקי — אתר הסקי הסודי של הישראלים" />
+  <meta name="twitter:description" content="75+ ק״מ מסלולים, 3,200+ מ׳ גובה, 300 ימי שמש. הזול, הפתוח, המרהיב." />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -391,6 +420,33 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+    .hero-community {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .hero-community-label {
+      font-size: 0.8rem;
+      color: rgba(248,250,252,0.45);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .hero-community-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(248,250,252,0.7);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(248,250,252,0.2);
+      padding-bottom: 1px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .hero-community-link:hover { color: #fff; border-color: rgba(248,250,252,0.6); }
     .hero-ctas .btn-primary {
       font-size: 1rem;
       padding: 14px 30px;
@@ -436,7 +492,7 @@
     /* Scroll indicator */
     .hero-scroll {
       position: absolute;
-      bottom: 36px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -444,7 +500,7 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(248,250,252,0.45);
+      color: var(--electric);
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -453,7 +509,7 @@
     }
     .scroll-mouse {
       width: 24px; height: 38px;
-      border: 2px solid rgba(248,250,252,0.3);
+      border: 2px solid var(--electric);
       border-radius: 12px;
       display: flex;
       align-items: flex-start;
@@ -527,6 +583,68 @@
     @media (max-width: 640px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-item:nth-child(2)::after { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       3b. COMMUNITY BAR
+    ═══════════════════════════════════════ */
+    #community-bar {
+      background: rgba(14,165,233,0.06);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 20px 0;
+    }
+    .community-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .community-bar-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-400);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .community-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+      white-space: nowrap;
+    }
+    .community-pill:hover { transform: translateY(-2px); opacity: 0.9; }
+    .community-pill svg { flex-shrink: 0; }
+    .community-pill--wa {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+    }
+    .community-pill--fb {
+      background: #1877F2;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(24,119,242,0.35);
+    }
+    .community-pill--ig {
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(220,39,67,0.35);
+    }
+    .community-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--glass-border);
+      flex-shrink: 0;
+    }
+    @media (max-width: 640px) {
+      .community-bar-label { width: 100%; text-align: center; }
+      .community-dot { display: none; }
     }
 
     /* ═══════════════════════════════════════
@@ -1199,6 +1317,11 @@
       margin-bottom: 14px;
       line-height: 1;
     }
+    .ng-icon-lottie {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 2px;
+    }
 
     .ng-card h3 {
       font-size: 1.0625rem;
@@ -1762,6 +1885,138 @@
       padding: 8px 10px;
     }
   </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://www.newgudauri.net/#organization",
+        "name": "Gudauri Helper",
+        "url": "https://www.newgudauri.net/",
+        "description": "Gudauri Helper עוזר לישראלים לתכנן חופשת סקי מושלמת בגודאורי, גאורגיה — לינה, ציוד, שיעורי סקי ועוד.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "קישון 20",
+          "addressLocality": "נוף הגליל",
+          "addressCountry": "IL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": ["Hebrew", "English", "Russian", "Georgian"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.newgudauri.net/#website",
+        "url": "https://www.newgudauri.net/",
+        "name": "Gudauri Helper",
+        "inLanguage": ["he", "en", "ru", "ka"],
+        "publisher": { "@id": "https://www.newgudauri.net/#organization" }
+      },
+      {
+        "@type": "SkiResort",
+        "@id": "https://www.newgudauri.net/#resort",
+        "name": "New Gudauri Ski Resort",
+        "alternateName": "ניו גודאורי",
+        "description": "אתר הסקי גודאורי בגאורגיה — 75+ ק\"מ מסלולים, גובה מקסימלי 3,279 מטר, 300+ ימי שמש בשנה. שלג יבש, נוף מרהיב, מחירים נגישים.",
+        "url": "https://www.newgudauri.net/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gudauri",
+          "addressRegion": "Mtskheta-Mtianeti",
+          "addressCountry": "GE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 42.474,
+          "longitude": 44.477
+        },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Gondola", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Ski Slopes", "value": "75+ km" },
+          { "@type": "LocationFeatureSpecification", "name": "Maximum Altitude", "value": "3279m" },
+          { "@type": "LocationFeatureSpecification", "name": "Sunny Days per Year", "value": "300+" },
+          { "@type": "LocationFeatureSpecification", "name": "Ski Lifts", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Snowboarding", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Ski School", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Equipment Rental", "value": true }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "כמה עולה סקי בגודאורי לעומת אירופה?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "גודאורי זול משמעותית מאתרי סקי באירופה. עלות ממוצעת ליום סקי (כולל כרטיסי רכבל) נמוכה ב-40-60% מהאלפים הצרפתיים, ולינה ואוכל גם הם זולים בהרבה."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "מה הגובה של גודאורי?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "גודאורי נמצא בגובה 2,200 מטר, ופסגת ניו גודאורי מגיעה ל-3,279 מטר מעל פני הים. גובה זה מבטיח שלג יבש ואיכותי לאורך כל עונת החורף."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "כמה מסלולי סקי יש בגודאורי?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "גודאורי מציע יותר מ-75 ק\"מ של מסלולים מסומנים לכל הרמות — מתחילים, בינוניים ומתקדמים. בנוסף יש שטחי off-piste ובקקאנטרי מרחיבים."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "מתי עונת הסקי בגודאורי?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "עונת הסקי בגודאורי נמשכת בדרך כלל מדצמבר עד אפריל. חודשי הפסגה הם ינואר-מרץ, עם שלג מובטח ו-300 ימי שמש בשנה בממוצע."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "איך מגיעים לגודאורי מישראל?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "מטיסים מישראל לטביליסי (כ-3 שעות טיסה). מהנמל לגודאורי כ-2 שעות נסיעה בדרך ציורית דרך הרי הקווקז. ישנן חברות שמציעות העברות מסודרות."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 — Replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Lottie styles -->
+  <style>
+    .lottie-snow {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.45;
+    }
+    .lottie-snow svg { width: 100% !important; height: 100% !important; }
+  </style>
 </head>
 <body>
 
@@ -1790,7 +2045,7 @@
           <ul class="nav-links" role="list">
             <li><a href="#why" data-i18n="nav.about">על גודאורי</a></li>
             <li><a href="#activities" data-i18n="nav.activities">פעילויות</a></li>
-            <li><a href="#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
             <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
             <li><a href="#footer" data-i18n="nav.contact">צרו קשר</a></li>
           </ul>
@@ -1824,7 +2079,7 @@
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
     <a href="#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
-    <a href="#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
     <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
     <a href="#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="lina.html" data-internal="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">תכנן את הטיול</span></a>
@@ -1848,6 +2103,7 @@
       <div class="parallax-layer layer-resort" data-speed="0.58"></div>
       <div class="parallax-overlay"></div>
     </div>
+    <div id="lottie-snow" class="lottie-snow" aria-hidden="true"></div>
     <div class="hero-grain" aria-hidden="true"></div>
 
     <div class="hero-content container">
@@ -1872,6 +2128,21 @@
           <span data-i18n="hero.book_cta">הזמינו דירה עכשיו</span>
         </a>
       </div>
+      <div class="hero-community" aria-label="קהילת גודאורי">
+        <span class="hero-community-label">הצטרפו לקהילה:</span>
+        <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="hero-community-link" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="hero-community-link" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="hero-community-link" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          Instagram
+        </a>
+      </div>
     </div>
 
     <div class="hero-scroll" aria-hidden="true" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
@@ -1884,7 +2155,7 @@
   <!-- ═══════════════════════════════════════
        3. STATS BAR
   ═══════════════════════════════════════ -->
-  <section id="stats" aria-label="נתוני גודאורי">
+  <section id="stats" aria-label="נתוני גודאורי" style="scroll-margin-top:var(--nav-h)">
     <div class="container">
       <div class="stats-grid">
 
@@ -1911,6 +2182,32 @@
       </div>
     </div>
   </section>
+
+
+  <!-- ═══════════════════════════════════════
+       3b. COMMUNITY BAR
+  ═══════════════════════════════════════ -->
+  <div id="community-bar" aria-label="קהילת גודאורי">
+    <div class="container">
+      <div class="community-bar-inner">
+        <span class="community-bar-label">הצטרפו לקהילה 👋</span>
+        <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="community-pill community-pill--wa" target="_blank" rel="noopener noreferrer" aria-label="קבוצת וואטסאפ גודאורי">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          קבוצת וואטסאפ
+        </a>
+        <span class="community-dot" aria-hidden="true"></span>
+        <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="community-pill community-pill--fb" target="_blank" rel="noopener noreferrer" aria-label="קבוצת פייסבוק גודאורי">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          קבוצת פייסבוק
+        </a>
+        <span class="community-dot" aria-hidden="true"></span>
+        <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="community-pill community-pill--ig" target="_blank" rel="noopener noreferrer" aria-label="אינסטגרם Gudauri Ski Resort">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          אינסטגרם
+        </a>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ═══════════════════════════════════════
@@ -2224,28 +2521,36 @@
       <div class="ng-attractions">
 
         <div class="ng-card reveal">
-          <div class="ng-icon" aria-hidden="true">🏔️</div>
+          <div class="ng-icon" aria-hidden="true">
+            <div class="ng-icon-lottie" id="lottie-ng-restaurant"></div>
+          </div>
           <h3>Gudauri Restaurants</h3>
           <p data-i18n="ng.hut.desc">בר ומסעדה על גבעת הסקי, 2,200 מ׳. אוכל גאורגי מסורתי, חוויה ייחודית אחרי יום על המדרונות.</p>
           <span class="ng-dist" data-i18n="ng.hut.dist">ישירות על המדרון</span>
         </div>
 
         <div class="ng-card reveal" style="transition-delay:0.08s">
-          <div class="ng-icon" aria-hidden="true">🎉</div>
+          <div class="ng-icon" aria-hidden="true">
+            <div class="ng-icon-lottie" id="lottie-ng-apresski"></div>
+          </div>
           <h3>Après Ski</h3>
           <p data-i18n="ng.club.desc">אחרי-סקי ובידור לילי. מוזיקה חיה, cocktails, האווירה הכי חמה בהר הכי קר בקווקז.</p>
           <span class="ng-dist" data-i18n="ng.club.dist">חמישים מטר מהגונדולה</span>
         </div>
 
         <div class="ng-card reveal" style="transition-delay:0.16s">
-          <div class="ng-icon" aria-hidden="true">🌄</div>
+          <div class="ng-icon" aria-hidden="true">
+            <div class="ng-icon-lottie" id="lottie-ng-terrace"></div>
+          </div>
           <h3>New Gudauri Terrace</h3>
           <p data-i18n="ng.panorama.desc">מרפסת תצפית 270° על כל רכס הקווקז. שקיעות שלא תשכח, נוף שלא קיים באירופה.</p>
           <span class="ng-dist" data-i18n="ng.panorama.dist">בלב ניו גודאורי</span>
         </div>
 
         <div class="ng-card reveal" style="transition-delay:0.24s">
-          <div class="ng-icon" aria-hidden="true">🚁</div>
+          <div class="ng-icon" aria-hidden="true">
+            <div class="ng-icon-lottie" id="lottie-ng-adventure"></div>
+          </div>
           <h3>Adventure Center</h3>
           <p data-i18n="ng.adventure.desc">בסיס ההרפתקאות: הלי-סקי, סנומוביל, פרגליידינג. כל אדרנלין שחלמת — מכאן.</p>
           <span class="ng-dist" data-i18n="ng.adventure.dist">5 דקות מהגונדולה</span>
@@ -2505,16 +2810,13 @@
             לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.
           </p>
           <div class="footer-social" aria-label="רשתות חברתיות">
-            <a href="#" class="social-link" aria-label="אינסטגרם של Gudauri Helper">
+            <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="social-link" aria-label="אינסטגרם של Gudauri Ski Resort" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
             </a>
-            <a href="#" class="social-link" aria-label="פייסבוק של Gudauri Helper">
+            <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="social-link" aria-label="קבוצת פייסבוק של גודאורי" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
-            <a href="#" class="social-link" aria-label="טיקטוק של Gudauri Helper">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
-            </a>
-            <a href="https://wa.me/972557790955" class="social-link" aria-label="וואטסאפ של Gudauri Helper" target="_blank" rel="noopener noreferrer">
+            <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="social-link" aria-label="קבוצת וואטסאפ של גודאורי" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
           </div>
@@ -3251,6 +3553,32 @@
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+  <!-- Lottie Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script>
+    (function () {
+      // Hero snow overlay
+      var snowEl = document.getElementById('lottie-snow');
+      if (snowEl) {
+        lottie.loadAnimation({ container: snowEl, renderer: 'svg', loop: true, autoplay: true, path: 'lotties/snow.json' });
+      }
+
+      // Card icons
+      var cardAnims = [
+        { id: 'lottie-ng-restaurant', path: 'lotties/stars.json' },
+        { id: 'lottie-ng-apresski',   path: 'lotties/confetti-icon.json' },
+        { id: 'lottie-ng-terrace',    path: 'lotties/photo.json' },
+        { id: 'lottie-ng-adventure',  path: 'lotties/trophy.json' }
+      ];
+      cardAnims.forEach(function (c) {
+        var el = document.getElementById(c.id);
+        if (el) {
+          lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, path: c.path });
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>

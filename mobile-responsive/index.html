@@ -436,7 +436,7 @@
     /* Scroll indicator */
     .hero-scroll {
       position: absolute;
-      bottom: 36px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -444,7 +444,7 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      color: rgba(248,250,252,0.45);
+      color: var(--electric);
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -453,7 +453,7 @@
     }
     .scroll-mouse {
       width: 24px; height: 38px;
-      border: 2px solid rgba(248,250,252,0.3);
+      border: 2px solid var(--electric);
       border-radius: 12px;
       display: flex;
       align-items: flex-start;
@@ -1933,7 +1933,7 @@
           <ul class="nav-links" role="list">
             <li><a href="#why" data-i18n="nav.about">על גודאורי</a></li>
             <li><a href="#activities" data-i18n="nav.activities">פעילויות</a></li>
-            <li><a href="#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
             <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
             <li><a href="#footer" data-i18n="nav.contact">צרו קשר</a></li>
           </ul>
@@ -1967,7 +1967,7 @@
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
     <a href="#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
-    <a href="#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
     <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
     <a href="#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="lina.html" data-internal="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">תכנן את הטיול</span></a>

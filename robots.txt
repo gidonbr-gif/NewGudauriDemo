@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /crm.html
+Disallow: /payment-success.html
+Disallow: /api/
+Disallow: /mobile-responsive/
+Disallow: /docs/
+Disallow: /tasks/
+Disallow: /tests/
+
+Sitemap: https://www.newgudauri.net/sitemap.xml

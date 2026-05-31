@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="תקנון האתר של NewGudauri — תנאי השימוש, זכויות יוצרים ומגבלות אחריות." />
-  <title>תקנון האתר — NewGudauri</title>
+  <meta name="description" content="תקנון האתר של Gudauri Helper — תנאי השימוש, זכויות יוצרים ומגבלות אחריות." />
+  <title>תקנון האתר — Gudauri Helper</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.newgudauri.net/terms.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.newgudauri.net/terms.html" />
+  <meta property="og:title" content="תקנון האתר — Gudauri Helper" />
+  <meta property="og:description" content="תנאי השימוש, זכויות יוצרים ומגבלות אחריות של Gudauri Helper." />
+  <meta property="og:site_name" content="Gudauri Helper" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -102,6 +116,7 @@
     .page-footer a { color: var(--slate-400); margin: 0 8px; }
     .page-footer a:hover { color: var(--snow); }
     .footer-sep { margin: 12px 0; }
+    .lottie-badge-anim { width: 90px; height: 90px; margin: 0 auto 12px; }
   </style>
 </head>
 <body>
@@ -114,6 +129,7 @@
 
   <!-- HERO -->
   <div class="page-hero">
+    <div id="lottie-badge" class="lottie-badge-anim" aria-hidden="true"></div>
     <div class="badge">📋 מסמך משפטי</div>
     <h1>תקנון האתר</h1>
     <p>תנאי השימוש, זכויות יוצרים ומגבלות אחריות</p>
@@ -273,6 +289,23 @@
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+  <!-- Lottie Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('lottie-badge');
+      if (el) {
+        lottie.loadAnimation({
+          container: el,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'lotties/success.json'
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>

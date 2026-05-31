@@ -3,8 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ניו גודאורי — הלב הפועם של אתר הסקי. גונדולה ראשית, קזינו, בריכות, מסעדות, ציוד סקי מקצועי ואופני שלג. כל מה שחייבים לדעת." />
-  <title>ניו גודאורי — הלב של האתר | Gudauri Helper</title>
+  <meta name="description" content="ניו גודאורי — כפר הסקי המודרני בגאורגיה. גונדולה ראשית, קזינו, בריכות, מסעדות, ציוד סקי מקצועי. המדריך המלא לניו גודאורי." />
+  <title>ניו גודאורי — כפר הסקי המודרני בגאורגיה | Gudauri Helper</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.newgudauri.net/new-gudauri-info.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
+
+  <!-- hreflang — multilingual -->
+  <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/new-gudauri-info.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.newgudauri.net/new-gudauri-info.html" />
+  <meta property="og:title" content="ניו גודאורי — כפר הסקי המודרני בגאורגיה" />
+  <meta property="og:description" content="המדריך המלא לניו גודאורי — גונדולה, קזינו, בריכות, מסעדות, ציוד סקי מקצועי ואופני שלג." />
+  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Gudauri Helper" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ניו גודאורי — המדריך המלא לכפר הסקי" />
+  <meta name="twitter:description" content="גונדולה, קזינו, בריכות, מסעדות, ציוד סקי. כל מה שצריך לדעת על ניו גודאורי." />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -193,6 +222,7 @@
     @media (max-width: 900px) {
       .nav-links, .nav-cta-desktop { display: none; }
       .nav-burger { display: flex; }
+      .nav-inner .lang-switcher { display: none; }
     }
 
     /* ── HERO ── */
@@ -204,7 +234,7 @@
     }
     .ng-hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1920&q=80');
+      background-image: url('https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=1920&q=80');
       background-size: cover; background-position: center 30%;
       transform: scale(1.04);
       transition: transform 0.1s linear;
@@ -283,7 +313,7 @@
       border: 1px solid rgba(14,165,233,0.22);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      overflow: hidden;
     }
     .split-feat-text { font-size: 0.9375rem; color: var(--slate-200); padding-top: 6px; }
     .split-feat-text strong { color: var(--white); }
@@ -360,13 +390,13 @@
       box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(14,165,233,0.1);
     }
     .apt-type-icon {
-      font-size: 2.25rem;
       width: 64px; height: 64px;
       background: rgba(14,165,233,0.1);
       border: 1px solid rgba(14,165,233,0.2);
       border-radius: 18px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 22px;
+      overflow: hidden;
     }
     .apt-type-title {
       font-size: 1.25rem; font-weight: 800;
@@ -413,13 +443,13 @@
       background: rgba(14,165,233,0.05);
     }
     .village-icon {
-      font-size: 1.75rem;
       width: 52px; height: 52px;
       background: rgba(14,165,233,0.09);
       border: 1px solid rgba(14,165,233,0.18);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 18px;
+      overflow: hidden;
     }
     .village-card-title {
       font-size: 1.0625rem; font-weight: 800;
@@ -590,6 +620,76 @@
     .lang-btn.lang-active { border-color: var(--electric); color: var(--electric); }
     .nav-mobile .lang-switcher { margin-inline-start: 0; justify-content: flex-start; padding-top: 8px; }
   </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "@id": "https://www.newgudauri.net/new-gudauri-info.html#attraction",
+    "name": "New Gudauri",
+    "alternateName": "ניו גודאורי",
+    "description": "כפר הסקי המודרני בגאורגיה — גונדולה ראשית, קזינו, בריכות, מסעדות, ציוד סקי מקצועי, מדריכים מוסמכים ואופני שלג.",
+    "url": "https://www.newgudauri.net/new-gudauri-info.html",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Gudauri",
+      "addressRegion": "Mtskheta-Mtianeti",
+      "addressCountry": "GE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.474,
+      "longitude": 44.477
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Gondola", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Casino", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Spa", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Restaurants", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Ski Equipment Rental", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Ski Guides", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Nightlife", "value": true }
+    ],
+    "isPartOf": {
+      "@type": "SkiResort",
+      "name": "Gudauri Ski Resort",
+      "@id": "https://www.newgudauri.net/#resort"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics 4 — Replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Lottie styles -->
+  <style>
+    .lottie-snow {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.45;
+    }
+    .lottie-snow svg { width: 100% !important; height: 100% !important; }
+
+    /* Lottie icon players */
+    .split-feat-icon lottie-player { display: block; }
+    .apt-type-icon lottie-player  { display: block; }
+    .village-icon lottie-player   { display: block; }
+  </style>
+
+  <!-- Lottie player web component -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
 
@@ -632,7 +732,7 @@
             <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
           </button>
           <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
-            <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> KA
+            <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> GE
           </button>
         </div>
 
@@ -662,7 +762,7 @@
         <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
       </button>
       <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
-        <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> KA
+        <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> GE
       </button>
     </div>
   </div>
@@ -672,6 +772,7 @@
   <section class="ng-hero" aria-labelledby="ng-hero-title">
     <div class="ng-hero-bg" id="heroBg" aria-hidden="true"></div>
     <div class="ng-hero-overlay" aria-hidden="true"></div>
+    <div id="lottie-snow" class="lottie-snow" aria-hidden="true"></div>
     <div class="ng-hero-content container">
       <div class="ng-hero-kicker">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -730,23 +831,29 @@
           </p>
           <div class="split-features reveal">
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🚡</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.gondola.f1"><strong>גישה ישירה</strong> — מהבניינים לסל הגונדולה ברגל</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">⛷️</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3bf/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.gondola.f2"><strong>סקי-אין / סקי-אאוט</strong> — חלק מהבניינים צמודים למדרון</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🏔️</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/2603_fe0f/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.gondola.f3"><strong>76 ק״מ מסלולים</strong> — כולם נגישים מהגונדולה הראשית</div>
             </div>
           </div>
         </div>
         <div class="split-image reveal-left" role="img" aria-label="גונדולה בניו גודאורי עם נוף הרים">
           <img
-            src="https://res.cloudinary.com/dmw14gcns/image/upload/v1760648160/xvdzhrzm6ofiit0tvbiu.png"
-            alt="תא גונדולה מעל מדרונות שלג עם נוף הרים"
+            src="images/gudauri-gondola-hero.jpg"
+            alt="גונדולה בכבל בגודאורי עם נוף הרי הקווקז"
             loading="lazy"
           />
           <div class="split-img-badge" data-i18n="ng.gondola.badge">הגונדולה הראשית · ניו גודאורי</div>
@@ -781,15 +888,21 @@
           </p>
           <div class="split-features reveal">
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🎰</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3b0/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.casino.f1"><strong>הקזינו היחיד</strong> בכל שטח New Gudauri</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🥂</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f942/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.casino.f2"><strong>בר ומסעדה</strong> — ישירות בבניין, בלי לצאת לקור</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🌙</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.casino.f3"><strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי</div>
             </div>
           </div>
@@ -815,7 +928,9 @@
       <div class="apt-types">
 
         <div class="apt-type-card reveal">
-          <div class="apt-type-icon" aria-hidden="true">🏊</div>
+          <div class="apt-type-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30a/lottie.json" background="transparent" speed="0.8" style="width:50px;height:50px;" loop autoplay></lottie-player>
+          </div>
           <div class="apt-type-title" data-i18n="ng.apt1.title">בניין עם בריכה מקורה</div>
           <p class="apt-type-body" data-i18n="ng.apt1.body">
             שחייה וסאונה מתחת לגג — בלי שהקור מבחוץ מגיע אליך.
@@ -825,7 +940,9 @@
         </div>
 
         <div class="apt-type-card reveal" style="transition-delay:0.1s">
-          <div class="apt-type-icon" aria-hidden="true">🎰</div>
+          <div class="apt-type-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3b0/lottie.json" background="transparent" speed="0.8" style="width:50px;height:50px;" loop autoplay></lottie-player>
+          </div>
           <div class="apt-type-title" data-i18n="ng.apt2.title">בניין עם קזינו</div>
           <p class="apt-type-body" data-i18n="ng.apt2.body">
             הבניין היחיד בניו גודאורי עם קזינו ישירות בפנים.
@@ -835,7 +952,9 @@
         </div>
 
         <div class="apt-type-card reveal" style="transition-delay:0.2s">
-          <div class="apt-type-icon" aria-hidden="true">♨️</div>
+          <div class="apt-type-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/2668_fe0f/lottie.json" background="transparent" speed="0.8" style="width:50px;height:50px;" loop autoplay></lottie-player>
+          </div>
           <div class="apt-type-title" data-i18n="ng.apt3.title">בניין עם בריכה חיצונית מחוממת</div>
           <p class="apt-type-body" data-i18n="ng.apt3.body">
             טבילה בבריכה חמה בטמפרטורת -10° בחוץ, עם נוף הרי הקווקז מסביב.
@@ -864,7 +983,9 @@
       <div class="village-grid">
 
         <div class="village-card reveal">
-          <div class="village-icon" aria-hidden="true">🛒</div>
+          <div class="village-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6d2/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
+          </div>
           <h3 class="village-card-title" data-i18n="ng.v1.title">קרפור</h3>
           <p class="village-card-body" data-i18n="ng.v1.body">
             סופרמרקט Carrefour ישירות בלב הכפר — בין הבניינים.
@@ -873,7 +994,9 @@
         </div>
 
         <div class="village-card reveal" style="transition-delay:0.08s">
-          <div class="village-icon" aria-hidden="true">✂️</div>
+          <div class="village-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/2702_fe0f/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
+          </div>
           <h3 class="village-card-title" data-i18n="ng.v2.title">ספר</h3>
           <p class="village-card-body" data-i18n="ng.v2.body">
             כי גם בהרים, מסתפרים. ספר מקצועי בין הבניינים —
@@ -882,7 +1005,9 @@
         </div>
 
         <div class="village-card reveal" style="transition-delay:0.16s">
-          <div class="village-icon" aria-hidden="true">👶</div>
+          <div class="village-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f476/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
+          </div>
           <h3 class="village-card-title" data-i18n="ng.v3.title">בייביסיטר לילדים</h3>
           <p class="village-card-body" data-i18n="ng.v3.body">
             שירות בייביסיטר בניו גודאורי — כי כל אחד בטיול מגיע ליהנות בדרכו.
@@ -891,7 +1016,9 @@
         </div>
 
         <div class="village-card reveal" style="transition-delay:0.24s">
-          <div class="village-icon" aria-hidden="true">🍽️</div>
+          <div class="village-icon" aria-hidden="true">
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f37d_fe0f/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
+          </div>
           <h3 class="village-card-title" data-i18n="ng.v4.title">המסעדות הכי טובות</h3>
           <p class="village-card-body" data-i18n="ng.v4.body">
             האוכל הגאורגי הכי אמיתי ורציני באתר כולו — בניו גודאורי.
@@ -921,15 +1048,21 @@
           </p>
           <div class="split-features reveal">
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">⛷️</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3bf/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.ski.f1"><strong>השכרת ציוד סקי מקצועי</strong> — הטובה ביותר באתר</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🚲</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6b2/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.ski.f2"><strong>אופני שלג</strong> — אטרקציה ייחודית, חוויה שונה לגמרי</div>
             </div>
             <div class="split-feat">
-              <div class="split-feat-icon" aria-hidden="true">🛍️</div>
+              <div class="split-feat-icon" aria-hidden="true">
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6d2/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+              </div>
               <div class="split-feat-text" data-i18n-html="ng.ski.f3"><strong>חנויות סקי</strong> — מותגים בינלאומיים וציוד מתקדם</div>
             </div>
           </div>
@@ -1524,6 +1657,7 @@
       const isRTL = (lang === 'he');
       document.documentElement.lang = lang;
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+      document.body.style.direction = isRTL ? 'rtl' : 'ltr';
       document.body.style.textAlign = isRTL ? 'right' : 'left';
 
       // Apply textContent translations
@@ -1566,6 +1700,23 @@
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+  <!-- Lottie Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('lottie-snow');
+      if (el) {
+        lottie.loadAnimation({
+          container: el,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'lotties/snow.json'
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
