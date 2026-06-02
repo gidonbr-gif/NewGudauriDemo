@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="השכרת ציוד סקי וסנובורד בניו גודאורי — Ski Boom & Fanatic. סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות וקבלו עד 20% הנחה על חבילה מלאה." />
+  <title>השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic | Gudauri Helper</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.newgudauri.net/equipment.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
+
+  <!-- hreflang — multilingual -->
+  <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/equipment.html" />
+  <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/equipment.html" />
+  <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/equipment.html" />
+  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/equipment.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/equipment.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.newgudauri.net/equipment.html" />
+  <meta property="og:title" content="השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic" />
+  <meta property="og:description" content="סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות וקבלו עד 20% הנחה על חבילה מלאה." />
+  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Gudauri Helper" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic" />
+  <meta name="twitter:description" content="סקי, סנובורד, קסדות, גוגלס וביגוד. הזמינו מראש לפי מידות וקבלו עד 20% הנחה." />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-slate:     #1E293B;
+      --slate-900:      #0F172A;
+      --slate-800:      #1E293B;
+      --slate-700:      #334155;
+      --slate-600:      #475569;
+      --slate-400:      #94A3B8;
+      --slate-200:      #E2E8F0;
+      --electric:       #0EA5E9;
+      --electric-light: #38BDF8;
+      --electric-dark:  #0284C7;
+      --snow:           #F8FAFC;
+      --white:          #FFFFFF;
+      --glass-bg:       rgba(255,255,255,0.05);
+      --glass-border:   rgba(255,255,255,0.10);
+      --overlay:        rgba(15,23,42,0.65);
+      --nav-h:          72px;
+      --radius:         16px;
+      --transition:     200ms ease;
+      --amber:          #fb923c;
+      --green:          #4ade80;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: var(--slate-900);
+      color: var(--snow);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .electric { color: var(--electric); }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 900;
+      color: var(--snow);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--slate-400);
+      max-width: 600px;
+      margin: 16px auto 0;
+      line-height: 1.65;
+    }
+
+    /* ═══ STICKY NAV ═══ */
+    #nav {
+      position: fixed; top: 0; inset-inline: 0;
+      height: var(--nav-h); z-index: 100;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #nav.scrolled {
+      background: rgba(15,23,42,0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--glass-border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: var(--nav-h);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-logo-text {
+      font-size: 1.125rem; font-weight: 800;
+      color: var(--snow); letter-spacing: -0.02em;
+    }
+    .nav-logo-text span { color: var(--electric); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: 0.9375rem; font-weight: 500;
+      color: var(--slate-400);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--snow); }
+    .nav-links a.active { color: var(--electric); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--electric); color: var(--white);
+      font-size: 0.9375rem; font-weight: 700;
+      padding: 10px 22px; border-radius: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap; cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--electric-dark);
+      box-shadow: 0 4px 20px rgba(14,165,233,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--snow);
+      font-size: 0.9375rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1.5px solid var(--glass-border);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      border-color: var(--electric);
+      background: rgba(14,165,233,0.08);
+      transform: translateY(-1px);
+    }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: transparent; padding: 4px; cursor: pointer;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--snow); border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .nav-mobile {
+      display: none; position: fixed;
+      top: var(--nav-h); inset-inline: 0;
+      background: rgba(15,23,42,0.97);
+      backdrop-filter: blur(16px);
+      padding: 24px; flex-direction: column; gap: 20px;
+      border-top: 1px solid var(--glass-border); z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1.125rem; font-weight: 500;
+      color: var(--slate-200); padding: 8px 0;
+      border-bottom: 1px solid var(--glass-border);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover { color: var(--electric); }
+    .nav-end { display: flex; align-items: center; gap: 16px; }
+    @media (max-width: 900px) {
+      .nav-links, .nav-links + .btn-primary { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ═══ LANGUAGE SWITCHER ═══ */
+    .lang-switcher { display: flex; align-items: center; gap: 2px; }
+    .lang-btn {
+      background: transparent; border: 1.5px solid transparent;
+      border-radius: 6px; padding: 4px 6px; cursor: pointer;
+      font-size: 1.15rem; line-height: 1;
+      transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+      display: flex; align-items: center; font-family: inherit;
+    }
+    .lang-btn img { display: block; border-radius: 2px; }
+    .lang-btn:hover { border-color: var(--glass-border); background: var(--glass-bg); transform: translateY(-1px); }
+    .lang-btn.lang-active { border-color: var(--electric); background: rgba(14,165,233,0.15); }
+    .nav-mobile .lang-switcher { padding-top: 8px; gap: 8px; justify-content: center; }
+    .nav-mobile .lang-btn { font-size: 1.5rem; padding: 8px 10px; }
+
+    /* ═══ HERO ═══ */
+    #hero {
+      position: relative;
+      min-height: 64vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      padding: calc(var(--nav-h) + 48px) 0 64px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.75) 60%, var(--slate-900) 100%), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      z-index: 1;
+    }
+    .hero-snow-canvas {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      text-align: center; max-width: 820px;
+      padding: 0 24px;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--electric);
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 999px; padding: 6px 16px;
+      margin-bottom: 22px;
+    }
+    .hero-headline {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900; line-height: 0.98;
+      letter-spacing: -0.03em; color: var(--white);
+      margin-bottom: 18px;
+    }
+    .hero-headline .accent {
+      background: linear-gradient(135deg, var(--electric) 0%, var(--electric-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 500; color: rgba(248,250,252,0.88);
+      max-width: 620px; margin: 0 auto 22px; line-height: 1.55;
+    }
+    .hero-urgency {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 0.875rem; font-weight: 700;
+      color: #fecaca;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 999px; padding: 8px 18px;
+      margin-bottom: 28px;
+    }
+    .hero-urgency::before {
+      content: ''; width: 8px; height: 8px;
+      background: #ef4444; border-radius: 50%;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.5); }
+    }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+    .hero-ctas .btn-primary, .hero-ctas .btn-whatsapp {
+      font-size: 1rem; padding: 14px 30px; border-radius: 10px;
+    }
+    .hero-trust {
+      display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-trust span {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.875rem; font-weight: 500;
+      color: rgba(248,250,252,0.72);
+    }
+    .hero-trust svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: #fff;
+      font-size: 1rem; font-weight: 700;
+      padding: 14px 30px; border-radius: 10px;
+      cursor: pointer; white-space: nowrap; border: none;
+      box-shadow: 0 0 0 0 rgba(37,211,102,0);
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      animation: wa-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+      60%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c; transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45); animation: none;
+    }
+    .btn-whatsapp svg { flex-shrink: 0; }
+
+    /* ═══ STATS BAR ═══ */
+    #stats {
+      background: linear-gradient(90deg, var(--slate-900) 0%, #0C1930 50%, var(--slate-900) 100%);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      overflow: hidden;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item {
+      padding: 36px 20px; text-align: center;
+      position: relative; transition: background var(--transition);
+    }
+    .stat-item:not(:last-child)::after {
+      content: ''; position: absolute;
+      top: 20%; bottom: 20%; left: 0; width: 1px;
+      background: var(--glass-border);
+    }
+    .stat-item:hover { background: rgba(14,165,233,0.05); }
+    .stat-value {
+      font-size: clamp(1.85rem, 4.5vw, 3rem);
+      font-weight: 900; color: var(--electric);
+      line-height: 1; letter-spacing: -0.03em;
+      display: block; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.875rem; font-weight: 500; color: var(--slate-400); line-height: 1.4; }
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+    }
+
+    /* ═══ SHOPS ═══ */
+    #shops { padding: 88px 0; }
+    .shops-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .shop-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      backdrop-filter: blur(8px);
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+    .shop-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .shop-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .shop-logo {
+      width: 56px; height: 56px; flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(14,165,233,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+    }
+    .shop-name { font-size: 1.5rem; font-weight: 900; color: var(--snow); letter-spacing: -0.02em; }
+    .shop-badge {
+      display: inline-block; margin-top: 4px;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--electric);
+      background: rgba(14,165,233,0.1);
+      border-radius: 999px; padding: 3px 11px;
+    }
+    .shop-desc { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; margin-bottom: 18px; }
+    .shop-meta { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+    .shop-meta-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; color: var(--slate-200);
+    }
+    .shop-meta-row svg { width: 17px; height: 17px; color: var(--electric); flex-shrink: 0; }
+    .shop-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9375rem; font-weight: 700; color: #25D366;
+      border: 1.5px solid rgba(37,211,102,0.35);
+      border-radius: 8px; padding: 9px 18px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .shop-wa:hover { background: rgba(37,211,102,0.1); transform: translateY(-1px); }
+    .shop-wa svg { width: 18px; height: 18px; }
+    @media (max-width: 768px) { .shops-grid { grid-template-columns: 1fr; } }
+
+    /* ═══ PRICING ═══ */
+    #pricing { padding: 88px 0; position: relative; overflow: hidden; }
+    .pricing-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.05; z-index: 0;
+    }
+    #pricing .container { position: relative; z-index: 2; }
+    .urgency-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; flex-wrap: wrap; text-align: center;
+      background: linear-gradient(135deg, rgba(251,146,60,0.10) 0%, rgba(245,158,11,0.14) 100%);
+      border: 1px solid rgba(251,146,60,0.3);
+      border-radius: 14px; padding: 16px 24px;
+      margin-bottom: 40px;
+      font-size: 0.9375rem; font-weight: 700; color: #fed7aa;
+    }
+    .urgency-bar svg { width: 20px; height: 20px; color: var(--amber); flex-shrink: 0; }
+
+    .pricing-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pricing-table {
+      min-width: 620px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(15,23,42,0.4);
+      backdrop-filter: blur(8px);
+    }
+    .pricing-header, .pricing-row {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+    .pricing-row:not(:last-child) { border-bottom: 1px solid var(--glass-border); }
+    .pricing-cat-header, .pricing-level-header {
+      padding: 20px 18px; text-align: center;
+      font-weight: 800; color: var(--snow);
+      background: rgba(255,255,255,0.03);
+    }
+    .pricing-cat-header { text-align: start; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-400); }
+    .pricing-level-header { font-size: 1.0625rem; position: relative; }
+    .pricing-level-header small {
+      display: block; font-size: 0.75rem; font-weight: 500;
+      color: var(--slate-400); margin-top: 2px;
+    }
+    .pricing-level-header.featured, .price-cell.featured {
+      background: rgba(14,165,233,0.10);
+      box-shadow: inset 0 0 0 1px rgba(14,165,233,0.25);
+    }
+    .popular-badge {
+      display: inline-block; font-size: 0.625rem; font-weight: 800;
+      letter-spacing: 0.05em; background: var(--electric); color: var(--white);
+      padding: 2px 9px; border-radius: 100px; margin-top: 6px;
+      text-transform: uppercase;
+    }
+    .pricing-cat-cell {
+      padding: 20px 18px; display: flex; align-items: center; gap: 12px;
+    }
+    .pricing-cat-cell .eq-emoji { font-size: 1.5rem; flex-shrink: 0; }
+    .pricing-cat-cell strong { display: block; font-size: 0.9375rem; color: var(--snow); font-weight: 700; }
+    .pricing-cat-cell small { display: block; font-size: 0.75rem; color: var(--slate-400); margin-top: 2px; }
+    .price-cell {
+      padding: 20px 18px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .price-amount { font-size: 1.35rem; font-weight: 900; color: var(--snow); line-height: 1; }
+    .price-unit { font-size: 0.75rem; color: var(--slate-400); margin-top: 3px; }
+    .price-cell.same { color: var(--slate-400); }
+    .pricing-package-row {
+      background: rgba(14,165,233,0.05);
+    }
+    .pricing-package-row .pricing-cat-cell strong { font-size: 1.0625rem; }
+    .price-original { color: var(--slate-600); font-size: 0.95rem; text-decoration: line-through; }
+    .pkg-cell .price-amount { color: var(--electric); }
+    .savings-badge {
+      display: inline-block;
+      background: rgba(22,163,74,0.15);
+      border: 1px solid rgba(22,163,74,0.35);
+      color: var(--green);
+      font-size: 0.6875rem; font-weight: 800;
+      padding: 2px 9px; border-radius: 100px; margin-top: 5px;
+    }
+    .pricing-note {
+      text-align: center; font-size: 0.875rem; color: var(--slate-400);
+      margin-top: 20px; line-height: 1.6;
+    }
+    @media (max-width: 480px) {
+      .pricing-table { min-width: 520px; }
+    }
+
+    /* ═══ TRUST CARDS ═══ */
+    #trust { padding: 80px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .card-icon {
+      width: 52px; height: 52px;
+      background: rgba(14,165,233,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.5rem;
+    }
+    .card-icon svg { width: 26px; height: 26px; color: var(--electric); }
+    .card-title { font-size: 1.25rem; font-weight: 800; color: var(--snow); margin-bottom: 12px; line-height: 1.25; }
+    .card-text { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr; } }
+
+    /* ═══ PRE-ORDER FORM ═══ */
+    #preorder { padding: 88px 0; position: relative; overflow: hidden; }
+    .preorder-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(14,165,233,0.06) 0%, rgba(2,132,199,0.10) 100%);
+      z-index: 0;
+    }
+    #preorder .container { position: relative; z-index: 2; }
+    .preorder-wrap {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start;
+    }
+    .preorder-copy { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .preorder-copy h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 900; color: var(--white);
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .preorder-copy p { font-size: 1.0625rem; color: var(--slate-400); line-height: 1.7; margin-bottom: 28px; }
+    .preorder-trust-list { display: flex; flex-direction: column; gap: 13px; }
+    .preorder-trust-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.9375rem; font-weight: 500; color: var(--slate-200);
+    }
+    .preorder-trust-list li::before {
+      content: ''; flex-shrink: 0; width: 22px; height: 22px;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.4);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%230EA5E9'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 13px;
+    }
+
+    .eq-form {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      backdrop-filter: blur(12px);
+    }
+    .eq-fieldset { border: none; padding: 0; margin-bottom: 26px; }
+    .eq-fieldset legend {
+      font-size: 0.75rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--electric); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eq-fieldset legend .step-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.4);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--electric);
+    }
+    .eq-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .eq-field { display: grid; gap: 6px; margin-bottom: 14px; }
+    .eq-grid-2 .eq-field { margin-bottom: 0; }
+    .eq-field label { font-size: 0.875rem; font-weight: 600; color: var(--slate-200); }
+    .eq-field input, .eq-field select, .eq-field textarea {
+      width: 100%;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px; padding: 11px 14px;
+      color: var(--snow); font-family: inherit; font-size: 0.9375rem;
+      transition: border-color var(--transition);
+    }
+    .eq-field input::placeholder, .eq-field textarea::placeholder { color: var(--slate-600); }
+    .eq-field input:focus, .eq-field select:focus, .eq-field textarea:focus {
+      outline: none; border-color: rgba(14,165,233,0.6);
+    }
+    .eq-field select { cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2394A3B8'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: left 12px center; background-size: 18px;
+      padding-inline-start: 14px; padding-inline-end: 38px;
+    }
+    .eq-field textarea { resize: vertical; min-height: 76px; }
+    .eq-days-display {
+      margin-top: 10px; font-size: 0.875rem; font-weight: 700;
+      color: var(--electric); min-height: 20px;
+    }
+    .eq-checkboxes { display: grid; gap: 11px; margin-bottom: 18px; }
+    .eq-checkbox {
+      display: flex; align-items: flex-start; gap: 10px;
+      cursor: pointer; font-size: 0.8125rem; line-height: 1.55; color: var(--slate-400);
+    }
+    .eq-checkbox input[type="checkbox"] {
+      width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0;
+      accent-color: var(--electric); cursor: pointer;
+    }
+    .eq-checkbox a { color: var(--electric-light); text-decoration: underline; }
+    .eq-price-summary {
+      background: rgba(14,165,233,0.07);
+      border: 1px solid rgba(14,165,233,0.22);
+      border-radius: 10px; padding: 0; margin-bottom: 18px;
+      min-height: 0; overflow: hidden;
+      transition: padding 0.2s ease;
+      font-size: 0.9375rem; color: var(--slate-200); line-height: 1.6;
+    }
+    .eq-price-summary.show { padding: 16px 20px; }
+    .eq-price-summary s { color: var(--slate-600); }
+    .eq-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+    .eq-submit {
+      flex: 1; min-width: 160px; min-height: 50px;
+      border-radius: 8px; padding: 0 28px;
+      font-weight: 800; font-size: 1rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--electric); color: #fff; border: 0; cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .eq-submit:hover { background: var(--electric-dark); transform: translateY(-1px); }
+    .eq-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .eq-wa-btn {
+      flex: 1; min-width: 160px; min-height: 50px;
+      border-radius: 8px; padding: 0 24px;
+      font-weight: 800; font-size: 1rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: #25D366; color: #fff; border: 0; cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .eq-wa-btn:hover { background: #1ebe5c; transform: translateY(-1px); }
+    .eq-wa-btn svg { width: 19px; height: 19px; flex-shrink: 0; }
+    .eq-status { font-weight: 700; min-height: 22px; font-size: 0.9375rem; color: var(--slate-400); }
+    .eq-status[data-state="success"] { color: var(--green); }
+    .eq-status[data-state="error"] { color: #f87171; }
+    @media (max-width: 900px) {
+      .preorder-wrap { grid-template-columns: 1fr; }
+      .preorder-copy { position: static; }
+      .eq-grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .eq-form { padding: 22px 18px; }
+      .eq-submit, .eq-wa-btn { width: 100%; flex: none; }
+    }
+
+    /* ═══ FAQ ═══ */
+    #faq { padding: 80px 0; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .faq-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px; overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: rgba(14,165,233,0.3); }
+    .faq-question {
+      width: 100%; text-align: start;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 24px; background: transparent;
+      font-size: 1.0625rem; font-weight: 700; color: var(--snow);
+      cursor: pointer;
+    }
+    .faq-question .faq-icon {
+      flex-shrink: 0; width: 24px; height: 24px;
+      transition: transform var(--transition); color: var(--electric);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 24px;
+      font-size: 0.9375rem; color: var(--slate-400); line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 320px; padding: 0 24px 20px; }
+
+    /* ═══ CTA BANNER ═══ */
+    #cta-banner { padding: 24px 0 96px; }
+    .ng-cta-card {
+      background: linear-gradient(135deg, rgba(14,165,233,0.10) 0%, rgba(2,132,199,0.16) 100%);
+      border: 1px solid rgba(14,165,233,0.28);
+      border-radius: 22px;
+      padding: 56px 48px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .ng-cta-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(14,165,233,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ng-cta-card > * { position: relative; z-index: 2; }
+    .ng-cta-card h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 900; color: var(--white);
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px;
+    }
+    .ng-cta-card p { font-size: 1.0625rem; color: var(--slate-200); max-width: 560px; margin: 0 auto 30px; line-height: 1.6; }
+    .ng-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .ng-cta-actions .btn-primary, .ng-cta-actions .btn-whatsapp { font-size: 1rem; padding: 15px 32px; border-radius: 10px; }
+    @media (max-width: 600px) { .ng-cta-card { padding: 40px 24px; } }
+
+    /* ═══ FOOTER ═══ */
+    #footer { background: var(--slate-900); border-top: 1px solid var(--glass-border); padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 56px; }
+    .footer-brand .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand .footer-logo svg { width: 32px; height: 32px; }
+    .footer-brand .footer-logo-text { font-size: 1.0625rem; font-weight: 800; color: var(--snow); }
+    .footer-brand .footer-logo-text span { color: var(--electric); }
+    .footer-tagline { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; margin-bottom: 24px; max-width: 260px; }
+    .footer-social { display: flex; gap: 12px; }
+    .social-link {
+      width: 38px; height: 38px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .social-link:hover { background: rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.35); }
+    .social-link svg { width: 16px; height: 16px; color: var(--slate-400); transition: color var(--transition); }
+    .social-link:hover svg { color: var(--electric); }
+    .footer-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-400); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.9375rem; color: var(--slate-400); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--snow); }
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 0.8125rem; color: var(--slate-600); }
+    .footer-copy a { color: var(--slate-400); transition: color var(--transition); }
+    .footer-copy a:hover { color: var(--electric); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.8125rem; color: var(--slate-600); transition: color var(--transition); }
+    .footer-legal a:hover { color: var(--slate-400); }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-urgency::before, .btn-whatsapp { animation: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--electric); outline-offset: 3px;
+    }
+
+    /* ── FLOATING WHATSAPP ── */
+    .wa-fab {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      z-index: 998;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      text-decoration: none;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.65); }
+    .wa-fab svg { width: 30px; height: 30px; }
+    @media (max-width: 640px) {
+      .wa-fab { bottom: 16px; left: 16px; width: 50px; height: 50px; }
+      .wa-fab svg { width: 26px; height: 26px; }
+    }
+  </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "השכרת ציוד סקי וסנובורד בגודאורי",
+        "serviceType": "Ski & Snowboard Equipment Rental",
+        "provider": {
+          "@type": "Organization",
+          "name": "Gudauri Helper",
+          "url": "https://www.newgudauri.net/"
+        },
+        "areaServed": { "@type": "Place", "name": "New Gudauri, Georgia" },
+        "description": "השכרת ציוד סקי, סנובורד, קסדות, גוגלס וביגוד תרמי מחנויות Ski Boom ו-Fanatic בניו גודאורי. הזמנה מראש לפי מידות."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "מה ההבדל בין ציוד מתחילים, בינוני ומתקדם?", "acceptedAnswer": { "@type": "Answer", "text": "ציוד מתחילים סלחני וקל לשליטה, מתאים ללומדים. ציוד בינוני מאוזן לרוכבים מנוסים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר יותר, למי ששולט בכל סוגי המסלולים." } },
+          { "@type": "Question", "name": "איפה נמצאות חנויות Ski Boom ו-Fanatic?", "acceptedAnswer": { "@type": "Answer", "text": "שתי החנויות נמצאות בלב ניו גודאורי, במרחק הליכה מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה." } },
+          { "@type": "Question", "name": "מתי משלמים על הציוד?", "acceptedAnswer": { "@type": "Answer", "text": "אין תשלום מראש. ההזמנה רק שומרת לכם את הציוד והמידות, והתשלום מתבצע בחנות ביום האיסוף." } },
+          { "@type": "Question", "name": "מה קורה אם הציוד לא מתאים?", "acceptedAnswer": { "@type": "Answer", "text": "אפשר להחליף מידה או רמת ציוד בחנות ללא עלות. אם משהו לא מרגיש טוב על המדרון — חוזרים ומתאימים." } },
+          { "@type": "Question", "name": "האם אפשר לשנות ציוד באמצע השהייה?", "acceptedAnswer": { "@type": "Answer", "text": "כן. אם החלטתם לעבור מסקי לסנובורד או לשדרג רמה — אפשר לעשות זאת בחנות, ונחשב את ההפרש בלבד." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══ STICKY NAV ═══ -->
+  <nav id="nav" role="navigation" aria-label="ניווט ראשי">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" data-internal="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+          </svg>
+          <span class="nav-logo-text">Gudauri Helper</span>
+        </a>
+
+        <div class="nav-end">
+          <ul class="nav-links" role="list">
+            <li><a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="equipment.html" data-internal="equipment.html" class="active" data-i18n="nav.equipment">ציוד</a></li>
+            <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
+            <li><a href="#preorder" data-i18n="nav.contact">צרו קשר</a></li>
+          </ul>
+
+          <a href="#preorder" class="btn-primary nav-links" aria-label="הזמן ציוד">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span data-i18n="nav.cta_equipment">הזמן ציוד</span>
+          </a>
+
+          <div class="lang-switcher" role="group" aria-label="Language / שפה">
+            <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+            <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+          </div>
+
+          <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
+    <a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
+    <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="#preorder" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="#preorder" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta_equipment">הזמן ציוד</span></a>
+    <div class="lang-switcher" role="group" aria-label="Language / שפה">
+      <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
+      <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
+      <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" aria-labelledby="hero-headline">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <canvas class="hero-snow-canvas" id="snowCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-kicker" data-i18n="eq.hero.kicker">ניו גודאורי · השכרת ציוד מקצועי</div>
+      <h1 class="hero-headline" id="hero-headline">
+        <span data-i18n="eq.hero.title">ציוד שמתאים לך —</span><br/>
+        <span class="accent" data-i18n="eq.hero.title_accent">Ski Boom &amp; Fanatic</span>
+      </h1>
+      <p class="hero-sub" data-i18n="eq.hero.sub">סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות — והציוד יחכה לכם מוכן ביום ההגעה.</p>
+      <div class="hero-urgency" data-i18n="eq.hero.urgency">מלאי מוגבל בעונת השיא — הזמינו מראש ובטחו את המידות שלכם</div>
+      <div class="hero-ctas">
+        <a href="#preorder" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-i18n="eq.hero.cta_form">הזמן ציוד מראש</span>
+        </a>
+        <a href="https://wa.me/972557790955" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.733-.524-5.282-1.435l-.378-.225-3.922 1.037 1.05-3.83-.247-.395A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-i18n="eq.hero.cta_wa">שאלות? וואטסאפ</span>
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.hero.trust1">ציוד מחודש בכל עונה</span></span>
+        <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.hero.trust2">ללא תשלום מראש</span></span>
+        <span><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.hero.trust3">שירות בעברית</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <section id="stats" aria-label="נתוני השכרת ציוד">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-value" data-target="500" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="eq.stat1.label">תיירים השכירו דרכנו</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.1s">
+          <span class="stat-value">2</span>
+          <span class="stat-label" data-i18n="eq.stat2.label">חנויות שותפות בניו גודאורי</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.2s">
+          <span class="stat-value">3</span>
+          <span class="stat-label" data-i18n="eq.stat3.label">רמות ציוד לכל רוכב</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.3s">
+          <span class="stat-value">100<span style="font-size:0.6em">%</span></span>
+          <span class="stat-label" data-i18n="eq.stat4.label">ציוד מקצועי מחודש</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SHOPS ═══ -->
+  <section id="shops" aria-labelledby="shops-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="eq.shops.label">החנויות שלנו</span>
+        <h2 class="section-title" id="shops-title" data-i18n="eq.shops.title">שתי חנויות. סטנדרט אחד — מקצועי.</h2>
+        <p class="section-sub" data-i18n="eq.shops.sub">עובדים עם שתי חנויות הציוד המובילות בניו גודאורי. אתם בוחרים — אנחנו מתאמים שהציוד יחכה מוכן.</p>
+      </div>
+      <div class="shops-grid">
+        <article class="shop-card reveal">
+          <div class="shop-head">
+            <div class="shop-logo">🏔️</div>
+            <div>
+              <div class="shop-name">Ski Boom</div>
+              <span class="shop-badge" data-i18n="eq.shop1.badge">השכרה + שירות</span>
+            </div>
+          </div>
+          <p class="shop-desc" data-i18n="eq.shop1.desc">מבחר רחב של סקי וסנובורד לכל הרמות, עם צוות שמתאים לכם את הציוד המדויק. מתמחים במתחילים שצריכים יד מכוונת ובמתקדמים שמחפשים ביצועים.</p>
+          <div class="shop-meta">
+            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="eq.shop1.location">לב ניו גודאורי · מול הגונדולה</span></div>
+            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="eq.shop1.hours">פתוח כל יום · 08:00–20:00</span></div>
+          </div>
+          <a href="https://wa.me/972557790955" class="shop-wa" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            <span data-i18n="eq.shop1.cta">שאלו על Ski Boom</span>
+          </a>
+        </article>
+
+        <article class="shop-card reveal" style="transition-delay:0.1s">
+          <div class="shop-head">
+            <div class="shop-logo">🎿</div>
+            <div>
+              <div class="shop-name">Fanatic</div>
+              <span class="shop-badge" data-i18n="eq.shop2.badge">ציוד פרימיום</span>
+            </div>
+          </div>
+          <p class="shop-desc" data-i18n="eq.shop2.desc">חנות לחובבי הספורט — מותגים מובילים, ביגוד תרמי איכותי וציוד ברמה גבוהה. הבחירה של מי שרוצה את ההרגשה הכי טובה על המדרון.</p>
+          <div class="shop-meta">
+            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="eq.shop2.location">ניו גודאורי · דקות הליכה מהמלונות</span></div>
+            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="eq.shop2.hours">פתוח כל יום · 08:00–20:00</span></div>
+          </div>
+          <a href="https://wa.me/972557790955" class="shop-wa" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            <span data-i18n="eq.shop2.cta">שאלו על Fanatic</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing" aria-labelledby="pricing-title">
+    <div class="pricing-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="eq.pricing.label">מחירון יומי</span>
+        <h2 class="section-title" id="pricing-title" data-i18n="eq.pricing.title">מחיר הוגן. בלי הפתעות.</h2>
+        <p class="section-sub" data-i18n="eq.pricing.sub">בחרו את רמת הציוד המתאימה לכם. חבילה מלאה (ציוד + קסדה + ביגוד) חוסכת לכם עד 20%.</p>
+      </div>
+
+      <div class="urgency-bar reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span data-i18n="eq.pricing.urgency">בעונת השיא הציוד אוזל מהר — הזמנה מראש מבטיחה לכם את המידה והרמה הנכונה</span>
+      </div>
+
+      <div class="pricing-table-wrapper reveal">
+        <div class="pricing-table" role="table" aria-label="מחירון ציוד">
+          <div class="pricing-header" role="row">
+            <div class="pricing-cat-header" role="columnheader" data-i18n="eq.pricing.category">קטגוריה</div>
+            <div class="pricing-level-header" role="columnheader">
+              <span data-i18n="eq.level.beginner">מתחיל</span>
+              <small data-i18n="eq.level.beginner.sub">קל וסלחני</small>
+            </div>
+            <div class="pricing-level-header featured" role="columnheader">
+              <span data-i18n="eq.level.intermediate">בינוני</span>
+              <small data-i18n="eq.level.intermediate.sub">מאוזן ויציב</small>
+              <span class="popular-badge" data-i18n="eq.level.popular">הכי פופולרי</span>
+            </div>
+            <div class="pricing-level-header" role="columnheader">
+              <span data-i18n="eq.level.advanced">מתקדם</span>
+              <small data-i18n="eq.level.advanced.sub">מהיר ומדויק</small>
+            </div>
+          </div>
+
+          <div class="pricing-row" role="row">
+            <div class="pricing-cat-cell" role="rowheader">
+              <span class="eq-emoji">⛷️</span>
+              <div><strong data-i18n="eq.cat.ski">סקי + מקלות</strong><small data-i18n="eq.cat.ski.sub">סקי, מקלות ומגפיים</small></div>
+            </div>
+            <div class="price-cell" role="cell"><span class="price-amount">$25</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell featured" role="cell"><span class="price-amount">$35</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell" role="cell"><span class="price-amount">$50</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+          </div>
+
+          <div class="pricing-row" role="row">
+            <div class="pricing-cat-cell" role="rowheader">
+              <span class="eq-emoji">🏂</span>
+              <div><strong data-i18n="eq.cat.snowboard">סנובורד + מגפיים</strong><small data-i18n="eq.cat.snowboard.sub">גלשן ומגפיים</small></div>
+            </div>
+            <div class="price-cell" role="cell"><span class="price-amount">$28</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell featured" role="cell"><span class="price-amount">$38</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell" role="cell"><span class="price-amount">$55</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+          </div>
+
+          <div class="pricing-row" role="row">
+            <div class="pricing-cat-cell" role="rowheader">
+              <span class="eq-emoji">🪖</span>
+              <div><strong data-i18n="eq.cat.helmet">קסדה + גוגלס</strong><small data-i18n="eq.cat.helmet.sub">בטיחות וראות</small></div>
+            </div>
+            <div class="price-cell same" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell same featured" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell same" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+          </div>
+
+          <div class="pricing-row" role="row">
+            <div class="pricing-cat-cell" role="rowheader">
+              <span class="eq-emoji">🧥</span>
+              <div><strong data-i18n="eq.cat.clothing">ביגוד (מעיל + מכנס)</strong><small data-i18n="eq.cat.clothing.sub">תרמי · S/M/L/XL</small></div>
+            </div>
+            <div class="price-cell same" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell same featured" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell same" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+          </div>
+
+          <div class="pricing-row pricing-package-row" role="row">
+            <div class="pricing-cat-cell" role="rowheader">
+              <span class="eq-emoji">📦</span>
+              <div><strong data-i18n="eq.package">חבילה מלאה</strong><small data-i18n="eq.package.sub">ציוד + קסדה + ביגוד</small></div>
+            </div>
+            <div class="price-cell pkg-cell" role="cell"><s class="price-original">$65</s><span class="price-amount">$52</span><span class="savings-badge" data-i18n="eq.save20">חיסכון 20%</span></div>
+            <div class="price-cell pkg-cell featured" role="cell"><s class="price-original">$85</s><span class="price-amount">$67</span><span class="savings-badge" data-i18n="eq.save21">חיסכון 21%</span></div>
+            <div class="price-cell pkg-cell" role="cell"><s class="price-original">$117</s><span class="price-amount">$94</span><span class="savings-badge" data-i18n="eq.save20">חיסכון 20%</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="pricing-note reveal" data-i18n="eq.pricing.note">המחירים לאדם ליום בדולר. הזמנה לכמה ימים מקנה הנחה נוספת — ציינו את התאריכים בטופס ונחזור עם הצעה מדויקת.</p>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST ═══ -->
+  <section id="trust" aria-labelledby="trust-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="eq.trust.label">למה דרכנו</span>
+        <h2 class="section-title" id="trust-title" data-i18n="eq.trust.title">שלוש סיבות לישון רגוע</h2>
+      </div>
+      <div class="trust-grid">
+        <article class="glass-card reveal">
+          <div class="card-icon">🧰</div>
+          <h3 class="card-title" data-i18n="eq.trust1.title">ציוד מקצועי ומחודש</h3>
+          <p class="card-text" data-i18n="eq.trust1.text">הציוד עובר תחזוקה והשחזה בכל עונה. אתם מקבלים סקי וגלשנים במצב מעולה — לא ציוד שחוק שמקלקל את היום על המדרון.</p>
+        </article>
+        <article class="glass-card reveal" style="transition-delay:0.1s">
+          <div class="card-icon">💳</div>
+          <h3 class="card-title" data-i18n="eq.trust2.title">ללא תשלום מראש</h3>
+          <p class="card-text" data-i18n="eq.trust2.text">ההזמנה רק שומרת לכם את הציוד והמידות. משלמים בחנות ביום האיסוף — בלי סיכון, בלי התחייבות מוקדמת.</p>
+        </article>
+        <article class="glass-card reveal" style="transition-delay:0.2s">
+          <div class="card-icon">🇮🇱</div>
+          <h3 class="card-title" data-i18n="eq.trust3.title">שירות וליווי בעברית</h3>
+          <p class="card-text" data-i18n="eq.trust3.text">לא צריך להתמודד עם השפה או לתהות אם הבינו אתכם. אנחנו מתאמים מולכם בעברית ודואגים שהכל יהיה מוכן בדיוק כמו שביקשתם.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRE-ORDER FORM ═══ -->
+  <section id="preorder" aria-labelledby="preorder-title" style="scroll-margin-top:var(--nav-h)">
+    <div class="preorder-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="preorder-wrap">
+        <div class="preorder-copy reveal">
+          <span class="section-label" data-i18n="eq.form.label">הזמנה מראש</span>
+          <h2 data-i18n-html="eq.form.title">הגיעו מוכנים.<br/><span class="electric">הציוד כבר מחכה.</span></h2>
+          <p data-i18n="eq.form.sub">מלאו את הפרטים והמידות, ואנחנו נתאם עם Ski Boom / Fanatic שהציוד המדויק יחכה לכם ביום ההגעה — בלי לבזבז שעה בתור בחנות.</p>
+          <ul class="preorder-trust-list">
+            <li data-i18n="eq.form.trust1">ללא תשלום מראש — משלמים בחנות</li>
+            <li data-i18n="eq.form.trust2">ביטול חינם עד 24 שעות לפני ההגעה</li>
+            <li data-i18n="eq.form.trust3">החלפת מידה או רמה בחנות ללא עלות</li>
+            <li data-i18n="eq.form.trust4">מענה אנושי בעברית לכל שאלה</li>
+          </ul>
+        </div>
+
+        <form id="eq-form" class="eq-form reveal" novalidate>
+          <fieldset class="eq-fieldset">
+            <legend><span class="step-num">1</span><span data-i18n="eq.fs.dates">תאריכי השכרה</span></legend>
+            <div class="eq-grid-2">
+              <div class="eq-field">
+                <label for="eq-checkin" data-i18n="eq.checkin">תאריך הגעה</label>
+                <input type="date" id="eq-checkin" name="checkin" required>
+              </div>
+              <div class="eq-field">
+                <label for="eq-checkout" data-i18n="eq.checkout">תאריך עזיבה</label>
+                <input type="date" id="eq-checkout" name="checkout" required>
+              </div>
+            </div>
+            <div class="eq-days-display" id="eq-days-display" aria-live="polite"></div>
+          </fieldset>
+
+          <fieldset class="eq-fieldset">
+            <legend><span class="step-num">2</span><span data-i18n="eq.fs.equipment">סוג ורמת ציוד</span></legend>
+            <div class="eq-grid-2">
+              <div class="eq-field">
+                <label for="eq-type" data-i18n="eq.type">סוג ציוד</label>
+                <select id="eq-type" name="equipmentType" required>
+                  <option value="" data-i18n="eq.choose">בחרו...</option>
+                  <option value="ski" data-i18n="eq.type.ski">סקי + מקלות</option>
+                  <option value="snowboard" data-i18n="eq.type.snowboard">סנובורד + מגפיים</option>
+                  <option value="both" data-i18n="eq.type.both">גם וגם (קבוצה)</option>
+                </select>
+              </div>
+              <div class="eq-field">
+                <label for="eq-level" data-i18n="eq.level">רמת ציוד</label>
+                <select id="eq-level" name="equipmentLevel" required>
+                  <option value="" data-i18n="eq.choose">בחרו...</option>
+                  <option value="beginner" data-i18n="eq.level.beginner">מתחיל</option>
+                  <option value="intermediate" data-i18n="eq.level.intermediate">בינוני</option>
+                  <option value="advanced" data-i18n="eq.level.advanced">מתקדם</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="eq-fieldset">
+            <legend><span class="step-num">3</span><span data-i18n="eq.fs.sizing">מידות</span></legend>
+            <div class="eq-grid-2">
+              <div class="eq-field">
+                <label for="eq-boot-size" data-i18n="eq.boot">מידת נעל (EU)</label>
+                <select id="eq-boot-size" name="bootSize" required>
+                  <option value="" data-i18n="eq.choose">בחרו...</option>
+                </select>
+              </div>
+              <div class="eq-field">
+                <label for="eq-helmet" data-i18n="eq.helmet">מידת קסדה</label>
+                <select id="eq-helmet" name="helmetSize">
+                  <option value="" data-i18n="eq.choose">בחרו...</option>
+                  <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+                </select>
+              </div>
+              <div class="eq-field">
+                <label for="eq-jacket" data-i18n="eq.jacket">מידת מעיל</label>
+                <select id="eq-jacket" name="jacketSize">
+                  <option value="" data-i18n="eq.none">ללא מעיל</option>
+                  <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+                </select>
+              </div>
+              <div class="eq-field">
+                <label for="eq-pants" data-i18n="eq.pants">מידת מכנסיים</label>
+                <select id="eq-pants" name="pantsSize">
+                  <option value="" data-i18n="eq.none">ללא מכנסיים</option>
+                  <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+                </select>
+              </div>
+            </div>
+            <div class="eq-field" style="margin-top:14px;">
+              <label for="eq-goggles" data-i18n="eq.goggles">משקפי סקי (גוגלס)</label>
+              <select id="eq-goggles" name="goggles">
+                <option value="yes" data-i18n="eq.goggles.yes">כן, צריך גוגלס</option>
+                <option value="no" data-i18n="eq.goggles.no">לא, יש לי משלי</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="eq-fieldset">
+            <legend><span class="step-num">4</span><span data-i18n="eq.fs.personal">פרטים אישיים</span></legend>
+            <div class="eq-grid-2">
+              <div class="eq-field">
+                <label for="eq-name" data-i18n="eq.name">שם מלא</label>
+                <input type="text" id="eq-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="eq-field">
+                <label for="eq-phone" data-i18n="eq.phone">טלפון</label>
+                <input type="tel" id="eq-phone" name="phone" autocomplete="tel" required>
+              </div>
+            </div>
+            <div class="eq-field" style="margin-top:14px;">
+              <label for="eq-email" data-i18n="eq.email">מייל (אופציונלי)</label>
+              <input type="email" id="eq-email" name="email" autocomplete="email" placeholder="example@email.com" dir="ltr">
+            </div>
+            <div class="eq-field">
+              <label for="eq-notes" data-i18n="eq.notes">הערות נוספות</label>
+              <textarea id="eq-notes" name="notes" data-i18n-placeholder="eq.notes.placeholder" placeholder="לדוגמה: כמה אנשים בקבוצה, גובה ומשקל לרוכבים, בקשות מיוחדות"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="eq-price-summary" id="eq-price-summary" aria-live="polite"></div>
+
+          <div class="eq-checkboxes">
+            <label class="eq-checkbox">
+              <input type="checkbox" name="marketingConsent">
+              <span data-i18n="eq.consent.marketing">אני מסכים/ת לקבלת עדכונים ומבצעים בדוא"ל</span>
+            </label>
+            <label class="eq-checkbox">
+              <input type="checkbox" name="termsAccepted" required>
+              <span data-i18n-html="eq.consent.terms">קראתי ואני מסכים/ת ל<a href="terms.html" target="_blank">תקנון</a> ול<a href="privacy-policy.html" target="_blank">מדיניות הפרטיות</a></span>
+            </label>
+          </div>
+
+          <div class="eq-actions">
+            <button type="submit" class="eq-submit" id="eq-submit">
+              <span data-i18n="eq.submit">שלחו הזמנה</span>
+            </button>
+            <button type="button" class="eq-wa-btn" id="eq-wa-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              <span data-i18n="eq.wa_send">שלחו בוואטסאפ</span>
+            </button>
+          </div>
+          <p class="eq-status" id="eq-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="eq.faq.label">שאלות נפוצות</span>
+        <h2 class="section-title" id="faq-title" data-i18n="eq.faq.title">כל מה שרציתם לדעת</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span data-i18n="eq.faq1.q">מה ההבדל בין מתחיל, בינוני ומתקדם?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><p data-i18n="eq.faq1.a">ציוד מתחילים סלחני וקל לשליטה — מושלם למי שלומד. ציוד בינוני מאוזן ויציב, לרוכבים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר, למי ששולט בכל סוגי המסלולים ומחפש ביצועים.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span data-i18n="eq.faq2.q">איפה נמצאות החנויות בניו גודאורי?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><p data-i18n="eq.faq2.a">שתי החנויות, Ski Boom ו-Fanatic, נמצאות בלב ניו גודאורי — במרחק הליכה קצר מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span data-i18n="eq.faq3.q">מתי משלמים על הציוד?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><p data-i18n="eq.faq3.a">אין תשלום מראש. ההזמנה רק שומרת לכם את הציוד והמידות. התשלום מתבצע בחנות ביום האיסוף, כך שאתם לא מסתכנים בכלום.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span data-i18n="eq.faq4.q">מה אם הציוד או המידה לא מתאימים?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><p data-i18n="eq.faq4.a">מחליפים בחנות ללא עלות. אם משהו לא מרגיש טוב על המדרון — חוזרים ומתאימים מידה או רמת ציוד עד שזה מושלם.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span data-i18n="eq.faq5.q">אפשר לשנות ציוד באמצע השהייה?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer"><p data-i18n="eq.faq5.a">בהחלט. רוצים לעבור מסקי לסנובורד או לשדרג רמה? אפשר לעשות זאת בחנות בכל רגע, ונחשב רק את ההפרש.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section id="cta-banner" aria-label="קריאה לפעולה">
+    <div class="container">
+      <div class="ng-cta-card reveal">
+        <h2 data-i18n="eq.cta.title">מוכנים לרדת מהמדרון?</h2>
+        <p data-i18n="eq.cta.sub">הזמינו את הציוד מראש עכשיו — והבטיחו לעצמכם את המידות והרמה הנכונה לפני שהמלאי אוזל.</p>
+        <div class="ng-cta-actions">
+          <a href="#preorder" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span data-i18n="eq.cta.btn">הזמן ציוד מראש</span>
+          </a>
+          <a href="https://wa.me/972557790955" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            <span data-i18n="eq.cta.wa">דברו איתנו</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="footer" aria-label="פוטר">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" data-internal="index.html" class="footer-logo" aria-label="Gudauri Helper - חזרה לדף הבית">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            </svg>
+            <span class="footer-logo-text">Gudauri Helper</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.</p>
+          <div class="footer-social" aria-label="רשתות חברתיות">
+            <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="social-link" aria-label="אינסטגרם" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="social-link" aria-label="פייסבוק" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="social-link" aria-label="וואטסאפ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="קישורים מהירים">
+          <h3 class="footer-heading" data-i18n="footer.nav.heading">ניווט</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" data-internal="index.html" data-i18n="footer.nav.home">דף הבית</a></li>
+            <li><a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" data-i18n="footer.nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
+            <li><a href="lina.html" data-internal="lina.html" data-i18n="footer.nav.accommodation">לינה</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" aria-label="פרטי קשר">
+          <h3 class="footer-heading" data-i18n="footer.contact.heading">קשר</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
+            <li><a href="tel:+972557790955">+972 55-779-0955</a></li>
+            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer" data-i18n="footer.contact.wa">וואטסאפ זמין</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3 class="footer-heading" data-i18n="eq.footer.cta.heading">מוכנים?</h3>
+          <p style="font-size:0.9375rem; color:var(--slate-400); line-height:1.6; margin-bottom:16px;" data-i18n="eq.footer.cta.text">הזמינו את הציוד מראש ובטחו את המידות שלכם לפני שהמלאי אוזל.</p>
+          <a href="#preorder" class="btn-primary" data-i18n="eq.footer.cta.btn">הזמן עכשיו</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.</p>
+        <nav class="footer-legal" aria-label="קישורים משפטיים">
+          <a href="privacy-policy.html" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
+          <a href="terms.html" data-i18n="footer.legal.terms">תנאי שימוש</a>
+          <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;" data-i18n="footer.legal.cookies">הגדרות קוקיז</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script>
+    // ── Sticky nav ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    const burger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('navMobile');
+    let menuOpen = false;
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      burger.setAttribute('aria-expanded', menuOpen);
+    });
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+    document.addEventListener('click', (e) => {
+      if (menuOpen && !nav.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
+    });
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── Counting stats ──
+    function animateCounter(el, target, duration) {
+      duration = duration || 1500;
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const update = function(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(update);
+    }
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.stat-value[data-target]').forEach(function(el) {
+              animateCounter(el, parseInt(el.dataset.target));
+            });
+            statsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      statsObserver.observe(statsSection);
+    }
+
+    // ── Snow canvas (hero) ──
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const canvas = document.getElementById('snowCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const hero = document.getElementById('hero');
+      let flakes = [];
+      function resize() {
+        canvas.width = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+        const count = Math.min(90, Math.floor(canvas.width / 14));
+        flakes = [];
+        for (let i = 0; i < count; i++) {
+          flakes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: 1 + Math.random() * 2.5,
+            d: 0.4 + Math.random() * 1.1,
+            sway: Math.random() * 2 * Math.PI
+          });
+        }
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.beginPath();
+        for (const f of flakes) {
+          ctx.moveTo(f.x, f.y);
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+        }
+        ctx.fill();
+        update();
+        requestAnimationFrame(draw);
+      }
+      function update() {
+        for (const f of flakes) {
+          f.sway += 0.01;
+          f.y += f.d;
+          f.x += Math.sin(f.sway) * 0.5;
+          if (f.y > canvas.height) { f.y = -5; f.x = Math.random() * canvas.width; }
+        }
+      }
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      draw();
+    })();
+
+    // ── Boot size options (35–48) ──
+    (function() {
+      const sel = document.getElementById('eq-boot-size');
+      for (let i = 35; i <= 48; i++) {
+        const opt = document.createElement('option');
+        opt.value = i; opt.textContent = i;
+        sel.appendChild(opt);
+      }
+    })();
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        item.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // ── Pricing model ──
+    const PRICES = {
+      ski:       { beginner: 25, intermediate: 35, advanced: 50 },
+      snowboard: { beginner: 28, intermediate: 38, advanced: 55 },
+      helmet:    12,
+      clothing:  20,
+      goggles:   5
+    };
+    const PACKAGE_DISCOUNT = 0.20;
+
+    function getLangText(key) {
+      const lang = localStorage.getItem('gudauri-lang') || 'he';
+      return window.TRANSLATIONS && window.TRANSLATIONS[lang] && window.TRANSLATIONS[lang][key];
+    }
+
+    function calcDays() {
+      const ci = document.getElementById('eq-checkin').value;
+      const co = document.getElementById('eq-checkout').value;
+      const display = document.getElementById('eq-days-display');
+      if (!ci || !co) { display.textContent = ''; return 0; }
+      const a = new Date(ci), b = new Date(co);
+      const days = Math.round((b - a) / 86400000);
+      if (days <= 0) { display.textContent = ''; return 0; }
+      const label = getLangText('eq.days_label') || 'ימי השכרה';
+      display.textContent = days + ' ' + label;
+      return days;
+    }
+
+    function updatePriceSummary() {
+      const type = document.getElementById('eq-type').value;
+      const level = document.getElementById('eq-level').value;
+      const jacket = document.getElementById('eq-jacket').value;
+      const pants = document.getElementById('eq-pants').value;
+      const goggles = document.getElementById('eq-goggles').value;
+      const days = calcDays();
+      const summary = document.getElementById('eq-price-summary');
+
+      if (!type || !level || days <= 0) {
+        summary.classList.remove('show'); summary.innerHTML = ''; return;
+      }
+      const base = (type === 'snowboard') ? PRICES.snowboard[level]
+                 : (type === 'both') ? (PRICES.ski[level] + PRICES.snowboard[level])
+                 : PRICES.ski[level];
+      const helmet = PRICES.helmet;
+      const clo = (jacket || pants) ? PRICES.clothing : 0;
+      const gog = (goggles === 'yes') ? PRICES.goggles : 0;
+      const daily = base + helmet + clo + gog;
+      const full = daily * days;
+      const pkg = Math.round(full * (1 - PACKAGE_DISCOUNT));
+
+      const estLabel = getLangText('eq.summary.est') || 'הערכת עלות';
+      const daysLabel = getLangText('eq.days_label') || 'ימי השכרה';
+      const pkgLabel = getLangText('eq.summary.pkg') || 'חבילה מלאה כולל קסדה';
+      summary.innerHTML = '<strong>' + estLabel + ':</strong> <s>$' + full + '</s> → ' +
+        '<strong class="electric" style="font-size:1.15rem">$' + pkg + '</strong> ' +
+        '<span style="color:var(--slate-400)">· ' + days + ' ' + daysLabel + ' · ' + pkgLabel + '</span>';
+      summary.classList.add('show');
+    }
+
+    ['eq-checkin','eq-checkout','eq-type','eq-level','eq-jacket','eq-pants','eq-goggles'].forEach(function(id) {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('change', updatePriceSummary);
+    });
+
+    // ── Collect form data ──
+    function collectFormData() {
+      return {
+        name:          document.getElementById('eq-name').value.trim(),
+        phone:         document.getElementById('eq-phone').value.trim(),
+        email:         document.getElementById('eq-email').value.trim(),
+        checkin:       document.getElementById('eq-checkin').value,
+        checkout:      document.getElementById('eq-checkout').value,
+        equipmentType: document.getElementById('eq-type').value,
+        equipmentLevel:document.getElementById('eq-level').value,
+        bootSize:      document.getElementById('eq-boot-size').value,
+        helmetSize:    document.getElementById('eq-helmet').value,
+        jacketSize:    document.getElementById('eq-jacket').value,
+        pantsSize:     document.getElementById('eq-pants').value,
+        goggles:       document.getElementById('eq-goggles').value,
+        notes:         document.getElementById('eq-notes').value.trim()
+      };
+    }
+
+    // ── WhatsApp message builder ──
+    function buildWhatsAppMessage(d) {
+      const TYPE = { ski: 'סקי + מקלות', snowboard: 'סנובורד + מגפיים', both: 'סקי + סנובורד' };
+      const LEVEL = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
+      const lines = [
+        'שלום! אני רוצה להזמין ציוד מראש (Ski Boom / Fanatic):',
+        '━━━━━━━━━━━━━━━',
+        '👤 שם: ' + (d.name || '—'),
+        '📞 טלפון: ' + (d.phone || '—'),
+        '📅 הגעה: ' + (d.checkin || '—'),
+        '📅 עזיבה: ' + (d.checkout || '—'),
+        '🎿 ציוד: ' + (TYPE[d.equipmentType] || '—'),
+        '📊 רמה: ' + (LEVEL[d.equipmentLevel] || '—'),
+        '👟 מידת נעל (EU): ' + (d.bootSize || '—'),
+        '🪖 קסדה: ' + (d.helmetSize || '—'),
+        '🧥 מעיל: ' + (d.jacketSize || 'ללא'),
+        '👖 מכנסיים: ' + (d.pantsSize || 'ללא'),
+        '🥽 גוגלס: ' + (d.goggles === 'yes' ? 'כן' : 'לא')
+      ];
+      if (d.notes) lines.push('📝 הערות: ' + d.notes);
+      lines.push('━━━━━━━━━━━━━━━');
+      lines.push('תודה!');
+      return lines.join('\n');
+    }
+
+    document.getElementById('eq-wa-btn').addEventListener('click', function() {
+      const d = collectFormData();
+      const status = document.getElementById('eq-status');
+      if (!d.name || !d.phone) {
+        status.dataset.state = 'error';
+        status.textContent = getLangText('eq.err.required') || 'נא למלא שם וטלפון לפני שליחה בוואטסאפ.';
+        return;
+      }
+      const url = 'https://wa.me/972557790955?text=' + encodeURIComponent(buildWhatsAppMessage(d));
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // ── Form submit → /api/leads ──
+    document.getElementById('eq-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const status = document.getElementById('eq-status');
+      const submit = document.getElementById('eq-submit');
+      const d = collectFormData();
+
+      if (!d.name || !d.phone) {
+        status.dataset.state = 'error';
+        status.textContent = getLangText('eq.err.required') || 'נא למלא שם וטלפון.';
+        return;
+      }
+      if (!form.querySelector('[name="termsAccepted"]').checked) {
+        status.dataset.state = 'error';
+        status.textContent = getLangText('eq.err.terms') || 'יש לאשר את התקנון ומדיניות הפרטיות.';
+        return;
+      }
+
+      const payload = Object.assign({}, d, {
+        service: 'equipment',
+        source: document.title || window.location.pathname,
+        marketingConsent: form.querySelector('[name="marketingConsent"]').checked ? 'on' : ''
+      });
+
+      submit.disabled = true;
+      status.dataset.state = '';
+      status.textContent = getLangText('eq.sending') || 'שולח...';
+
+      try {
+        const res = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('API error');
+        form.reset();
+        document.getElementById('eq-days-display').textContent = '';
+        document.getElementById('eq-price-summary').classList.remove('show');
+        document.getElementById('eq-price-summary').innerHTML = '';
+        status.dataset.state = 'success';
+        status.textContent = getLangText('eq.success') || 'ההזמנה נשלחה! נחזור אליכם בהקדם לתיאום הציוד.';
+      } catch (err) {
+        status.dataset.state = 'error';
+        status.textContent = getLangText('eq.err.send') || 'לא הצלחנו לשלוח כרגע. נסו שוב או פנו בוואטסאפ.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
+    // ══════════ LANGUAGE SWITCHER ══════════
+    window.TRANSLATIONS = {
+      he: {
+        dir: 'rtl', lang: 'he',
+        'nav.new_gudauri': 'ניו גודאורי', 'nav.equipment': 'ציוד', 'nav.accommodation': 'לינה',
+        'nav.contact': 'צרו קשר', 'nav.cta_equipment': 'הזמן ציוד',
+        'eq.hero.kicker': 'ניו גודאורי · השכרת ציוד מקצועי',
+        'eq.hero.title': 'ציוד שמתאים לך —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.sub': 'סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות — והציוד יחכה לכם מוכן ביום ההגעה.',
+        'eq.hero.urgency': 'מלאי מוגבל בעונת השיא — הזמינו מראש ובטחו את המידות שלכם',
+        'eq.hero.cta_form': 'הזמן ציוד מראש', 'eq.hero.cta_wa': 'שאלות? וואטסאפ',
+        'eq.hero.trust1': 'ציוד מחודש בכל עונה', 'eq.hero.trust2': 'ללא תשלום מראש', 'eq.hero.trust3': 'שירות בעברית',
+        'eq.stat1.label': 'תיירים השכירו דרכנו', 'eq.stat2.label': 'חנויות שותפות בניו גודאורי',
+        'eq.stat3.label': 'רמות ציוד לכל רוכב', 'eq.stat4.label': 'ציוד מקצועי מחודש',
+        'eq.shops.label': 'החנויות שלנו', 'eq.shops.title': 'שתי חנויות. סטנדרט אחד — מקצועי.',
+        'eq.shops.sub': 'עובדים עם שתי חנויות הציוד המובילות בניו גודאורי. אתם בוחרים — אנחנו מתאמים שהציוד יחכה מוכן.',
+        'eq.shop1.badge': 'השכרה + שירות',
+        'eq.shop1.desc': 'מבחר רחב של סקי וסנובורד לכל הרמות, עם צוות שמתאים לכם את הציוד המדויק. מתמחים במתחילים שצריכים יד מכוונת ובמתקדמים שמחפשים ביצועים.',
+        'eq.shop1.location': 'לב ניו גודאורי · מול הגונדולה', 'eq.shop1.hours': 'פתוח כל יום · 08:00–20:00', 'eq.shop1.cta': 'שאלו על Ski Boom',
+        'eq.shop2.badge': 'ציוד פרימיום',
+        'eq.shop2.desc': 'חנות לחובבי הספורט — מותגים מובילים, ביגוד תרמי איכותי וציוד ברמה גבוהה. הבחירה של מי שרוצה את ההרגשה הכי טובה על המדרון.',
+        'eq.shop2.location': 'ניו גודאורי · דקות הליכה מהמלונות', 'eq.shop2.hours': 'פתוח כל יום · 08:00–20:00', 'eq.shop2.cta': 'שאלו על Fanatic',
+        'eq.pricing.label': 'מחירון יומי', 'eq.pricing.title': 'מחיר הוגן. בלי הפתעות.',
+        'eq.pricing.sub': 'בחרו את רמת הציוד המתאימה לכם. חבילה מלאה (ציוד + קסדה + ביגוד) חוסכת לכם עד 20%.',
+        'eq.pricing.urgency': 'בעונת השיא הציוד אוזל מהר — הזמנה מראש מבטיחה לכם את המידה והרמה הנכונה',
+        'eq.pricing.category': 'קטגוריה',
+        'eq.level.beginner': 'מתחיל', 'eq.level.beginner.sub': 'קל וסלחני',
+        'eq.level.intermediate': 'בינוני', 'eq.level.intermediate.sub': 'מאוזן ויציב',
+        'eq.level.advanced': 'מתקדם', 'eq.level.advanced.sub': 'מהיר ומדויק', 'eq.level.popular': 'הכי פופולרי',
+        'eq.cat.ski': 'סקי + מקלות', 'eq.cat.ski.sub': 'סקי, מקלות ומגפיים',
+        'eq.cat.snowboard': 'סנובורד + מגפיים', 'eq.cat.snowboard.sub': 'גלשן ומגפיים',
+        'eq.cat.helmet': 'קסדה + גוגלס', 'eq.cat.helmet.sub': 'בטיחות וראות',
+        'eq.cat.clothing': 'ביגוד (מעיל + מכנס)', 'eq.cat.clothing.sub': 'תרמי · S/M/L/XL',
+        'eq.per_day': 'ליום', 'eq.package': 'חבילה מלאה', 'eq.package.sub': 'ציוד + קסדה + ביגוד',
+        'eq.save20': 'חיסכון 20%', 'eq.save21': 'חיסכון 21%',
+        'eq.pricing.note': 'המחירים לאדם ליום בדולר. הזמנה לכמה ימים מקנה הנחה נוספת — ציינו את התאריכים בטופס ונחזור עם הצעה מדויקת.',
+        'eq.trust.label': 'למה דרכנו', 'eq.trust.title': 'שלוש סיבות לישון רגוע',
+        'eq.trust1.title': 'ציוד מקצועי ומחודש', 'eq.trust1.text': 'הציוד עובר תחזוקה והשחזה בכל עונה. אתם מקבלים סקי וגלשנים במצב מעולה — לא ציוד שחוק שמקלקל את היום על המדרון.',
+        'eq.trust2.title': 'ללא תשלום מראש', 'eq.trust2.text': 'ההזמנה רק שומרת לכם את הציוד והמידות. משלמים בחנות ביום האיסוף — בלי סיכון, בלי התחייבות מוקדמת.',
+        'eq.trust3.title': 'שירות וליווי בעברית', 'eq.trust3.text': 'לא צריך להתמודד עם השפה או לתהות אם הבינו אתכם. אנחנו מתאמים מולכם בעברית ודואגים שהכל יהיה מוכן בדיוק כמו שביקשתם.',
+        'eq.form.label': 'הזמנה מראש', 'eq.form.title': 'הגיעו מוכנים.<br/><span class="electric">הציוד כבר מחכה.</span>',
+        'eq.form.sub': 'מלאו את הפרטים והמידות, ואנחנו נתאם עם Ski Boom / Fanatic שהציוד המדויק יחכה לכם ביום ההגעה — בלי לבזבז שעה בתור בחנות.',
+        'eq.form.trust1': 'ללא תשלום מראש — משלמים בחנות', 'eq.form.trust2': 'ביטול חינם עד 24 שעות לפני ההגעה',
+        'eq.form.trust3': 'החלפת מידה או רמה בחנות ללא עלות', 'eq.form.trust4': 'מענה אנושי בעברית לכל שאלה',
+        'eq.fs.dates': 'תאריכי השכרה', 'eq.checkin': 'תאריך הגעה', 'eq.checkout': 'תאריך עזיבה', 'eq.days_label': 'ימי השכרה',
+        'eq.fs.equipment': 'סוג ורמת ציוד', 'eq.type': 'סוג ציוד', 'eq.choose': 'בחרו...', 'eq.none': 'ללא',
+        'eq.type.ski': 'סקי + מקלות', 'eq.type.snowboard': 'סנובורד + מגפיים', 'eq.type.both': 'גם וגם (קבוצה)', 'eq.level': 'רמת ציוד',
+        'eq.fs.sizing': 'מידות', 'eq.boot': 'מידת נעל (EU)', 'eq.helmet': 'מידת קסדה', 'eq.jacket': 'מידת מעיל', 'eq.pants': 'מידת מכנסיים',
+        'eq.goggles': 'משקפי סקי (גוגלס)', 'eq.goggles.yes': 'כן, צריך גוגלס', 'eq.goggles.no': 'לא, יש לי משלי',
+        'eq.fs.personal': 'פרטים אישיים', 'eq.name': 'שם מלא', 'eq.phone': 'טלפון', 'eq.email': 'מייל (אופציונלי)',
+        'eq.notes': 'הערות נוספות', 'eq.notes.placeholder': 'לדוגמה: כמה אנשים בקבוצה, גובה ומשקל לרוכבים, בקשות מיוחדות',
+        'eq.consent.marketing': 'אני מסכים/ת לקבלת עדכונים ומבצעים בדוא"ל',
+        'eq.consent.terms': 'קראתי ואני מסכים/ת ל<a href="terms.html" target="_blank">תקנון</a> ול<a href="privacy-policy.html" target="_blank">מדיניות הפרטיות</a>',
+        'eq.submit': 'שלחו הזמנה', 'eq.wa_send': 'שלחו בוואטסאפ',
+        'eq.summary.est': 'הערכת עלות', 'eq.summary.pkg': 'חבילה מלאה כולל קסדה',
+        'eq.sending': 'שולח...', 'eq.success': 'ההזמנה נשלחה! נחזור אליכם בהקדם לתיאום הציוד.',
+        'eq.err.required': 'נא למלא שם וטלפון.', 'eq.err.terms': 'יש לאשר את התקנון ומדיניות הפרטיות.', 'eq.err.send': 'לא הצלחנו לשלוח כרגע. נסו שוב או פנו בוואטסאפ.',
+        'eq.faq.label': 'שאלות נפוצות', 'eq.faq.title': 'כל מה שרציתם לדעת',
+        'eq.faq1.q': 'מה ההבדל בין מתחיל, בינוני ומתקדם?', 'eq.faq1.a': 'ציוד מתחילים סלחני וקל לשליטה — מושלם למי שלומד. ציוד בינוני מאוזן ויציב, לרוכבים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר, למי ששולט בכל סוגי המסלולים ומחפש ביצועים.',
+        'eq.faq2.q': 'איפה נמצאות החנויות בניו גודאורי?', 'eq.faq2.a': 'שתי החנויות, Ski Boom ו-Fanatic, נמצאות בלב ניו גודאורי — במרחק הליכה קצר מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה.',
+        'eq.faq3.q': 'מתי משלמים על הציוד?', 'eq.faq3.a': 'אין תשלום מראש. ההזמנה רק שומרת לכם את הציוד והמידות. התשלום מתבצע בחנות ביום האיסוף, כך שאתם לא מסתכנים בכלום.',
+        'eq.faq4.q': 'מה אם הציוד או המידה לא מתאימים?', 'eq.faq4.a': 'מחליפים בחנות ללא עלות. אם משהו לא מרגיש טוב על המדרון — חוזרים ומתאימים מידה או רמת ציוד עד שזה מושלם.',
+        'eq.faq5.q': 'אפשר לשנות ציוד באמצע השהייה?', 'eq.faq5.a': 'בהחלט. רוצים לעבור מסקי לסנובורד או לשדרג רמה? אפשר לעשות זאת בחנות בכל רגע, ונחשב רק את ההפרש.',
+        'eq.cta.title': 'מוכנים לרדת מהמדרון?', 'eq.cta.sub': 'הזמינו את הציוד מראש עכשיו — והבטיחו לעצמכם את המידות והרמה הנכונה לפני שהמלאי אוזל.',
+        'eq.cta.btn': 'הזמן ציוד מראש', 'eq.cta.wa': 'דברו איתנו',
+        'eq.footer.cta.heading': 'מוכנים?', 'eq.footer.cta.text': 'הזמינו את הציוד מראש ובטחו את המידות שלכם לפני שהמלאי אוזל.', 'eq.footer.cta.btn': 'הזמן עכשיו',
+        'footer.tagline': 'גודאורי היא לא סתם יעד. היא הדרך שבה ישראלים גילו שאפשר לסקי כמו באירופה, לשלם כמו בישראל, ולהרגיש כאילו גילית אוצר.',
+        'footer.nav.heading': 'ניווט', 'footer.nav.home': 'דף הבית', 'footer.nav.new_gudauri': 'ניו גודאורי', 'footer.nav.accommodation': 'לינה',
+        'footer.contact.heading': 'קשר', 'footer.contact.wa': 'וואטסאפ זמין',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.',
+        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.cookies': 'הגדרות קוקיז'
+      },
+
+      en: {
+        dir: 'ltr', lang: 'en',
+        'nav.new_gudauri': 'New Gudauri', 'nav.equipment': 'Rentals', 'nav.accommodation': 'Accommodation',
+        'nav.contact': 'Contact', 'nav.cta_equipment': 'Book Gear',
+        'eq.hero.kicker': 'New Gudauri · Professional Gear Rental',
+        'eq.hero.title': 'Gear That Fits You —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.sub': 'Skis, snowboards, helmets, goggles and thermal wear. Pre-order by size — and your gear is ready and waiting on arrival day.',
+        'eq.hero.urgency': 'Limited stock in peak season — pre-order and lock in your sizes',
+        'eq.hero.cta_form': 'Pre-Order Gear', 'eq.hero.cta_wa': 'Questions? WhatsApp',
+        'eq.hero.trust1': 'Refreshed every season', 'eq.hero.trust2': 'No upfront payment', 'eq.hero.trust3': 'Service in your language',
+        'eq.stat1.label': 'Tourists rented with us', 'eq.stat2.label': 'Partner shops in New Gudauri',
+        'eq.stat3.label': 'Gear levels per rider', 'eq.stat4.label': 'Professional refreshed gear',
+        'eq.shops.label': 'Our Shops', 'eq.shops.title': 'Two shops. One standard — professional.',
+        'eq.shops.sub': 'We work with the two leading gear shops in New Gudauri. You choose — we make sure your gear is ready.',
+        'eq.shop1.badge': 'Rental + Service',
+        'eq.shop1.desc': 'A wide range of skis and snowboards for all levels, with a team that fits you the exact gear. Specialists for beginners who need guidance and advanced riders chasing performance.',
+        'eq.shop1.location': 'Heart of New Gudauri · facing the gondola', 'eq.shop1.hours': 'Open daily · 08:00–20:00', 'eq.shop1.cta': 'Ask about Ski Boom',
+        'eq.shop2.badge': 'Premium Gear',
+        'eq.shop2.desc': 'A shop for sport lovers — leading brands, quality thermal wear and high-end gear. The choice for those who want the best feel on the slope.',
+        'eq.shop2.location': 'New Gudauri · minutes from the hotels', 'eq.shop2.hours': 'Open daily · 08:00–20:00', 'eq.shop2.cta': 'Ask about Fanatic',
+        'eq.pricing.label': 'Daily Pricing', 'eq.pricing.title': 'Fair price. No surprises.',
+        'eq.pricing.sub': 'Choose the gear level that fits you. A full package (gear + helmet + clothing) saves you up to 20%.',
+        'eq.pricing.urgency': 'In peak season gear runs out fast — pre-ordering guarantees your size and level',
+        'eq.pricing.category': 'Category',
+        'eq.level.beginner': 'Beginner', 'eq.level.beginner.sub': 'Easy & forgiving',
+        'eq.level.intermediate': 'Intermediate', 'eq.level.intermediate.sub': 'Balanced & stable',
+        'eq.level.advanced': 'Advanced', 'eq.level.advanced.sub': 'Fast & precise', 'eq.level.popular': 'Most Popular',
+        'eq.cat.ski': 'Skis + Poles', 'eq.cat.ski.sub': 'Skis, poles & boots',
+        'eq.cat.snowboard': 'Snowboard + Boots', 'eq.cat.snowboard.sub': 'Board & boots',
+        'eq.cat.helmet': 'Helmet + Goggles', 'eq.cat.helmet.sub': 'Safety & vision',
+        'eq.cat.clothing': 'Clothing (Jacket + Pants)', 'eq.cat.clothing.sub': 'Thermal · S/M/L/XL',
+        'eq.per_day': '/day', 'eq.package': 'Full Package', 'eq.package.sub': 'Gear + helmet + clothing',
+        'eq.save20': 'Save 20%', 'eq.save21': 'Save 21%',
+        'eq.pricing.note': 'Prices per person per day in USD. Multi-day bookings get an extra discount — add your dates in the form and we\'ll reply with an exact quote.',
+        'eq.trust.label': 'Why Through Us', 'eq.trust.title': 'Three Reasons to Rest Easy',
+        'eq.trust1.title': 'Professional, Refreshed Gear', 'eq.trust1.text': 'Gear is maintained and sharpened every season. You get skis and boards in excellent condition — not worn-out equipment that ruins your day on the slope.',
+        'eq.trust2.title': 'No Upfront Payment', 'eq.trust2.text': 'The booking only reserves your gear and sizes. You pay at the shop on pickup day — no risk, no early commitment.',
+        'eq.trust3.title': 'Service & Support in Your Language', 'eq.trust3.text': 'No need to struggle with the language or wonder if you were understood. We coordinate with you directly and make sure everything is ready exactly as you asked.',
+        'eq.form.label': 'Pre-Order', 'eq.form.title': 'Arrive ready.<br/><span class="electric">Your gear is waiting.</span>',
+        'eq.form.sub': 'Fill in your details and sizes, and we\'ll coordinate with Ski Boom / Fanatic so your exact gear is waiting on arrival day — no wasting an hour in line at the shop.',
+        'eq.form.trust1': 'No upfront payment — pay at the shop', 'eq.form.trust2': 'Free cancellation up to 24h before arrival',
+        'eq.form.trust3': 'Swap size or level at the shop, free', 'eq.form.trust4': 'Real human answers in your language',
+        'eq.fs.dates': 'Rental Dates', 'eq.checkin': 'Arrival date', 'eq.checkout': 'Departure date', 'eq.days_label': 'rental days',
+        'eq.fs.equipment': 'Equipment Type & Level', 'eq.type': 'Equipment type', 'eq.choose': 'Choose...', 'eq.none': 'None',
+        'eq.type.ski': 'Skis + Poles', 'eq.type.snowboard': 'Snowboard + Boots', 'eq.type.both': 'Both (group)', 'eq.level': 'Gear level',
+        'eq.fs.sizing': 'Sizes', 'eq.boot': 'Boot size (EU)', 'eq.helmet': 'Helmet size', 'eq.jacket': 'Jacket size', 'eq.pants': 'Pants size',
+        'eq.goggles': 'Ski goggles', 'eq.goggles.yes': 'Yes, I need goggles', 'eq.goggles.no': 'No, I have my own',
+        'eq.fs.personal': 'Personal Details', 'eq.name': 'Full name', 'eq.phone': 'Phone', 'eq.email': 'Email (optional)',
+        'eq.notes': 'Additional notes', 'eq.notes.placeholder': 'E.g.: group size, height & weight per rider, special requests',
+        'eq.consent.marketing': 'I agree to receive updates and offers by email',
+        'eq.consent.terms': 'I have read and agree to the <a href="terms.html" target="_blank">Terms</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
+        'eq.submit': 'Send Order', 'eq.wa_send': 'Send via WhatsApp',
+        'eq.summary.est': 'Estimated cost', 'eq.summary.pkg': 'full package incl. helmet',
+        'eq.sending': 'Sending...', 'eq.success': 'Order sent! We\'ll get back to you shortly to arrange your gear.',
+        'eq.err.required': 'Please fill in name and phone.', 'eq.err.terms': 'Please accept the Terms and Privacy Policy.', 'eq.err.send': 'Couldn\'t send right now. Try again or reach us on WhatsApp.',
+        'eq.faq.label': 'FAQ', 'eq.faq.title': 'Everything You Wanted to Know',
+        'eq.faq1.q': 'What\'s the difference between beginner, intermediate and advanced?', 'eq.faq1.a': 'Beginner gear is forgiving and easy to control — perfect for learners. Intermediate gear is balanced and stable, for riders who already descend confidently. Advanced gear is stiff and fast, for those who master all run types and want performance.',
+        'eq.faq2.q': 'Where are the shops in New Gudauri?', 'eq.faq2.a': 'Both shops, Ski Boom and Fanatic, are in the heart of New Gudauri — a short walk from the gondola and most hotels. We\'ll arrange a convenient pickup on your arrival day.',
+        'eq.faq3.q': 'When do I pay for the gear?', 'eq.faq3.a': 'No upfront payment. The booking only reserves your gear and sizes. Payment is made at the shop on pickup day, so you risk nothing.',
+        'eq.faq4.q': 'What if the gear or size doesn\'t fit?', 'eq.faq4.a': 'Swap at the shop, free of charge. If something doesn\'t feel right on the slope — come back and we\'ll adjust the size or gear level until it\'s perfect.',
+        'eq.faq5.q': 'Can I change gear mid-stay?', 'eq.faq5.a': 'Absolutely. Want to switch from skis to a snowboard or upgrade a level? You can do it at the shop anytime, and we\'ll only charge the difference.',
+        'eq.cta.title': 'Ready to hit the slope?', 'eq.cta.sub': 'Pre-order your gear now — and lock in the right sizes and level before stock runs out.',
+        'eq.cta.btn': 'Pre-Order Gear', 'eq.cta.wa': 'Talk to Us',
+        'eq.footer.cta.heading': 'Ready?', 'eq.footer.cta.text': 'Pre-order your gear and lock in your sizes before stock runs out.', 'eq.footer.cta.btn': 'Book Now',
+        'footer.tagline': 'Gudauri isn\'t just a destination. It\'s how travelers discovered you can ski like in Europe, pay reasonable prices, and feel like you found a hidden treasure.',
+        'footer.nav.heading': 'Navigation', 'footer.nav.home': 'Home', 'footer.nav.new_gudauri': 'New Gudauri', 'footer.nav.accommodation': 'Accommodation',
+        'footer.contact.heading': 'Contact', 'footer.contact.wa': 'WhatsApp available',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. All rights reserved.',
+        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.cookies': 'Cookie Settings'
+      },
+
+      ru: {
+        dir: 'ltr', lang: 'ru',
+        'nav.new_gudauri': 'Новый Гудаури', 'nav.equipment': 'Прокат', 'nav.accommodation': 'Проживание',
+        'nav.contact': 'Контакты', 'nav.cta_equipment': 'Забронировать',
+        'eq.hero.kicker': 'Новый Гудаури · Профессиональный прокат',
+        'eq.hero.title': 'Снаряжение под вас —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.sub': 'Лыжи, сноуборды, шлемы, маски и термоодежда. Забронируйте заранее по размерам — и снаряжение ждёт вас готовым в день приезда.',
+        'eq.hero.urgency': 'Ограниченный запас в пик сезона — бронируйте заранее и закрепите свои размеры',
+        'eq.hero.cta_form': 'Забронировать снаряжение', 'eq.hero.cta_wa': 'Вопросы? WhatsApp',
+        'eq.hero.trust1': 'Обновляется каждый сезон', 'eq.hero.trust2': 'Без предоплаты', 'eq.hero.trust3': 'Сервис на вашем языке',
+        'eq.stat1.label': 'Туристов арендовали у нас', 'eq.stat2.label': 'Магазина-партнёра в Гудаури',
+        'eq.stat3.label': 'Уровня снаряжения', 'eq.stat4.label': 'Профессиональное снаряжение',
+        'eq.shops.label': 'Наши магазины', 'eq.shops.title': 'Два магазина. Один стандарт — профессиональный.',
+        'eq.shops.sub': 'Мы работаем с двумя ведущими магазинами снаряжения в Новом Гудаури. Вы выбираете — мы готовим снаряжение.',
+        'eq.shop1.badge': 'Прокат + сервис',
+        'eq.shop1.desc': 'Широкий выбор лыж и сноубордов для всех уровней, команда подберёт вам точное снаряжение. Специалисты для новичков, которым нужна помощь, и продвинутых райдеров.',
+        'eq.shop1.location': 'Центр Нового Гудаури · напротив гондолы', 'eq.shop1.hours': 'Открыто ежедневно · 08:00–20:00', 'eq.shop1.cta': 'Спросить о Ski Boom',
+        'eq.shop2.badge': 'Премиум снаряжение',
+        'eq.shop2.desc': 'Магазин для любителей спорта — ведущие бренды, качественная термоодежда и снаряжение высокого класса. Выбор тех, кто хочет лучшие ощущения на склоне.',
+        'eq.shop2.location': 'Новый Гудаури · минуты от отелей', 'eq.shop2.hours': 'Открыто ежедневно · 08:00–20:00', 'eq.shop2.cta': 'Спросить о Fanatic',
+        'eq.pricing.label': 'Цены за день', 'eq.pricing.title': 'Честная цена. Без сюрпризов.',
+        'eq.pricing.sub': 'Выберите подходящий уровень снаряжения. Полный пакет (снаряжение + шлем + одежда) экономит до 20%.',
+        'eq.pricing.urgency': 'В пик сезона снаряжение быстро заканчивается — бронь заранее гарантирует ваш размер и уровень',
+        'eq.pricing.category': 'Категория',
+        'eq.level.beginner': 'Начинающий', 'eq.level.beginner.sub': 'Лёгкое и послушное',
+        'eq.level.intermediate': 'Средний', 'eq.level.intermediate.sub': 'Сбалансированное',
+        'eq.level.advanced': 'Продвинутый', 'eq.level.advanced.sub': 'Быстрое и точное', 'eq.level.popular': 'Популярный',
+        'eq.cat.ski': 'Лыжи + палки', 'eq.cat.ski.sub': 'Лыжи, палки и ботинки',
+        'eq.cat.snowboard': 'Сноуборд + ботинки', 'eq.cat.snowboard.sub': 'Доска и ботинки',
+        'eq.cat.helmet': 'Шлем + маска', 'eq.cat.helmet.sub': 'Безопасность и обзор',
+        'eq.cat.clothing': 'Одежда (куртка + штаны)', 'eq.cat.clothing.sub': 'Термо · S/M/L/XL',
+        'eq.per_day': '/день', 'eq.package': 'Полный пакет', 'eq.package.sub': 'Снаряжение + шлем + одежда',
+        'eq.save20': 'Скидка 20%', 'eq.save21': 'Скидка 21%',
+        'eq.pricing.note': 'Цены за человека в день в долларах. Бронь на несколько дней даёт дополнительную скидку — укажите даты в форме, и мы пришлём точный расчёт.',
+        'eq.trust.label': 'Почему через нас', 'eq.trust.title': 'Три причины спать спокойно',
+        'eq.trust1.title': 'Профессиональное обновлённое снаряжение', 'eq.trust1.text': 'Снаряжение обслуживается и затачивается каждый сезон. Вы получаете лыжи и доски в отличном состоянии — а не изношенное оборудование.',
+        'eq.trust2.title': 'Без предоплаты', 'eq.trust2.text': 'Бронь только резервирует снаряжение и размеры. Вы платите в магазине в день получения — без риска и ранних обязательств.',
+        'eq.trust3.title': 'Сервис и поддержка на вашем языке', 'eq.trust3.text': 'Не нужно бороться с языком или гадать, поняли ли вас. Мы общаемся напрямую и следим, чтобы всё было готово как вы просили.',
+        'eq.form.label': 'Предзаказ', 'eq.form.title': 'Приезжайте готовыми.<br/><span class="electric">Снаряжение уже ждёт.</span>',
+        'eq.form.sub': 'Заполните данные и размеры, а мы согласуем с Ski Boom / Fanatic, чтобы ваше снаряжение ждало в день приезда — без часа в очереди.',
+        'eq.form.trust1': 'Без предоплаты — оплата в магазине', 'eq.form.trust2': 'Бесплатная отмена за 24 часа до приезда',
+        'eq.form.trust3': 'Замена размера или уровня бесплатно', 'eq.form.trust4': 'Живые ответы на вашем языке',
+        'eq.fs.dates': 'Даты проката', 'eq.checkin': 'Дата приезда', 'eq.checkout': 'Дата отъезда', 'eq.days_label': 'дней проката',
+        'eq.fs.equipment': 'Тип и уровень снаряжения', 'eq.type': 'Тип снаряжения', 'eq.choose': 'Выберите...', 'eq.none': 'Без',
+        'eq.type.ski': 'Лыжи + палки', 'eq.type.snowboard': 'Сноуборд + ботинки', 'eq.type.both': 'Оба (группа)', 'eq.level': 'Уровень',
+        'eq.fs.sizing': 'Размеры', 'eq.boot': 'Размер ботинок (EU)', 'eq.helmet': 'Размер шлема', 'eq.jacket': 'Размер куртки', 'eq.pants': 'Размер штанов',
+        'eq.goggles': 'Лыжная маска', 'eq.goggles.yes': 'Да, нужна маска', 'eq.goggles.no': 'Нет, своя есть',
+        'eq.fs.personal': 'Личные данные', 'eq.name': 'Полное имя', 'eq.phone': 'Телефон', 'eq.email': 'Email (необязательно)',
+        'eq.notes': 'Дополнительно', 'eq.notes.placeholder': 'Напр.: размер группы, рост и вес райдеров, особые пожелания',
+        'eq.consent.marketing': 'Согласен получать новости и предложения по email',
+        'eq.consent.terms': 'Я прочитал и согласен с <a href="terms.html" target="_blank">Условиями</a> и <a href="privacy-policy.html" target="_blank">Политикой конфиденциальности</a>',
+        'eq.submit': 'Отправить заказ', 'eq.wa_send': 'Через WhatsApp',
+        'eq.summary.est': 'Примерная стоимость', 'eq.summary.pkg': 'полный пакет со шлемом',
+        'eq.sending': 'Отправка...', 'eq.success': 'Заказ отправлен! Мы свяжемся с вами для согласования снаряжения.',
+        'eq.err.required': 'Заполните имя и телефон.', 'eq.err.terms': 'Примите Условия и Политику конфиденциальности.', 'eq.err.send': 'Не удалось отправить. Попробуйте снова или напишите в WhatsApp.',
+        'eq.faq.label': 'Вопросы', 'eq.faq.title': 'Всё, что вы хотели знать',
+        'eq.faq1.q': 'В чём разница между начинающим, средним и продвинутым?', 'eq.faq1.a': 'Снаряжение для начинающих послушное и лёгкое в управлении — для тех, кто учится. Среднее — сбалансированное и устойчивое, для уверенных райдеров. Продвинутое — жёсткое и быстрое, для тех, кто владеет всеми трассами.',
+        'eq.faq2.q': 'Где находятся магазины в Новом Гудаури?', 'eq.faq2.a': 'Оба магазина, Ski Boom и Fanatic, в центре Нового Гудаури — недалеко от гондолы и большинства отелей. Согласуем удобный самовывоз в день приезда.',
+        'eq.faq3.q': 'Когда платить за снаряжение?', 'eq.faq3.a': 'Без предоплаты. Бронь только резервирует снаряжение и размеры. Оплата в магазине в день получения, вы ничем не рискуете.',
+        'eq.faq4.q': 'Что если снаряжение или размер не подходят?', 'eq.faq4.a': 'Замена в магазине бесплатно. Если что-то не так на склоне — вернитесь, и мы подберём размер или уровень, пока не будет идеально.',
+        'eq.faq5.q': 'Можно сменить снаряжение посреди отдыха?', 'eq.faq5.a': 'Конечно. Хотите перейти с лыж на сноуборд или повысить уровень? Это можно сделать в магазине в любой момент, доплатите только разницу.',
+        'eq.cta.title': 'Готовы выйти на склон?', 'eq.cta.sub': 'Забронируйте снаряжение сейчас — и закрепите нужные размеры и уровень, пока запас не закончился.',
+        'eq.cta.btn': 'Забронировать', 'eq.cta.wa': 'Связаться с нами',
+        'eq.footer.cta.heading': 'Готовы?', 'eq.footer.cta.text': 'Забронируйте снаряжение и закрепите размеры, пока запас не закончился.', 'eq.footer.cta.btn': 'Забронировать',
+        'footer.tagline': 'Гудаури — не просто курорт. Это то, как путешественники открыли: можно кататься как в Европе, платить разумные цены, и чувствовать, что нашёл сокровище.',
+        'footer.nav.heading': 'Навигация', 'footer.nav.home': 'Главная', 'footer.nav.new_gudauri': 'Новый Гудаури', 'footer.nav.accommodation': 'Проживание',
+        'footer.contact.heading': 'Контакты', 'footer.contact.wa': 'WhatsApp доступен',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. Все права защищены.',
+        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.cookies': 'Настройки cookie'
+      },
+
+      ka: {
+        dir: 'ltr', lang: 'ka',
+        'nav.new_gudauri': 'ახალი გუდაური', 'nav.equipment': 'ინვენტარი', 'nav.accommodation': 'განთავსება',
+        'nav.contact': 'კონტაქტი', 'nav.cta_equipment': 'დაჯავშნა',
+        'eq.hero.kicker': 'ახალი გუდაური · პროფესიული ინვენტარის გაქირავება',
+        'eq.hero.title': 'ინვენტარი შენთვის —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.sub': 'თხილამურები, სნოუბორდი, ჩაფხუტები, სათვალეები და თერმული ტანსაცმელი. დაჯავშნეთ წინასწარ ზომის მიხედვით — და ინვენტარი მზად დაგხვდებათ.',
+        'eq.hero.urgency': 'შეზღუდული მარაგი პიკის სეზონზე — დაჯავშნეთ წინასწარ და დააფიქსირეთ ზომები',
+        'eq.hero.cta_form': 'ინვენტარის დაჯავშნა', 'eq.hero.cta_wa': 'კითხვები? WhatsApp',
+        'eq.hero.trust1': 'განახლებული ყოველ სეზონზე', 'eq.hero.trust2': 'წინასწარი გადახდის გარეშე', 'eq.hero.trust3': 'სერვისი თქვენს ენაზე',
+        'eq.stat1.label': 'ტურისტმა იქირავა ჩვენთან', 'eq.stat2.label': 'პარტნიორი მაღაზია გუდაურში',
+        'eq.stat3.label': 'ინვენტარის დონე', 'eq.stat4.label': 'პროფესიული განახლებული ინვენტარი',
+        'eq.shops.label': 'ჩვენი მაღაზიები', 'eq.shops.title': 'ორი მაღაზია. ერთი სტანდარტი — პროფესიული.',
+        'eq.shops.sub': 'ვმუშაობთ გუდაურის ორ წამყვან ინვენტარის მაღაზიასთან. თქვენ ირჩევთ — ჩვენ ვამზადებთ ინვენტარს.',
+        'eq.shop1.badge': 'გაქირავება + სერვისი',
+        'eq.shop1.desc': 'თხილამურებისა და სნოუბორდის ფართო არჩევანი ყველა დონისთვის, გუნდი შეგირჩევთ ზუსტ ინვენტარს. სპეციალისტები დამწყებებისთვის და გამოცდილი მოყვარულებისთვის.',
+        'eq.shop1.location': 'ახალი გუდაურის ცენტრი · გონდოლის პირდაპირ', 'eq.shop1.hours': 'ღია ყოველდღე · 08:00–20:00', 'eq.shop1.cta': 'იკითხეთ Ski Boom-ზე',
+        'eq.shop2.badge': 'პრემიუმ ინვენტარი',
+        'eq.shop2.desc': 'მაღაზია სპორტის მოყვარულთათვის — წამყვანი ბრენდები, ხარისხიანი თერმული ტანსაცმელი და მაღალი დონის ინვენტარი.',
+        'eq.shop2.location': 'ახალი გუდაური · სასტუმროებიდან რამდენიმე წუთი', 'eq.shop2.hours': 'ღია ყოველდღე · 08:00–20:00', 'eq.shop2.cta': 'იკითხეთ Fanatic-ზე',
+        'eq.pricing.label': 'დღიური ფასი', 'eq.pricing.title': 'სამართლიანი ფასი. სიურპრიზების გარეშე.',
+        'eq.pricing.sub': 'აირჩიეთ თქვენთვის შესაფერისი ინვენტარის დონე. სრული პაკეტი (ინვენტარი + ჩაფხუტი + ტანსაცმელი) 20%-მდე ზოგავს.',
+        'eq.pricing.urgency': 'პიკის სეზონზე ინვენტარი სწრაფად იწურება — წინასწარი ჯავშანი გიზრუნველყოფთ ზომასა და დონეს',
+        'eq.pricing.category': 'კატეგორია',
+        'eq.level.beginner': 'დამწყები', 'eq.level.beginner.sub': 'მსუბუქი და მოქნილი',
+        'eq.level.intermediate': 'საშუალო', 'eq.level.intermediate.sub': 'დაბალანსებული',
+        'eq.level.advanced': 'მოწინავე', 'eq.level.advanced.sub': 'სწრაფი და ზუსტი', 'eq.level.popular': 'პოპულარული',
+        'eq.cat.ski': 'თხილამურები + ჯოხები', 'eq.cat.ski.sub': 'თხილამურები, ჯოხები და ფეხსაცმელი',
+        'eq.cat.snowboard': 'სნოუბორდი + ფეხსაცმელი', 'eq.cat.snowboard.sub': 'დაფა და ფეხსაცმელი',
+        'eq.cat.helmet': 'ჩაფხუტი + სათვალე', 'eq.cat.helmet.sub': 'უსაფრთხოება და ხედვა',
+        'eq.cat.clothing': 'ტანსაცმელი (ქურთუკი + შარვალი)', 'eq.cat.clothing.sub': 'თერმული · S/M/L/XL',
+        'eq.per_day': '/დღე', 'eq.package': 'სრული პაკეტი', 'eq.package.sub': 'ინვენტარი + ჩაფხუტი + ტანსაცმელი',
+        'eq.save20': 'დაზოგვა 20%', 'eq.save21': 'დაზოგვა 21%',
+        'eq.pricing.note': 'ფასები ერთ ადამიანზე დღეში დოლარში. რამდენიმედღიანი ჯავშანი დამატებით ფასდაკლებას იძლევა — მიუთითეთ თარიღები ფორმაში და ზუსტ შეთავაზებას მოგწერთ.',
+        'eq.trust.label': 'რატომ ჩვენთან', 'eq.trust.title': 'სამი მიზეზი მშვიდად ძილისთვის',
+        'eq.trust1.title': 'პროფესიული, განახლებული ინვენტარი', 'eq.trust1.text': 'ინვენტარი ყოველ სეზონზე მუშავდება და ილესება. იღებთ თხილამურებსა და დაფებს შესანიშნავ მდგომარეობაში.',
+        'eq.trust2.title': 'წინასწარი გადახდის გარეშე', 'eq.trust2.text': 'ჯავშანი მხოლოდ ინვენტარსა და ზომებს იტოვებს. იხდით მაღაზიაში აღების დღეს — რისკის გარეშე.',
+        'eq.trust3.title': 'სერვისი თქვენს ენაზე', 'eq.trust3.text': 'არ გჭირდებათ ენასთან ბრძოლა. ჩვენ პირდაპირ ვუკავშირდებით და ვზრუნავთ, რომ ყველაფერი მზად იყოს.',
+        'eq.form.label': 'წინასწარი ჯავშანი', 'eq.form.title': 'ჩამოდით მზად.<br/><span class="electric">ინვენტარი უკვე გელოდებათ.</span>',
+        'eq.form.sub': 'შეავსეთ მონაცემები და ზომები, ჩვენ შევათანხმებთ Ski Boom / Fanatic-თან, რომ ინვენტარი მზად დაგხვდეთ ჩამოსვლის დღეს.',
+        'eq.form.trust1': 'წინასწარი გადახდის გარეშე — იხდით მაღაზიაში', 'eq.form.trust2': 'უფასო გაუქმება ჩამოსვლამდე 24 საათით ადრე',
+        'eq.form.trust3': 'ზომის ან დონის შეცვლა მაღაზიაში უფასოდ', 'eq.form.trust4': 'ცოცხალი პასუხები თქვენს ენაზე',
+        'eq.fs.dates': 'გაქირავების თარიღები', 'eq.checkin': 'ჩამოსვლის თარიღი', 'eq.checkout': 'გამგზავრების თარიღი', 'eq.days_label': 'გაქირავების დღე',
+        'eq.fs.equipment': 'ინვენტარის ტიპი და დონე', 'eq.type': 'ინვენტარის ტიპი', 'eq.choose': 'აირჩიეთ...', 'eq.none': 'არცერთი',
+        'eq.type.ski': 'თხილამურები + ჯოხები', 'eq.type.snowboard': 'სნოუბორდი + ფეხსაცმელი', 'eq.type.both': 'ორივე (ჯგუფი)', 'eq.level': 'დონე',
+        'eq.fs.sizing': 'ზომები', 'eq.boot': 'ფეხსაცმლის ზომა (EU)', 'eq.helmet': 'ჩაფხუტის ზომა', 'eq.jacket': 'ქურთუკის ზომა', 'eq.pants': 'შარვლის ზომა',
+        'eq.goggles': 'სათხილამურო სათვალე', 'eq.goggles.yes': 'კი, მჭირდება სათვალე', 'eq.goggles.no': 'არა, საკუთარი მაქვს',
+        'eq.fs.personal': 'პირადი მონაცემები', 'eq.name': 'სრული სახელი', 'eq.phone': 'ტელეფონი', 'eq.email': 'ელ-ფოსტა (არასავალდებულო)',
+        'eq.notes': 'დამატებითი შენიშვნები', 'eq.notes.placeholder': 'მაგ.: ჯგუფის ზომა, სიმაღლე და წონა, განსაკუთრებული მოთხოვნები',
+        'eq.consent.marketing': 'ვეთანხმები სიახლეებისა და შეთავაზებების მიღებას ელ-ფოსტით',
+        'eq.consent.terms': 'წავიკითხე და ვეთანხმები <a href="terms.html" target="_blank">წესებსა</a> და <a href="privacy-policy.html" target="_blank">კონფიდენციალობის პოლიტიკას</a>',
+        'eq.submit': 'შეკვეთის გაგზავნა', 'eq.wa_send': 'WhatsApp-ით',
+        'eq.summary.est': 'სავარაუდო ღირებულება', 'eq.summary.pkg': 'სრული პაკეტი ჩაფხუტით',
+        'eq.sending': 'იგზავნება...', 'eq.success': 'შეკვეთა გაიგზავნა! მალე დაგიკავშირდებით ინვენტარის შესათანხმებლად.',
+        'eq.err.required': 'შეავსეთ სახელი და ტელეფონი.', 'eq.err.terms': 'დაეთანხმეთ წესებსა და კონფიდენციალობის პოლიტიკას.', 'eq.err.send': 'ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ში.',
+        'eq.faq.label': 'კითხვები', 'eq.faq.title': 'ყველაფერი, რისი ცოდნაც გსურდათ',
+        'eq.faq1.q': 'რა განსხვავებაა დამწყებს, საშუალოსა და მოწინავეს შორის?', 'eq.faq1.a': 'დამწყები ინვენტარი მოქნილი და მართვადია — სრულყოფილი მათთვის, ვინც სწავლობს. საშუალო დაბალანსებული და სტაბილურია. მოწინავე ხისტი და სწრაფია, მათთვის ვინც ყველა ტრასას ფლობს.',
+        'eq.faq2.q': 'სად მდებარეობს მაღაზიები ახალ გუდაურში?', 'eq.faq2.a': 'ორივე მაღაზია, Ski Boom და Fanatic, ახალი გუდაურის ცენტრშია — გონდოლასა და სასტუმროებთან ახლოს. შევათანხმებთ მოსახერხებელ აღებას ჩამოსვლის დღეს.',
+        'eq.faq3.q': 'როდის ვიხდი ინვენტარში?', 'eq.faq3.a': 'წინასწარი გადახდის გარეშე. ჯავშანი მხოლოდ ინვენტარსა და ზომებს იტოვებს. გადახდა მაღაზიაში აღების დღეს ხდება.',
+        'eq.faq4.q': 'რა მოხდება, თუ ინვენტარი ან ზომა არ მომერგო?', 'eq.faq4.a': 'შეცვლა მაღაზიაში უფასოდ. თუ რამე არ მოგწონთ ფერდობზე — დაბრუნდით და მოვარგებთ ზომას ან დონეს.',
+        'eq.faq5.q': 'შემიძლია ინვენტარის შეცვლა შუა დასვენებაში?', 'eq.faq5.a': 'რა თქმა უნდა. გსურთ თხილამურებიდან სნოუბორდზე გადასვლა ან დონის ამაღლება? ეს მაღაზიაში ნებისმიერ დროს შეგიძლიათ, მხოლოდ სხვაობას გადაიხდით.',
+        'eq.cta.title': 'მზად ხართ ფერდობისთვის?', 'eq.cta.sub': 'დაჯავშნეთ ინვენტარი ახლა — და დააფიქსირეთ სწორი ზომა და დონე, სანამ მარაგი ამოიწურება.',
+        'eq.cta.btn': 'ინვენტარის დაჯავშნა', 'eq.cta.wa': 'დაგვიკავშირდით',
+        'eq.footer.cta.heading': 'მზად ხართ?', 'eq.footer.cta.text': 'დაჯავშნეთ ინვენტარი და დააფიქსირეთ ზომები, სანამ მარაგი ამოიწურება.', 'eq.footer.cta.btn': 'დაჯავშნა',
+        'footer.tagline': 'გუდაური მხოლოდ კურორტი არ არის. ეს ის გზაა, რომლითაც მოგზაურებმა აღმოაჩინეს: შეიძლება სრიალი ევროპულ დონეზე, გონივრული ფასებით.',
+        'footer.nav.heading': 'ნავიგაცია', 'footer.nav.home': 'მთავარი', 'footer.nav.new_gudauri': 'ახალი გუდაური', 'footer.nav.accommodation': 'განთავსება',
+        'footer.contact.heading': 'კონტაქტი', 'footer.contact.wa': 'WhatsApp ხელმისაწვდომია',
+        'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. ყველა უფლება დაცულია.',
+        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.cookies': 'Cookie პარამეტრები'
+      }
+    };
+
+    function setLanguage(lang) {
+      var t = window.TRANSLATIONS[lang];
+      if (!t) return;
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.body.style.textAlign = t.dir === 'rtl' ? 'right' : 'left';
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+      document.querySelectorAll('a[data-internal]').forEach(function(a) {
+        var base = a.getAttribute('data-internal');
+        a.href = lang !== 'he' ? base + '?lang=' + lang : base;
+      });
+      localStorage.setItem('gudauri-lang', lang);
+    }
+
+    (function() {
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var savedLang = localStorage.getItem('gudauri-lang');
+      var lang = (urlLang && window.TRANSLATIONS[urlLang]) ? urlLang
+               : (savedLang && window.TRANSLATIONS[savedLang]) ? savedLang
+               : 'he';
+      setLanguage(lang);
+    })();
+  </script>
+
+  <!-- Cookie Consent -->
+  <script src="cookie-consent.js" defer></script>
+
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+  <!-- ═══ FLOATING WHATSAPP ═══ -->
+  <a href="https://wa.me/972557790955" class="wa-fab" target="_blank" rel="noopener noreferrer" aria-label="צרו קשר בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+</body>
+</html>

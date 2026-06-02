@@ -292,7 +292,7 @@
     /* ── GALLERY ── */
     .apt-gallery {
       position: relative; overflow: hidden;
-      min-height: 420px;
+      height: 420px;
     }
     .apt-slides {
       display: flex;
@@ -542,7 +542,7 @@
 
     @media (max-width: 960px) {
       .apt-card, .apt-card.flipped { grid-template-columns: 1fr; direction: rtl; }
-      .apt-gallery { min-height: 300px; aspect-ratio: 16/9; }
+      .apt-gallery { height: 280px; }
       .apt-info { padding: 28px 24px; }
     }
     @media (max-width: 540px) {
@@ -685,6 +685,28 @@
     .lang-btn:hover { border-color: var(--glass-border); background: var(--glass-bg); }
     .lang-btn.lang-active { border-color: var(--electric); }
     .lang-btn img { display: block; border-radius: 2px; }
+
+    /* ── FLOATING WHATSAPP ── */
+    .wa-fab {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      z-index: 998;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      text-decoration: none;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.65); }
+    .wa-fab svg { width: 30px; height: 30px; }
+    @media (max-width: 640px) {
+      .wa-fab { bottom: 16px; left: 16px; width: 50px; height: 50px; }
+      .wa-fab svg { width: 26px; height: 26px; }
+    }
   </style>
 
   <!-- JSON-LD Structured Data -->
@@ -783,6 +805,7 @@
           <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
           <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
           <li><a href="index.html#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+          <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
           <li><a href="lina.html" class="active" aria-current="page" data-i18n="nav.accommodation">לינה</a></li>
           <li><a href="index.html#footer" data-i18n="nav.contact">צרו קשר</a></li>
         </ul>
@@ -812,6 +835,7 @@
     <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
     <a href="index.html#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
     <a href="lina.html" class="active" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
     <a href="index.html#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="#apartments" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">הזמן לינה</span></a>
@@ -1611,6 +1635,7 @@
             <li><a href="index.html#why" data-i18n="footer.nav.about">על גודאורי</a></li>
             <li><a href="index.html#activities" data-i18n="footer.nav.activities">פעילויות</a></li>
             <li><a href="index.html#new-gudauri" data-i18n="footer.nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
             <li><a href="lina.html" data-i18n="footer.nav.accommodation">לינה</a></li>
             <li><a href="index.html#testimonials" data-i18n="footer.nav.testimonials">חוות דעת</a></li>
           </ul>
@@ -1946,7 +1971,7 @@
       he: {
         dir: 'rtl', lang: 'he',
         'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי',
-        'nav.accommodation': 'לינה', 'nav.contact': 'צרו קשר', 'nav.cta': 'הזמן לינה',
+        'nav.accommodation': 'לינה', 'nav.equipment': 'ציוד', 'nav.contact': 'צרו קשר', 'nav.cta': 'הזמן לינה',
         'lina.hero.kicker': 'ניו גודאורי · דירות CozyCasa',
         'lina.hero.title': 'לינה', 'lina.hero.accent': 'בגובה 2,200 מ׳',
         'lina.hero.sub': 'שש דירות פרמיום בלב הכפר — 50-100 מ׳ מהגונדולה, נוף הרים, ופינוק אמיתי.',
@@ -2029,7 +2054,7 @@
       en: {
         dir: 'ltr', lang: 'en',
         'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri',
-        'nav.accommodation': 'Accommodation', 'nav.contact': 'Contact', 'nav.cta': 'Book Stay',
+        'nav.accommodation': 'Accommodation', 'nav.equipment': 'Rentals', 'nav.contact': 'Contact', 'nav.cta': 'Book Stay',
         'lina.hero.kicker': 'New Gudauri · CozyCasa Apartments',
         'lina.hero.title': 'Stay', 'lina.hero.accent': 'at 2,200 m',
         'lina.hero.sub': 'Six premium apartments in the heart of the village — 50–100 m from the gondola, mountain views, and real comfort.',
@@ -2112,7 +2137,7 @@
       ru: {
         dir: 'ltr', lang: 'ru',
         'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури',
-        'nav.accommodation': 'Жильё', 'nav.contact': 'Контакты', 'nav.cta': 'Забронировать',
+        'nav.accommodation': 'Жильё', 'nav.equipment': 'Прокат', 'nav.contact': 'Контакты', 'nav.cta': 'Забронировать',
         'lina.hero.kicker': 'Новый Гудаури · Апартаменты CozyCasa',
         'lina.hero.title': 'Проживание', 'lina.hero.accent': 'на высоте 3 279 м',
         'lina.hero.sub': 'Шесть премиальных апартаментов в центре деревни — 50–100 м от гондолы, горные виды и настоящий комфорт.',
@@ -2195,7 +2220,7 @@
       ka: {
         dir: 'ltr', lang: 'ka',
         'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური',
-        'nav.accommodation': 'განთავსება', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაჯავშნე',
+        'nav.accommodation': 'განთავსება', 'nav.equipment': 'ინვენტარი', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაჯავშნე',
         'lina.hero.kicker': 'ახალი გუდაური · CozyCasa სახლები',
         'lina.hero.title': 'განთავსება', 'lina.hero.accent': '2,200 მ სიმაღლეზე',
         'lina.hero.sub': 'ექვსი პრემიუმ სახლი სოფლის გულში — 50–100 მ გონდოლიდან, მთის ხედები და ნამდვილი კომფორტი.',
@@ -2379,6 +2404,30 @@
       }
     })();
   </script>
+
+  <!-- ═══ SWIPE SUPPORT FOR GALLERIES ═══ -->
+  <script>
+    document.querySelectorAll('.apt-gallery').forEach(function(gallery) {
+      var slidesEl = gallery.querySelector('.apt-slides');
+      if (!slidesEl) return;
+      var id = slidesEl.id.replace('-slides', '');
+      var startX = 0;
+      gallery.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      gallery.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) slideGallery(id, diff > 0 ? 1 : -1);
+      }, { passive: true });
+    });
+  </script>
+
+  <!-- ═══ FLOATING WHATSAPP ═══ -->
+  <a href="https://wa.me/972557790955" class="wa-fab" target="_blank" rel="noopener noreferrer" aria-label="צרו קשר בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
 
 </body>
 </html>
