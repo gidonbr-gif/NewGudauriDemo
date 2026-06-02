@@ -16,7 +16,7 @@
   <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/new-gudauri-info.html" />
-  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="ge" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/new-gudauri-info.html" />
 
   <!-- OpenGraph -->
@@ -71,6 +71,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+    html[dir="ltr"] body { direction: ltr; text-align: left; }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
@@ -153,15 +154,20 @@
     .nav-logo-text { font-size: 1.125rem; font-weight: 800; color: var(--snow); letter-spacing: -0.02em; }
     .nav-logo-text span { color: var(--electric); }
 
-    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
     .nav-links a {
-      font-size: 0.9375rem; font-weight: 500;
-      color: var(--slate-400);
-      transition: color var(--transition);
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--slate-200);
+      border-radius: 6px;
+      padding: 6px 9px;
       white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
     }
-    .nav-links a:hover { color: var(--snow); }
-    .nav-links a.active { color: var(--electric); font-weight: 700; }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+    }
+    .nav-links a.active { color: var(--electric-light); font-weight: 700; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
@@ -194,6 +200,13 @@
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       background: transparent; padding: 4px;
+      border-radius: 8px;
+      animation: navBurgerGlow 1.8s ease-out infinite;
+    }
+    @keyframes navBurgerGlow {
+      0%   { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
+      70%  { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7), 0 0 0 12px rgba(14,165,233,0); }
+      100% { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
     }
     .nav-burger span {
       display: block; width: 24px; height: 2px;
@@ -219,10 +232,87 @@
     }
     .nav-mobile a:hover, .nav-mobile a.active { color: var(--electric); }
 
-    @media (max-width: 900px) {
+
+    /* ── CTA highlight on key nav links + hamburger attention hint ── */
+    .nav-links a[data-i18n="nav.equipment"],
+    .nav-links a[data-i18n="nav.accommodation"],
+    .nav-links a[data-i18n="nav.investors"] {
+      color: var(--electric-light, #38bdf8);
+      font-weight: 700;
+      background: rgba(14,165,233,0.10);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.35), 0 0 10px rgba(14,165,233,0.22);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-links a[data-i18n="nav.equipment"]:hover,
+    .nav-links a[data-i18n="nav.accommodation"]:hover,
+    .nav-links a[data-i18n="nav.investors"]:hover {
+      background: rgba(14,165,233,0.20);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.6), 0 0 16px rgba(14,165,233,0.45);
+    }
+    @keyframes navPromoPulse {
+      0%,100% { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.30), 0 0 8px rgba(14,165,233,0.18); }
+      50%     { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.55), 0 0 16px rgba(14,165,233,0.42); }
+    }
+    .nav-mobile a[data-i18n="nav.equipment"],
+    .nav-mobile a[data-i18n="nav.accommodation"],
+    .nav-mobile a[data-i18n="nav.investors"] { color: var(--electric-light, #38bdf8); font-weight: 700; }
+    .nav-mobile a[data-i18n="nav.equipment"]::before,
+    .nav-mobile a[data-i18n="nav.accommodation"]::before,
+    .nav-mobile a[data-i18n="nav.investors"]::before {
+      content: "\2726";
+      margin-inline-end: 8px;
+      color: var(--electric, #0ea5e9);
+      text-shadow: 0 0 8px rgba(14,165,233,0.85);
+      animation: navPromoSpark 1.8s ease-in-out infinite;
+    }
+    @keyframes navPromoSpark { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+    /* hamburger attention hint (mobile) */
+    .nav-inner { position: relative; }
+    .nav-burger { position: relative; }
+    /* centered key-page CTA strip (glowing, symmetric) */
+    .nav-cta-strip {
+      display: none;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .nav-cta-strip-link {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--electric-light, #38bdf8);
+      padding: 6px 13px; border-radius: 999px;
+      background: rgba(14,165,233,0.12);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.4), 0 0 12px rgba(14,165,233,0.3);
+      white-space: nowrap;
+      transition: background var(--transition), box-shadow var(--transition), color var(--transition);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-cta-strip-link:hover {
+      background: rgba(14,165,233,0.25); color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.7), 0 0 18px rgba(14,165,233,0.5);
+    }
+    @media (min-width: 900px) and (max-width: 1280px) {
+      .nav-cta-strip { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-cta-strip-link { animation: none !important; } }
+    /* transparent click-catcher to close the mobile menu on any outside tap */
+    .nav-overlay { display: none; position: fixed; inset: 0; z-index: 90; background: transparent; }
+    .nav-overlay.show { display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links a[data-i18n="nav.equipment"],
+      .nav-links a[data-i18n="nav.accommodation"],
+      .nav-links a[data-i18n="nav.investors"],
+      .nav-mobile a[data-i18n]::before { animation: none !important; }
+    }
+    @media (max-width: 1280px) {
       .nav-links, .nav-cta-desktop { display: none; }
       .nav-burger { display: flex; }
-      .nav-inner .lang-switcher { display: none; }
+      .nav-inner .lang-switcher { margin-inline-start: auto; }
     }
 
     /* ── HERO ── */
@@ -287,6 +377,9 @@
     .split-inner.flipped { direction: ltr; }
     .split-inner.flipped .split-text { direction: rtl; }
     .split-inner.flipped .split-image { direction: rtl; }
+    html[dir="ltr"] .split-inner.flipped { direction: rtl; }
+    html[dir="ltr"] .split-inner.flipped .split-text { direction: ltr; }
+    html[dir="ltr"] .split-inner.flipped .split-image { direction: ltr; }
 
     .split-text { }
     .split-title {
@@ -345,7 +438,7 @@
     }
 
     @media (max-width: 860px) {
-      .split-inner, .split-inner.flipped { grid-template-columns: 1fr; direction: rtl; gap: 40px; }
+      .split-inner, .split-inner.flipped { grid-template-columns: 1fr; direction: inherit; gap: 40px; }
       .split-image { order: -1; aspect-ratio: 16/9; }
     }
 
@@ -567,7 +660,7 @@
       flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border);
       border-radius: 8px; padding: 10px 14px;
       font-family: 'Heebo', sans-serif; font-size: 0.9375rem;
-      color: var(--snow); direction: rtl;
+      color: var(--snow); direction: inherit;
       transition: border-color var(--transition);
     }
     .newsletter-input:focus { outline: none; border-color: var(--electric); }
@@ -615,7 +708,7 @@
       transition: border-color var(--transition), color var(--transition);
       white-space: nowrap;
     }
-    .lang-btn img { width: 18px; height: 13px; border-radius: 2px; object-fit: cover; }
+    .lang-btn img { display: block; border-radius: 2px; object-fit: cover; }
     .lang-btn:hover { border-color: var(--electric); color: var(--snow); }
     .lang-btn.lang-active { border-color: var(--electric); color: var(--electric); }
     .nav-mobile .lang-switcher { margin-inline-start: 0; justify-content: flex-start; padding-top: 8px; }
@@ -717,6 +810,12 @@
   <nav id="nav" role="navigation" aria-label="ניווט ראשי">
     <div class="container">
       <div class="nav-inner">
+        <!-- Centered key-page CTA strip (tablet) -->
+        <div class="nav-cta-strip" aria-label="עמודים מובילים">
+          <a href="equipment.html" data-internal="equipment.html" class="nav-cta-strip-link" data-i18n="nav.equipment_rental">השכרת ציוד</a>
+          <a href="lina.html" data-internal="lina.html" class="nav-cta-strip-link" data-i18n="nav.accommodation">לינה</a>
+          <a href="investors.html" data-internal="investors.html" class="nav-cta-strip-link" data-i18n="nav.investors">ליווי משקיעים</a>
+        </div>
 
         <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -731,10 +830,11 @@
         <ul class="nav-links" role="list">
           <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
           <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
-          <li><a href="index.html#new-gudauri" class="active" aria-current="page" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+          <li><a href="new-gudauri-info.html" class="active" aria-current="page" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
           <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
           <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
-          <li><a href="index.html#footer" data-i18n="nav.contact">צרו קשר</a></li>
+          <li><a href="investors.html" data-internal="investors.html" data-i18n="nav.investors">ליווי משקיעים</a></li>
+          <li><a href="index.html#lead-form" data-i18n="nav.contact">צרו קשר</a></li>
         </ul>
 
         <a href="lina.html" class="btn-primary nav-cta-desktop" aria-label="הזמן לינה">
@@ -742,19 +842,11 @@
           <span data-i18n="nav.cta">הזמן לינה</span>
         </a>
 
-        <div class="lang-switcher" role="group" aria-label="בחר שפה">
-          <button class="lang-btn lang-active" onclick="setLanguage('he')" aria-label="עברית" data-lang="he">
-            <img src="https://flagcdn.com/w20/il.png" alt="ישראל" width="18" height="13" loading="lazy"> HE
-          </button>
-          <button class="lang-btn" onclick="setLanguage('en')" aria-label="English" data-lang="en">
-            <img src="https://flagcdn.com/w20/us.png" alt="USA" width="18" height="13" loading="lazy"> EN
-          </button>
-          <button class="lang-btn" onclick="setLanguage('ru')" aria-label="Русский" data-lang="ru">
-            <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
-          </button>
-          <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
-            <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> GE
-          </button>
+        <div class="lang-switcher" role="group" aria-label="Language / שפה">
+          <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית" aria-label="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English" aria-label="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+          <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский" aria-label="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+          <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge')" title="ქართული" aria-label="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
         </div>
 
         <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
@@ -765,27 +857,22 @@
     </div>
   </nav>
 
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
     <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
-    <a href="index.html#new-gudauri" class="active" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="new-gudauri-info.html" class="active" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
     <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
     <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
-    <a href="index.html#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="investors.html" data-internal="investors.html" onclick="closeMobileMenu()" data-i18n="nav.investors">ליווי משקיעים</a>
+    <a href="index.html#lead-form" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">הזמן לינה</span></a>
-    <div class="lang-switcher" role="group" aria-label="בחר שפה">
-      <button class="lang-btn lang-active" onclick="setLanguage('he')" aria-label="עברית" data-lang="he">
-        <img src="https://flagcdn.com/w20/il.png" alt="ישראל" width="18" height="13" loading="lazy"> HE
-      </button>
-      <button class="lang-btn" onclick="setLanguage('en')" aria-label="English" data-lang="en">
-        <img src="https://flagcdn.com/w20/us.png" alt="USA" width="18" height="13" loading="lazy"> EN
-      </button>
-      <button class="lang-btn" onclick="setLanguage('ru')" aria-label="Русский" data-lang="ru">
-        <img src="https://flagcdn.com/w20/ru.png" alt="Russia" width="18" height="13" loading="lazy"> RU
-      </button>
-      <button class="lang-btn" onclick="setLanguage('ka')" aria-label="ქართული" data-lang="ka">
-        <img src="https://flagcdn.com/w20/ge.png" alt="Georgia" width="18" height="13" loading="lazy"> GE
-      </button>
+    <div class="lang-switcher" role="group" aria-label="Language / שפה">
+      <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית" aria-label="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English" aria-label="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
+      <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский" aria-label="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
+      <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge');closeMobileMenu()" title="ქართული" aria-label="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
     </div>
   </div>
 
@@ -923,7 +1010,7 @@
             </div>
             <div class="split-feat">
               <div class="split-feat-icon" aria-hidden="true">
-                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
+                <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f386/lottie.json" background="transparent" speed="0.8" style="width:32px;height:32px;" loop autoplay></lottie-player>
               </div>
               <div class="split-feat-text" data-i18n-html="ng.casino.f3"><strong>בידור לילי</strong> שמשלים את יום הסקי בצורה אחרת לגמרי</div>
             </div>
@@ -1028,7 +1115,7 @@
 
         <div class="village-card reveal" style="transition-delay:0.16s">
           <div class="village-icon" aria-hidden="true">
-            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f476/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
+            <lottie-player src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f3a0/lottie.json" background="transparent" speed="0.8" style="width:40px;height:40px;" loop autoplay></lottie-player>
           </div>
           <h3 class="village-card-title" data-i18n="ng.v3.title">בייביסיטר לילדים</h3>
           <p class="village-card-body" data-i18n="ng.v3.body">
@@ -1243,17 +1330,21 @@
     // Mobile menu
     const burger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('navMobile');
+    const navOverlay = document.getElementById('navOverlay');
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileMenu);
     let menuOpen = false;
 
     burger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
+      if (navOverlay) navOverlay.classList.toggle('show', menuOpen);
       burger.setAttribute('aria-expanded', String(menuOpen));
     });
 
     function closeMobileMenu() {
       menuOpen = false;
       mobileMenu.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('show');
       burger.setAttribute('aria-expanded', 'false');
     }
 
@@ -1278,7 +1369,7 @@
       const btn = e.target.querySelector('.newsletter-submit');
       const input = document.getElementById('nl-email');
       const lang = document.documentElement.lang || 'he';
-      const successMsg = { he: 'נרשמת!', en: 'Subscribed!', ru: 'Подписались!', ka: 'გამოიწერე!' };
+      const successMsg = { he: 'נרשמת!', en: 'Subscribed!', ru: 'Подписались!', ge: 'გამოიწერე!' };
       btn.textContent = successMsg[lang] || 'נרשמת!';
       btn.style.background = '#16A34A';
       input.value = '';
@@ -1304,8 +1395,9 @@
         'nav.new_gudauri': 'ניו גודאורי',
         'nav.equipment': 'ציוד',
         'nav.accommodation': 'לינה',
+        'nav.investors': 'ליווי משקיעים',
         'nav.contact': 'צרו קשר',
-        'nav.cta': 'הזמן לינה',
+        'nav.cta': 'הזמן לינה', 'nav.equipment_rental': 'השכרת ציוד',
 
         'ng.hero.kicker': 'New Gudauri · 2,200m · הלב של האתר',
         'ng.hero.title': 'ניו גודאורי',
@@ -1397,8 +1489,9 @@
         'nav.new_gudauri': 'New Gudauri',
         'nav.equipment': 'Rentals',
         'nav.accommodation': 'Stay',
+        'nav.investors': 'Investor Services',
         'nav.contact': 'Contact',
-        'nav.cta': 'Book Stay',
+        'nav.cta': 'Book Stay', 'nav.equipment_rental': 'Gear Rental',
 
         'ng.hero.kicker': 'New Gudauri · 2,200m · Heart of the Resort',
         'ng.hero.title': 'New Gudauri',
@@ -1490,8 +1583,9 @@
         'nav.new_gudauri': 'Нью Гудаури',
         'nav.equipment': 'Прокат',
         'nav.accommodation': 'Жильё',
+        'nav.investors': 'Инвесторам',
         'nav.contact': 'Контакт',
-        'nav.cta': 'Забронировать',
+        'nav.cta': 'Забронировать', 'nav.equipment_rental': 'Прокат снаряжения',
 
         'ng.hero.kicker': 'Нью Гудаури · 2 200м · Сердце курорта',
         'ng.hero.title': 'Нью Гудаури',
@@ -1577,14 +1671,15 @@
         'footer.accessibility': 'Доступность'
       },
 
-      ka: {
+      ge: {
         'nav.about': 'გუდაური',
         'nav.activities': 'გართობა',
         'nav.new_gudauri': 'ახალი გუდაური',
         'nav.equipment': 'ინვენტარი',
         'nav.accommodation': 'საცხოვრებელი',
+        'nav.investors': 'ინვესტორებისთვის',
         'nav.contact': 'კონტაქტი',
-        'nav.cta': 'დაჯავშნა',
+        'nav.cta': 'დაჯავშნა', 'nav.equipment_rental': 'ინვენტარის გაქირავება',
 
         'ng.hero.kicker': 'ახალი გუდაური · 2,200მ · კურორტის გული',
         'ng.hero.title': 'ახალი გუდაური',
@@ -1682,7 +1777,7 @@
 
       // Set direction and lang
       const isRTL = (lang === 'he');
-      document.documentElement.lang = lang;
+      document.documentElement.lang = (lang === 'ge') ? 'ka' : lang;
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
       document.body.style.direction = isRTL ? 'rtl' : 'ltr';
       document.body.style.textAlign = isRTL ? 'right' : 'left';
@@ -1705,6 +1800,12 @@
         if (t[key] !== undefined) el.placeholder = t[key];
       });
 
+      // Carry language across internal page links
+      document.querySelectorAll('a[data-internal]').forEach(a => {
+        const base = a.getAttribute('data-internal');
+        a.href = lang !== 'he' ? base + '?lang=' + lang : base;
+      });
+
       // Persist
       try { localStorage.setItem('gudauri-lang', lang); } catch(e) {}
     }
@@ -1725,7 +1826,7 @@
   <script src="cookie-consent.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
-  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
   <!-- Falling snow canvas animation -->

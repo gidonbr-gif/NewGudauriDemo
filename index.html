@@ -16,7 +16,7 @@
   <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/" />
   <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/" />
   <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/" />
-  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/" />
+  <link rel="alternate" hreflang="ge" href="https://www.newgudauri.net/" />
   <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/" />
 
   <!-- OpenGraph -->
@@ -79,6 +79,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+    html[dir="ltr"] body { direction: ltr; text-align: left; }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
@@ -163,19 +164,39 @@
     }
     .nav-logo-text span { color: var(--electric); }
 
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 2px;
     }
     .nav-links a {
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--slate-400);
-      transition: color var(--transition);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--slate-200);
+      border-radius: 6px;
+      padding: 6px 9px;
       white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
     }
-    .nav-links a:hover { color: var(--snow); }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+    }
+    .nav-links a.active {
+      color: var(--electric-light);
+      font-weight: 700;
+    }
+    .nav-mobile a.nav-badge {
+      color: var(--electric-light);
+      font-weight: 700;
+    }
 
     .btn-primary {
       display: inline-flex;
@@ -225,6 +246,13 @@
       background: transparent;
       padding: 4px;
       cursor: pointer;
+      border-radius: 8px;
+      animation: navBurgerGlow 1.8s ease-out infinite;
+    }
+    @keyframes navBurgerGlow {
+      0%   { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
+      70%  { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7), 0 0 0 12px rgba(14,165,233,0); }
+      100% { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
     }
     .nav-burger span {
       display: block;
@@ -257,7 +285,84 @@
     }
     .nav-mobile a:hover { color: var(--electric); }
 
-    @media (max-width: 900px) {
+
+    /* ── CTA highlight on key nav links + hamburger attention hint ── */
+    .nav-links a[data-i18n="nav.equipment"],
+    .nav-links a[data-i18n="nav.accommodation"],
+    .nav-links a[data-i18n="nav.investors"] {
+      color: var(--electric-light, #38bdf8);
+      font-weight: 700;
+      background: rgba(14,165,233,0.10);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.35), 0 0 10px rgba(14,165,233,0.22);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-links a[data-i18n="nav.equipment"]:hover,
+    .nav-links a[data-i18n="nav.accommodation"]:hover,
+    .nav-links a[data-i18n="nav.investors"]:hover {
+      background: rgba(14,165,233,0.20);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.6), 0 0 16px rgba(14,165,233,0.45);
+    }
+    @keyframes navPromoPulse {
+      0%,100% { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.30), 0 0 8px rgba(14,165,233,0.18); }
+      50%     { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.55), 0 0 16px rgba(14,165,233,0.42); }
+    }
+    .nav-mobile a[data-i18n="nav.equipment"],
+    .nav-mobile a[data-i18n="nav.accommodation"],
+    .nav-mobile a[data-i18n="nav.investors"] { color: var(--electric-light, #38bdf8); font-weight: 700; }
+    .nav-mobile a[data-i18n="nav.equipment"]::before,
+    .nav-mobile a[data-i18n="nav.accommodation"]::before,
+    .nav-mobile a[data-i18n="nav.investors"]::before {
+      content: "\2726";
+      margin-inline-end: 8px;
+      color: var(--electric, #0ea5e9);
+      text-shadow: 0 0 8px rgba(14,165,233,0.85);
+      animation: navPromoSpark 1.8s ease-in-out infinite;
+    }
+    @keyframes navPromoSpark { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+    /* hamburger attention hint (mobile) */
+    .nav-inner { position: relative; }
+    .nav-burger { position: relative; }
+    /* centered key-page CTA strip (glowing, symmetric) */
+    .nav-cta-strip {
+      display: none;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .nav-cta-strip-link {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--electric-light, #38bdf8);
+      padding: 6px 13px; border-radius: 999px;
+      background: rgba(14,165,233,0.12);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.4), 0 0 12px rgba(14,165,233,0.3);
+      white-space: nowrap;
+      transition: background var(--transition), box-shadow var(--transition), color var(--transition);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-cta-strip-link:hover {
+      background: rgba(14,165,233,0.25); color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.7), 0 0 18px rgba(14,165,233,0.5);
+    }
+    @media (min-width: 900px) and (max-width: 1280px) {
+      .nav-cta-strip { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-cta-strip-link { animation: none !important; } }
+    /* transparent click-catcher to close the mobile menu on any outside tap */
+    .nav-overlay { display: none; position: fixed; inset: 0; z-index: 90; background: transparent; }
+    .nav-overlay.show { display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links a[data-i18n="nav.equipment"],
+      .nav-links a[data-i18n="nav.accommodation"],
+      .nav-links a[data-i18n="nav.investors"],
+      .nav-mobile a[data-i18n]::before { animation: none !important; }
+    }
+    @media (max-width: 1280px) {
       .nav-links, .nav-links + .btn-primary { display: none; }
       .nav-burger { display: flex; }
     }
@@ -427,29 +532,53 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 40px;
+      width: fit-content;
+      max-width: 100%;
+      margin-inline: auto;
+      padding: 11px 20px;
+      background: rgba(15,23,42,0.5);
+      border: 1px solid rgba(56,189,248,0.35);
+      border-radius: 999px;
+      box-shadow: 0 0 26px rgba(14,165,233,0.28), inset 0 0 0 1px rgba(255,255,255,0.04);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      animation: heroCommunityGlow 3s ease-in-out infinite;
+    }
+    @keyframes heroCommunityGlow {
+      0%,100% { box-shadow: 0 0 18px rgba(14,165,233,0.22), inset 0 0 0 1px rgba(255,255,255,0.04); }
+      50%     { box-shadow: 0 0 32px rgba(14,165,233,0.48), inset 0 0 0 1px rgba(255,255,255,0.07); }
     }
     .hero-community-label {
-      font-size: 0.8rem;
-      color: rgba(248,250,252,0.45);
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
     .hero-community-link {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.8rem;
+      gap: 6px;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: rgba(248,250,252,0.7);
+      color: #fff;
       text-decoration: none;
-      border-bottom: 1px solid rgba(248,250,252,0.2);
-      padding-bottom: 1px;
-      transition: color var(--transition), border-color var(--transition);
+      background: rgba(14,165,233,0.18);
+      border: 1px solid rgba(56,189,248,0.45);
+      border-radius: 999px;
+      padding: 6px 14px;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
     }
-    .hero-community-link:hover { color: #fff; border-color: rgba(248,250,252,0.6); }
+    .hero-community-link:hover {
+      color: #fff;
+      background: rgba(14,165,233,0.34);
+      border-color: rgba(56,189,248,0.85);
+      box-shadow: 0 0 14px rgba(14,165,233,0.55);
+      transform: translateY(-1px);
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-community { animation: none !important; } }
     .hero-ctas .btn-primary {
       font-size: 1rem;
       padding: 14px 30px;
@@ -1491,6 +1620,73 @@
       background-size: 12px;
     }
 
+    /* ─── Experience section read-more ─── */
+    .exp-more {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
+      margin-top: 0;
+    }
+    #experience.exp-open .exp-more {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 24px;
+    }
+    .exp-zones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 768px) { .exp-zones { grid-template-columns: 1fr; } }
+    .exp-zone {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .exp-zone--main {
+      background: rgba(14,165,233,0.1);
+      border-color: rgba(14,165,233,0.35);
+    }
+    .exp-zone-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .exp-zone--main .exp-zone-title { color: var(--electric); }
+    .exp-zone-body {
+      font-size: 0.875rem;
+      color: rgba(248,250,252,0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .exp-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(248,250,252,0.9);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform 0.15s ease;
+    }
+    .exp-toggle:hover { background: rgba(14,165,233,0.16); border-color: rgba(14,165,233,0.5); }
+    .exp-toggle:active { transform: scale(0.97); }
+    .exp-toggle:focus-visible { outline: 2px solid var(--electric); outline-offset: 2px; }
+    .exp-toggle .ct-chevron { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.3s ease; }
+    #experience.exp-open .exp-toggle .ct-chevron { transform: rotate(180deg); }
+    .exp-toggle .ct-less { display: none; }
+    #experience.exp-open .exp-toggle .ct-more { display: none; }
+    #experience.exp-open .exp-toggle .ct-less { display: inline; }
+
     /* ═══════════════════════════════════════
        7. ACCOMMODATION CTA
     ═══════════════════════════════════════ */
@@ -1821,7 +2017,7 @@
       color: var(--snow);
       font-size: 0.875rem;
       font-family: inherit;
-      direction: rtl;
+      direction: inherit;
       transition: border-color var(--transition);
       min-width: 0;
     }
@@ -1900,7 +2096,7 @@
     .nav-end {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 10px;
     }
     .lang-switcher {
       display: flex;
@@ -1998,7 +2194,7 @@
         "@id": "https://www.newgudauri.net/#resort",
         "name": "New Gudauri Ski Resort",
         "alternateName": "ניו גודאורי",
-        "description": "אתר הסקי גודאורי בגאורגיה — 75+ ק\"מ מסלולים, גובה מקסימלי 3,279 מטר, 300+ ימי שמש בשנה. שלג יבש, נוף מרהיב, מחירים נגישים.",
+        "description": "אתר הסקי גודאורי בגאורגיה — 75+ ק״מ מסלולים, גובה מקסימלי 3,279 מטר, 300+ ימי שמש בשנה. שלג יבש, נוף מרהיב, מחירים נגישים.",
         "url": "https://www.newgudauri.net/",
         "address": {
           "@type": "PostalAddress",
@@ -2046,7 +2242,7 @@
             "name": "כמה מסלולי סקי יש בגודאורי?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "גודאורי מציע יותר מ-75 ק\"מ של מסלולים מסומנים לכל הרמות — מתחילים, בינוניים ומתקדמים. בנוסף יש שטחי off-piste ובקקאנטרי מרחיבים."
+              "text": "גודאורי מציע יותר מ-75 ק״מ של מסלולים מסומנים לכל הרמות — מתחילים, בינוניים ומתקדמים. בנוסף יש שטחי off-piste ובקקאנטרי מרחיבים."
             }
           },
           {
@@ -2102,19 +2298,33 @@
   <nav id="nav" role="navigation" aria-label="ניווט ראשי">
     <div class="container">
       <div class="nav-inner">
+        <!-- Centered key-page CTA strip (tablet) -->
+        <div class="nav-cta-strip" aria-label="עמודים מובילים">
+          <a href="equipment.html" data-internal="equipment.html" class="nav-cta-strip-link" data-i18n="nav.equipment_rental">השכרת ציוד</a>
+          <a href="lina.html" data-internal="lina.html" class="nav-cta-strip-link" data-i18n="nav.accommodation">לינה</a>
+          <a href="investors.html" data-internal="investors.html" class="nav-cta-strip-link" data-i18n="nav.investors">ליווי משקיעים</a>
+        </div>
 
-        <!-- Logo -->
-        <a href="#" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
-            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
-            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
-          </svg>
-          <span class="nav-logo-text">Gudauri Helper</span>
-        </a>
+        <!-- Logo + Language flags (left side) -->
+        <div class="nav-logo-group">
+          <a href="#" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+              <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+            </svg>
+            <span class="nav-logo-text">Gudauri Helper</span>
+          </a>
+          <div class="lang-switcher" role="group" aria-label="Language / שפה">
+            <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+            <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+          </div>
+        </div>
 
-        <!-- Nav end group -->
+        <!-- Nav end group (right side) -->
         <div class="nav-end">
 
           <!-- Desktop links -->
@@ -2124,6 +2334,7 @@
             <li><a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
             <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
             <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
+            <li><a href="investors.html" data-internal="investors.html" data-i18n="nav.investors">ליווי משקיעים</a></li>
             <li><a href="#lead-form" data-i18n="nav.contact">צרו קשר</a></li>
           </ul>
 
@@ -2132,14 +2343,6 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             <span data-i18n="nav.cta">תכנן את הטיול</span>
           </a>
-
-          <!-- Language switcher -->
-          <div class="lang-switcher" role="group" aria-label="Language / שפה">
-            <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
-            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
-            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
-            <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
-          </div>
 
           <!-- Mobile burger -->
           <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
@@ -2153,19 +2356,22 @@
   </nav>
 
   <!-- Mobile menu -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
     <a href="#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
     <a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
     <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
     <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="investors.html" data-internal="investors.html" onclick="closeMobileMenu()" data-i18n="nav.investors">ליווי משקיעים</a>
     <a href="#lead-form" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="lina.html" data-internal="lina.html" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">תכנן את הטיול</span></a>
     <div class="lang-switcher" role="group" aria-label="Language / שפה">
       <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
       <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
       <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
-      <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+      <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
     </div>
   </div>
 
@@ -2207,7 +2413,7 @@
         </a>
       </div>
       <div class="hero-community" aria-label="קהילת גודאורי">
-        <span class="hero-community-label">הצטרפו לקהילה:</span>
+        <span class="hero-community-label"><span data-i18n="community.join">הצטרפו לקהילה</span>:</span>
         <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="hero-community-link" target="_blank" rel="noopener noreferrer">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp
@@ -2223,10 +2429,6 @@
       </div>
     </div>
 
-    <div class="hero-scroll" aria-hidden="true" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
-      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-      <span data-i18n="hero.scroll">גלול למטה</span>
-    </div>
   </section>
 
 
@@ -2268,20 +2470,20 @@
   <div id="community-bar" aria-label="קהילת גודאורי">
     <div class="container">
       <div class="community-bar-inner">
-        <span class="community-bar-label">הצטרפו לקהילה 👋</span>
+        <span class="community-bar-label"><span data-i18n="community.join">הצטרפו לקהילה</span> 👋</span>
         <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="community-pill community-pill--wa" target="_blank" rel="noopener noreferrer" aria-label="קבוצת וואטסאפ גודאורי">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          קבוצת וואטסאפ
+          <span data-i18n="community.wa">קבוצת וואטסאפ</span>
         </a>
         <span class="community-dot" aria-hidden="true"></span>
         <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="community-pill community-pill--fb" target="_blank" rel="noopener noreferrer" aria-label="קבוצת פייסבוק גודאורי">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          קבוצת פייסבוק
+          <span data-i18n="community.fb">קבוצת פייסבוק</span>
         </a>
         <span class="community-dot" aria-hidden="true"></span>
         <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="community-pill community-pill--ig" target="_blank" rel="noopener noreferrer" aria-label="אינסטגרם Gudauri Ski Resort">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-          אינסטגרם
+          <span data-i18n="community.ig">אינסטגרם</span>
         </a>
       </div>
     </div>
@@ -2431,13 +2633,13 @@
       <div class="facts-strip reveal" style="transition-delay:0.3s" aria-label="עובדות מפתח על גודאורי">
 
         <div class="fact-cell">
-          <span class="fact-cell-number">2.5<sup>שע׳</sup></span>
+          <span class="fact-cell-number">2.5<sup data-i18n="fact1.unit">שע׳</sup></span>
           <span class="fact-cell-title" data-i18n="fact1.title">טיסה מישראל</span>
           <span class="fact-cell-desc" data-i18n="fact1.desc">פחות זמן מטיסה לציריך. אין טרנזיט, אין ויזה, אין כאב ראש.</span>
         </div>
 
         <div class="fact-cell">
-          <span class="fact-cell-number">5<sup>חודשים</sup></span>
+          <span class="fact-cell-number">5<sup data-i18n="fact2.unit">חודשים</sup></span>
           <span class="fact-cell-title" data-i18n="fact2.title">עונת סקי</span>
           <span class="fact-cell-desc" data-i18n="fact2.desc">אמצע-סוף דצמבר עד אמצע-סוף אפריל. שעות פעילות 10:00–17:00, ♟ סקי לילה שישי ושבת 20:00–22:00.</span>
         </div>
@@ -2449,7 +2651,7 @@
         </div>
 
         <div class="fact-cell">
-          <span class="fact-cell-number">0<sup>ויזה</sup></span>
+          <span class="fact-cell-number">0<sup data-i18n="fact4.unit">ויזה</sup></span>
           <span class="fact-cell-title" data-i18n="fact4.title">כניסה ללא ויזה</span>
           <span class="fact-cell-desc" data-i18n="fact4.desc">גאורגיה פתוחה לישראלים. נוסעים עם דרכון בלבד, ללא בירוקרטיה.</span>
         </div>
@@ -2547,16 +2749,16 @@
         <div class="activities-grid">
 
           <div class="activity-card reveal">
-            <img src="https://images.unsplash.com/photo-1590413814002-1a29258d5c79?auto=format&fit=crop&w=600&q=80" alt="סקי אלפיני בגודאורי" loading="lazy" />
+            <img src="images/activities-ski.jpeg" alt="סקי בגודאורי" loading="lazy" />
             <div class="activity-overlay">
-              <span class="activity-tag" data-i18n="act.ski.tag">אלפיני</span>
-              <h3 class="activity-name" data-i18n="act.ski.name">סקי אלפיני</h3>
+              <span class="activity-tag" data-i18n="act.ski.tag">סקי</span>
+              <h3 class="activity-name" data-i18n="act.ski.name">סקי</h3>
               <p class="activity-desc" data-i18n="act.ski.desc">75+ ק״מ מסלולים, שלג יבש, וקצב שלא תמצא בשום מקום אחר.</p>
             </div>
           </div>
 
           <div class="activity-card reveal" style="transition-delay:0.08s">
-            <img src="https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=600&q=80" alt="הליסקי בגבהי גודאורי" loading="lazy" />
+            <img src="images/activities-heliski.jpg" alt="הליסקי בגבהי גודאורי" loading="lazy" />
             <div class="activity-overlay">
               <span class="activity-tag">Heli-Ski</span>
               <h3 class="activity-name" data-i18n="act.heli.name">הליסקי</h3>
@@ -2565,7 +2767,7 @@
           </div>
 
           <div class="activity-card reveal" style="transition-delay:0.16s">
-            <img src="https://images.unsplash.com/photo-1577701122197-c9607038bd90?auto=format&fit=crop&w=600&q=80" alt="סנובורד בגודאורי" loading="lazy" />
+            <img src="images/activities-snowboard.jpeg" alt="סנובורד בגודאורי" loading="lazy" />
             <div class="activity-overlay">
               <span class="activity-tag" data-i18n="act.snow.tag">סנובורד</span>
               <h3 class="activity-name" data-i18n="act.snow.name">סנובורד</h3>
@@ -2599,7 +2801,7 @@
           </div>
 
           <div class="activity-card reveal" style="transition-delay:0.16s">
-            <img src="images/gudauri-ski-village.jpg" alt="כפר הסקי גודאורי" loading="lazy" />
+            <img src="images/activities-tbilisi.jpeg" alt="טביליסי + הרים" loading="lazy" />
             <div class="activity-overlay">
               <span class="activity-tag" data-i18n="act.tbilisi.tag">קומבו מושלם</span>
               <h3 class="activity-name" data-i18n="act.tbilisi.name">טביליסי + הרים</h3>
@@ -2705,6 +2907,27 @@
           <li data-i18n="exp.li3">קהילת ישראלים גדלה — כבר לא סוד שמור</li>
           <li data-i18n="exp.li4">מחירים שמאפשרים שבוע שלם במחיר סוף שבוע באלפס</li>
         </ul>
+        <div class="exp-more" id="exp-more">
+          <div class="exp-zones">
+            <div class="exp-zone exp-zone--main">
+              <h3 class="exp-zone-title" data-i18n="exp.zone3.title">ניו גודאורי — הלב הפועם</h3>
+              <p class="exp-zone-body" data-i18n="exp.zone3.body">המרכז המודרני של האתר: מסעדות, ברים, חנויות ציוד — הכל ב-5 דקות הליכה. כל הגונדולות הגדולות יוצאות מפה. אם אתה בא לגודאורי — זה המקום שממנו מתחילים.</p>
+            </div>
+            <div class="exp-zone">
+              <h3 class="exp-zone-title" data-i18n="exp.zone2.title">גודאורי הישן</h3>
+              <p class="exp-zone-body" data-i18n="exp.zone2.body">הכפר ההיסטורי עם האווירה האותנטית ביותר — מסעדות גאורגיות מקומיות, לינה בסגנון ישן וקהילה מקורית. פחות מודרני, הרבה יותר אמיתי.</p>
+            </div>
+            <div class="exp-zone">
+              <h3 class="exp-zone-title" data-i18n="exp.zone1.title">גודאורי העליון</h3>
+              <p class="exp-zone-body" data-i18n="exp.zone1.body">האזור הגבוה ביותר, עם גישה ישירה למסלולים הארוכים ואזורי אוף-פיסט מרהיבים. הכי הרבה שלג לאורך כל העונה — כאן לא מחפשים פאודר, הוא מחכה לך.</p>
+            </div>
+          </div>
+        </div>
+        <button class="exp-toggle" type="button" aria-expanded="false" aria-controls="exp-more">
+          <span class="ct-more" data-i18n="exp.readmore">המשך קריאה — שלושת אזורי גודאורי</span>
+          <span class="ct-less" data-i18n="exp.readless">הצג פחות</span>
+          <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
         <a href="#accommodation" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           <span data-i18n="exp.cta">תכנן את החופשה שלך</span>
@@ -2737,7 +2960,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="access-text">
-            <div class="access-value" data-i18n="access.dist.value">150 ק"מ</div>
+            <div class="access-value" data-i18n="access.dist.value">150 ק״מ</div>
             <div class="access-label" data-i18n="access.dist.label">מטביליסי</div>
             <div class="access-desc" data-i18n="access.dist.desc">~2 שעות נסיעה מנמל התעופה של טביליסי. תוצאה: יום-יומיים בעיר, ואז ישר להרים. שני מיעדים במחיר אחד.</div>
           </div>
@@ -2842,7 +3065,7 @@
           </div>
           <span class="quote-mark" aria-hidden="true">"</span>
           <p class="testimonial-text" data-i18n="test1.text">
-            הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק"מ בלי עצירה
+            הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק״מ בלי עצירה
             ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים
             גרמו לנו להרגיש שאנחנו מרמים מישהו.
           </p>
@@ -2966,7 +3189,7 @@
           <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter.heading">עדכונים ומבצעים</h3>
           <p data-i18n="footer.newsletter.text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
           <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר" style="flex-wrap:wrap;">
-            <label for="newsletter-email" class="sr-only">כתובת אימייל</label>
+            <label for="newsletter-email" class="sr-only" data-i18n="footer.newsletter.email_aria">כתובת אימייל</label>
             <input
               type="email"
               id="newsletter-email"
@@ -2982,8 +3205,8 @@
               <input type="checkbox" id="nl-marketing-consent" required
                 style="margin-top:3px; flex-shrink:0; accent-color:#0EA5E9; cursor:pointer; width:15px; height:15px;" />
               <label for="nl-marketing-consent" style="font-size:12px; color:#94A3B8; cursor:pointer; line-height:1.5;">
-                אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.
-                <a href="privacy-policy.html" style="color:#38BDF8;">מדיניות פרטיות</a>
+                <span data-i18n="footer.newsletter.consent">אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.</span>
+                <a href="privacy-policy.html" style="color:#38BDF8;" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
               </label>
             </div>
           </form>
@@ -3019,17 +3242,21 @@
     // ── Mobile menu ──
     const burger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('navMobile');
+    const navOverlay = document.getElementById('navOverlay');
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileMenu);
     let menuOpen = false;
 
     burger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
+      if (navOverlay) navOverlay.classList.toggle('show', menuOpen);
       burger.setAttribute('aria-expanded', menuOpen);
     });
 
     function closeMobileMenu() {
       menuOpen = false;
       mobileMenu.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('show');
       burger.setAttribute('aria-expanded', 'false');
     }
 
@@ -3171,6 +3398,7 @@
     (function() {
       const slides = document.querySelectorAll('.ng-slide:not(.ng-slide-dots)');
       const dots = document.querySelectorAll('.ng-dot');
+      if (!slides.length || !dots.length) return; // slider markup not present on this page
       let current = 0;
       let timer = null;
 
@@ -3235,7 +3463,7 @@
       he: {
         dir: 'rtl', lang: 'he',
         'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי',
-        'nav.accommodation': 'לינה', 'nav.equipment': 'ציוד', 'nav.contact': 'צרו קשר', 'nav.cta': 'תכנן את הטיול',
+        'nav.accommodation': 'לינה', 'nav.equipment': 'ציוד', 'nav.investors': 'ליווי משקיעים', 'nav.contact': 'צרו קשר', 'nav.cta': 'תכנן את הטיול', 'nav.equipment_rental': 'השכרת ציוד',
         'hero.kicker': 'הר שמשנה תפיסות', 'hero.headline_1': '3,200+ מטר', 'hero.headline_accent': 'שלך',
         'hero.sub_headline': 'הישראלים שגילו את גודאורי לא מספרים. עכשיו אתה יודע.',
         'hero.sub': '75+ ק״מ מסלולים. 300 ימי שמש. בלי תור. בלי הגזמה אירופאית.',
@@ -3268,6 +3496,7 @@
         'card5.more': 'גודאורי מציעה מסלולים מסומנים לכל רמה — כחולים נוחים למתחילים, אדומים מאתגרים לרוכבים בינוניים, ושחורים תלולים לוותיקים — לצד שטחי אוף-פיסט אינסופיים למחפשי אדרנלין. הטווח האנכי של 1,283 מטר מאפשר ירידות ארוכות ורציפות, והמסלולים רחבים ומתוחזקים מדי בוקר. בסופי שבוע (שישי ושבת) נפתח סקי לילה תחת תאורה על מסלול Pirveli בין 20:00 ל-22:00, כשהוא כלול במחיר הכרטיס היומי — כך שאפשר להמשיך לרכוב הרבה אחרי השקיעה.',
         'yt.cta': 'צפו בשידור חי',
         'fact1.title': 'טיסה מישראל', 'fact1.desc': 'פחות זמן מטיסה לציריך. אין טרנזיט, אין ויזה, אין כאב ראש.',
+        'fact1.unit': 'שע׳', 'fact2.unit': 'חודשים', 'fact4.unit': 'ויזה',
         'fact2.title': 'עונת סקי', 'fact2.desc': 'אמצע-סוף דצמבר עד אמצע-סוף אפריל. שעות פעילות 10:00–17:00, ♟ סקי לילה שישי ושבת 20:00–22:00.',
         'fact3.title': 'אוף-פיסט ללא גבולות', 'fact3.desc': 'שטחים לא מסומנים בלי גדרות — שלג בתולי לכל כיוון שתבחר.',
         'fact4.title': 'כניסה ללא ויזה', 'fact4.desc': 'גאורגיה פתוחה לישראלים. נוסעים עם דרכון בלבד, ללא בירוקרטיה.',
@@ -3281,7 +3510,7 @@
         'activities.title': 'ההרים לא<br/><span class="electric">רק לסקי</span>',
         'activities.sub': 'גודאורי היא מגרש משחקים שפועל כל השנה. בחורף ובאביב — תמיד יש מה לעשות.',
         'tab.winter': 'חורף — דצמבר עד אפריל', 'tab.spring': 'אביב — אפריל עד דצמבר',
-        'act.ski.tag': 'אלפיני', 'act.ski.name': 'סקי אלפיני', 'act.ski.desc': '75+ ק״מ מסלולים, שלג יבש, וקצב שלא תמצא בשום מקום אחר.',
+        'act.ski.tag': 'סקי', 'act.ski.name': 'סקי', 'act.ski.desc': '75+ ק״מ מסלולים, שלג יבש, וקצב שלא תמצא בשום מקום אחר.',
         'act.heli.name': 'הליסקי', 'act.heli.desc': 'מסוק מוריד אותך על שלג בתולי בגבהים של 4,000+ מטר. זה לא עוד סקי.',
         'act.snow.tag': 'סנובורד', 'act.snow.name': 'סנובורד', 'act.snow.desc': 'פארק, קווארטרפייפ, ופאודר ראן שישנה לך את הגישה לחורף.',
         'act.para.tag': 'Paragliding', 'act.para.name': 'פאראגליידינג', 'act.para.desc': 'ריחוף מעל עמקי קווקז עם תרמלים חזקים ונוף שלא ישכח.',
@@ -3306,8 +3535,12 @@
         'exp.li3': 'קהילת ישראלים גדלה — כבר לא סוד שמור',
         'exp.li4': 'מחירים שמאפשרים שבוע שלם במחיר סוף שבוע באלפס',
         'exp.cta': 'תכנן את החופשה שלך',
+        'exp.readmore': 'המשך קריאה — שלושת אזורי גודאורי', 'exp.readless': 'הצג פחות',
+        'exp.zone1.title': 'גודאורי העליון', 'exp.zone1.body': 'האזור הגבוה ביותר, עם גישה ישירה למסלולים הארוכים ואזורי אוף-פיסט מרהיבים. הכי הרבה שלג לאורך כל העונה — כאן לא מחפשים פאודר, הוא מחכה לך.',
+        'exp.zone2.title': 'גודאורי הישן', 'exp.zone2.body': 'הכפר ההיסטורי עם האווירה האותנטית ביותר — מסעדות גאורגיות מקומיות, לינה בסגנון ישן וקהילה מקורית. פחות מודרני, הרבה יותר אמיתי.',
+        'exp.zone3.title': 'ניו גודאורי — הלב הפועם', 'exp.zone3.body': 'המרכז המודרני של האתר: מסעדות, ברים, חנויות ציוד — הכל ב-5 דקות הליכה. כל הגונדולות הגדולות יוצאות מפה. אם אתה בא לגודאורי — זה המקום שממנו מתחילים.',
         'access.year.value': '1988', 'access.year.label': 'שנת הקמה', 'access.year.desc': 'גודאורי הוא אתר הסקי הוותיק ביותר בגאורגיה — ומאז הפך לגדול ומודרני שבהם. תשתית שנבנתה לאורך שנות דור.',
-        'access.dist.value': '150 ק"מ', 'access.dist.label': 'מטביליסי', 'access.dist.desc': '~2 שעות נסיעה מנמל התעופה של טביליסי. תוצאה: יום-יומיים בעיר, ואז ישר להרים. שני מיעדים במחיר אחד.',
+        'access.dist.value': '150 ק״מ', 'access.dist.label': 'מטביליסי', 'access.dist.desc': '~2 שעות נסיעה מנמל התעופה של טביליסי. תוצאה: יום-יומיים בעיר, ואז ישר להרים. שני מיעדים במחיר אחד.',
         'access.rank.value': '#1', 'access.rank.label': 'הגדול בגאורגיה', 'access.rank.desc': 'הגדול, המודרני, והמפותח ביותר בגאורגיה — תשתית שתומכת בסקי freestyle, אוף-פיסט וסקי לילה תחת תאורה מלאה.',
         'accom.label': 'לינה ותכנון',
         'accom.title': 'תכנן את<br/><span class="electric">החופשה שלך</span>',
@@ -3316,7 +3549,7 @@
         'accom.cta1': 'הזמן עכשיו', 'accom.cta2': 'וואטסאפ',
         'test.label': 'מה אומרים',
         'test.title': 'ישראלים שכבר<br/><span class="electric">גילו את הסוד</span>',
-        'test1.text': 'הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק"מ בלי עצירה ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים גרמו לנו להרגיש שאנחנו מרמים מישהו.',
+        'test1.text': 'הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק״מ בלי עצירה ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים גרמו לנו להרגיש שאנחנו מרמים מישהו.',
         'test1.author': 'רון לוי', 'test1.detail': 'נוף הגליל · עונה שנייה',
         'test2.text': 'הייתי סקפטית לגבי גאורגיה. חברות שלי שכנעו אותי, ואני שמחה שלא התנגדתי. שלושה ימים בהרים ויומיים בטביליסי — זה לא טיול סקי רגיל. זה חוויה שלמה. כבר הזמנתי את אותה חבורה לפברואר הבא.',
         'test2.author': 'שירה כהן', 'test2.detail': 'חיפה · ינואר 2024',
@@ -3329,14 +3562,16 @@
         'footer.newsletter.heading': 'עדכונים ומבצעים',
         'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
         'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
+        'footer.newsletter.consent': 'אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.', 'footer.newsletter.email_aria': 'כתובת אימייל',
+        'community.join': 'הצטרפו לקהילה', 'community.wa': 'קבוצת וואטסאפ', 'community.fb': 'קבוצת פייסבוק', 'community.ig': 'אינסטגרם',
         'footer.copy': '&copy; 2025 <a href="#">Gudauri Helper</a>. כל הזכויות שמורות.',
-        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.access': 'נגישות',
+        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.cookies': 'הגדרות קוקיז',
       },
 
       en: {
         dir: 'ltr', lang: 'en',
         'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri',
-        'nav.accommodation': 'Accommodation', 'nav.equipment': 'Rentals', 'nav.contact': 'Contact', 'nav.cta': 'Plan Your Trip',
+        'nav.accommodation': 'Accommodation', 'nav.equipment': 'Rentals', 'nav.investors': 'Investor Services', 'nav.contact': 'Contact', 'nav.cta': 'Plan Your Trip', 'nav.equipment_rental': 'Gear Rental',
         'hero.kicker': 'A Mountain That Changes Everything', 'hero.headline_1': '3,200+ m', 'hero.headline_accent': 'Yours',
         'hero.sub_headline': 'Those who found Gudauri keep it secret. Now you know.',
         'hero.sub': '75+ km of runs. 300 sunny days. No queues. No European price tags.',
@@ -3369,6 +3604,7 @@
         'card5.more': 'Gudauri offers marked runs for every level — easy blues for beginners, challenging reds for intermediates and steep blacks for veterans — alongside endless off-piste terrain for adrenaline seekers. The 1,283 m vertical drop allows long, continuous descents, and the wide runs are groomed every morning. On weekends (Friday and Saturday) floodlit night skiing opens on the Pirveli run from 20:00 to 22:00, included in the day pass — so you can keep riding long after sunset.',
         'yt.cta': 'Watch Live Stream',
         'fact1.title': 'Flight from Israel', 'fact1.desc': 'Less flight time than Zurich. No transit, no visa, no hassle.',
+        'fact1.unit': 'hrs', 'fact2.unit': 'months', 'fact4.unit': 'visa',
         'fact2.title': 'Ski Season', 'fact2.desc': 'Mid-December to mid-April. Operating hours 10:00–17:00, night skiing Fri & Sat 20:00–22:00.',
         'fact3.title': 'Unlimited Off-Piste', 'fact3.desc': 'Unmarked terrain with no fences — virgin powder in every direction you choose.',
         'fact4.title': 'Visa Free', 'fact4.desc': 'Georgia is open to Israelis — travel with passport only, no bureaucracy.',
@@ -3382,7 +3618,7 @@
         'activities.title': 'The Mountains Are<br/><span class="electric">More Than Skiing</span>',
         'activities.sub': 'Gudauri is a year-round playground. In winter and spring — there\'s always something to do.',
         'tab.winter': 'Winter — December to March', 'tab.spring': 'Spring — March to April',
-        'act.ski.tag': 'Alpine', 'act.ski.name': 'Alpine Skiing', 'act.ski.desc': '75+ km of runs, dry powder, and a pace you won\'t find anywhere else.',
+        'act.ski.tag': 'Ski', 'act.ski.name': 'Ski', 'act.ski.desc': '75+ km of runs, dry powder, and a pace you won\'t find anywhere else.',
         'act.heli.name': 'Heli-Skiing', 'act.heli.desc': 'A helicopter drops you on virgin snow at 4,000+ meters. This is not just skiing.',
         'act.snow.tag': 'Snowboard', 'act.snow.name': 'Snowboarding', 'act.snow.desc': 'Park, quarterpipe, and powder runs that will change your relationship with winter.',
         'act.para.tag': 'Paragliding', 'act.para.name': 'Paragliding', 'act.para.desc': 'Soaring over Caucasus valleys with strong thermals and unforgettable views.',
@@ -3407,6 +3643,10 @@
         'exp.li3': 'Growing Israeli community — no longer a secret',
         'exp.li4': 'Prices that let you afford a full week for the cost of an Alps weekend',
         'exp.cta': 'Plan Your Vacation',
+        'exp.readmore': 'Read more — Gudauri\'s three zones', 'exp.readless': 'Show less',
+        'exp.zone1.title': 'Upper Gudauri', 'exp.zone1.body': 'The highest zone, with direct access to the longest runs and spectacular off-piste terrain. The most reliable snow cover throughout the season — powder isn\'t hunted here, it\'s waiting for you.',
+        'exp.zone2.title': 'Old Gudauri', 'exp.zone2.body': 'The historic village with the most authentic atmosphere — local Georgian restaurants, traditional-style accommodation and an original community. Less modern, far more real.',
+        'exp.zone3.title': 'New Gudauri — The Beating Heart', 'exp.zone3.body': 'The modern resort center: restaurants, bars, equipment shops — everything within a 5-minute walk. All major gondolas depart from here. If you\'re coming to Gudauri — this is where it all begins.',
         'access.year.value': '1988', 'access.year.label': 'Founded', 'access.year.desc': 'Gudauri is Georgia\'s oldest ski resort — and since then has become its largest and most modern. Infrastructure built over a generation.',
         'access.dist.value': '150 km', 'access.dist.label': 'From Tbilisi', 'access.dist.desc': '~2 hours drive from Tbilisi airport. Result: a day or two in the city, then straight to the mountains. Two destinations for the price of one.',
         'access.rank.value': '#1', 'access.rank.label': 'Largest in Georgia', 'access.rank.desc': 'The largest, most modern, and most developed resort in Georgia — infrastructure supporting freestyle skiing, off-piste, and night skiing under full lighting.',
@@ -3430,14 +3670,16 @@
         'footer.newsletter.heading': 'Updates & Deals',
         'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
         'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
+        'footer.newsletter.consent': 'I agree to receive marketing updates and offers from NewGudauri. You can unsubscribe anytime.', 'footer.newsletter.email_aria': 'Email address',
+        'community.join': 'Join the community', 'community.wa': 'WhatsApp group', 'community.fb': 'Facebook group', 'community.ig': 'Instagram',
         'footer.copy': '&copy; 2025 <a href="#">Gudauri Helper</a>. All rights reserved.',
-        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.access': 'Accessibility',
+        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.cookies': 'Cookie Settings',
       },
 
       ru: {
         dir: 'ltr', lang: 'ru',
         'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури',
-        'nav.accommodation': 'Проживание', 'nav.equipment': 'Прокат', 'nav.contact': 'Контакты', 'nav.cta': 'Спланировать поездку',
+        'nav.accommodation': 'Проживание', 'nav.equipment': 'Прокат', 'nav.investors': 'Инвесторам', 'nav.contact': 'Контакты', 'nav.cta': 'Спланировать поездку', 'nav.equipment_rental': 'Прокат снаряжения',
         'hero.kicker': 'Гора, которая меняет всё', 'hero.headline_1': '3 279 м', 'hero.headline_accent': 'Ваш',
         'hero.sub_headline': 'Те, кто открыл для себя Гудаури, молчат об этом. Теперь вы знаете.',
         'hero.sub': '75+ км трасс. 300 солнечных дней. Без очередей. Без европейских цен.',
@@ -3470,6 +3712,7 @@
         'card5.more': 'Гудаури предлагает маркированные трассы для любого уровня — простые синие для новичков, сложные красные для среднего уровня и крутые чёрные для опытных — а также бескрайние внетрассовые зоны для любителей адреналина. Перепад высот 1283 м позволяет совершать длинные непрерывные спуски, а широкие трассы ратрачат каждое утро. По выходным (пятница и суббота) с 20:00 до 22:00 на трассе Pirveli работает вечернее катание под прожекторами, включённое в дневной ски-пасс — так что кататься можно ещё долго после заката.',
         'yt.cta': 'Смотреть прямой эфир',
         'fact1.title': 'Перелёт из Израиля', 'fact1.desc': 'Меньше времени, чем до Цюриха. Без стыковок, без визы, без хлопот.',
+        'fact1.unit': 'ч', 'fact2.unit': 'мес.', 'fact4.unit': 'виза',
         'fact2.title': 'Горнолыжный сезон', 'fact2.desc': 'С середины декабря до середины апреля. Часы работы 10:00–17:00, ночное катание пт–сб 20:00–22:00.',
         'fact3.title': 'Безграничное внетрассовое катание', 'fact3.desc': 'Неразмеченные склоны без заборов — нетронутый снег в любом направлении.',
         'fact4.title': 'Безвизовый въезд', 'fact4.desc': 'Грузия открыта для израильтян — путешествие только с паспортом, без бюрократии.',
@@ -3483,7 +3726,7 @@
         'activities.title': 'Горы — это<br/><span class="electric">не только лыжи</span>',
         'activities.sub': 'Гудаури — круглогодичная площадка для приключений. Зимой и весной — всегда есть чем заняться.',
         'tab.winter': 'Зима — декабрь — март', 'tab.spring': 'Весна — март — апрель',
-        'act.ski.tag': 'Горные лыжи', 'act.ski.name': 'Горные лыжи', 'act.ski.desc': '75+ км трасс, сухой снег и темп, которого вы не найдёте нигде больше.',
+        'act.ski.tag': 'Лыжи', 'act.ski.name': 'Лыжи', 'act.ski.desc': '75+ км трасс, сухой снег и темп, которого вы не найдёте нигде больше.',
         'act.heli.name': 'Хели-ски', 'act.heli.desc': 'Вертолёт доставляет вас на нетронутый снег на высоте 4000+ метров. Это не просто лыжи.',
         'act.snow.tag': 'Сноуборд', 'act.snow.name': 'Сноуборд', 'act.snow.desc': 'Парк, квотерпайп и пауэдер-ран, которые изменят ваше отношение к зиме.',
         'act.para.tag': 'Параглайдинг', 'act.para.name': 'Параглайдинг', 'act.para.desc': 'Полёт над долинами Кавказа с мощными термальными потоками и незабываемыми видами.',
@@ -3508,6 +3751,10 @@
         'exp.li3': 'Растущее сообщество — уже не секрет',
         'exp.li4': 'Цены, которые позволяют провести целую неделю за стоимость альпийских выходных',
         'exp.cta': 'Спланировать отпуск',
+        'exp.readmore': 'Читать далее — три зоны Гудаури', 'exp.readless': 'Свернуть',
+        'exp.zone1.title': 'Верхнее Гудаури', 'exp.zone1.body': 'Самая высокогорная зона с прямым доступом к длинным трассам и великолепным внетрассовым рельефом. Самый надёжный снежный покров на протяжении всего сезона — пудру здесь не ищут, он ждёт вас.',
+        'exp.zone2.title': 'Старое Гудаури', 'exp.zone2.body': 'Исторический посёлок с самой аутентичной атмосферой — местные грузинские рестораны, традиционное жильё и самобытная общность. Менее современный, зато намного более настоящий.',
+        'exp.zone3.title': 'Нью-Гудаури — Сердце курорта', 'exp.zone3.body': 'Современный центр курорта: рестораны, бары, магазины снаряжения — всё в пяти минутах ходьбы. Отсюда отправляются все крупные гондолы. Приехали в Гудаури — отсюда всё и начинается.',
         'access.year.value': '1988', 'access.year.label': 'Год основания', 'access.year.desc': 'Гудаури — старейший горнолыжный курорт Грузии, ставший крупнейшим и современнейшим. Инфраструктура, выстроенная за поколение.',
         'access.dist.value': '150 км', 'access.dist.label': 'От Тбилиси', 'access.dist.desc': '~2 часа езды от аэропорта Тбилиси. Результат: день-два в городе, затем сразу в горы. Два направления по цене одного.',
         'access.rank.value': '#1', 'access.rank.label': 'Крупнейший в Грузии', 'access.rank.desc': 'Крупнейший, современнейший и самый развитый курорт Грузии — инфраструктура для фристайла, внетрасс и ночного катания с полным освещением.',
@@ -3531,14 +3778,16 @@
         'footer.newsletter.heading': 'Новости и акции',
         'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
         'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
+        'footer.newsletter.consent': 'Я согласен(на) получать маркетинговые рассылки и предложения от NewGudauri. Отписаться можно в любой момент.', 'footer.newsletter.email_aria': 'Адрес эл. почты',
+        'community.join': 'Присоединяйтесь', 'community.wa': 'Группа WhatsApp', 'community.fb': 'Группа Facebook', 'community.ig': 'Instagram',
         'footer.copy': '&copy; 2025 <a href="#">Gudauri Helper</a>. Все права защищены.',
-        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.access': 'Доступность',
+        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.cookies': 'Настройки cookie',
       },
 
-      ka: {
+      ge: {
         dir: 'ltr', lang: 'ka',
         'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური',
-        'nav.accommodation': 'განთავსება', 'nav.equipment': 'ინვენტარი', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაგეგმე მოგზაურობა',
+        'nav.accommodation': 'განთავსება', 'nav.equipment': 'ინვენტარი', 'nav.investors': 'ინვესტორებისთვის', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაგეგმე მოგზაურობა', 'nav.equipment_rental': 'ინვენტარის გაქირავება',
         'hero.kicker': 'მთა, რომელიც ყველაფერს ცვლის', 'hero.headline_1': '3,200+ მ', 'hero.headline_accent': 'შენია',
         'hero.sub_headline': 'ვინც გუდაური აღმოაჩინა — დუმს. ახლა შენ იცი.',
         'hero.sub': '75+ კმ ფერდობი. 300 მზიანი დღე. რიგების გარეშე. ევროპული ფასების გარეშე.',
@@ -3571,6 +3820,7 @@
         'card5.more': 'გუდაური გთავაზობთ მონიშნულ ტრასებს ნებისმიერი დონისთვის — მარტივ ლურჯებს დამწყებთათვის, რთულ წითლებს საშუალო დონისთვის და ციცაბო შავებს გამოცდილთათვის — ვრცელ ოფ-პისტ ტერიტორიასთან ერთად ადრენალინის მოყვარულთათვის. 1283 მ პერეპადი გრძელ, უწყვეტ დაშვებებს იძლევა, ხოლო განიერ ტრასებს ყოველ დილით ამუშავებენ. შაბათ-კვირას (პარასკევსა და შაბათს) 20:00-დან 22:00 საათამდე Pirveli-ის ტრასაზე იხსნება ღამის სრიალი პროჟექტორების შუქზე, რომელიც დღიურ ბილეთშია ჩართული — ასე რომ, სრიალის გაგრძელება მზის ჩასვლის შემდეგაც შეგიძლიათ.',
         'yt.cta': 'პირდაპირი ეთერის ყურება',
         'fact1.title': 'ფრენა ისრაელიდან', 'fact1.desc': 'ნაკლები ფრენის დრო ვიდრე ციურიხში. ტრანზიტის, ვიზის, ჩხუბის გარეშე.',
+        'fact1.unit': 'სთ', 'fact2.unit': 'თვე', 'fact4.unit': 'ვიზა',
         'fact2.title': 'სასრიალო სეზონი', 'fact2.desc': 'დეკემბრის შუიდან აპრილის შუამდე. სამუშაო საათები 10:00–17:00, ღამის სრიალობა პარ–შაბ 20:00–22:00.',
         'fact3.title': 'შეუზღუდავი Off-Piste', 'fact3.desc': 'მოუნიშნავი ტერიტორია ღობის გარეშე — ხელუხლებელი თოვლი ნებისმიერი მიმართულებით.',
         'fact4.title': 'უვიზო შესვლა', 'fact4.desc': 'საქართველო ღია დგას ისრაელელთათვის — მხოლოდ პასპორტით, ბიუროკრატიის გარეშე.',
@@ -3584,7 +3834,7 @@
         'activities.title': 'მთები<br/><span class="electric">მხოლოდ სრიალობისთვის კი არ არის</span>',
         'activities.sub': 'გუდაური არის მრავალეროვანი გართობის ადგილი მთელი წლის განმავლობაში. ზამთარსა და გაზაფხულზე — ყოველთვის არის სასიამოვნო.',
         'tab.winter': 'ზამთარი — დეკემბერი - მარტი', 'tab.spring': 'გაზაფხული — მარტი - აპრილი',
-        'act.ski.tag': 'ალპური', 'act.ski.name': 'ალპური სრიალობა', 'act.ski.desc': '75+ კმ ტრასა, მშრალი თოვლი და ტემპი, რომელსაც სხვაგან ვერ ნახავ.',
+        'act.ski.tag': 'სრიალობა', 'act.ski.name': 'სრიალობა', 'act.ski.desc': '75+ კმ ტრასა, მშრალი თოვლი და ტემპი, რომელსაც სხვაგან ვერ ნახავ.',
         'act.heli.name': 'ჰელი-სქი', 'act.heli.desc': 'ვერტმფრენი გიყვანს ხელუხლებელ თოვლზე 4000+ მეტრის სიმაღლეზე. ეს მხოლოდ სრიალობა არ არის.',
         'act.snow.tag': 'სნოუბორდი', 'act.snow.name': 'სნოუბორდი', 'act.snow.desc': 'პარკი, კვარტერპაიპი და ფხვიერ თოვლის ტრასა, რომელიც ზამთრის შეხედულებას შეგიცვლის.',
         'act.para.tag': 'პარაგლაიდინგი', 'act.para.name': 'პარაგლაიდინგი', 'act.para.desc': 'ფრენა კავკასიის ხეობებზე ძლიერი ტერმალებით და დასამახსოვრებელი ხედებით.',
@@ -3609,6 +3859,10 @@
         'exp.li3': 'მზარდი საერთაშორისო თემი — აღარ არის საიდუმლო',
         'exp.li4': 'ფასები, რომლებიც მთელი კვირის ღირებულებას ალპური კვირაბოლოს ფასში იძლევა',
         'exp.cta': 'დაგეგმე შვებულება',
+        'exp.readmore': 'ვრცლად — გუდაურის სამი ზონა', 'exp.readless': 'დახურვა',
+        'exp.zone1.title': 'ზემო გუდაური', 'exp.zone1.body': 'ყველაზე მაღალი ზონა, პირდაპირი წვდომით გრძელ ტრასებსა და შესანიშნავ off-piste რელიეფთან. ყველაზე საიმედო თოვლის საფარი სეზონის განმავლობაში — ფხვნილს აქ არ ეძებენ, ის თქვენს მოლოდინშია.',
+        'exp.zone2.title': 'ძველი გუდაური', 'exp.zone2.body': 'ისტორიული სოფელი ყველაზე ავთენტური ატმოსფეროთი — ადგილობრივი ქართული რესტორნები, ტრადიციული განთავსება და ორიგინალური თემი. ნაკლებად თანამედროვე, მაგრამ გაცილებით ნამდვილი.',
+        'exp.zone3.title': 'ნიუ გუდაური — გულისცემა', 'exp.zone3.body': 'კურორტის თანამედროვე ცენტრი: რესტორნები, ბარები, ეკიპირების მაღაზიები — ყველაფერი 5 წუთის სავალ მანძილზე. ყველა მთავარი გონდოლა სწორედ აქედან გადის. გუდაურში ჩამოდით — ყველაფერი სწორედ აქედან იწყება.',
         'access.year.value': '1988', 'access.year.label': 'დაარსების წელი', 'access.year.desc': 'გუდაური საქართველოს უძველესი სასრიალო კურორტია — და მას შემდეგ ყველაზე დიდი და თანამედროვე გახდა. ინფრასტრუქტურა, რომელიც ერთი თაობის განმავლობაში შეიქმნა.',
         'access.dist.value': '150 კმ', 'access.dist.label': 'თბილისიდან', 'access.dist.desc': '~2 საათი თბილისის აეროპორტიდან. შედეგი: ერთი-ორი დღე ქალაქში, შემდეგ პირდაპირ მთებში. ორი მიმართულება ერთის ფასად.',
         'access.rank.value': '#1', 'access.rank.label': 'ყველაზე დიდი საქართველოში', 'access.rank.desc': 'ყველაზე დიდი, თანამედროვე და განვითარებული კურორტი საქართველოში — ინფრასტრუქტურა, რომელიც მხარს უჭერს ფრისტაილ სქის, off-piste-ს და ღამის სრიალობას სრული განათებით.',
@@ -3632,8 +3886,10 @@
         'footer.newsletter.heading': 'განახლებები და შეთავაზებები',
         'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები, რომლებიც ჩამოსვლის სურვილს გაგიჩენს.',
         'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
+        'footer.newsletter.consent': 'ვეთანხმები მივიღო მარკეტინგული განახლებები და შეთავაზებები NewGudauri-სგან. გაუქმება ნებისმიერ დროს შესაძლებელია.', 'footer.newsletter.email_aria': 'ელ-ფოსტის მისამართი',
+        'community.join': 'შემოგვიერთდით', 'community.wa': 'WhatsApp ჯგუფი', 'community.fb': 'Facebook ჯგუფი', 'community.ig': 'Instagram',
         'footer.copy': '&copy; 2025 <a href="#">Gudauri Helper</a>. ყველა უფლება დაცულია.',
-        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.access': 'ხელმისაწვდომობა',
+        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.cookies': 'Cookie პარამეტრები',
       }
     };
 
@@ -3701,6 +3957,20 @@
         });
       });
     })();
+
+    // ══════════════════════════════════════════
+    //  EXPERIENCE SECTION READ-MORE (3 ZONES)
+    // ══════════════════════════════════════════
+    (function() {
+      document.querySelectorAll('.exp-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var section = document.getElementById('experience');
+          if (!section) return;
+          var open = section.classList.toggle('exp-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+    })();
   </script>
 
   <!-- Cookie Consent -->
@@ -3708,7 +3978,7 @@
   <script src="cookie-consent.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
-  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
   <!-- Lottie Animations -->

@@ -16,7 +16,7 @@
   <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/lina.html" />
-  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/lina.html" />
+  <link rel="alternate" hreflang="ge" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/lina.html" />
 
   <!-- OpenGraph -->
@@ -71,6 +71,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+    html[dir="ltr"] body { direction: ltr; text-align: left; }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
@@ -139,15 +140,20 @@
     .nav-logo-text { font-size: 1.125rem; font-weight: 800; color: var(--snow); letter-spacing: -0.02em; }
     .nav-logo-text span { color: var(--electric); }
 
-    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
     .nav-links a {
-      font-size: 0.9375rem; font-weight: 500;
-      color: var(--slate-400);
-      transition: color var(--transition);
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--slate-200);
+      border-radius: 6px;
+      padding: 6px 9px;
       white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
     }
-    .nav-links a:hover { color: var(--snow); }
-    .nav-links a.active { color: var(--electric); font-weight: 700; }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+    }
+    .nav-links a.active { color: var(--electric-light); font-weight: 700; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
@@ -180,6 +186,13 @@
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       background: transparent; padding: 4px;
+      border-radius: 8px;
+      animation: navBurgerGlow 1.8s ease-out infinite;
+    }
+    @keyframes navBurgerGlow {
+      0%   { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
+      70%  { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7), 0 0 0 12px rgba(14,165,233,0); }
+      100% { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
     }
     .nav-burger span {
       display: block; width: 24px; height: 2px;
@@ -205,9 +218,87 @@
     }
     .nav-mobile a:hover, .nav-mobile a.active { color: var(--electric); }
 
-    @media (max-width: 900px) {
+
+    /* ── CTA highlight on key nav links + hamburger attention hint ── */
+    .nav-links a[data-i18n="nav.equipment"],
+    .nav-links a[data-i18n="nav.accommodation"],
+    .nav-links a[data-i18n="nav.investors"] {
+      color: var(--electric-light, #38bdf8);
+      font-weight: 700;
+      background: rgba(14,165,233,0.10);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.35), 0 0 10px rgba(14,165,233,0.22);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-links a[data-i18n="nav.equipment"]:hover,
+    .nav-links a[data-i18n="nav.accommodation"]:hover,
+    .nav-links a[data-i18n="nav.investors"]:hover {
+      background: rgba(14,165,233,0.20);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.6), 0 0 16px rgba(14,165,233,0.45);
+    }
+    @keyframes navPromoPulse {
+      0%,100% { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.30), 0 0 8px rgba(14,165,233,0.18); }
+      50%     { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.55), 0 0 16px rgba(14,165,233,0.42); }
+    }
+    .nav-mobile a[data-i18n="nav.equipment"],
+    .nav-mobile a[data-i18n="nav.accommodation"],
+    .nav-mobile a[data-i18n="nav.investors"] { color: var(--electric-light, #38bdf8); font-weight: 700; }
+    .nav-mobile a[data-i18n="nav.equipment"]::before,
+    .nav-mobile a[data-i18n="nav.accommodation"]::before,
+    .nav-mobile a[data-i18n="nav.investors"]::before {
+      content: "\2726";
+      margin-inline-end: 8px;
+      color: var(--electric, #0ea5e9);
+      text-shadow: 0 0 8px rgba(14,165,233,0.85);
+      animation: navPromoSpark 1.8s ease-in-out infinite;
+    }
+    @keyframes navPromoSpark { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+    /* hamburger attention hint (mobile) */
+    .nav-inner { position: relative; }
+    .nav-burger { position: relative; }
+    /* centered key-page CTA strip (glowing, symmetric) */
+    .nav-cta-strip {
+      display: none;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .nav-cta-strip-link {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--electric-light, #38bdf8);
+      padding: 6px 13px; border-radius: 999px;
+      background: rgba(14,165,233,0.12);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.4), 0 0 12px rgba(14,165,233,0.3);
+      white-space: nowrap;
+      transition: background var(--transition), box-shadow var(--transition), color var(--transition);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-cta-strip-link:hover {
+      background: rgba(14,165,233,0.25); color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.7), 0 0 18px rgba(14,165,233,0.5);
+    }
+    @media (min-width: 900px) and (max-width: 1280px) {
+      .nav-cta-strip { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-cta-strip-link { animation: none !important; } }
+    /* transparent click-catcher to close the mobile menu on any outside tap */
+    .nav-overlay { display: none; position: fixed; inset: 0; z-index: 90; background: transparent; }
+    .nav-overlay.show { display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links a[data-i18n="nav.equipment"],
+      .nav-links a[data-i18n="nav.accommodation"],
+      .nav-links a[data-i18n="nav.investors"],
+      .nav-mobile a[data-i18n]::before { animation: none !important; }
+    }
+    @media (max-width: 1280px) {
       .nav-links, .nav-cta-desktop { display: none; }
       .nav-burger { display: flex; }
+      .nav-inner .lang-switcher { margin-inline-start: auto; }
     }
 
     /* ── HERO ── */
@@ -271,7 +362,7 @@
     /* ── APARTMENT CARD ── */
     .apt-card {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 3fr;
       background: rgba(30,41,59,0.7);
       border: 1px solid var(--glass-border);
       border-radius: 24px; overflow: hidden;
@@ -288,11 +379,13 @@
     /* second card: flip column order */
     .apt-card.flipped { direction: ltr; }
     .apt-card.flipped .apt-info { direction: rtl; text-align: right; }
+    html[dir="ltr"] .apt-card.flipped { direction: rtl; }
+    html[dir="ltr"] .apt-card.flipped .apt-info { direction: ltr; text-align: left; }
 
     /* ── GALLERY ── */
     .apt-gallery {
       position: relative; overflow: hidden;
-      height: 420px;
+      height: 580px;
     }
     .apt-slides {
       display: flex;
@@ -541,8 +634,8 @@
     .pay-iframe-loading { text-align: center; padding: 48px 0; color: var(--slate-400); font-size: 0.9375rem; }
 
     @media (max-width: 960px) {
-      .apt-card, .apt-card.flipped { grid-template-columns: 1fr; direction: rtl; }
-      .apt-gallery { height: 280px; }
+      .apt-card, .apt-card.flipped { grid-template-columns: 1fr; direction: inherit; }
+      .apt-gallery { height: 320px; }
       .apt-info { padding: 28px 24px; }
     }
     @media (max-width: 540px) {
@@ -641,7 +734,7 @@
       flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border);
       border-radius: 8px; padding: 10px 14px;
       font-family: 'Heebo', sans-serif; font-size: 0.9375rem;
-      color: var(--snow); direction: rtl;
+      color: var(--snow); direction: inherit;
       transition: border-color var(--transition);
     }
     .newsletter-input:focus { outline: none; border-color: var(--electric); }
@@ -790,6 +883,12 @@
   <nav id="nav" role="navigation" aria-label="ניווט ראשי">
     <div class="container">
       <div class="nav-inner">
+        <!-- Centered key-page CTA strip (tablet) -->
+        <div class="nav-cta-strip" aria-label="עמודים מובילים">
+          <a href="equipment.html" data-internal="equipment.html" class="nav-cta-strip-link" data-i18n="nav.equipment_rental">השכרת ציוד</a>
+          <a href="lina.html" data-internal="lina.html" class="nav-cta-strip-link" data-i18n="nav.accommodation">לינה</a>
+          <a href="investors.html" data-internal="investors.html" class="nav-cta-strip-link" data-i18n="nav.investors">ליווי משקיעים</a>
+        </div>
 
         <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -804,10 +903,11 @@
         <ul class="nav-links" role="list">
           <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
           <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
-          <li><a href="index.html#new-gudauri" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+          <li><a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
           <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
           <li><a href="lina.html" class="active" aria-current="page" data-i18n="nav.accommodation">לינה</a></li>
-          <li><a href="index.html#footer" data-i18n="nav.contact">צרו קשר</a></li>
+          <li><a href="investors.html" data-internal="investors.html" data-i18n="nav.investors">ליווי משקיעים</a></li>
+          <li><a href="index.html#lead-form" data-i18n="nav.contact">צרו קשר</a></li>
         </ul>
 
         <a href="#apartments" class="btn-primary nav-cta-desktop" aria-label="הזמן לינה">
@@ -820,7 +920,7 @@
           <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
           <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
           <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
-          <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+          <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
         </div>
 
         <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navMobile">
@@ -831,19 +931,22 @@
     </div>
   </nav>
 
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
   <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
     <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
     <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
-    <a href="index.html#new-gudauri" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
     <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
     <a href="lina.html" class="active" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
-    <a href="index.html#footer" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="investors.html" data-internal="investors.html" onclick="closeMobileMenu()" data-i18n="nav.investors">ליווי משקיעים</a>
+    <a href="index.html#lead-form" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
     <a href="#apartments" class="btn-primary" onclick="closeMobileMenu()"><span data-i18n="nav.cta">הזמן לינה</span></a>
     <div class="lang-switcher" role="group" aria-label="Language / שפה">
       <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
       <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
       <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
-      <button class="lang-btn" data-lang="ka" onclick="setLanguage('ka');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+      <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge');closeMobileMenu()" title="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
     </div>
   </div>
 
@@ -912,7 +1015,7 @@
             <button class="gallery-dot" onclick="goToSlide('f2duplex',6)" aria-label="תמונה 7"></button>
             <button class="gallery-dot" onclick="goToSlide('f2duplex',7)" aria-label="תמונה 8"></button>
           </div>
-          <div class="gallery-badge" data-i18n="lina.f2duplex.badge">✦ 130 מ"ר · סאונה</div>
+          <div class="gallery-badge" data-i18n="lina.f2duplex.badge">✦ 130 מ״ר · סאונה</div>
         </div>
 
         <div class="apt-info">
@@ -928,12 +1031,12 @@
             </p>
             <div class="apt-tags">
               <span class="apt-tag" data-i18n="lina.f2duplex.tag1">🛏️ 4 חדרי שינה</span>
-              <span class="apt-tag" data-i18n="lina.f2duplex.tag2">📐 130 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.f2duplex.tag2">📐 130 מ״ר</span>
               <span class="apt-tag" data-i18n="lina.f2duplex.tag3">🔥 סאונה + אינפרא אדום</span>
               <span class="apt-tag" data-i18n="lina.f2duplex.tag4">🚿 3 שירותים + 3 מקלחות</span>
             </div>
             <p class="apt-desc" data-i18n="lina.f2duplex.desc">
-              דופלקס יוקרה של 130 מ"ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי. מושלם לקבוצות ומשפחות גדולות.
+              דופלקס יוקרה של 130 מ״ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי. מושלם לקבוצות ומשפחות גדולות.
             </p>
             <div class="apt-amenities">
               <div class="apt-amenity">
@@ -954,7 +1057,7 @@
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="lina.f2duplex.am5">130 מ"ר על שתי קומות</span>
+                <span data-i18n="lina.f2duplex.am5">130 מ״ר על שתי קומות</span>
               </div>
               <div class="apt-amenity">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -962,7 +1065,7 @@
               </div>
             </div>
             <div class="apt-note" data-i18n-html="lina.f2duplex.note">
-              ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ"ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.
+              ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ״ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.
             </div>
           </div>
           <div class="apt-footer-panel">
@@ -1033,7 +1136,7 @@
             </p>
             <div class="apt-tags">
               <span class="apt-tag" data-i18n="lina.atrium.tag1">🛏️ מיטה זוגית</span>
-              <span class="apt-tag" data-i18n="lina.atrium.tag2">📐 36 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.atrium.tag2">📐 36 מ״ר</span>
               <span class="apt-tag" data-i18n="lina.atrium.tag3">🏂 Ski-in/Ski-out</span>
               <span class="apt-tag" data-i18n="lina.atrium.tag4">🏔️ נוף מהמרפסת</span>
             </div>
@@ -1134,7 +1237,7 @@
             <button class="gallery-dot" onclick="goToSlide('siot',2)" aria-label="תמונה 3"></button>
             <button class="gallery-dot" onclick="goToSlide('siot',3)" aria-label="תמונה 4"></button>
           </div>
-          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.siot.badge">✦ עד 7 נפשות · 60 מ"ר</div>
+          <div class="gallery-badge" style="right:auto;left:16px;" data-i18n="lina.siot.badge">✦ עד 7 נפשות · 60 מ״ר</div>
         </div>
 
         <div class="apt-info">
@@ -1150,7 +1253,7 @@
             </p>
             <div class="apt-tags">
               <span class="apt-tag" data-i18n="lina.siot.tag1">👥 עד 7 נפשות</span>
-              <span class="apt-tag" data-i18n="lina.siot.tag2">📐 60 מ"ר</span>
+              <span class="apt-tag" data-i18n="lina.siot.tag2">📐 60 מ״ר</span>
               <span class="apt-tag" data-i18n="lina.siot.tag3">🎰 קזינו בבניין</span>
               <span class="apt-tag" data-i18n="lina.siot.tag4">🏊 בריכה · סאונה · ג׳קוזי</span>
             </div>
@@ -1693,17 +1796,21 @@
     // Mobile menu
     const burger = document.getElementById('navBurger');
     const mobileMenu = document.getElementById('navMobile');
+    const navOverlay = document.getElementById('navOverlay');
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileMenu);
     let menuOpen = false;
 
     burger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
+      if (navOverlay) navOverlay.classList.toggle('show', menuOpen);
       burger.setAttribute('aria-expanded', String(menuOpen));
     });
 
     function closeMobileMenu() {
       menuOpen = false;
       mobileMenu.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('show');
       burger.setAttribute('aria-expanded', 'false');
     }
 
@@ -1855,7 +1962,7 @@
       he: { atrium: 'דירת Atrium — ניו גודאורי', suits: 'דירת Suits — ניו גודאורי', loft2a: 'לופט 2 Balcony — ניו גודאורי', loft2b: 'לופט 2 — ניו גודאורי', siot: 'Suite Block 5 — ניו גודאורי', f2duplex: 'דופלקס F2 — ניו גודאורי' },
       en: { atrium: 'Atrium Apartment — New Gudauri', suits: 'Suits Apartment — New Gudauri', loft2a: 'Loft 2 Balcony — New Gudauri', loft2b: 'Loft 2 — New Gudauri', siot: 'Suite Block 5 — New Gudauri', f2duplex: 'F2 Duplex — New Gudauri' },
       ru: { atrium: 'Апартамент Atrium — Новый Гудаури', suits: 'Апартамент Suits — Новый Гудаури', loft2a: 'Loft 2 Balcony — Новый Гудаури', loft2b: 'Loft 2 — Новый Гудаури', siot: 'Suite Block 5 — Новый Гудаури', f2duplex: 'Дуплекс F2 — Новый Гудаури' },
-      ka: { atrium: 'Atrium სახლი — ახალი გუდაური', suits: 'Suits სახლი — ახალი გუდაური', loft2a: 'Loft 2 Balcony — ახალი გუდაური', loft2b: 'Loft 2 — ახალი გუდაური', siot: 'Suite Block 5 — ახალი გუდაური', f2duplex: 'F2 დუპლექსი — ახალი გუდაური' },
+      ge: { atrium: 'Atrium სახლი — ახალი გუდაური', suits: 'Suits სახლი — ახალი გუდაური', loft2a: 'Loft 2 Balcony — ახალი გუდაური', loft2b: 'Loft 2 — ახალი გუდაური', siot: 'Suite Block 5 — ახალი გუდაური', f2duplex: 'F2 დუპლექსი — ახალი გუდაური' },
     };
 
     function openPayModal(apt) {
@@ -1971,7 +2078,7 @@
       he: {
         dir: 'rtl', lang: 'he',
         'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי',
-        'nav.accommodation': 'לינה', 'nav.equipment': 'ציוד', 'nav.contact': 'צרו קשר', 'nav.cta': 'הזמן לינה',
+        'nav.accommodation': 'לינה', 'nav.equipment': 'ציוד', 'nav.investors': 'ליווי משקיעים', 'nav.contact': 'צרו קשר', 'nav.cta': 'הזמן לינה', 'nav.equipment_rental': 'השכרת ציוד',
         'lina.hero.kicker': 'ניו גודאורי · דירות CozyCasa',
         'lina.hero.title': 'לינה', 'lina.hero.accent': 'בגובה 2,200 מ׳',
         'lina.hero.sub': 'שש דירות פרמיום בלב הכפר — 50-100 מ׳ מהגונדולה, נוף הרים, ופינוק אמיתי.',
@@ -1980,7 +2087,7 @@
         'lina.apts.sub': 'כל דירה עוצבה למקסם את חוויית הסקי — גישה ישירה למדרונות, עיצוב מודרני, ושירות אישי בעברית.',
         'lina.atrium.building': 'בניין אטריום · ניו גודאורי',
         'lina.atrium.location': '100 מ׳ מהגונדולה · 150 מ׳ ממרכז הכפר',
-        'lina.atrium.tag1': '🛏️ מיטה זוגית', 'lina.atrium.tag2': '📐 36 מ"ר',
+        'lina.atrium.tag1': '🛏️ מיטה זוגית', 'lina.atrium.tag2': '📐 36 מ״ר',
         'lina.atrium.tag3': '🏂 Ski-in/Ski-out', 'lina.atrium.tag4': '🏔️ נוף מהמרפסת',
         'lina.atrium.desc': 'סטודיו נעים ומרופד בבניין האטריום היוקרתי — מיטה זוגית, מטבחון מאובזר, מקלחת ושירותים, וסלון מעוצב. מהמרפסת: נוף ישיר על מדרונות הסקי וההרים המושלגים. בוקר קפה עם נוף כזה — לא שוכחים.',
         'lina.atrium.am1': 'Ski Depot בבניין', 'lina.atrium.am2': 'בריכה מקורה + ג\'קוזי',
@@ -2021,18 +2128,18 @@
         'lina.loft2b.am1': 'Ski Depot בבניין', 'lina.loft2b.am2': 'WiFi מהיר', 'lina.loft2b.am3': 'שירות בעברית', 'lina.loft2b.am4': 'גישה ישירה למדרונות',
         'lina.loft2b.note': 'ℹ️ <strong>בקרוב:</strong> תמונות ופרטים נוספים יתעדכנו בקרוב. ליצירת קשר — וואטסאפ.',
         'lina.loft2b.badge': '✦ לופט 2 · ניו גודאורי', 'lina.loft2b.price_label': 'מחיר', 'lina.loft2b.price_contact': 'לפי פנייה ישירה',
-        'lina.siot.building': 'Suite / Block 5 · ניו גודאורי', 'lina.siot.location': 'Suite / Block 5 · ניו גודאורי',
-        'lina.siot.tag1': '👥 עד 7 נפשות', 'lina.siot.tag2': '🏠 קבוצות גדולות', 'lina.siot.tag3': '🏂 Ski-in/Ski-out', 'lina.siot.tag4': '🏔️ גובה 2,200 מ׳',
-        'lina.siot.desc': 'דירה מרווחת בבניין סיוט — מתאימה בצורה מושלמת לקבוצות עד 7 נפשות. אידיאלי למשפחות גדולות וחבורות חברים. תמונות ופרטים נוספים בקרוב.',
-        'lina.siot.am1': 'מתאים עד 7 נפשות', 'lina.siot.am2': 'Ski Depot בסביבה', 'lina.siot.am3': 'WiFi מהיר', 'lina.siot.am4': 'שירות בעברית',
-        'lina.siot.note': 'ℹ️ <strong>קבוצות גדולות:</strong> הדירה מתאימה עד 7 נפשות — מושלם למשפחות ולחבורות חברים. פרטים ומחיר — צרו קשר.',
-        'lina.siot.badge': '✦ עד 7 נפשות', 'lina.siot.price_label': 'מחיר', 'lina.siot.price_contact': 'לפי פנייה ישירה',
+        'lina.siot.building': 'Suite Block 5 · ניו גודאורי', 'lina.siot.location': '50 מ׳ מהגונדולה · ניו גודאורי',
+        'lina.siot.tag1': '👥 עד 7 נפשות', 'lina.siot.tag2': '📐 60 מ״ר', 'lina.siot.tag3': '🎰 קזינו בבניין', 'lina.siot.tag4': '🏊 בריכה · סאונה · ג׳קוזי',
+        'lina.siot.desc': 'יש דירות שמגיעים אליהן לישון — ויש Suite Block 5. שישים מטר של מרחב, חמישים מטר מהגונדולה, ובניין שמציע קזינו, בריכה מקורה מחוממת, סאונה וג׳קוזי. שתי מיטות זוגיות, ספה שנפתחת למיטה זוגית ומיטה שנפתחת ליחיד — שבעה אנשים, אפס פשרות.',
+        'lina.siot.am1': '2 מיטות זוגיות', 'lina.siot.am2': 'ספה נפתחת (זוגית) + מיטה נפתחת (יחיד)', 'lina.siot.am3': 'בריכה מקורה מחוממת', 'lina.siot.am4': 'סאונה + ג׳קוזי', 'lina.siot.am5': 'קזינו בתוך הבניין', 'lina.siot.am6': '50 מ׳ מהגונדולה הראשית',
+        'lina.siot.note': 'ℹ️ <strong>7 נפשות בנוחות מלאה:</strong> 2 מיטות זוגיות + ספה זוגית נפתחת + מיטה בודדת נפתחת. אחת הדירות הגדולות ביותר בניו גודאורי — עם בריכה, סאונה, ג׳קוזי וקזינו צמוד.',
+        'lina.siot.badge': '✦ עד 7 נפשות · 60 מ״ר', 'lina.siot.price_label': 'החל מ', 'lina.siot.price_contact': 'לפי פנייה ישירה', 'lina.per_night': '/ לילה',
         'lina.f2duplex.building': 'בניין F2 · ניו גודאורי', 'lina.f2duplex.location': 'בניין F2 · ניו גודאורי',
-        'lina.f2duplex.tag1': '🛏️ 4 חדרי שינה', 'lina.f2duplex.tag2': '📐 130 מ"ר', 'lina.f2duplex.tag3': '🔥 סאונה + אינפרא אדום', 'lina.f2duplex.tag4': '🚿 3 שירותים + 3 מקלחות',
-        'lina.f2duplex.desc': 'דופלקס יוקרה של 130 מ"ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי.',
-        'lina.f2duplex.am1': 'סאונה פרטית', 'lina.f2duplex.am2': 'אינפרא אדום', 'lina.f2duplex.am3': '4 חדרי שינה', 'lina.f2duplex.am4': '3 שירותים + 3 מקלחות', 'lina.f2duplex.am5': '130 מ"ר על שתי קומות', 'lina.f2duplex.am6': 'שירות בעברית',
-        'lina.f2duplex.note': 'ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ"ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.',
-        'lina.f2duplex.badge': '✦ 130 מ"ר · סאונה', 'lina.f2duplex.price_label': 'מחיר', 'lina.f2duplex.price_contact': 'לפי פנייה ישירה',
+        'lina.f2duplex.tag1': '🛏️ 4 חדרי שינה', 'lina.f2duplex.tag2': '📐 130 מ״ר', 'lina.f2duplex.tag3': '🔥 סאונה + אינפרא אדום', 'lina.f2duplex.tag4': '🚿 3 שירותים + 3 מקלחות',
+        'lina.f2duplex.desc': 'דופלקס יוקרה של 130 מ״ר בבניין F2 — 4 חדרי שינה, 3 שירותים, 3 מקלחות, סאונה פרטית ואינפרא אדום. אחת הדירות הגדולות והמפוארות ביותר בניו גודאורי.',
+        'lina.f2duplex.am1': 'סאונה פרטית', 'lina.f2duplex.am2': 'אינפרא אדום', 'lina.f2duplex.am3': '4 חדרי שינה', 'lina.f2duplex.am4': '3 שירותים + 3 מקלחות', 'lina.f2duplex.am5': '130 מ״ר על שתי קומות', 'lina.f2duplex.am6': 'שירות בעברית',
+        'lina.f2duplex.note': 'ℹ️ <strong>דופלקס פרמיום:</strong> 130 מ״ר על שתי קומות עם סאונה ואינפרא אדום פרטיים — אחת הדירות הגדולות ביותר בניו גודאורי.',
+        'lina.f2duplex.badge': '✦ 130 מ״ר · סאונה', 'lina.f2duplex.price_label': 'מחיר', 'lina.f2duplex.price_contact': 'לפי פנייה ישירה',
         'lina.trust.t1_label': '50-100 מ׳ מהגונדולה', 'lina.trust.t1_sub': 'גישה ישירה למדרונות',
         'lina.trust.t2_label': 'מדורגות ב-Airbnb', 'lina.trust.t2_sub': 'CozyCasa — ניו גודאורי',
         'lina.trust.t3_label': 'פרמיום ומשופץ', 'lina.trust.t3_sub': 'עיצוב מודרני ונוחות מרבית',
@@ -2049,12 +2156,12 @@
         'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
         'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.',
-        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.access': 'נגישות',
+        'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.cookies': 'הגדרות קוקיז',
       },
       en: {
         dir: 'ltr', lang: 'en',
         'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri',
-        'nav.accommodation': 'Accommodation', 'nav.equipment': 'Rentals', 'nav.contact': 'Contact', 'nav.cta': 'Book Stay',
+        'nav.accommodation': 'Accommodation', 'nav.equipment': 'Rentals', 'nav.investors': 'Investor Services', 'nav.contact': 'Contact', 'nav.cta': 'Book Stay', 'nav.equipment_rental': 'Gear Rental',
         'lina.hero.kicker': 'New Gudauri · CozyCasa Apartments',
         'lina.hero.title': 'Stay', 'lina.hero.accent': 'at 2,200 m',
         'lina.hero.sub': 'Six premium apartments in the heart of the village — 50–100 m from the gondola, mountain views, and real comfort.',
@@ -2104,12 +2211,12 @@
         'lina.loft2b.am1': 'Ski Depot in building', 'lina.loft2b.am2': 'Fast WiFi', 'lina.loft2b.am3': 'Personal service', 'lina.loft2b.am4': 'Direct slope access',
         'lina.loft2b.note': 'ℹ️ <strong>Coming soon:</strong> Photos and more details will be updated shortly. Contact us via WhatsApp.',
         'lina.loft2b.badge': '✦ Loft 2 · New Gudauri', 'lina.loft2b.price_label': 'Price', 'lina.loft2b.price_contact': 'Contact us for rates',
-        'lina.siot.building': 'Suite / Block 5 · New Gudauri', 'lina.siot.location': 'Suite / Block 5 · New Gudauri',
-        'lina.siot.tag1': '👥 Up to 7 guests', 'lina.siot.tag2': '🏠 Large groups', 'lina.siot.tag3': '🏂 Ski-in/Ski-out', 'lina.siot.tag4': '🏔️ 2,200 m altitude',
-        'lina.siot.desc': 'Spacious apartment in Siot building — perfect for groups of up to 7 people. Ideal for large families and friend groups. Photos and details coming soon.',
-        'lina.siot.am1': 'Suitable for up to 7 guests', 'lina.siot.am2': 'Ski Depot nearby', 'lina.siot.am3': 'Fast WiFi', 'lina.siot.am4': 'Personal service',
-        'lina.siot.note': 'ℹ️ <strong>Large groups:</strong> This apartment fits up to 7 guests — perfect for families and friend groups. Contact us for details and pricing.',
-        'lina.siot.badge': '✦ Up to 7 guests', 'lina.siot.price_label': 'Price', 'lina.siot.price_contact': 'Contact us for rates',
+        'lina.siot.building': 'Suite Block 5 · New Gudauri', 'lina.siot.location': '50 m from the gondola · New Gudauri',
+        'lina.siot.tag1': '👥 Up to 7 guests', 'lina.siot.tag2': '📐 60 m²', 'lina.siot.tag3': '🎰 Casino in the building', 'lina.siot.tag4': '🏊 Pool · Sauna · Jacuzzi',
+        'lina.siot.desc': 'Some apartments are just a place to sleep — and then there\'s Suite Block 5. Sixty square meters of space, fifty meters from the gondola, in a building with a casino, heated indoor pool, sauna and jacuzzi. Two double beds, a sofa that folds into a double and a bed that folds out for one — seven guests, zero compromises.',
+        'lina.siot.am1': '2 double beds', 'lina.siot.am2': 'Sofa bed (double) + fold-out bed (single)', 'lina.siot.am3': 'Heated indoor pool', 'lina.siot.am4': 'Sauna + jacuzzi', 'lina.siot.am5': 'Casino inside the building', 'lina.siot.am6': '50 m from the main gondola',
+        'lina.siot.note': 'ℹ️ <strong>7 guests in full comfort:</strong> 2 double beds + double sofa bed + single fold-out bed. One of the largest apartments in New Gudauri — with pool, sauna, jacuzzi and an adjacent casino.',
+        'lina.siot.badge': '✦ Up to 7 guests · 60 m²', 'lina.siot.price_label': 'From', 'lina.siot.price_contact': 'Contact us for rates', 'lina.per_night': '/ night',
         'lina.f2duplex.building': 'Building F2 · New Gudauri', 'lina.f2duplex.location': 'Building F2 · New Gudauri',
         'lina.f2duplex.tag1': '🛏️ 4 Bedrooms', 'lina.f2duplex.tag2': '📐 130 m²', 'lina.f2duplex.tag3': '🔥 Sauna + Infrared', 'lina.f2duplex.tag4': '🚿 3 bathrooms + 3 showers',
         'lina.f2duplex.desc': '130 m² luxury duplex in building F2 — 4 bedrooms, 3 toilets, 3 showers, private sauna and infrared. One of the largest and most luxurious apartments in New Gudauri.',
@@ -2132,12 +2239,12 @@
         'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
         'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. All rights reserved.',
-        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.access': 'Accessibility',
+        'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.cookies': 'Cookie Settings',
       },
       ru: {
         dir: 'ltr', lang: 'ru',
         'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури',
-        'nav.accommodation': 'Жильё', 'nav.equipment': 'Прокат', 'nav.contact': 'Контакты', 'nav.cta': 'Забронировать',
+        'nav.accommodation': 'Жильё', 'nav.equipment': 'Прокат', 'nav.investors': 'Инвесторам', 'nav.contact': 'Контакты', 'nav.cta': 'Забронировать', 'nav.equipment_rental': 'Прокат снаряжения',
         'lina.hero.kicker': 'Новый Гудаури · Апартаменты CozyCasa',
         'lina.hero.title': 'Проживание', 'lina.hero.accent': 'на высоте 3 279 м',
         'lina.hero.sub': 'Шесть премиальных апартаментов в центре деревни — 50–100 м от гондолы, горные виды и настоящий комфорт.',
@@ -2187,12 +2294,12 @@
         'lina.loft2b.am1': 'Ski Depot в здании', 'lina.loft2b.am2': 'Быстрый WiFi', 'lina.loft2b.am3': 'Персональный сервис', 'lina.loft2b.am4': 'Прямой доступ к склонам',
         'lina.loft2b.note': 'ℹ️ <strong>Скоро:</strong> Фотографии и подробности появятся в ближайшее время. Для связи — WhatsApp.',
         'lina.loft2b.badge': '✦ Loft 2 · Новый Гудаури', 'lina.loft2b.price_label': 'Цена', 'lina.loft2b.price_contact': 'По запросу',
-        'lina.siot.building': 'Suite / Block 5 · Новый Гудаури', 'lina.siot.location': 'Suite / Block 5 · Новый Гудаури',
-        'lina.siot.tag1': '👥 До 7 гостей', 'lina.siot.tag2': '🏠 Большие группы', 'lina.siot.tag3': '🏂 Ski-in/Ski-out', 'lina.siot.tag4': '🏔️ 2 200 м высота',
-        'lina.siot.desc': 'Просторный апартамент в здании Siot — идеально подходит для групп до 7 человек. Отлично для больших семей и компаний друзей. Фотографии и подробности скоро.',
-        'lina.siot.am1': 'Подходит для 7 гостей', 'lina.siot.am2': 'Ski Depot рядом', 'lina.siot.am3': 'Быстрый WiFi', 'lina.siot.am4': 'Персональный сервис',
-        'lina.siot.note': 'ℹ️ <strong>Большие группы:</strong> Апартамент вмещает до 7 гостей — идеально для семей и компаний. Цена по запросу.',
-        'lina.siot.badge': '✦ До 7 гостей', 'lina.siot.price_label': 'Цена', 'lina.siot.price_contact': 'По запросу',
+        'lina.siot.building': 'Suite Block 5 · Новый Гудаури', 'lina.siot.location': '50 м от гондолы · Новый Гудаури',
+        'lina.siot.tag1': '👥 До 7 гостей', 'lina.siot.tag2': '📐 60 м²', 'lina.siot.tag3': '🎰 Казино в здании', 'lina.siot.tag4': '🏊 Бассейн · Сауна · Джакузи',
+        'lina.siot.desc': 'Есть апартаменты, куда приезжают только переночевать, — а есть Suite Block 5. Шестьдесят метров пространства, пятьдесят метров от гондолы, в здании с казино, крытым подогреваемым бассейном, сауной и джакузи. Две двуспальные кровати, диван, раскладывающийся в двуспальную кровать, и кровать, раскладывающаяся для одного, — семь гостей, ноль компромиссов.',
+        'lina.siot.am1': '2 двуспальные кровати', 'lina.siot.am2': 'Раскладной диван (двойной) + раскладная кровать (одиночная)', 'lina.siot.am3': 'Крытый подогреваемый бассейн', 'lina.siot.am4': 'Сауна + джакузи', 'lina.siot.am5': 'Казино в здании', 'lina.siot.am6': '50 м от главной гондолы',
+        'lina.siot.note': 'ℹ️ <strong>7 гостей с полным комфортом:</strong> 2 двуспальные кровати + двойной раскладной диван + одиночная раскладная кровать. Один из самых больших апартаментов в Новом Гудаури — с бассейном, сауной, джакузи и казино рядом.',
+        'lina.siot.badge': '✦ До 7 гостей · 60 м²', 'lina.siot.price_label': 'От', 'lina.siot.price_contact': 'По запросу', 'lina.per_night': '/ ночь',
         'lina.f2duplex.building': 'Здание F2 · Новый Гудаури', 'lina.f2duplex.location': 'Здание F2 · Новый Гудаури',
         'lina.f2duplex.tag1': '🛏️ 4 спальни', 'lina.f2duplex.tag2': '📐 130 м²', 'lina.f2duplex.tag3': '🔥 Сауна + инфракрасная', 'lina.f2duplex.tag4': '🚿 3 туалета + 3 душа',
         'lina.f2duplex.desc': 'Роскошный дуплекс 130 м² в здании F2 — 4 спальни, 3 туалета, 3 душа, частная сауна и инфракрасная кабина. Один из самых больших апартаментов в Новом Гудаури.',
@@ -2215,12 +2322,12 @@
         'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
         'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. Все права защищены.',
-        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.access': 'Доступность',
+        'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.cookies': 'Настройки cookie',
       },
-      ka: {
+      ge: {
         dir: 'ltr', lang: 'ka',
         'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური',
-        'nav.accommodation': 'განთავსება', 'nav.equipment': 'ინვენტარი', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაჯავშნე',
+        'nav.accommodation': 'განთავსება', 'nav.equipment': 'ინვენტარი', 'nav.investors': 'ინვესტორებისთვის', 'nav.contact': 'კონტაქტი', 'nav.cta': 'დაჯავშნე', 'nav.equipment_rental': 'ინვენტარის გაქირავება',
         'lina.hero.kicker': 'ახალი გუდაური · CozyCasa სახლები',
         'lina.hero.title': 'განთავსება', 'lina.hero.accent': '2,200 მ სიმაღლეზე',
         'lina.hero.sub': 'ექვსი პრემიუმ სახლი სოფლის გულში — 50–100 მ გონდოლიდან, მთის ხედები და ნამდვილი კომფორტი.',
@@ -2270,12 +2377,12 @@
         'lina.loft2b.am1': 'Ski Depot შენობაში', 'lina.loft2b.am2': 'სწრაფი WiFi', 'lina.loft2b.am3': 'პერსონალური სერვისი', 'lina.loft2b.am4': 'ფერდობებზე პირდაპირი წვდომა',
         'lina.loft2b.note': 'ℹ️ <strong>მალე:</strong> ფოტოები და დეტალები მალე განახლდება. დასაკავშირებლად — WhatsApp.',
         'lina.loft2b.badge': '✦ Loft 2 · ახალი გუდაური', 'lina.loft2b.price_label': 'ფასი', 'lina.loft2b.price_contact': 'მოთხოვნით',
-        'lina.siot.building': 'Suite / Block 5 · ახალი გუდაური', 'lina.siot.location': 'Suite / Block 5 · ახალი გუდაური',
-        'lina.siot.tag1': '👥  7-მდე სტუმარი', 'lina.siot.tag2': '🏠 დიდი ჯგუფები', 'lina.siot.tag3': '🏂 Ski-in/Ski-out', 'lina.siot.tag4': '🏔️ 2,200 მ სიმაღლე',
-        'lina.siot.desc': 'ფართო სახლი Siot შენობაში — სრულყოფილია 7 კაცამდე ჯგუფებისთვის. იდეალურია დიდი ოჯახებისა და მეგობრების ჯგუფებისთვის.',
-        'lina.siot.am1': '7-მდე სტუმრისთვის', 'lina.siot.am2': 'Ski Depot მახლობლად', 'lina.siot.am3': 'სწრაფი WiFi', 'lina.siot.am4': 'პერსონალური სერვისი',
-        'lina.siot.note': 'ℹ️ <strong>დიდი ჯგუფები:</strong> სახლი 7-მდე სტუმრის განთავსებას ითვალისწინებს. ფასი — მოთხოვნით.',
-        'lina.siot.badge': '✦ 7-მდე სტუმარი', 'lina.siot.price_label': 'ფასი', 'lina.siot.price_contact': 'მოთხოვნით',
+        'lina.siot.building': 'Suite Block 5 · ახალი გუდაური', 'lina.siot.location': 'გონდოლადან 50 მ · ახალი გუდაური',
+        'lina.siot.tag1': '👥 7-მდე სტუმარი', 'lina.siot.tag2': '📐 60 მ²', 'lina.siot.tag3': '🎰 კაზინო შენობაში', 'lina.siot.tag4': '🏊 აუზი · საუნა · ჯაკუზი',
+        'lina.siot.desc': 'არის სახლები, სადაც მხოლოდ დასაძინებლად მიდიხარ — და არის Suite Block 5. სამოცი კვადრატული მეტრი სივრცე, ორმოცდაათი მეტრი გონდოლადან, შენობაში კაზინოთი, დახურული გათბობადი აუზით, საუნითა და ჯაკუზით. ორი ორადგილიანი საწოლი, დივანი, რომელიც ორადგილიან საწოლად იშლება, და ერთადგილიანი გასაშლელი საწოლი — შვიდი სტუმარი, ნულოვანი კომპრომისი.',
+        'lina.siot.am1': '2 ორადგილიანი საწოლი', 'lina.siot.am2': 'გასაშლელი დივანი (ორადგილიანი) + გასაშლელი საწოლი (ერთადგილიანი)', 'lina.siot.am3': 'დახურული გათბობადი აუზი', 'lina.siot.am4': 'საუნა + ჯაკუზი', 'lina.siot.am5': 'კაზინო შენობაში', 'lina.siot.am6': '50 მ მთავარი გონდოლადან',
+        'lina.siot.note': 'ℹ️ <strong>7 სტუმარი სრულ კომფორტში:</strong> 2 ორადგილიანი საწოლი + ორადგილიანი გასაშლელი დივანი + ერთადგილიანი გასაშლელი საწოლი. ერთ-ერთი ყველაზე დიდი სახლი ახალ გუდაურში — აუზით, საუნით, ჯაკუზითა და მიმდებარე კაზინოთი.',
+        'lina.siot.badge': '✦ 7-მდე სტუმარი · 60 მ²', 'lina.siot.price_label': 'დან', 'lina.siot.price_contact': 'მოთხოვნით', 'lina.per_night': '/ ღამე',
         'lina.f2duplex.building': 'F2 შენობა · ახალი გუდაური', 'lina.f2duplex.location': 'F2 შენობა · ახალი გუდაური',
         'lina.f2duplex.tag1': '🛏️ 4 საძინებელი', 'lina.f2duplex.tag2': '📐 130 მ²', 'lina.f2duplex.tag3': '🔥 სანა + ინფრაწითელი', 'lina.f2duplex.tag4': '🚿 3 სააბაზანო + 3 შხაპი',
         'lina.f2duplex.desc': '130 მ² ლუქს დუპლექსი F2 შენობაში — 4 საძინებელი, 3 სააბაზანო, 3 შხაპი, კერძო სანა და ინფრაწითელი. ახალი გუდაურის ერთ-ერთი უდიდესი სახლი.',
@@ -2298,7 +2405,7 @@
         'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები.',
         'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. ყველა უფლება დაცულია.',
-        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.access': 'ხელმისაწვდომობა',
+        'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.cookies': 'Cookie პარამეტრები',
       }
     };
 
@@ -2323,6 +2430,10 @@
       document.querySelectorAll('.lang-btn').forEach(function(btn) {
         btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
       });
+      document.querySelectorAll('a[data-internal]').forEach(function(a) {
+        var base = a.getAttribute('data-internal');
+        a.href = lang !== 'he' ? base + '?lang=' + lang : base;
+      });
       localStorage.setItem('gudauri-lang', lang);
     }
 
@@ -2341,7 +2452,7 @@
   <script src="cookie-consent.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
-  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
   <!-- Falling snow canvas animation -->

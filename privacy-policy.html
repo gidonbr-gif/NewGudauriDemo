@@ -62,6 +62,22 @@
       border-radius: 8px; transition: all 0.15s;
     }
     .nav-back:hover { background: rgba(56,189,248,0.08); text-decoration: none; }
+    .nav-lang { display: flex; align-items: center; gap: 4px; }
+    .nav-lang button {
+      background: none; border: 1px solid transparent; border-radius: 4px;
+      padding: 4px 6px; cursor: pointer; opacity: 0.6; transition: all 0.15s;
+    }
+    .nav-lang button:hover { opacity: 1; border-color: rgba(255,255,255,0.2); }
+    .nav-lang button.lang-active { opacity: 1; border-color: var(--electric); }
+    .nav-lang img { display: block; border-radius: 2px; }
+    .lang-note {
+      display: none; background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 10px; padding: 12px 18px; margin: 20px 0; font-size: 14px;
+      color: var(--slate-200); text-align: center;
+    }
+    html[dir="ltr"] .lang-note { display: block; }
+    html[dir="ltr"] body { direction: ltr; text-align: left; }
+    html[dir="ltr"] .cookie-table th { text-align: left; }
 
     /* HERO */
     .page-hero {
@@ -142,23 +158,28 @@
   <!-- NAV -->
   <nav class="nav" aria-label="ניווט ראשי">
     <a href="index.html" class="nav-logo">New<span>Gudauri</span></a>
-    <a href="index.html" class="nav-back">
-      ← חזרה לאתר
-    </a>
+    <div class="nav-lang" role="group" aria-label="Language">
+      <button class="lang-active" data-lang="he" onclick="setLegalLang('he')" title="עברית"><img src="https://flagcdn.com/24x18/il.png" width="24" height="18" alt="ישראל"></button>
+      <button data-lang="en" onclick="setLegalLang('en')" title="English"><img src="https://flagcdn.com/24x18/us.png" width="24" height="18" alt="USA"></button>
+      <button data-lang="ru" onclick="setLegalLang('ru')" title="Русский"><img src="https://flagcdn.com/24x18/ru.png" width="24" height="18" alt="Russia"></button>
+      <button data-lang="ge" onclick="setLegalLang('ge')" title="ქართული"><img src="https://flagcdn.com/24x18/ge.png" width="24" height="18" alt="Georgia"></button>
+    </div>
+    <a href="index.html" class="nav-back" id="nav-back-link">← חזרה לאתר</a>
   </nav>
 
   <!-- HERO -->
   <div class="page-hero">
     <div id="lottie-badge" class="lottie-badge-anim" aria-hidden="true"></div>
-    <div class="badge">🔒 מסמך משפטי</div>
-    <h1>מדיניות פרטיות</h1>
-    <p>כיצד אנו אוספים, משתמשים ומגנים על המידע שלך</p>
+    <div class="badge" id="hero-badge">🔒 מסמך משפטי</div>
+    <h1 id="hero-title">מדיניות פרטיות</h1>
+    <p id="hero-sub">כיצד אנו אוספים, משתמשים ומגנים על המידע שלך</p>
   </div>
 
   <!-- CONTENT -->
   <main class="content-wrap" id="main">
 
     <div class="updated-chip">עודכן לאחרונה: מאי 2025 · גרסה 1.0</div>
+    <div class="lang-note" id="lang-note"></div>
 
     <div class="section">
       <h2>1. כללי</h2>
@@ -341,6 +362,36 @@
       <a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a>
     </div>
   </footer>
+
+  <script>
+    var LEGAL_T = {
+      he: { dir:'rtl', lang:'he', back:'← חזרה לאתר', badge:'🔒 מסמך משפטי', title:'מדיניות פרטיות', sub:'כיצד אנו אוספים, משתמשים ומגנים על המידע שלך', note:'' },
+      en: { dir:'ltr', lang:'en', back:'← Back to site', badge:'🔒 Legal Document', title:'Privacy Policy', sub:'How we collect, use and protect your information', note:'📌 This privacy policy is governed by Israeli law (Protection of Privacy Law, 5741-1981) and is available in Hebrew only. Key points: we collect contact details (name, email, phone) voluntarily provided via forms; data is not sold to third parties; cookies are used for analytics; you may request data deletion by emailing gogudauri@newgudauri.net.' },
+      ru: { dir:'ltr', lang:'ru', back:'← На сайт', badge:'🔒 Юридический документ', title:'Политика конфиденциальности', sub:'Как мы собираем, используем и защищаем ваши данные', note:'📌 Настоящая политика конфиденциальности регулируется израильским законодательством и доступна только на иврите. Основные положения: мы собираем контактные данные, предоставляемые через формы; данные не передаются третьим лицам; используются аналитические cookie; для удаления данных пишите на gogudauri@newgudauri.net.' },
+      ge: { dir:'ltr', lang:'ka', back:'← საიტზე დაბრუნება', badge:'🔒 იურიდიული დოკუმენტი', title:'კონფიდენციალობის პოლიტიკა', sub:'როგორ ვაგროვებთ, ვიყენებთ და ვიცავთ თქვენს ინფორმაციას', note:'📌 ეს კონფიდენციალობის პოლიტიკა ექვემდებარება ისრაელის კანონმდებლობას და ხელმისაწვდომია მხოლოდ ებრაულ ენაზე. ძირითადი დებულებები: ვაგროვებთ საკონტაქტო მონაცემებს ფორმების საშუალებით; მონაცემები არ გადაეცემა მესამე მხარეებს; გამოიყენება ანალიტიკური cookie; მონაცემების წასაშლელად მოგვწერეთ gogudauri@newgudauri.net.' }
+    };
+    function setLegalLang(lang) {
+      var t = LEGAL_T[lang] || LEGAL_T.he;
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.getElementById('nav-back-link').textContent = t.back;
+      document.getElementById('hero-badge').textContent = t.badge;
+      document.getElementById('hero-title').textContent = t.title;
+      document.getElementById('hero-sub').textContent = t.sub;
+      var noteEl = document.getElementById('lang-note');
+      noteEl.textContent = t.note;
+      document.querySelectorAll('.nav-lang button').forEach(function(btn) {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+      localStorage.setItem('gudauri-lang', lang);
+    }
+    (function() {
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var savedLang = localStorage.getItem('gudauri-lang');
+      var lang = (urlLang && LEGAL_T[urlLang]) ? urlLang : (savedLang && LEGAL_T[savedLang]) ? savedLang : 'he';
+      setLegalLang(lang);
+    })();
+  </script>
 
   <!-- Cookie Consent -->
   <script src="cookie-consent.js" defer></script>

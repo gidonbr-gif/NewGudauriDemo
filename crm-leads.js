@@ -10,6 +10,7 @@
   function pageService() {
     var path = window.location.pathname.toLowerCase();
     if (path.indexOf('lina') !== -1) return 'apartments';
+    if (path.indexOf('equipment') !== -1) return 'equipment';
     if (path.indexOf('new-gudauri-info') !== -1) return 'equipment';
     return 'travel';
   }

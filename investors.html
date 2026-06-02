@@ -1,0 +1,2266 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ליווי משקיעים בנדל״ן בגודאורי — גדעון בריטבסקי. 4+ שנות ניסיון, 20+ עסקאות מלוות. איתור נכסים, ניהול שוטף, ליווי משפטי ופיננסי." />
+  <title>ליווי משקיעים בגודאורי — גדעון בריטבסקי | Gudauri Helper</title>
+
+  <link rel="canonical" href="https://www.newgudauri.net/investors.html" />
+  <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.newgudauri.net/investors.html" />
+  <meta property="og:title" content="ליווי משקיעים בגודאורי — גדעון בריטבסקי" />
+  <meta property="og:description" content="ליווי אישי מלא להשקעה בנדל״ן ב-New Gudauri. מהחלום עד המפתח." />
+  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="Gudauri Helper" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep-slate:     #1E293B;
+      --slate-900:      #0F172A;
+      --slate-800:      #1E293B;
+      --slate-700:      #334155;
+      --slate-600:      #475569;
+      --slate-400:      #94A3B8;
+      --slate-200:      #E2E8F0;
+      --electric:       #0EA5E9;
+      --electric-light: #38BDF8;
+      --electric-dark:  #0284C7;
+      --snow:           #F8FAFC;
+      --white:          #FFFFFF;
+      --glass-bg:       rgba(255,255,255,0.05);
+      --glass-border:   rgba(255,255,255,0.10);
+      --overlay:        rgba(15,23,42,0.65);
+      --nav-h:          72px;
+      --radius:         16px;
+      --transition:     200ms ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: var(--slate-900);
+      color: var(--snow);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    html[dir="ltr"] body { direction: ltr; text-align: left; }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .electric { color: var(--electric); }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══ NAV ═══ */
+    #nav {
+      position: fixed;
+      top: 0; inset-inline: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #nav.scrolled {
+      background: rgba(15,23,42,0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--glass-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-logo-text { font-size: 1.125rem; font-weight: 800; color: var(--snow); letter-spacing: -0.02em; }
+    .nav-logo-text span { color: var(--electric); }
+    .nav-end { display: flex; align-items: center; gap: 16px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--slate-200);
+      border-radius: 6px;
+      padding: 6px 9px;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+    }
+    .nav-links a.active { color: var(--electric-light); font-weight: 700; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--electric); color: var(--white);
+      font-size: 0.9375rem; font-weight: 700;
+      padding: 10px 22px; border-radius: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap; cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--electric-dark);
+      box-shadow: 0 4px 20px rgba(14,165,233,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--snow);
+      font-size: 0.9375rem; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1.5px solid var(--glass-border);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      cursor: pointer; white-space: nowrap;
+    }
+    .btn-ghost:hover {
+      border-color: var(--electric);
+      background: rgba(14,165,233,0.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: #fff;
+      font-size: 1rem; font-weight: 700;
+      padding: 14px 30px; border-radius: 10px;
+      border: none; cursor: pointer; white-space: nowrap;
+      box-shadow: 0 0 0 0 rgba(37,211,102,0);
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      animation: wa-pulse 2.4s ease-in-out infinite;
+      text-decoration: none;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+      60%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      animation: none;
+    }
+
+    .lang-switcher { display: flex; align-items: center; gap: 2px; }
+    .lang-btn {
+      background: transparent; border: 1.5px solid transparent;
+      border-radius: 6px; padding: 4px 6px; cursor: pointer;
+      font-size: 1.15rem; line-height: 1;
+      transition: border-color 200ms ease, background 200ms ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lang-btn:hover { border-color: var(--glass-border); background: var(--glass-bg); }
+    .lang-btn.lang-active { border-color: var(--electric); }
+    .lang-btn img { display: block; border-radius: 2px; }
+
+    /* ── FLOATING WHATSAPP ── */
+    .wa-fab {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      z-index: 998;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      text-decoration: none;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.65); }
+    .wa-fab svg { width: 30px; height: 30px; }
+    @media (max-width: 640px) {
+      .wa-fab { bottom: 16px; left: 16px; width: 50px; height: 50px; }
+      .wa-fab svg { width: 26px; height: 26px; }
+    }
+
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: transparent; padding: 4px; cursor: pointer;
+      border-radius: 8px;
+      animation: navBurgerGlow 1.8s ease-out infinite;
+    }
+    @keyframes navBurgerGlow {
+      0%   { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
+      70%  { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7), 0 0 0 12px rgba(14,165,233,0); }
+      100% { box-shadow: 0 0 6px 1px rgba(14,165,233,0.7); }
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--snow); border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .nav-mobile {
+      display: none;
+      position: fixed; top: var(--nav-h); inset-inline: 0;
+      background: rgba(15,23,42,0.97);
+      backdrop-filter: blur(16px);
+      padding: 24px; flex-direction: column; gap: 20px;
+      border-top: 1px solid var(--glass-border);
+      z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1.125rem; font-weight: 500;
+      color: var(--slate-200); padding: 8px 0;
+      border-bottom: 1px solid var(--glass-border);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover, .nav-mobile a.active { color: var(--electric); }
+
+    /* ── CTA highlight on key nav links + hamburger attention hint ── */
+    .nav-links a[data-i18n="nav.equipment"],
+    .nav-links a[data-i18n="nav.accommodation"],
+    .nav-links a[data-i18n="nav.investors"] {
+      color: var(--electric-light, #38bdf8);
+      font-weight: 700;
+      background: rgba(14,165,233,0.10);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.35), 0 0 10px rgba(14,165,233,0.22);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-links a[data-i18n="nav.equipment"]:hover,
+    .nav-links a[data-i18n="nav.accommodation"]:hover,
+    .nav-links a[data-i18n="nav.investors"]:hover {
+      background: rgba(14,165,233,0.20);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.6), 0 0 16px rgba(14,165,233,0.45);
+    }
+    @keyframes navPromoPulse {
+      0%,100% { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.30), 0 0 8px rgba(14,165,233,0.18); }
+      50%     { box-shadow: inset 0 0 0 1px rgba(56,189,248,0.55), 0 0 16px rgba(14,165,233,0.42); }
+    }
+    .nav-mobile a[data-i18n="nav.equipment"],
+    .nav-mobile a[data-i18n="nav.accommodation"],
+    .nav-mobile a[data-i18n="nav.investors"] { color: var(--electric-light, #38bdf8); font-weight: 700; }
+    .nav-mobile a[data-i18n="nav.equipment"]::before,
+    .nav-mobile a[data-i18n="nav.accommodation"]::before,
+    .nav-mobile a[data-i18n="nav.investors"]::before {
+      content: "\2726";
+      margin-inline-end: 8px;
+      color: var(--electric, #0ea5e9);
+      text-shadow: 0 0 8px rgba(14,165,233,0.85);
+      animation: navPromoSpark 1.8s ease-in-out infinite;
+    }
+    @keyframes navPromoSpark { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+    /* hamburger attention hint (mobile) */
+    .nav-inner { position: relative; }
+    .nav-burger { position: relative; }
+    /* centered key-page CTA strip (glowing, symmetric) */
+    .nav-cta-strip {
+      display: none;
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .nav-cta-strip-link {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--electric-light, #38bdf8);
+      padding: 6px 13px; border-radius: 999px;
+      background: rgba(14,165,233,0.12);
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.4), 0 0 12px rgba(14,165,233,0.3);
+      white-space: nowrap;
+      transition: background var(--transition), box-shadow var(--transition), color var(--transition);
+      animation: navPromoPulse 2.8s ease-in-out infinite;
+    }
+    .nav-cta-strip-link:hover {
+      background: rgba(14,165,233,0.25); color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(56,189,248,0.7), 0 0 18px rgba(14,165,233,0.5);
+    }
+    @media (min-width: 900px) and (max-width: 1280px) {
+      .nav-cta-strip { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-cta-strip-link { animation: none !important; } }
+    /* transparent click-catcher to close the mobile menu on any outside tap */
+    .nav-overlay { display: none; position: fixed; inset: 0; z-index: 90; background: transparent; }
+    .nav-overlay.show { display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-links a[data-i18n="nav.equipment"],
+      .nav-links a[data-i18n="nav.accommodation"],
+      .nav-links a[data-i18n="nav.investors"],
+      .nav-mobile a[data-i18n]::before { animation: none !important; }
+    }
+    @media (max-width: 1280px) {
+      .nav-links, .nav-cta-desktop { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ═══ HERO ═══ */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .parallax-scene { position: absolute; inset: 0; }
+    .parallax-layer {
+      position: absolute;
+      top: -30%; left: 0;
+      width: 100%; height: 160%;
+      background-size: cover; background-position: center;
+      will-change: transform;
+    }
+    .layer-sky {
+      background-image: url('images/investors-hero.webp');
+      z-index: 1;
+    }
+    .layer-peaks { display: none; }
+    .layer-ridge  { display: none; }
+    .layer-resort { display: none; }
+    .parallax-overlay {
+      position: absolute; inset: 0; z-index: 5;
+      background: linear-gradient(to bottom,
+        rgba(15,23,42,0.25) 0%,
+        rgba(15,23,42,0.55) 60%,
+        rgba(15,23,42,0.85) 100%
+      );
+    }
+    .snow-particle {
+      position: absolute; border-radius: 50%;
+      background: white; pointer-events: none; z-index: 9;
+      animation: snowfall linear infinite; top: -10px;
+    }
+    @keyframes snowfall {
+      0%   { transform: translateY(-10px) translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(105vh) translateX(20px); opacity: 0; }
+    }
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 8; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+      padding-top: var(--nav-h);
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #fff;
+      background: rgba(14,165,233,0.30);
+      border: 1.5px solid rgba(14,165,233,0.65);
+      border-radius: 999px; padding: 8px 20px; margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(14,165,233,0.25);
+    }
+    .hero-kicker::before {
+      content: '';
+      display: inline-block; width: 7px; height: 7px;
+      background: #fff; border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+      box-shadow: 0 0 6px rgba(255,255,255,0.8);
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-headline {
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.03em; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-headline-accent {
+      background: linear-gradient(135deg, var(--electric) 0%, var(--electric-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub-headline {
+      font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+      font-weight: 500; color: rgba(248,250,252,0.92);
+      max-width: 640px; margin: 22px auto 14px; line-height: 1.5;
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      font-weight: 400; color: rgba(248,250,252,0.65);
+      max-width: 540px; margin: 0 auto 40px; line-height: 1.65;
+    }
+    .hero-ctas {
+      display: flex; gap: 14px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .hero-ctas .btn-whatsapp,
+    .hero-ctas .btn-ghost {
+      font-size: 1rem; padding: 14px 30px; border-radius: 10px;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 20px; left: 50%;
+      transform: translateX(-50%); z-index: 10;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--electric); font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    }
+    .scroll-mouse {
+      width: 24px; height: 38px;
+      border: 2px solid var(--electric); border-radius: 12px;
+      display: flex; align-items: flex-start; justify-content: center; padding-top: 6px;
+    }
+    .scroll-wheel {
+      width: 4px; height: 8px;
+      background: var(--electric); border-radius: 2px;
+      animation: scroll-anim 2s ease-in-out infinite;
+    }
+    @keyframes scroll-anim {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(14px); opacity: 0; }
+    }
+
+    /* ═══ STATS ═══ */
+    #stats {
+      background: linear-gradient(90deg, var(--slate-900) 0%, #0C1930 50%, var(--slate-900) 100%);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item {
+      padding: 36px 20px; text-align: center;
+      position: relative; transition: background var(--transition);
+    }
+    .stat-item:not(:last-child)::after {
+      content: ''; position: absolute;
+      top: 20%; bottom: 20%; left: 0;
+      width: 1px; background: var(--glass-border);
+    }
+    .stat-item:hover { background: rgba(14,165,233,0.05); }
+    .stat-value {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 900; color: var(--electric);
+      line-height: 1; letter-spacing: -0.03em;
+      display: block; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.875rem; font-weight: 500; color: var(--slate-400); line-height: 1.4; }
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+    }
+
+    /* ═══ SECTIONS BASE ═══ */
+    .section { padding: 96px 0; position: relative; overflow: hidden; }
+    .section-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0.07; pointer-events: none;
+    }
+    .section-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 2; }
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 900; color: var(--snow);
+      line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .section-sub {
+      font-size: 1.0625rem; color: var(--slate-400);
+      max-width: 540px; margin: 16px auto 0; line-height: 1.65;
+    }
+
+    /* ═══ GLASS CARDS ═══ */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 36px 28px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .card-icon {
+      width: 52px; height: 52px;
+      background: rgba(14,165,233,0.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .card-icon svg { width: 26px; height: 26px; color: var(--electric); }
+    .card-icon canvas[id^="li-"] { display: block; width: 40px; height: 40px; }
+    .card-title { font-size: 1.25rem; font-weight: 800; color: var(--snow); margin-bottom: 12px; line-height: 1.25; }
+    .card-text { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; }
+    .card-badge {
+      display: inline-block; margin-top: 18px;
+      font-size: 0.8125rem; font-weight: 700;
+      color: var(--electric); background: rgba(14,165,233,0.1);
+      border-radius: 999px; padding: 4px 12px;
+    }
+
+    /* ─── Expandable card read-more ─── */
+    .card-more {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.3s ease;
+      margin-top: 0;
+    }
+    .glass-card.expanded .card-more {
+      max-height: 700px; opacity: 1; margin-top: 14px;
+    }
+    .card-more .card-text { margin-top: 0; }
+    .card-more .card-text + .card-text { margin-top: 10px; }
+    .card-more ul {
+      margin: 10px 0 0 0; padding: 0;
+      list-style: none; display: flex; flex-direction: column; gap: 7px;
+    }
+    .card-more ul li {
+      font-size: 0.875rem; color: var(--slate-400); line-height: 1.55;
+      padding-right: 18px; position: relative;
+    }
+    .card-more ul li::before {
+      content: '←'; position: absolute; right: 0;
+      color: var(--electric); font-size: 0.75rem; line-height: 1.7;
+    }
+    .card-toggle {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px; font-size: 0.8125rem; font-weight: 700;
+      color: var(--electric); background: rgba(14,165,233,0.08);
+      border: 1px solid rgba(14,165,233,0.22); border-radius: 999px;
+      padding: 5px 13px; cursor: pointer; font-family: inherit;
+      transition: background 200ms ease, border-color 200ms ease;
+    }
+    .card-toggle:hover { background: rgba(14,165,233,0.16); border-color: rgba(14,165,233,0.45); }
+    .card-toggle .ct-chevron {
+      width: 14px; height: 14px; flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .glass-card.expanded .card-toggle .ct-chevron { transform: rotate(180deg); }
+    .card-toggle .ct-less { display: none; }
+    .glass-card.expanded .card-toggle .ct-more { display: none; }
+    .glass-card.expanded .card-toggle .ct-less { display: inline; }
+
+    /* ═══ WHY GEORGIA — 3-col grid ═══ */
+    .cards-grid-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; position: relative; z-index: 2;
+    }
+    @media (max-width: 900px) { .cards-grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .cards-grid-3 { grid-template-columns: 1fr; } }
+
+    /* ═══ ABOUT SPLIT ═══ */
+    .about-split {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 64px; align-items: center;
+      position: relative; z-index: 2;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    /* PHOTO PLACEHOLDER — replace with real image */
+    .about-photo-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(135deg, rgba(14,165,233,0.15) 0%, rgba(14,165,233,0.04) 100%);
+      border: 2px solid rgba(14,165,233,0.3);
+      border-radius: 24px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+      color: var(--electric); font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.05em; text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-photo-placeholder svg { width: 64px; height: 64px; opacity: 0.5; }
+    .about-photo-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(14,165,233,0.12) 0%, transparent 70%);
+    }
+    /* Real photo class — add class="about-photo" to an <img> inside .about-photo-wrap */
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 24px;
+      border: 2px solid rgba(14,165,233,0.3);
+    }
+    .about-photo-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--electric); color: white;
+      font-size: 0.875rem; font-weight: 800;
+      padding: 14px 20px; border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(14,165,233,0.45);
+      line-height: 1.3; text-align: center;
+    }
+    .about-content { position: relative; z-index: 2; }
+    .about-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8125rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--electric);
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 20px;
+    }
+    .about-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .about-text { font-size: 1.0625rem; color: var(--slate-400); line-height: 1.75; margin-bottom: 28px; }
+    .about-points { display: flex; flex-direction: column; gap: 14px; }
+    .about-point {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.9375rem; color: var(--slate-200);
+    }
+    .about-point-icon {
+      flex-shrink: 0; width: 22px; height: 22px;
+      background: rgba(74,222,128,0.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .about-point-icon svg { width: 12px; height: 12px; color: #4ADE80; }
+    @media (max-width: 768px) {
+      .about-split { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-placeholder { aspect-ratio: 4/3; max-width: 420px; margin-inline: auto; }
+    }
+
+    /* ═══ SERVICES 2x2 ═══ */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; position: relative; z-index: 2;
+    }
+    .service-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 40px 36px;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .service-number {
+      font-size: 3rem; font-weight: 900; line-height: 1;
+      color: rgba(14,165,233,0.15); margin-bottom: 16px;
+      letter-spacing: -0.04em;
+    }
+    .service-title { font-size: 1.375rem; font-weight: 800; color: var(--snow); margin-bottom: 12px; }
+    .service-text { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.7; }
+    .service-tag {
+      display: inline-block; margin-top: 20px;
+      font-size: 0.8125rem; font-weight: 700;
+      color: var(--electric); background: rgba(14,165,233,0.1);
+      border-radius: 999px; padding: 5px 14px;
+    }
+    @media (max-width: 700px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ═══ PROCESS TIMELINE ═══ */
+    .process-timeline {
+      position: relative; max-width: 720px; margin-inline: auto;
+      padding-top: 16px; z-index: 2;
+    }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: 26px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--electric), rgba(14,165,233,0.15));
+      transform-origin: top center;
+      transform: scaleY(0);
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .process-timeline.line-drawn::before { transform: scaleY(1); }
+
+    .process-step {
+      display: flex; align-items: flex-start;
+      gap: 24px; margin-bottom: 48px;
+      flex-direction: row-reverse;
+    }
+    .process-step:last-child { margin-bottom: 0; }
+
+    /* Step-specific animation (independent of generic reveal) */
+    .step-reveal { opacity: 0; }
+    .step-reveal .step-num  { transform: scale(0) rotate(-20deg); opacity: 0; }
+    .step-reveal .step-body { transform: translateX(44px); opacity: 0; }
+
+    .step-reveal.step-in { opacity: 1; }
+    .step-reveal.step-in .step-num {
+      animation: stepNumPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) var(--step-delay, 0s) both;
+    }
+    .step-reveal.step-in .step-body {
+      animation: stepBodyIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--step-delay, 0s) + 0.12s) both;
+    }
+
+    @keyframes stepNumPop {
+      0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+      55%  { transform: scale(1.3) rotate(6deg);  opacity: 1; }
+      75%  { transform: scale(0.9) rotate(-2deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0);       opacity: 1; }
+    }
+    @keyframes stepBodyIn {
+      0%   { transform: translateX(44px); opacity: 0; }
+      100% { transform: translateX(0);    opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .step-reveal { opacity: 1; }
+      .step-reveal .step-num  { transform: none; opacity: 1; }
+      .step-reveal .step-body { transform: none; opacity: 1; }
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      background: var(--electric); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.125rem; font-weight: 900; color: white;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 0 6px rgba(14,165,233,0.15);
+    }
+    .step-body {
+      flex: 1;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 24px 28px;
+      margin-top: 4px;
+    }
+    .step-title { font-size: 1.125rem; font-weight: 800; color: var(--snow); margin-bottom: 8px; }
+    .step-text { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; }
+
+    /* ═══ FACTS STRIP ═══ */
+    .facts-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--glass-border);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; z-index: 2;
+    }
+    .fact-cell {
+      background: rgba(15,23,42,0.6);
+      padding: 32px 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: background var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .fact-cell:hover { background: rgba(14,165,233,0.07); }
+    .fact-cell-number {
+      font-size: 2.75rem; font-weight: 900;
+      color: var(--electric); line-height: 1;
+      font-variant-numeric: tabular-nums; letter-spacing: -0.03em;
+    }
+    .fact-cell-title { font-size: 0.9375rem; font-weight: 700; color: var(--snow); margin-top: 4px; }
+    .fact-cell-desc { font-size: 0.8125rem; color: var(--slate-400); line-height: 1.5; }
+    @media (max-width: 900px) { .facts-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .facts-strip { grid-template-columns: 1fr; } }
+
+    /* ═══ FAQ ACCORDION ═══ */
+    .faq-list { max-width: 800px; margin-inline: auto; position: relative; z-index: 2; }
+    .faq-item {
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); margin-bottom: 12px;
+      background: var(--glass-bg); backdrop-filter: blur(8px);
+      overflow: hidden; transition: border-color var(--transition);
+    }
+    .faq-item.open { border-color: rgba(14,165,233,0.35); }
+    .faq-q {
+      width: 100%; background: transparent; border: none;
+      padding: 24px 28px; text-align: right;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      cursor: pointer; font-family: 'Heebo', sans-serif;
+    }
+    .faq-q-text { font-size: 1.0625rem; font-weight: 700; color: var(--snow); }
+    .faq-arrow {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: rgba(14,165,233,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+      color: var(--electric);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); background: rgba(14,165,233,0.2); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 28px;
+    }
+    .faq-a-inner { padding-bottom: 24px; font-size: 0.9375rem; color: var(--slate-400); line-height: 1.75; }
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    /* ═══ CTA BANNER ═══ */
+    #cta-final { padding: 96px 0; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(14,165,233,0.14) 0%, rgba(14,165,233,0.04) 100%);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 24px; padding: 80px 48px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box-eyebrow {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--electric);
+      margin-bottom: 16px; display: block;
+    }
+    .cta-box-title {
+      font-size: clamp(1.875rem, 4vw, 3rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+    }
+    .cta-box-sub {
+      font-size: 1.125rem; color: var(--slate-400);
+      max-width: 500px; margin-inline: auto; margin-bottom: 40px; line-height: 1.65;
+    }
+    .cta-box-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-box-btns .btn-ghost { font-size: 1rem; padding: 14px 30px; border-radius: 10px; }
+    .cta-trust {
+      margin-top: 28px; display: flex;
+      align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .cta-trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.9375rem; font-weight: 600;
+      color: var(--slate-200);
+      background: rgba(74,222,128,0.10);
+      border: 1px solid rgba(74,222,128,0.30);
+      border-radius: 999px; padding: 6px 14px;
+    }
+    @media (max-width: 520px) {
+      .cta-box { padding: 48px 24px; }
+      .cta-box-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--slate-900);
+      border-top: 1px solid var(--glass-border);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px; margin-bottom: 56px;
+    }
+    .footer-brand .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand .footer-logo svg { width: 32px; height: 32px; }
+    .footer-brand .footer-logo-text { font-size: 1.0625rem; font-weight: 800; }
+    .footer-brand .footer-logo-text span { color: var(--electric); }
+    .footer-tagline { font-size: 0.9375rem; color: var(--slate-400); line-height: 1.65; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-link {
+      width: 38px; height: 38px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--slate-400);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .social-link:hover { color: var(--electric); border-color: var(--electric); background: rgba(14,165,233,0.1); }
+    .social-link svg { width: 16px; height: 16px; }
+    .footer-heading { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 0.9375rem; color: var(--slate-400); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--electric); }
+    .newsletter-form { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .newsletter-input {
+      flex: 1; background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 8px; padding: 10px 14px;
+      font-family: 'Heebo', sans-serif; font-size: 0.9375rem;
+      color: var(--snow); direction: inherit;
+      transition: border-color var(--transition);
+    }
+    .newsletter-input:focus { outline: none; border-color: var(--electric); }
+    .newsletter-input::placeholder { color: var(--slate-600); }
+    .newsletter-submit {
+      background: var(--electric); color: white;
+      font-size: 0.875rem; font-weight: 700;
+      padding: 10px 18px; border-radius: 8px;
+      transition: background var(--transition); cursor: pointer; border: none; font-family: inherit;
+    }
+    .newsletter-submit:hover { background: var(--electric-dark); }
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.875rem; color: var(--slate-600); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.8125rem; color: var(--slate-600); transition: color var(--transition); }
+    .footer-legal a:hover { color: var(--slate-400); }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    *:focus-visible { outline: 2px solid var(--electric); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav" role="navigation" aria-label="ניווט ראשי">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Centered key-page CTA strip (tablet) -->
+        <div class="nav-cta-strip" aria-label="עמודים מובילים">
+          <a href="equipment.html" data-internal="equipment.html" class="nav-cta-strip-link" data-i18n="nav.equipment_rental">השכרת ציוד</a>
+          <a href="lina.html" data-internal="lina.html" class="nav-cta-strip-link" data-i18n="nav.accommodation">לינה</a>
+          <a href="investors.html" data-internal="investors.html" class="nav-cta-strip-link" data-i18n="nav.investors">ליווי משקיעים</a>
+        </div>
+        <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+          </svg>
+          <span class="nav-logo-text">Gudauri Helper</span>
+        </a>
+        <div class="nav-end">
+          <ul class="nav-links" role="list">
+            <li><a href="index.html#why" data-i18n="nav.about">על גודאורי</a></li>
+            <li><a href="index.html#activities" data-i18n="nav.activities">פעילויות</a></li>
+            <li><a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="equipment.html" data-internal="equipment.html" data-i18n="nav.equipment">ציוד</a></li>
+            <li><a href="lina.html" data-internal="lina.html" data-i18n="nav.accommodation">לינה</a></li>
+            <li><a href="investors.html" data-internal="investors.html" class="active" aria-current="page" data-i18n="nav.investors">ליווי משקיעים</a></li>
+            <li><a href="index.html#lead-form" data-i18n="nav.contact">צרו קשר</a></li>
+          </ul>
+          <a href="https://wa.me/972557790955?text=היי גדעון, אני מתעניין בליווי השקעה בגודאורי" class="btn-primary nav-cta-desktop" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span data-i18n="nav.cta">קבע שיחת ייעוץ</span>
+          </a>
+          <div class="lang-switcher" role="group" aria-label="Language / שפה">
+            <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he')" title="עברית" aria-label="עברית"><img src="https://flagcdn.com/24x18/il.png" srcset="https://flagcdn.com/48x36/il.png 2x" width="24" height="18" alt="ישראל"></button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English" aria-label="English"><img src="https://flagcdn.com/24x18/us.png" srcset="https://flagcdn.com/48x36/us.png 2x" width="24" height="18" alt="USA"></button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')" title="Русский" aria-label="Русский"><img src="https://flagcdn.com/24x18/ru.png" srcset="https://flagcdn.com/48x36/ru.png 2x" width="24" height="18" alt="Russia"></button>
+            <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge')" title="ქართული" aria-label="ქართული"><img src="https://flagcdn.com/24x18/ge.png" srcset="https://flagcdn.com/48x36/ge.png 2x" width="24" height="18" alt="Georgia"></button>
+          </div>
+          <button class="nav-burger" id="navBurger" aria-label="פתח תפריט" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="תפריט נייד">
+    <a href="index.html#why" onclick="closeMobileMenu()" data-i18n="nav.about">על גודאורי</a>
+    <a href="index.html#activities" onclick="closeMobileMenu()" data-i18n="nav.activities">פעילויות</a>
+    <a href="new-gudauri-info.html" data-internal="new-gudauri-info.html" onclick="closeMobileMenu()" data-i18n="nav.new_gudauri">ניו גודאורי</a>
+    <a href="equipment.html" data-internal="equipment.html" onclick="closeMobileMenu()" data-i18n="nav.equipment">ציוד</a>
+    <a href="lina.html" data-internal="lina.html" onclick="closeMobileMenu()" data-i18n="nav.accommodation">לינה</a>
+    <a href="investors.html" data-internal="investors.html" class="active" onclick="closeMobileMenu()" data-i18n="nav.investors">ליווי משקיעים</a>
+    <a href="index.html#lead-form" onclick="closeMobileMenu()" data-i18n="nav.contact">צרו קשר</a>
+    <a href="https://wa.me/972557790955?text=היי גדעון, אני מתעניין בליווי השקעה בגודאורי" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">קבע שיחת ייעוץ</a>
+    <div class="lang-switcher" role="group" aria-label="Language / שפה">
+      <button class="lang-btn lang-active" data-lang="he" onclick="setLanguage('he');closeMobileMenu()" title="עברית" aria-label="עברית"><img src="https://flagcdn.com/32x24/il.png" srcset="https://flagcdn.com/64x48/il.png 2x" width="32" height="24" alt="ישראל"></button>
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeMobileMenu()" title="English" aria-label="English"><img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x" width="32" height="24" alt="USA"></button>
+      <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru');closeMobileMenu()" title="Русский" aria-label="Русский"><img src="https://flagcdn.com/32x24/ru.png" srcset="https://flagcdn.com/64x48/ru.png 2x" width="32" height="24" alt="Russia"></button>
+      <button class="lang-btn" data-lang="ge" onclick="setLanguage('ge');closeMobileMenu()" title="ქართული" aria-label="ქართული"><img src="https://flagcdn.com/32x24/ge.png" srcset="https://flagcdn.com/64x48/ge.png 2x" width="32" height="24" alt="Georgia"></button>
+    </div>
+  </div>
+
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" aria-labelledby="hero-headline">
+    <div class="parallax-scene" aria-hidden="true">
+      <div class="parallax-layer layer-sky" data-speed="0.08"></div>
+      <div class="parallax-overlay"></div>
+    </div>
+    <div class="hero-grain" aria-hidden="true"></div>
+
+    <div class="hero-content container">
+      <div class="hero-kicker" data-i18n="hero.kicker">🏔️ New Gudauri · גאורגיה · השקעות נדל״ן</div>
+      <h1 class="hero-headline" id="hero-headline">
+        <span data-i18n="hero.headline1">ההשקעה הבאה שלך</span><br/>
+        <span class="hero-headline-accent" data-i18n="hero.headline2">נמצאת בהרים</span>
+      </h1>
+      <p class="hero-sub-headline" data-i18n="hero.sub_headline">ליווי אישי מלא — מהחלום עד המפתח</p>
+      <p class="hero-sub" data-i18n="hero.sub">
+        גדעון בריטבסקי, 4+ שנים בגודאורי, 20+ עסקאות מלוות.
+        ישראלי שגר, פועל ומכיר כל פינה ב-New Gudauri.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/972557790955?text=היי גדעון, אני מתעניין בליווי השקעה בגודאורי" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="שלח וואטסאפ לגדעון">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.733-.524-5.282-1.435l-.378-.225-3.922 1.037 1.05-3.83-.247-.395A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-i18n="hero.cta_whatsapp">קבע שיחת ייעוץ</span>
+        </a>
+        <a href="#why-georgia" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          <span data-i18n="hero.cta_learn">למה גודאורי?</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══ STATS BAR ═══ -->
+  <section id="stats" aria-label="נתוני ניסיון">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-value" data-target="4" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="stats.years">שנות ניסיון בגודאורי</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.1s">
+          <span class="stat-value" data-target="20" data-suffix="+">0</span>
+          <span class="stat-label" data-i18n="stats.deals">עסקאות מלוות בהצלחה</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.2s">
+          <span class="stat-value">100%</span>
+          <span class="stat-label" data-i18n="stats.closing">ליווי עד סגירה מלאה</span>
+        </div>
+        <div class="stat-item reveal" style="transition-delay:0.3s">
+          <span class="stat-value">24/7</span>
+          <span class="stat-label" data-i18n="stats.availability">זמינות גם לאחר הרכישה</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ ABOUT GIDON ═══ -->
+  <section id="about" class="section" style="scroll-margin-top:var(--nav-h); background: linear-gradient(180deg, var(--slate-900) 0%, rgba(14,165,233,0.04) 50%, var(--slate-900) 100%);">
+    <div class="container">
+      <div class="about-split">
+
+        <div class="about-photo-wrap reveal">
+          <img class="about-photo" src="images/investor-profile.jpg" alt="גדעון בריטבסקי" />
+          <div class="about-photo-badge" data-i18n-html="about.photo_badge">
+            4+ שנים<br/>בגודאורי
+          </div>
+        </div>
+
+        <div class="about-content reveal" style="transition-delay:0.15s">
+          <div class="about-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span data-i18n="about.badge">חי על קו ישראל-גודאורי</span>
+          </div>
+          <h2 class="about-title">
+            <span data-i18n="about.title1">אני לא מוכר לך גודאורי.</span><br/>
+            <span class="electric" data-i18n="about.title2">אני גר שם.</span>
+          </h2>
+          <p class="about-text" style="font-size:1.125rem; color:var(--slate-200); font-weight:500;" data-i18n-html="about.text1">
+            גם אתה פעם ישבת, ראית תמונות של גודאורי בחורף — וחשבת לעצמך: <em>"רגע. יש כאן משהו."</em><br/>
+            אני הייתי שם בדיוק. אותן שאלות, אותן ספקות. ההבדל היחיד? החלטתי להישאר.
+          </p>
+          <p class="about-text" data-i18n="about.text2">
+            היום אני חי על הקו. לא תייר שביקר. לא מתווך שמוכר מהמשרד.
+            מספיק ישראלי כדי להבין מה מפחיד אותך — ומספיק מקומי כדי לדעת מה לחפש, ממה להתרחק, ואיפה הכסף האמיתי נמצא.
+          </p>
+          <p class="about-text" style="color:var(--slate-200); font-style:italic; border-right: 3px solid var(--electric); padding-right: 16px; margin-right: 0;" data-i18n="about.text3">
+            מאז ליוויתי עשרות משפחות ישראליות.
+            הנכסים שלהם עובדים. הם ישנים בשקט. זה מה שאני רוצה גם בשבילך.
+          </p>
+          <div class="about-points">
+            <div class="about-point">
+              <div class="about-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span data-i18n-html="about.point1"><strong>מדבר את השפה שלך</strong> — לא רק עברית. חשיבה ישראלית, הבנת הספקות, מענה לפחדים האמיתיים</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span data-i18n-html="about.point2"><strong>הרגליים שלי שם כששלך כאן</strong> — מבקר, בודק, מצלם, מדווח. אתה לא עיוור</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span data-i18n-html="about.point3"><strong>קשרים שלוקח שנים לבנות</strong> — קבלנים, מפתחים, נכסים לפני שמגיעים לשוק הפתוח</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span data-i18n-html="about.point4"><strong>שקיפות שלא מתפשרים עליה</strong> — אין הפתעות. אין עמלות נסתרות. אין אג׳נדה שמתנגשת עם שלך</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ WHY GEORGIA ═══ -->
+  <section id="why-georgia" class="section" style="scroll-margin-top:var(--nav-h)">
+    <div class="section-bg" style="background-image:url('https://images.unsplash.com/photo-1490122417551-6ee9691429d0?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="why.label">השוק שכולם מחפשים</span>
+        <h2 class="section-title"><span data-i18n="why.title1">למה</span> <span class="electric" data-i18n="why.title2">גאורגיה עכשיו?</span></h2>
+        <p class="section-sub" data-i18n="why.sub">בזמן שמחירי הנדל״ן בישראל ובאירופה הגיעו לתקרה, גאורגיה מציעה שוק צומח עם כניסה נגישה ותשואות גבוהות.</p>
+      </div>
+      <div class="cards-grid-3">
+
+        <div class="glass-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-gift" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card1.title">0% מס רכישה לזרים</h3>
+          <p class="card-text" data-i18n="why.card1.text">גאורגיה היא אחת המדינות הבודדות בעולם שמאפשרות לזרים לרכוש נדל״ן ללא מס רכישה. מה שמשלמים בישראל בעשרות אלפי שקלים — לא קיים כאן.</p>
+          <div class="card-more" id="inv-card1-more" data-i18n-html="why.card1.more">
+            <p class="card-text">בישראל, מס הרכישה על דירה שנייה להשקעה מתחיל מ-8% ועולה עד 10% — על דירה של מיליון שקל זה 80,000–100,000 ₪ ישר לפח. בגאורגיה, ללא קשר לאזרחות, מס הרכישה על נכס מגורי הוא <strong>0%</strong>.</p>
+            <ul>
+              <li>אין מס בולים, אין אגרת רישום משמעותית — עלות הרישום בממשלה: כ-$50</li>
+              <li>זרים מקבלים אותן זכויות בעלות כמו אזרחים גאורגים</li>
+              <li>חוזה הרכישה מתורגם ומאומת — ניתן לחתום בנוטריון ישראלי עם ייפוי כוח</li>
+              <li>כל הבעלות נרשמת ב-National Agency of Public Registry — שקוף, מאובטח ובדיק אונליין</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card1.badge">ללא מס על הרכישה</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card1-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.1s">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-confetti" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card2.title">עליית ערך עקבית</h3>
+          <p class="card-text" data-i18n="why.card2.text">ב-5 השנים האחרונות ערך הנכסים ב-New Gudauri עלה בכ-30–40%. הביקוש מהמשקיעים הרוסים, הישראלים והמזרח אירופים ממשיך לדחוף את המחירים.</p>
+          <div class="card-more" id="inv-card2-more" data-i18n-html="why.card2.more">
+            <p class="card-text">New Gudauri היא עיר-נופש חדשה שנמצאת בשלבי פיתוח מואץ. הנכסים שנרכשו ב-2019–2020 בממוצע של $700–$900 למ״ר, נסחרים כיום ב-$1,100–$1,500 — עלייה של 35–60% תלוי במיקום ובמפתח.</p>
+            <ul>
+              <li>גידול מתמשך בתיירות הנכנסת לגאורגיה: 7.1 מיליון תיירים ב-2023, שיא היסטורי</li>
+              <li>פרויקטים חדשים של מלונות ודירות נמכרים מחוץ לשוק עוד לפני הגעה לאינטרנט</li>
+              <li>שדה התעופה הבינלאומי של תביליסי — שעתיים נסיעה — ממשיך להתרחב</li>
+              <li>גיבוי ממשלתי: גאורגיה מקדמת פעילות את תיירות ההרים כמנוע צמיחה לאומי</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card2.badge">~35% עליית ערך ב-5 שנים</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card2-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.2s">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-stars" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card3.title">תשואת שכירות גבוהה</h3>
+          <p class="card-text" data-i18n="why.card3.text">עונת סקי בחורף + תיירות טבע בקיץ = 365 ימי הכנסה פוטנציאלית. תשואת שכירות שנתית ב-New Gudauri נעה בין 8% ל-20% תלוי בנכס וניהול.</p>
+          <div class="card-more" id="inv-card3-more" data-i18n-html="why.card3.more">
+            <p class="card-text">דירת סטודיו ממוצעת ב-New Gudauri מניבה $80–$150 ללילה בעונת הסקי (דצמבר–מרץ). בקיץ — $40–$80 ללילה לתיירי הרים וטבע. עם ניהול נכון, ניצולת של 65–75% בשנה היא ריאלית לחלוטין.</p>
+            <ul>
+              <li>עונת חורף חזקה: 4 חודשים של ביקוש גבוה — ישראלים, רוסים, אירופאים</li>
+              <li>פוטנציאל קיץ גדל: טיולי הרים, mountain biking, פסטיבלים — עונה שניה בצמיחה</li>
+              <li>ניהול שכירות מלא קיים בגודאורי — ניתן להשכיר מרחוק בלי לעלות על מטוס</li>
+              <li>אין מס על הכנסה מהשכרה לתושבי חוץ שאינם תושבי גאורגיה לצרכי מס</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card3.badge">8%–20% תשואה שנתית</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card3-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.3s">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-house" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card4.title">כניסה נגישה</h3>
+          <p class="card-text" data-i18n="why.card4.text">נכסים ב-New Gudauri מתחילים מ-$40,000. הליך הרכישה פשוט וניתן להשלים אותו תוך שבועות ספורים — אפילו מרחוק, ללא טיסה לגאורגיה.</p>
+          <div class="card-more" id="inv-card4-more" data-i18n-html="why.card4.more">
+            <p class="card-text">בניגוד לספרד, פורטוגל או קפריסין — לא צריך להגיע פיזית לגאורגיה כדי לרכוש נכס. ייפוי כוח נוטריוני מספיק כדי שגדעון ינהל את התהליך כולו בשמך מגודאורי עצמה.</p>
+            <ul>
+              <li>שלב 1: בחירת נכס + חתימה על הסכם עקרונות — ניתן לעשות אונליין</li>
+              <li>שלב 2: העברה בנקאית בינלאומית ישירה — אין מתווכי כסף, אין עמלות מט״ח מיותרות</li>
+              <li>שלב 3: רישום בעלות — 3–5 ימי עבודה ב-Public Registry הגאורגי</li>
+              <li>שלב 4: קבלת נסח טאבו גאורגי — מוכר בינלאומית ומוגן משפטית</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card4.badge">מ-$40,000</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card4-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.4s">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-town" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card5.title">קהילה ישראלית חזקה</h3>
+          <p class="card-text" data-i18n="why.card5.text">גודאורי הפכה ליעד מועדף על ישראלים — קהילה, מוכרים עברית, ומידע זמין. זה מקל על ההשקעה ומבטיח שוכרים ישראלים לאורך העונה.</p>
+          <div class="card-more" id="inv-card5-more" data-i18n-html="why.card5.more">
+            <p class="card-text">בעונת הסקי, שמיעת עברית ברחובות גודאורי היא שגרה. ישראלים שוכרים דירות, נכנסים לבתי קפה, קונים שיעורי סקי — וחוזרים שנה אחר שנה. כמשקיע, זה אומר ביקוש קבוע מבסיס לקוחות שאתה מכיר.</p>
+            <ul>
+              <li>קבוצות וואטסאפ פעילות של ישראלים בגודאורי — הפניות, המלצות, שכירות</li>
+              <li>מספר עסקים ישראלים פעילים בגודאורי: שיעורי סקי, השכרת ציוד, מסעדות</li>
+              <li>ישראלים מחפשים דירות בעברית — הנכס שלך נמכר/מושכר קל יותר לשוק מוכר</li>
+              <li>קהילת הפייסבוק "ישראלים בגודאורי" — מאות חברים, עדכונים שוטפים על השוק</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card5.badge">קהילה ישראלית פעילה</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card5-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="glass-card reveal" style="transition-delay:0.5s">
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-trophy" width="80" height="80"></canvas>
+          </div>
+          <h3 class="card-title" data-i18n="why.card6.title">רגולציה ידידותית</h3>
+          <p class="card-text" data-i18n="why.card6.text">גאורגיה דורגה #7 בעולם במדד "עסקים קלים" של הבנק העולמי. אין הגבלות על הבעלות הזרה, רישום בעלות מהיר ומלא, ומשפט הנכסים ברור ומוגן.</p>
+          <div class="card-more" id="inv-card6-more" data-i18n-html="why.card6.more">
+            <p class="card-text">גאורגיה אינה חברת האיחוד האירופי — אבל זה לטובתך. הרגולציה הגמישה, מיסוי נמוך (מס חברות 15%, מס הכנסה 20%), ויחס ממשלתי חיובי לזרים הפכו אותה לאחת מהמדינות המומלצות ביותר להשקעות נדל״ן בעולם.</p>
+            <ul>
+              <li>אין הגבלות על העברת הכסף — ניתן להחזיר רווחים לישראל ללא חסמים</li>
+              <li>הסכם אי-כפל מיסוי בין ישראל לגאורגיה — הכנסות ממוסות פעם אחת בלבד</li>
+              <li>זמן רישום בעלות ממוצע: 3 ימי עבודה — ממהיר ביותר בעולם</li>
+              <li>מדד שלטון החוק של World Justice Project מציב את גאורגיה מעל מדינות כמו ברזיל, הודו ומקסיקו</li>
+            </ul>
+          </div>
+          <span class="card-badge" data-i18n="why.card6.badge">World Bank #7</span>
+          <button class="card-toggle" type="button" aria-expanded="false" aria-controls="inv-card6-more">
+            <span class="ct-more" data-i18n="card.read_more">המשך קריאה</span>
+            <span class="ct-less" data-i18n="card.read_less">הצג פחות</span>
+            <svg class="ct-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ INVESTMENT FACTS ═══ -->
+  <section style="padding: 0 0 96px;">
+    <div class="container">
+      <div class="facts-strip reveal">
+        <div class="fact-cell">
+          <div class="fact-cell-number">2M<sup>+</sup></div>
+          <div class="fact-cell-title" data-i18n="facts.f1.title">תיירים ב-2024</div>
+          <div class="fact-cell-desc" data-i18n="facts.f1.desc">גאורגיה שוברת שיאי תיירות בכל שנה</div>
+        </div>
+        <div class="fact-cell">
+          <div class="fact-cell-number">365</div>
+          <div class="fact-cell-title" data-i18n="facts.f2.title">ימי עונה</div>
+          <div class="fact-cell-desc" data-i18n="facts.f2.desc">סקי בחורף, טיולים וטבע בקיץ</div>
+        </div>
+        <div class="fact-cell">
+          <div class="fact-cell-number">$40K</div>
+          <div class="fact-cell-title" data-i18n="facts.f3.title">נקודת כניסה</div>
+          <div class="fact-cell-desc" data-i18n="facts.f3.desc">מחיר התחלתי לנכס ב-New Gudauri</div>
+        </div>
+        <div class="fact-cell">
+          <div class="fact-cell-number">0%</div>
+          <div class="fact-cell-title" data-i18n="facts.f4.title">מס על רכישה</div>
+          <div class="fact-cell-desc" data-i18n="facts.f4.desc">זרים רוכשים ללא מס רכישה</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services" class="section" style="scroll-margin-top:var(--nav-h)">
+    <div class="section-bg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="services.label">מה כלול בשירות</span>
+        <h2 class="section-title"><span data-i18n="services.title1">ליווי מלא</span> <span class="electric" data-i18n="services.title2">מא' ועד ת'</span></h2>
+        <p class="section-sub" data-i18n="services.sub">כל מה שצריך כדי להשקיע נכון — תחת קורת גג אחת, בשפה שלך.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-number">01</div>
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-view" width="80" height="80"></canvas>
+          </div>
+          <h3 class="service-title" data-i18n="services.s1.title">איתור נכסים אישי</h3>
+          <p class="service-text" data-i18n="services.s1.text">
+            לא מרשימה כללית — ממוקד לפרופיל שלך. מנתח את התקציב, מטרת ההשקעה (שכירות / עליית ערך / שימוש עצמי), ומציג רק נכסים שעומדים בקריטריונים האמיתיים.
+            כולל ביקורים פיזיים בנכסים עם דיווח מפורט, תמונות ווידאו.
+          </p>
+          <span class="service-tag" data-i18n="services.s1.tag">ייעוץ אישי מלא</span>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <div class="service-number">02</div>
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-house2" width="80" height="80"></canvas>
+          </div>
+          <h3 class="service-title" data-i18n="services.s2.title">ניהול נכס שוטף</h3>
+          <p class="service-text" data-i18n="services.s2.text">
+            לאחר הרכישה — הנכס עובד בשבילך. מוצאים שוכרים, מנהלים צ׳ק אין/אאוט, מטפלים בתקלות, מדווחים על הכנסות ומעבירים כסף לחשבון שלך.
+            אתה יושב בישראל, הנכס מכניס.
+          </p>
+          <span class="service-tag" data-i18n="services.s2.tag">מהיום הראשון</span>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-number">03</div>
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-success" width="80" height="80"></canvas>
+          </div>
+          <h3 class="service-title" data-i18n="services.s3.title">ליווי משפטי מלא</h3>
+          <p class="service-text" data-i18n="services.s3.text">
+            עבודה עם עורכי דין גאורגים מוכרים ומנוסים בעסקאות בינלאומיות. ליווי בחוזה, בדיקת בעלות ורישום, העברת בעלות — כל שלב מוסבר בעברית ומאושר על ידך לפני ביצוע.
+          </p>
+          <span class="service-tag" data-i18n="services.s3.tag">עם עורך דין מקומי</span>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <div class="service-number">04</div>
+          <div class="card-icon" aria-hidden="true">
+            <canvas id="li-stars2" width="80" height="80"></canvas>
+          </div>
+          <h3 class="service-title" data-i18n="services.s4.title">ייעוץ מימון ותשואה</h3>
+          <p class="service-text" data-i18n="services.s4.text">
+            עוזר להבין מה ריאלי — לא מה שרצית לשמוע. ניתוח תשואה צפויה, מסלולי מימון, מינוף אפשרי, תכנון מס. כדי שתיכנס לעסקה עם עיניים פקוחות לחלוטין.
+          </p>
+          <span class="service-tag" data-i18n="services.s4.tag">תכנון פיננסי מלא</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ PROCESS ═══ -->
+  <section id="process" class="section" style="scroll-margin-top:var(--nav-h); background: linear-gradient(180deg, var(--slate-900) 0%, rgba(14,165,233,0.03) 50%, var(--slate-900) 100%);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="process.label">איך זה עובד</span>
+        <h2 class="section-title"><span data-i18n="process.title1">5 שלבים</span> <span class="electric" data-i18n="process.title2">מהשיחה הראשונה</span><br/><span data-i18n="process.title3">ועד לדירה שמכניסה כסף</span></h2>
+      </div>
+      <div class="process-timeline">
+
+        <div class="process-step step-reveal" style="--step-delay:0s">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3 class="step-title" data-i18n="process.s1.title">שיחת ייעוץ ראשונית — ללא עלות</h3>
+            <p class="step-text" data-i18n="process.s1.text">מכירים, מבינים את הצרכים שלך, עונים על כל השאלות. מה התקציב? מה המטרה? מה הציפיות? בסוף השיחה — יש לך תמונה ברורה של מה אפשרי.</p>
+          </div>
+        </div>
+
+        <div class="process-step step-reveal" style="--step-delay:0.18s">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3 class="step-title" data-i18n="process.s2.title">סיור בנכסים — פיזי או וירטואלי</h3>
+            <p class="step-text" data-i18n="process.s2.text">מציג נכסים שמתאימים לפרופיל שלך — עם תמונות, וידאו, מידות, מצב ומחיר ריאלי. ניתן לטוס לגודאורי לסיור אישי — ממליץ על כך בחום — אבל לא חובה.</p>
+          </div>
+        </div>
+
+        <div class="process-step step-reveal" style="--step-delay:0.36s">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3 class="step-title" data-i18n="process.s3.title">משא ומתן ואימות</h3>
+            <p class="step-text" data-i18n="process.s3.text">מנהל את המשא ומתן מולך, מוודא שהמחיר הגיוני ביחס לשוק, בודק היסטוריית הנכס ומסמכי בעלות. לא ממהרים — מוודאים שהכל תקין.</p>
+          </div>
+        </div>
+
+        <div class="process-step step-reveal" style="--step-delay:0.54s">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3 class="step-title" data-i18n="process.s4.title">ליווי משפטי וחתימה</h3>
+            <p class="step-text" data-i18n="process.s4.text">עורך דין גאורגי מוכר מכין חוזה, מסביר כל סעיף בעברית, מעביר את הבעלות ורושם על שמך. אפשר לחתום גם מישראל — בייפוי כוח (בתוספת תשלום).</p>
+          </div>
+        </div>
+
+        <div class="process-step step-reveal" style="--step-delay:0.72s">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3 class="step-title" data-i18n="process.s5.title">מסירה וניהול שוטף</h3>
+            <p class="step-text" data-i18n="process.s5.text">הנכס מוכן — עכשיו מתחיל הניהול. מפרסמים, מוצאים שוכרים, מנהלים, מדווחים. הנכס שלך עובד. אתה בישראל.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FAQ ═══ -->
+  <section id="faq" class="section" style="scroll-margin-top:var(--nav-h)">
+    <div class="section-bg" style="background-image:url('https://images.unsplash.com/photo-1544376383-f6418ae57526?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="faq.label">שאלות ותשובות</span>
+        <h2 class="section-title"><span data-i18n="faq.title1">שאלות</span> <span class="electric" data-i18n="faq.title2">שכולם שואלים</span></h2>
+      </div>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span class="faq-q-text" data-i18n="faq.q1">האם ישראלי יכול לרכוש נדל״ן בגאורגיה?</span>
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner" data-i18n-html="faq.a1">
+              כן, לחלוטין. אזרחים זרים כולל ישראלים רשאים לרכוש נדל״ן בגאורגיה ללא הגבלות. אין צורך בתושבות, ב-VISA מיוחד או בהתנאות נוספות. הרכישה רשומה על שמך באופן מלא. הרגולציה הגאורגית בנדל״ן מציבה מגבלות רק על רכישת <strong>קרקע חקלאית</strong> על ידי זרים — שאינה רלוונטית לנכסים עירוניים ב-New Gudauri.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="transition-delay:0.05s" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span class="faq-q-text" data-i18n="faq.q2">האם אני חייב לטוס לגאורגיה כדי לקנות?</span>
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner" data-i18n-html="faq.a2">
+              לא. כל תהליך הרכישה — חוזה, תשלום, רישום — מתבצע מרחוק עם ייפוי כוח מנוטריון ישראלי. עם זאת, <strong>אני ממליץ בחום לטוס לפחות פעם אחת לפני הרכישה</strong> — כדי לראות את הנכס, להרגיש את האזור ולקבל את ההחלטה בביטחון מלא.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="transition-delay:0.1s" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span class="faq-q-text" data-i18n="faq.q3">מה התשואה הצפויה מנכס ב-New Gudauri?</span>
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner" data-i18n-html="faq.a3">
+              התשואה תלויה מאוד בנכס, המיקום, הגודל, הניהול ומחיר הרכישה. בהתבסס על עסקאות שליוויתי — תשואת שכירות שנתית ברוטו נעה בין <strong>8% ל-20%</strong>. נכסים קטנים ומנוהלים טוב קרובים לגונדולה מכניסים יותר. בנוסף, יש לחשב את עליית הערך שמוסיפה לתשואה הכוללת לאורך זמן. בשיחת הייעוץ אנחנו נבנה ביחד ניתוח תשואה ריאלי לנכס ספציפי.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="transition-delay:0.15s" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span class="faq-q-text" data-i18n="faq.q4">איך מתנהל התשלום? האם בטוח להעביר כסף לגאורגיה?</span>
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner" data-i18n-html="faq.a4">
+              התשלום מתבצע בדולרים או לארי גאורגי, לחשבון בנק גאורגי מאומת. ניתן להעביר ממרבית הבנקים הישראלים. הרישום בטאבו הגאורגי (Napr) מיידי ושקוף — תוך יום-יומיים מהתשלום רואים את שמך כבעלים. בעסקאות שאני מלווה, אני מוודא שהכסף עובר רק לאחר אימות משפטי מלא.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="transition-delay:0.2s" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span class="faq-q-text" data-i18n="faq.q5">מה כלול בשירות הליווי ומה העלות?</span>
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a" aria-hidden="true">
+            <div class="faq-a-inner" data-i18n-html="faq.a5">
+              שיחת הייעוץ הראשונית היא ללא עלות. עבור ליווי מלא — מאיתור הנכס ועד לרישום — יש עמלת ליווי שמוסכמת מראש ובשקיפות מלאה. שירות הניהול השוטף לאחר הרכישה הוא בתשלום נפרד וסביר. בשיחת הייעוץ אסביר את מלוא המבנה הכלכלי — ללא הפתעות.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FINAL CTA ═══ -->
+  <section id="cta-final" style="padding: 96px 0; scroll-margin-top:var(--nav-h)">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="cta-box-eyebrow" data-i18n="cta.eyebrow">צעד ראשון ללא עלות</span>
+        <h2 class="cta-box-title">
+          <span data-i18n="cta.title1">מוכן לפגוש את</span><br/>
+          <span class="electric" data-i18n="cta.title2">ההשקעה הבאה שלך?</span>
+        </h2>
+        <p class="cta-box-sub" data-i18n="cta.sub">
+          שיחת ייעוץ ראשונית — ללא עלות, ללא התחייבות.
+          30 דקות שיתנו לך תמונה ברורה של מה אפשרי עבורך בגודאורי.
+        </p>
+        <div class="cta-box-btns">
+          <a href="https://wa.me/972557790955?text=היי גדעון, אני מתעניין בליווי השקעה בגודאורי, אפשר לדבר?" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.733-.524-5.282-1.435l-.378-.225-3.922 1.037 1.05-3.83-.247-.395A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            <span data-i18n="cta.btn_whatsapp">שלח הודעה לגדעון</span>
+          </a>
+          <a href="tel:+972557790955" class="btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127 1.02.36 2.02.7 2.98a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.1-1.1a2 2 0 012.11-.45c.96.34 1.96.573 2.98.7A2 2 0 0122 16.92z"/></svg>
+            +972 55-779-0955
+          </a>
+        </div>
+        <div class="cta-trust">
+          <div class="cta-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="cta.trust1">שיחה ראשונה ללא עלות</span>
+          </div>
+          <div class="cta-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="cta.trust2">ללא התחייבות</span>
+          </div>
+          <div class="cta-trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="cta.trust3">ישראלי שגר בגודאורי</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="footer" aria-label="פוטר">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Gudauri Helper - חזרה לדף הבית">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
+              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+            </svg>
+            <span class="footer-logo-text">Gudauri Helper</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">
+            גדעון בריטבסקי — ישראלי שגר ופועל ב-New Gudauri.
+            ליווי אישי מלא להשקעות נדל״ן בגאורגיה, מהחלום עד המפתח.
+          </p>
+          <div class="footer-social" aria-label="רשתות חברתיות">
+            <a href="https://www.instagram.com/gudauriskiresort?igsh=Mnp5M3B3cXNqa3hy&utm_source=qr" class="social-link" aria-label="אינסטגרם" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/g/1b4vkP1DZc/?mibextid=wwXIfr" class="social-link" aria-label="פייסבוק" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://chat.whatsapp.com/DpYG3RNIOZrHKMWQ9Hmhcp?mode=gi_t" class="social-link" aria-label="וואטסאפ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="קישורים מהירים">
+          <h3 class="footer-heading" data-i18n="footer.nav_heading">ניווט</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" data-i18n="nav.about">על גודאורי</a></li>
+            <li><a href="new-gudauri-info.html" data-i18n="nav.new_gudauri">ניו גודאורי</a></li>
+            <li><a href="lina.html" data-i18n="footer.accommodation">לינה ודירות</a></li>
+            <li><a href="investors.html" data-i18n="nav.investors">ליווי משקיעים</a></li>
+            <li><a href="#faq" data-i18n="footer.faq">שאלות נפוצות</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" aria-label="פרטי קשר">
+          <h3 class="footer-heading" data-i18n="footer.contact_heading">קשר</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:gogudauri@newgudauri.net">gogudauri@newgudauri.net</a></li>
+            <li><a href="tel:+972557790955">+972 55-779-0955</a></li>
+            <li><a href="https://wa.me/972557790955" target="_blank" rel="noopener noreferrer" data-i18n="footer.whatsapp">וואטסאפ זמין</a></li>
+            <li style="margin-top:12px; color:var(--slate-600); font-size:0.875rem;">קישון 20 נוף הגליל, ישראל</li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter" aria-labelledby="newsletter-heading">
+          <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter_heading">עדכוני שוק</h3>
+          <p style="font-size:0.9375rem; color:var(--slate-400); margin-bottom:4px;" data-i18n="footer.newsletter_text">עדכונים על הזדמנויות השקעה, מחירי שוק ותנועות בגודאורי.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לעדכונים">
+            <label for="newsletter-email" class="sr-only">כתובת אימייל</label>
+            <input type="email" id="newsletter-email" class="newsletter-input" placeholder="האימייל שלך" required autocomplete="email" dir="ltr" />
+            <button type="submit" class="newsletter-submit" data-i18n="footer.newsletter_btn">הרשם</button>
+            <div style="flex-basis:100%; display:flex; align-items:flex-start; gap:8px; margin-top:10px;">
+              <input type="checkbox" id="nl-consent" required style="margin-top:3px; flex-shrink:0; accent-color:#0EA5E9; cursor:pointer; width:15px; height:15px;" />
+              <label for="nl-consent" style="font-size:12px; color:#94A3B8; cursor:pointer; line-height:1.5;">
+                אני מסכים/ה לקבל עדכונים שיווקיים. ניתן לבטל בכל עת.
+                <a href="privacy-policy.html" style="color:#38BDF8;">מדיניות פרטיות</a>
+              </label>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.</p>
+        <nav class="footer-legal" aria-label="קישורים משפטיים">
+          <a href="privacy-policy.html">מדיניות פרטיות</a>
+          <a href="terms.html">תנאי שימוש</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // ── Nav scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    const burger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('navMobile');
+    const navOverlay = document.getElementById('navOverlay');
+    if (navOverlay) navOverlay.addEventListener('click', closeMobileMenu);
+    let menuOpen = false;
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      if (navOverlay) navOverlay.classList.toggle('show', menuOpen);
+      burger.setAttribute('aria-expanded', menuOpen);
+    });
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      if (navOverlay) navOverlay.classList.remove('show');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+    document.addEventListener('click', (e) => {
+      if (menuOpen && !nav.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
+    });
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(
+      (entries) => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    revealEls.forEach(el => revealObserver.observe(el));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // ── Stats counter ──
+    function animateCounter(el, target, duration) {
+      duration = duration || 1500;
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(update);
+    }
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.stat-value[data-target]').forEach(el => {
+              animateCounter(el, parseInt(el.dataset.target));
+            });
+            statsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      statsObserver.observe(statsSection);
+    }
+
+    // ── Parallax ──
+    (function() {
+      const layers = document.querySelectorAll('.parallax-layer');
+      const hero = document.querySelector('#hero');
+      if (!layers.length || !hero) return;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            if (scrollY <= hero.offsetHeight * 1.2) {
+              layers.forEach(layer => {
+                const speed = parseFloat(layer.dataset.speed || 0.3);
+                layer.style.transform = `translateY(${scrollY * speed}px)`;
+              });
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ── Snow particles ──
+    (function() {
+      const hero = document.querySelector('#hero');
+      if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'snow-particle';
+        p.style.cssText = [
+          'left:' + (Math.random() * 100) + '%',
+          'animation-delay:' + (Math.random() * 8) + 's',
+          'animation-duration:' + (6 + Math.random() * 6) + 's',
+          'width:' + (2 + Math.random() * 3) + 'px',
+          'height:' + (2 + Math.random() * 3) + 'px',
+          'opacity:' + (0.4 + Math.random() * 0.6)
+        ].join(';');
+        frag.appendChild(p);
+      }
+      hero.appendChild(frag);
+    })();
+
+    // ── FAQ accordion ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        openItem.querySelector('.faq-a').setAttribute('aria-hidden', 'true');
+      });
+
+      // open clicked if was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    // ── Newsletter ──
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-email');
+      const btn = e.target.querySelector('.newsletter-submit');
+      btn.textContent = 'נרשמת!';
+      btn.style.background = '#16A34A';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'הרשם';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    // ── Process timeline: draw line + staggered step animation ──
+    (function() {
+      var tl = document.querySelector('.process-timeline');
+      if (!tl) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var fired = false;
+      var tlObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !fired) {
+            fired = true;
+            tl.classList.add('line-drawn');
+            document.querySelectorAll('.process-step.step-reveal').forEach(function(step) {
+              step.classList.add('step-in');
+            });
+            tlObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.05 });
+      tlObserver.observe(tl);
+    })();
+
+    // ── Card read-more toggle ──
+    document.querySelectorAll('.card-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('.glass-card');
+        var expanded = card.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', expanded);
+      });
+    });
+
+    // ── Card emoji icons (canvas animated) ──
+    (function() {
+      var icons = [
+        ['li-gift',     '💰'],
+        ['li-confetti', '📈'],
+        ['li-stars',    '💵'],
+        ['li-house',    '🏠'],
+        ['li-town',     '👥'],
+        ['li-trophy',   '🛡️'],
+        ['li-view',     '🔍'],
+        ['li-house2',   '🏡'],
+        ['li-success',  '📋'],
+        ['li-stars2',   '💳'],
+      ];
+      icons.forEach(function(pair, i) {
+        var canvas = document.getElementById(pair[0]);
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var t = i * 0.7;
+        (function draw() {
+          var s = 1 + Math.sin(t) * 0.08;
+          ctx.clearRect(0, 0, 80, 80);
+          ctx.save();
+          ctx.translate(40, 42);
+          ctx.scale(s, s);
+          ctx.font = '44px serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(pair[1], 0, 0);
+          ctx.restore();
+          t += 0.025;
+          requestAnimationFrame(draw);
+        })();
+      });
+    })();
+  </script>
+
+  <!-- ═══ i18n ═══ -->
+  <script>
+    window.TRANSLATIONS = {
+      he: {
+        dir: 'rtl', lang: 'he',
+        'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.equipment': 'ציוד', 'nav.new_gudauri': 'ניו גודאורי', 'nav.accommodation': 'לינה',
+        'nav.investors': 'ליווי משקיעים', 'nav.contact': 'צרו קשר', 'nav.cta': 'קבע שיחת ייעוץ', 'nav.equipment_rental': 'השכרת ציוד',
+        'hero.kicker': '🏔️ New Gudauri · גאורגיה · השקעות נדל״ן',
+        'hero.headline1': 'ההשקעה הבאה שלך', 'hero.headline2': 'נמצאת בהרים',
+        'hero.sub_headline': 'ליווי אישי מלא — מהחלום עד המפתח',
+        'hero.sub': 'גדעון בריטבסקי, 4+ שנים בגודאורי, 20+ עסקאות מלוות.\n        ישראלי שגר, פועל ומכיר כל פינה ב-New Gudauri.',
+        'hero.cta_whatsapp': 'קבע שיחת ייעוץ', 'hero.cta_learn': 'למה גודאורי?',
+        'stats.years': 'שנות ניסיון בגודאורי', 'stats.deals': 'עסקאות מלוות בהצלחה',
+        'stats.closing': 'ליווי עד סגירה מלאה', 'stats.availability': 'זמינות גם לאחר הרכישה',
+        'about.photo_badge': '4+ שנים<br/>בגודאורי', 'about.badge': 'חי על קו ישראל-גודאורי',
+        'about.title1': 'אני לא מוכר לך גודאורי.', 'about.title2': 'אני גר שם.',
+        'about.text1': 'גם אתה פעם ישבת, ראית תמונות של גודאורי בחורף — וחשבת לעצמך: <em>"רגע. יש כאן משהו."</em><br/>אני הייתי שם בדיוק. אותן שאלות, אותן ספקות. ההבדל היחיד? החלטתי להישאר.',
+        'about.text2': 'היום אני חי על הקו. לא תייר שביקר. לא מתווך שמוכר מהמשרד.\n            מספיק ישראלי כדי להבין מה מפחיד אותך — ומספיק מקומי כדי לדעת מה לחפש, ממה להתרחק, ואיפה הכסף האמיתי נמצא.',
+        'about.text3': 'מאז ליוויתי עשרות משפחות ישראליות.\n            הנכסים שלהם עובדים. הם ישנים בשקט. זה מה שאני רוצה גם בשבילך.',
+        'about.point1': '<strong>מדבר את השפה שלך</strong> — לא רק עברית. חשיבה ישראלית, הבנת הספקות, מענה לפחדים האמיתיים',
+        'about.point2': '<strong>הרגליים שלי שם כששלך כאן</strong> — מבקר, בודק, מצלם, מדווח. אתה לא עיוור',
+        'about.point3': '<strong>קשרים שלוקח שנים לבנות</strong> — קבלנים, מפתחים, נכסים לפני שמגיעים לשוק הפתוח',
+        'about.point4': '<strong>שקיפות שלא מתפשרים עליה</strong> — אין הפתעות. אין עמלות נסתרות. אין אג׳נדה שמתנגשת עם שלך',
+        'why.label': 'השוק שכולם מחפשים', 'why.title1': 'למה', 'why.title2': 'גאורגיה עכשיו?',
+        'why.sub': 'בזמן שמחירי הנדל״ן בישראל ובאירופה הגיעו לתקרה, גאורגיה מציעה שוק צומח עם כניסה נגישה ותשואות גבוהות.',
+        'why.card1.title': '0% מס רכישה לזרים',
+        'why.card1.text': 'גאורגיה היא אחת המדינות הבודדות בעולם שמאפשרות לזרים לרכוש נדל״ן ללא מס רכישה. מה שמשלמים בישראל בעשרות אלפי שקלים — לא קיים כאן.',
+        'why.card1.more': '<p class="card-text">בישראל, מס הרכישה על דירה שנייה להשקעה מתחיל מ-8% ועולה עד 10% — על דירה של מיליון שקל זה 80,000–100,000 ₪ ישר לפח. בגאורגיה, ללא קשר לאזרחות, מס הרכישה על נכס מגורי הוא <strong>0%</strong>.</p><ul><li>אין מס בולים, אין אגרת רישום משמעותית — עלות הרישום בממשלה: כ-$50</li><li>זרים מקבלים אותן זכויות בעלות כמו אזרחים גאורגים</li><li>חוזה הרכישה מתורגם ומאומת — ניתן לחתום בנוטריון ישראלי עם ייפוי כוח</li><li>כל הבעלות נרשמת ב-National Agency of Public Registry — שקוף, מאובטח ובדיק אונליין</li></ul>',
+        'why.card1.badge': 'ללא מס על הרכישה',
+        'why.card2.title': 'עליית ערך עקבית',
+        'why.card2.text': 'ב-5 השנים האחרונות ערך הנכסים ב-New Gudauri עלה בכ-30–40%. הביקוש מהמשקיעים הרוסים, הישראלים והמזרח אירופים ממשיך לדחוף את המחירים.',
+        'why.card2.more': '<p class="card-text">New Gudauri היא עיר-נופש חדשה שנמצאת בשלבי פיתוח מואץ. הנכסים שנרכשו ב-2019–2020 בממוצע של $700–$900 למ״ר, נסחרים כיום ב-$1,100–$1,500 — עלייה של 35–60% תלוי במיקום ובמפתח.</p><ul><li>גידול מתמשך בתיירות הנכנסת לגאורגיה: 7.1 מיליון תיירים ב-2023, שיא היסטורי</li><li>פרויקטים חדשים של מלונות ודירות נמכרים מחוץ לשוק עוד לפני הגעה לאינטרנט</li><li>שדה התעופה הבינלאומי של תביליסי — שעתיים נסיעה — ממשיך להתרחב</li><li>גיבוי ממשלתי: גאורגיה מקדמת פעילות את תיירות ההרים כמנוע צמיחה לאומי</li></ul>',
+        'why.card2.badge': '~35% עליית ערך ב-5 שנים',
+        'why.card3.title': 'תשואת שכירות גבוהה',
+        'why.card3.text': 'עונת סקי בחורף + תיירות טבע בקיץ = 365 ימי הכנסה פוטנציאלית. תשואת שכירות שנתית ב-New Gudauri נעה בין 8% ל-20% תלוי בנכס וניהול.',
+        'why.card3.more': '<p class="card-text">דירת סטודיו ממוצעת ב-New Gudauri מניבה $80–$150 ללילה בעונת הסקי (דצמבר–מרץ). בקיץ — $40–$80 ללילה לתיירי הרים וטבע. עם ניהול נכון, ניצולת של 65–75% בשנה היא ריאלית לחלוטין.</p><ul><li>עונת חורף חזקה: 4 חודשים של ביקוש גבוה — ישראלים, רוסים, אירופאים</li><li>פוטנציאל קיץ גדל: טיולי הרים, mountain biking, פסטיבלים — עונה שניה בצמיחה</li><li>ניהול שכירות מלא קיים בגודאורי — ניתן להשכיר מרחוק בלי לעלות על מטוס</li><li>אין מס על הכנסה מהשכרה לתושבי חוץ שאינם תושבי גאורגיה לצרכי מס</li></ul>',
+        'why.card3.badge': '8%–20% תשואה שנתית',
+        'why.card4.title': 'כניסה נגישה',
+        'why.card4.text': 'נכסים ב-New Gudauri מתחילים מ-$40,000. הליך הרכישה פשוט וניתן להשלים אותו תוך שבועות ספורים — אפילו מרחוק, ללא טיסה לגאורגיה.',
+        'why.card4.more': '<p class="card-text">בניגוד לספרד, פורטוגל או קפריסין — לא צריך להגיע פיזית לגאורגיה כדי לרכוש נכס. ייפוי כוח נוטריוני מספיק כדי שגדעון ינהל את התהליך כולו בשמך מגודאורי עצמה.</p><ul><li>שלב 1: בחירת נכס + חתימה על הסכם עקרונות — ניתן לעשות אונליין</li><li>שלב 2: העברה בנקאית בינלאומית ישירה — אין מתווכי כסף, אין עמלות מט״ח מיותרות</li><li>שלב 3: רישום בעלות — 3–5 ימי עבודה ב-Public Registry הגאורגי</li><li>שלב 4: קבלת נסח טאבו גאורגי — מוכר בינלאומית ומוגן משפטית</li></ul>',
+        'why.card4.badge': 'מ-$40,000',
+        'why.card5.title': 'קהילה ישראלית חזקה',
+        'why.card5.text': 'גודאורי הפכה ליעד מועדף על ישראלים — קהילה, מוכרים עברית, ומידע זמין. זה מקל על ההשקעה ומבטיח שוכרים ישראלים לאורך העונה.',
+        'why.card5.more': '<p class="card-text">בעונת הסקי, שמיעת עברית ברחובות גודאורי היא שגרה. ישראלים שוכרים דירות, נכנסים לבתי קפה, קונים שיעורי סקי — וחוזרים שנה אחר שנה. כמשקיע, זה אומר ביקוש קבוע מבסיס לקוחות שאתה מכיר.</p><ul><li>קבוצות וואטסאפ פעילות של ישראלים בגודאורי — הפניות, המלצות, שכירות</li><li>מספר עסקים ישראלים פעילים בגודאורי: שיעורי סקי, השכרת ציוד, מסעדות</li><li>ישראלים מחפשים דירות בעברית — הנכס שלך נמכר/מושכר קל יותר לשוק מוכר</li><li>קהילת הפייסבוק "ישראלים בגודאורי" — מאות חברים, עדכונים שוטפים על השוק</li></ul>',
+        'why.card5.badge': 'קהילה ישראלית פעילה',
+        'why.card6.title': 'רגולציה ידידותית',
+        'why.card6.text': 'גאורגיה דורגה #7 בעולם במדד "עסקים קלים" של הבנק העולמי. אין הגבלות על הבעלות הזרה, רישום בעלות מהיר ומלא, ומשפט הנכסים ברור ומוגן.',
+        'why.card6.more': '<p class="card-text">גאורגיה אינה חברת האיחוד האירופי — אבל זה לטובתך. הרגולציה הגמישה, מיסוי נמוך (מס חברות 15%, מס הכנסה 20%), ויחס ממשלתי חיובי לזרים הפכו אותה לאחת מהמדינות המומלצות ביותר להשקעות נדל״ן בעולם.</p><ul><li>אין הגבלות על העברת הכסף — ניתן להחזיר רווחים לישראל ללא חסמים</li><li>הסכם אי-כפל מיסוי בין ישראל לגאורגיה — הכנסות ממוסות פעם אחת בלבד</li><li>זמן רישום בעלות ממוצע: 3 ימי עבודה — ממהיר ביותר בעולם</li><li>מדד שלטון החוק של World Justice Project מציב את גאורגיה מעל מדינות כמו ברזיל, הודו ומקסיקו</li></ul>',
+        'why.card6.badge': 'World Bank #7',
+        'card.read_more': 'המשך קריאה', 'card.read_less': 'הצג פחות',
+        'facts.f1.title': 'תיירים ב-2024', 'facts.f1.desc': 'גאורגיה שוברת שיאי תיירות בכל שנה',
+        'facts.f2.title': 'ימי עונה', 'facts.f2.desc': 'סקי בחורף, טיולים וטבע בקיץ',
+        'facts.f3.title': 'נקודת כניסה', 'facts.f3.desc': 'מחיר התחלתי לנכס ב-New Gudauri',
+        'facts.f4.title': 'מס על רכישה', 'facts.f4.desc': 'זרים רוכשים ללא מס רכישה',
+        'services.label': 'מה כלול בשירות', 'services.title1': 'ליווי מלא', 'services.title2': "מא' ועד ת'",
+        'services.sub': 'כל מה שצריך כדי להשקיע נכון — תחת קורת גג אחת, בשפה שלך.',
+        'services.s1.title': 'איתור נכסים אישי', 'services.s1.text': 'לא מרשימה כללית — ממוקד לפרופיל שלך. מנתח את התקציב, מטרת ההשקעה (שכירות / עליית ערך / שימוש עצמי), ומציג רק נכסים שעומדים בקריטריונים האמיתיים. כולל ביקורים פיזיים בנכסים עם דיווח מפורט, תמונות ווידאו.', 'services.s1.tag': 'ייעוץ אישי מלא',
+        'services.s2.title': 'ניהול נכס שוטף', 'services.s2.text': 'לאחר הרכישה — הנכס עובד בשבילך. מוצאים שוכרים, מנהלים צ׳ק אין/אאוט, מטפלים בתקלות, מדווחים על הכנסות ומעבירים כסף לחשבון שלך. אתה יושב בישראל, הנכס מכניס.', 'services.s2.tag': 'מהיום הראשון',
+        'services.s3.title': 'ליווי משפטי מלא', 'services.s3.text': 'עבודה עם עורכי דין גאורגים מוכרים ומנוסים בעסקאות בינלאומיות. ליווי בחוזה, בדיקת בעלות ורישום, העברת בעלות — כל שלב מוסבר בעברית ומאושר על ידך לפני ביצוע.', 'services.s3.tag': 'עם עורך דין מקומי',
+        'services.s4.title': 'ייעוץ מימון ותשואה', 'services.s4.text': 'עוזר להבין מה ריאלי — לא מה שרצית לשמוע. ניתוח תשואה צפויה, מסלולי מימון, מינוף אפשרי, תכנון מס. כדי שתיכנס לעסקה עם עיניים פקוחות לחלוטין.', 'services.s4.tag': 'תכנון פיננסי מלא',
+        'process.label': 'איך זה עובד', 'process.title1': '5 שלבים', 'process.title2': 'מהשיחה הראשונה', 'process.title3': 'ועד לדירה שמכניסה כסף',
+        'process.s1.title': 'שיחת ייעוץ ראשונית — ללא עלות', 'process.s1.text': 'מכירים, מבינים את הצרכים שלך, עונים על כל השאלות. מה התקציב? מה המטרה? מה הציפיות? בסוף השיחה — יש לך תמונה ברורה של מה אפשרי.',
+        'process.s2.title': 'סיור בנכסים — פיזי או וירטואלי', 'process.s2.text': 'מציג נכסים שמתאימים לפרופיל שלך — עם תמונות, וידאו, מידות, מצב ומחיר ריאלי. ניתן לטוס לגודאורי לסיור אישי — ממליץ על כך בחום — אבל לא חובה.',
+        'process.s3.title': 'משא ומתן ואימות', 'process.s3.text': 'מנהל את המשא ומתן מולך, מוודא שהמחיר הגיוני ביחס לשוק, בודק היסטוריית הנכס ומסמכי בעלות. לא ממהרים — מוודאים שהכל תקין.',
+        'process.s4.title': 'ליווי משפטי וחתימה', 'process.s4.text': 'עורך דין גאורגי מוכר מכין חוזה, מסביר כל סעיף בעברית, מעביר את הבעלות ורושם על שמך. אפשר לחתום גם מישראל — בייפוי כוח (בתוספת תשלום).',
+        'process.s5.title': 'מסירה וניהול שוטף', 'process.s5.text': 'הנכס מוכן — עכשיו מתחיל הניהול. מפרסמים, מוצאים שוכרים, מנהלים, מדווחים. הנכס שלך עובד. אתה בישראל.',
+        'faq.label': 'שאלות ותשובות', 'faq.title1': 'שאלות', 'faq.title2': 'שכולם שואלים',
+        'faq.q1': 'האם ישראלי יכול לרכוש נדל״ן בגאורגיה?',
+        'faq.a1': 'כן, לחלוטין. אזרחים זרים כולל ישראלים רשאים לרכוש נדל״ן בגאורגיה ללא הגבלות. אין צורך בתושבות, ב-VISA מיוחד או בהתנאות נוספות. הרכישה רשומה על שמך באופן מלא. הרגולציה הגאורגית בנדל״ן מציבה מגבלות רק על רכישת <strong>קרקע חקלאית</strong> על ידי זרים — שאינה רלוונטית לנכסים עירוניים ב-New Gudauri.',
+        'faq.q2': 'האם אני חייב לטוס לגאורגיה כדי לקנות?',
+        'faq.a2': 'לא. כל תהליך הרכישה — חוזה, תשלום, רישום — מתבצע מרחוק עם ייפוי כוח מנוטריון ישראלי. עם זאת, <strong>אני ממליץ בחום לטוס לפחות פעם אחת לפני הרכישה</strong> — כדי לראות את הנכס, להרגיש את האזור ולקבל את ההחלטה בביטחון מלא.',
+        'faq.q3': 'מה התשואה הצפויה מנכס ב-New Gudauri?',
+        'faq.a3': 'התשואה תלויה מאוד בנכס, המיקום, הגודל, הניהול ומחיר הרכישה. בהתבסס על עסקאות שליוויתי — תשואת שכירות שנתית ברוטו נעה בין <strong>8% ל-20%</strong>. נכסים קטנים ומנוהלים טוב קרובים לגונדולה מכניסים יותר. בנוסף, יש לחשב את עליית הערך שמוסיפה לתשואה הכוללת לאורך זמן. בשיחת הייעוץ אנחנו נבנה ביחד ניתוח תשואה ריאלי לנכס ספציפי.',
+        'faq.q4': 'איך מתנהל התשלום? האם בטוח להעביר כסף לגאורגיה?',
+        'faq.a4': 'התשלום מתבצע בדולרים או לארי גאורגי, לחשבון בנק גאורגי מאומת. ניתן להעביר ממרבית הבנקים הישראלים. הרישום בטאבו הגאורגי (Napr) מיידי ושקוף — תוך יום-יומיים מהתשלום רואים את שמך כבעלים. בעסקאות שאני מלווה, אני מוודא שהכסף עובר רק לאחר אימות משפטי מלא.',
+        'faq.q5': 'מה כלול בשירות הליווי ומה העלות?',
+        'faq.a5': 'שיחת הייעוץ הראשונית היא ללא עלות. עבור ליווי מלא — מאיתור הנכס ועד לרישום — יש עמלת ליווי שמוסכמת מראש ובשקיפות מלאה. שירות הניהול השוטף לאחר הרכישה הוא בתשלום נפרד וסביר. בשיחת הייעוץ אסביר את מלוא המבנה הכלכלי — ללא הפתעות.',
+        'cta.eyebrow': 'צעד ראשון ללא עלות', 'cta.title1': 'מוכן לפגוש את', 'cta.title2': 'ההשקעה הבאה שלך?',
+        'cta.sub': 'שיחת ייעוץ ראשונית — ללא עלות, ללא התחייבות.\n          30 דקות שיתנו לך תמונה ברורה של מה אפשרי עבורך בגודאורי.',
+        'cta.btn_whatsapp': 'שלח הודעה לגדעון',
+        'cta.trust1': 'שיחה ראשונה ללא עלות', 'cta.trust2': 'ללא התחייבות', 'cta.trust3': 'ישראלי שגר בגודאורי',
+        'footer.tagline': 'גדעון בריטבסקי — ישראלי שגר ופועל ב-New Gudauri.\n            ליווי אישי מלא להשקעות נדל״ן בגאורגיה, מהחלום עד המפתח.',
+        'footer.nav_heading': 'ניווט', 'footer.accommodation': 'לינה ודירות', 'footer.faq': 'שאלות נפוצות',
+        'footer.contact_heading': 'קשר', 'footer.whatsapp': 'וואטסאפ זמין',
+        'footer.newsletter_heading': 'עדכוני שוק', 'footer.newsletter_text': 'עדכונים על הזדמנויות השקעה, מחירי שוק ותנועות בגודאורי.',
+        'footer.newsletter_btn': 'הרשם'
+      },
+
+      en: {
+        dir: 'ltr', lang: 'en',
+        'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.equipment': 'Rentals', 'nav.new_gudauri': 'New Gudauri', 'nav.accommodation': 'Stay',
+        'nav.investors': 'Investor Services', 'nav.contact': 'Contact', 'nav.cta': 'Book a Consultation', 'nav.equipment_rental': 'Gear Rental',
+        'hero.kicker': '🏔️ New Gudauri · Georgia · Real Estate Investment',
+        'hero.headline1': 'Your Next Investment', 'hero.headline2': 'Is in the Mountains',
+        'hero.sub_headline': 'Full personal guidance — from dream to keys in hand',
+        'hero.sub': 'Gidon Britavsky — 4+ years in Gudauri, 20+ deals guided. An Israeli who lives, works, and knows every corner of New Gudauri.',
+        'hero.cta_whatsapp': 'Book a Consultation', 'hero.cta_learn': 'Why Gudauri?',
+        'stats.years': 'Years in Gudauri', 'stats.deals': 'Deals Successfully Guided',
+        'stats.closing': 'Guidance Through Full Closing', 'stats.availability': 'Support After Purchase',
+        'about.photo_badge': '4+ Years<br/>in Gudauri', 'about.badge': 'Living the Israel–Gudauri Line',
+        'about.title1': "I'm not selling you Gudauri.", 'about.title2': 'I live there.',
+        'about.text1': 'You\'ve seen the winter photos of Gudauri and thought: <em>"Wait. There\'s something here."</em><br/>I was exactly there. Same questions, same doubts. The only difference? I decided to stay.',
+        'about.text2': "Today I live on the line. Not a tourist who visited. Not a broker selling from an office. Israeli enough to understand what scares you — and local enough to know what to look for, what to avoid, and where the real money is.",
+        'about.text3': "Since then I've guided dozens of Israeli families. Their properties work. They sleep soundly. That's what I want for you too.",
+        'about.point1': '<strong>Speaks your language</strong> — not just Hebrew. Israeli mindset, understanding your doubts, addressing your real fears',
+        'about.point2': '<strong>My feet are there while yours are here</strong> — visiting, checking, photographing, reporting. You\'re not blind',
+        'about.point3': '<strong>Connections that take years to build</strong> — contractors, developers, properties before they hit the open market',
+        'about.point4': '<strong>Transparency without compromise</strong> — no surprises. No hidden fees. No agenda that conflicts with yours',
+        'why.label': 'The Market Everyone Is Seeking', 'why.title1': 'Why', 'why.title2': 'Georgia Now?',
+        'why.sub': 'While real estate prices in Israel and Europe have hit the ceiling, Georgia offers a growing market with accessible entry and high yields.',
+        'why.card1.title': '0% Purchase Tax for Foreigners',
+        'why.card1.text': 'Georgia is one of the few countries in the world that allows foreigners to buy real estate with no purchase tax. What costs tens of thousands of shekels in Israel simply does not exist here.',
+        'why.card1.more': '<p class="card-text">In Israel, purchase tax on a second investment apartment starts at 8% and goes up to 10% — on a million-shekel property that\'s 80,000–100,000 ILS straight down the drain. In Georgia, regardless of citizenship, the purchase tax on a residential property is <strong>0%</strong>.</p><ul><li>No stamp duty, no significant registration fee — government registration cost: ~$50</li><li>Foreigners receive the same ownership rights as Georgian citizens</li><li>The purchase contract is translated and verified — can be signed with an Israeli notary via power of attorney</li><li>All ownership registered with the National Agency of Public Registry — transparent, secure and verifiable online</li></ul>',
+        'why.card1.badge': 'Zero Purchase Tax',
+        'why.card2.title': 'Consistent Value Growth',
+        'why.card2.text': 'Over the last 5 years, property values in New Gudauri have risen by ~30–40%. Demand from Russian, Israeli and Eastern European investors continues to push prices up.',
+        'why.card2.more': '<p class="card-text">New Gudauri is a new resort town in accelerated development. Properties purchased in 2019–2020 at an average of $700–$900/sqm now trade at $1,100–$1,500 — a 35–60% increase depending on location and developer.</p><ul><li>Sustained growth in inbound tourism to Georgia: 7.1 million tourists in 2023, a historic record</li><li>New hotel and apartment projects sell off-market before reaching the internet</li><li>Tbilisi International Airport — two hours away — continues to expand</li><li>Government backing: Georgia actively promotes mountain tourism as a national growth engine</li></ul>',
+        'why.card2.badge': '~35% Value Growth in 5 Years',
+        'why.card3.title': 'High Rental Yield',
+        'why.card3.text': 'Ski season in winter + nature tourism in summer = 365 days of potential income. Annual rental yield in New Gudauri ranges from 8% to 20% depending on the property and management.',
+        'why.card3.more': '<p class="card-text">An average studio apartment in New Gudauri generates $80–$150 per night during ski season (December–March). In summer — $40–$80 per night for mountain and nature tourists. With proper management, 65–75% annual occupancy is fully realistic.</p><ul><li>Strong winter season: 4 months of high demand — Israelis, Russians, Europeans</li><li>Growing summer potential: hiking, mountain biking, festivals — a second season in growth</li><li>Full rental management available in Gudauri — rent remotely without getting on a plane</li><li>No income tax on rental revenue for non-Georgian-resident foreign owners</li></ul>',
+        'why.card3.badge': '8%–20% Annual Yield',
+        'why.card4.title': 'Accessible Entry',
+        'why.card4.text': 'Properties in New Gudauri start from $40,000. The purchase process is simple and can be completed within weeks — even remotely, without flying to Georgia.',
+        'why.card4.more': '<p class="card-text">Unlike Spain, Portugal or Cyprus — you don\'t need to physically travel to Georgia to buy a property. A notarized power of attorney is sufficient for Gidon to manage the entire process on your behalf from Gudauri itself.</p><ul><li>Step 1: Property selection + heads-of-agreement signing — can be done online</li><li>Step 2: Direct international bank transfer — no money intermediaries, no unnecessary FX fees</li><li>Step 3: Title registration — 3–5 business days at the Georgian Public Registry</li><li>Step 4: Receiving Georgian title deed — internationally recognized and legally protected</li></ul>',
+        'why.card4.badge': 'From $40,000',
+        'why.card5.title': 'Strong International Community',
+        'why.card5.text': 'Gudauri has become a favorite destination for international investors — a community, Hebrew-speaking vendors, and accessible information. This makes investing easier and guarantees tenants throughout the season.',
+        'why.card5.more': '<p class="card-text">During ski season, hearing Hebrew on the streets of Gudauri is routine. Israelis rent apartments, visit cafes, buy ski lessons — and return year after year. As an investor, that means steady demand from a familiar customer base.</p><ul><li>Active international WhatsApp groups in Gudauri — referrals, recommendations, rentals</li><li>Several Israeli businesses operating in Gudauri: ski lessons, equipment rental, restaurants</li><li>Israelis search for apartments in Hebrew — your property sells/rents more easily to a familiar market</li><li>Facebook community "Israelis in Gudauri" — hundreds of members, constant market updates</li></ul>',
+        'why.card5.badge': 'Active International Community',
+        'why.card6.title': 'Investor-Friendly Regulation',
+        'why.card6.text': 'Georgia ranked #7 in the world in the World Bank "Ease of Doing Business" index. No restrictions on foreign ownership, fast and complete title registration, and clear, protected property law.',
+        'why.card6.more': '<p class="card-text">Georgia is not an EU member — but that works in your favor. The flexible regulation, low taxation (15% corporate tax, 20% income tax), and government-positive attitude toward foreigners have made it one of the most recommended countries for real estate investment in the world.</p><ul><li>No restrictions on money transfers — profits can be repatriated to Israel without barriers</li><li>Double taxation treaty between Israel and Georgia — income taxed only once</li><li>Average title registration time: 3 business days — among the fastest in the world</li><li>World Justice Project Rule of Law Index places Georgia above countries like Brazil, India and Mexico</li></ul>',
+        'why.card6.badge': 'World Bank #7',
+        'card.read_more': 'Read More', 'card.read_less': 'Show Less',
+        'facts.f1.title': 'Tourists in 2024', 'facts.f1.desc': 'Georgia breaks tourism records every year',
+        'facts.f2.title': 'Season Days', 'facts.f2.desc': 'Skiing in winter, hiking and nature in summer',
+        'facts.f3.title': 'Entry Point', 'facts.f3.desc': 'Starting price for a property in New Gudauri',
+        'facts.f4.title': 'Purchase Tax', 'facts.f4.desc': 'Foreigners buy with zero purchase tax',
+        'services.label': "What's Included", 'services.title1': 'Full Guidance', 'services.title2': 'A to Z',
+        'services.sub': 'Everything you need to invest correctly — under one roof, in your language.',
+        'services.s1.title': 'Personal Property Search', 'services.s1.text': "Not a generic list — focused on your profile. Analyzes your budget, investment goal (rental / value growth / personal use), and presents only properties that meet the real criteria. Includes physical property visits with detailed reporting, photos and video.", 'services.s1.tag': 'Full Personal Advisory',
+        'services.s2.title': 'Ongoing Property Management', 'services.s2.text': "After purchase — the property works for you. Find tenants, manage check-in/out, handle issues, report income and transfer money to your account. You sit in Israel, the property earns.", 'services.s2.tag': 'From Day One',
+        'services.s3.title': 'Full Legal Guidance', 'services.s3.text': "Working with recognized Georgian lawyers experienced in international transactions. Guidance on the contract, ownership verification and registration, title transfer — every step explained in your language and approved by you before execution.", 'services.s3.tag': 'With Local Attorney',
+        'services.s4.title': 'Finance & Yield Advisory', 'services.s4.text': "Helps you understand what's realistic — not what you wanted to hear. Expected yield analysis, financing routes, possible leverage, tax planning. So you enter the deal with eyes fully open.", 'services.s4.tag': 'Full Financial Planning',
+        'process.label': 'How It Works', 'process.title1': '5 Steps', 'process.title2': 'From First Call', 'process.title3': 'To a Property That Earns',
+        'process.s1.title': 'Initial Consultation — Free of Charge', 'process.s1.text': "We meet, understand your needs, answer all questions. What's the budget? What's the goal? What are the expectations? After the call — you have a clear picture of what's possible.",
+        'process.s2.title': 'Property Tour — Physical or Virtual', 'process.s2.text': "Presenting properties that fit your profile — with photos, video, dimensions, condition and a realistic price. You can fly to Gudauri for a personal tour — highly recommended — but not required.",
+        'process.s3.title': 'Negotiation & Verification', 'process.s3.text': "Conducts negotiations with you, verifies the price makes sense relative to the market, checks property history and ownership documents. We don't rush — we make sure everything is in order.",
+        'process.s4.title': 'Legal Guidance & Signing', 'process.s4.text': "A recognized Georgian attorney prepares the contract, explains every clause, transfers and registers ownership in your name. Can also sign from Israel — via power of attorney (additional fee).",
+        'process.s5.title': 'Handover & Ongoing Management', 'process.s5.text': "The property is ready — now management begins. We advertise, find tenants, manage, report. Your property works. You're in Israel.",
+        'faq.label': 'FAQ', 'faq.title1': 'Questions', 'faq.title2': 'Everyone Asks',
+        'faq.q1': 'Can an Israeli buy real estate in Georgia?',
+        'faq.a1': 'Yes, absolutely. Foreign citizens including Israelis are entitled to purchase real estate in Georgia without restrictions. No residency, special visa or additional conditions are required. The purchase is fully registered in your name. Georgian real estate regulation only places restrictions on foreigners purchasing <strong>agricultural land</strong> — which is irrelevant to urban properties in New Gudauri.',
+        'faq.q2': 'Do I have to fly to Georgia to buy?',
+        'faq.a2': "No. The entire purchase process — contract, payment, registration — is completed remotely with a power of attorney from an Israeli notary. However, <strong>I strongly recommend flying at least once before purchasing</strong> — to see the property, feel the area and make the decision with full confidence.",
+        'faq.q3': 'What is the expected yield from a property in New Gudauri?',
+        'faq.a3': 'Yield depends heavily on the property, location, size, management and purchase price. Based on deals I have guided — gross annual rental yield ranges from <strong>8% to 20%</strong>. Small, well-managed properties close to the gondola earn more. Additionally, value appreciation adds to the total return over time. In the consultation call we will together build a realistic yield analysis for a specific property.',
+        'faq.q4': 'How does payment work? Is it safe to transfer money to Georgia?',
+        'faq.a4': 'Payment is made in dollars or Georgian Lari, to a verified Georgian bank account. Transfers are possible from most Israeli banks. Registration in the Georgian land registry (Napr) is immediate and transparent — within one to two days of payment your name appears as owner. In deals I accompany, I ensure money transfers only after full legal verification.',
+        'faq.q5': "What's included in the guidance service and what does it cost?",
+        'faq.a5': 'The initial consultation is free of charge. For full guidance — from property search to registration — there is a guidance fee agreed upon in advance and with full transparency. The ongoing management service after purchase is a separate and reasonable fee. In the consultation call I will explain the full economic structure — no surprises.',
+        'cta.eyebrow': 'First Step — Free of Charge', 'cta.title1': 'Ready to Meet', 'cta.title2': 'Your Next Investment?',
+        'cta.sub': 'Initial consultation — free of charge, no commitment. 30 minutes that will give you a clear picture of what is possible for you in Gudauri.',
+        'cta.btn_whatsapp': 'Message Gidon',
+        'cta.trust1': 'First Call Free', 'cta.trust2': 'No Commitment', 'cta.trust3': 'Israeli Living in Gudauri',
+        'footer.tagline': 'Gidon Britavsky — an Israeli living and working in New Gudauri. Full personal guidance for real estate investments in Georgia, from dream to keys.',
+        'footer.nav_heading': 'Navigation', 'footer.accommodation': 'Stay & Apartments', 'footer.faq': 'FAQ',
+        'footer.contact_heading': 'Contact', 'footer.whatsapp': 'WhatsApp Available',
+        'footer.newsletter_heading': 'Market Updates', 'footer.newsletter_text': 'Updates on investment opportunities, market prices and movements in Gudauri.',
+        'footer.newsletter_btn': 'Subscribe'
+      },
+
+      ru: {
+        dir: 'ltr', lang: 'ru',
+        'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.equipment': 'Прокат', 'nav.new_gudauri': 'Нью Гудаури', 'nav.accommodation': 'Проживание',
+        'nav.investors': 'Инвесторам', 'nav.contact': 'Связаться', 'nav.cta': 'Записаться на консультацию', 'nav.equipment_rental': 'Прокат снаряжения',
+        'hero.kicker': '🏔️ New Gudauri · Грузия · Инвестиции в недвижимость',
+        'hero.headline1': 'Ваша следующая инвестиция', 'hero.headline2': 'находится в горах',
+        'hero.sub_headline': 'Полное личное сопровождение — от мечты до ключей',
+        'hero.sub': 'Гидон Бритавский — 4+ лет в Гудаури, 20+ сопровождённых сделок. Израильтянин, который живёт, работает и знает каждый уголок New Gudauri.',
+        'hero.cta_whatsapp': 'Записаться на консультацию', 'hero.cta_learn': 'Почему Гудаури?',
+        'stats.years': 'Лет в Гудаури', 'stats.deals': 'Успешных сделок',
+        'stats.closing': 'Сопровождение до закрытия', 'stats.availability': 'Поддержка после покупки',
+        'about.photo_badge': '4+ года<br/>в Гудаури', 'about.badge': 'Живёт между Израилем и Гудаури',
+        'about.title1': 'Я не продаю вам Гудаури.', 'about.title2': 'Я там живу.',
+        'about.text1': 'Вы тоже однажды видели зимние фото Гудаури и подумали: <em>"Подождите. Здесь что-то есть."</em><br/>Я был ровно там. Те же вопросы, те же сомнения. Единственная разница? Я решил остаться.',
+        'about.text2': 'Сегодня я живу на линии. Не турист, который приезжал. Не риелтор, продающий из офиса. Достаточно израильтянин, чтобы понять ваши страхи — и достаточно местный, чтобы знать что искать, чего избегать и где настоящие деньги.',
+        'about.text3': 'С тех пор я сопроводил десятки израильских семей. Их объекты работают. Они спят спокойно. Этого я хочу и для вас.',
+        'about.point1': '<strong>Говорит на вашем языке</strong> — понимает израильский менталитет, знает ваши сомнения, отвечает на реальные страхи',
+        'about.point2': '<strong>Мои ноги там, пока ваши здесь</strong> — посещает, проверяет, фотографирует, докладывает. Вы не в слепую',
+        'about.point3': '<strong>Связи, которые строились годами</strong> — застройщики, девелоперы, объекты до выхода на открытый рынок',
+        'about.point4': '<strong>Прозрачность без компромиссов</strong> — никаких сюрпризов. Никаких скрытых комиссий. Никакой повестки, конфликтующей с вашей',
+        'why.label': 'Рынок, который все ищут', 'why.title1': 'Почему', 'why.title2': 'Грузия сейчас?',
+        'why.sub': 'Пока цены на недвижимость в Израиле и Европе достигли потолка, Грузия предлагает растущий рынок с доступным входом и высокой доходностью.',
+        'why.card1.title': '0% налог на покупку для иностранцев',
+        'why.card1.text': 'Грузия — одна из немногих стран в мире, позволяющих иностранцам покупать недвижимость без налога на покупку. То, что стоит десятки тысяч шекелей в Израиле, здесь просто не существует.',
+        'why.card1.more': '<p class="card-text">В Израиле налог на покупку второй инвестиционной квартиры начинается с 8% и доходит до 10% — на квартиру за миллион шекелей это 80 000–100 000 ₪ прямо в мусор. В Грузии, независимо от гражданства, налог на покупку жилой недвижимости составляет <strong>0%</strong>.</p><ul><li>Нет гербового сбора, нет существенной платы за регистрацию — стоимость госрегистрации: ~$50</li><li>Иностранцы получают те же права собственности, что и граждане Грузии</li><li>Договор купли-продажи переводится и заверяется — можно подписать у израильского нотариуса с доверенностью</li><li>Вся собственность регистрируется в Национальном агентстве публичного реестра — прозрачно, безопасно и проверяется онлайн</li></ul>',
+        'why.card1.badge': 'Нулевой налог на покупку',
+        'why.card2.title': 'Стабильный рост стоимости',
+        'why.card2.text': 'За последние 5 лет стоимость недвижимости в New Gudauri выросла примерно на 30–40%. Спрос со стороны российских, израильских и восточноевропейских инвесторов продолжает толкать цены вверх.',
+        'why.card2.more': '<p class="card-text">New Gudauri — новый курортный город на стадии ускоренного развития. Объекты, купленные в 2019–2020 годах по $700–$900 за кв.м, сегодня торгуются по $1 100–$1 500 — рост на 35–60% в зависимости от местоположения и застройщика.</p><ul><li>Устойчивый рост въездного туризма в Грузию: 7,1 млн туристов в 2023 году — исторический рекорд</li><li>Новые проекты гостиниц и апартаментов продаются вне рынка до появления в интернете</li><li>Международный аэропорт Тбилиси — в двух часах езды — продолжает расширяться</li><li>Государственная поддержка: Грузия активно продвигает горный туризм как национальный двигатель роста</li></ul>',
+        'why.card2.badge': '~35% роста стоимости за 5 лет',
+        'why.card3.title': 'Высокая арендная доходность',
+        'why.card3.text': 'Горнолыжный сезон зимой + природный туризм летом = 365 дней потенциального дохода. Годовая арендная доходность в New Gudauri варьируется от 8% до 20% в зависимости от объекта и управления.',
+        'why.card3.more': '<p class="card-text">Средняя студия в New Gudauri приносит $80–$150 за ночь в лыжный сезон (декабрь–март). Летом — $40–$80 за ночь для горных и природных туристов. При грамотном управлении заполняемость 65–75% в год вполне реалистична.</p><ul><li>Сильный зимний сезон: 4 месяца высокого спроса — израильтяне, русские, европейцы</li><li>Растущий летний потенциал: пешие походы, горный велосипед, фестивали — второй сезон в росте</li><li>Полное управление арендой доступно в Гудаури — можно сдавать удалённо без перелёта</li><li>Нет налога на доход от аренды для иностранцев, не являющихся налоговыми резидентами Грузии</li></ul>',
+        'why.card3.badge': '8%–20% годовой доходности',
+        'why.card4.title': 'Доступный вход',
+        'why.card4.text': 'Объекты в New Gudauri начинаются от $40 000. Процесс покупки прост и может быть завершён за несколько недель — даже удалённо, без поездки в Грузию.',
+        'why.card4.more': '<p class="card-text">В отличие от Испании, Португалии или Кипра — не нужно физически приезжать в Грузию для покупки объекта. Нотариально заверенной доверенности достаточно, чтобы Гидон управлял всем процессом от вашего имени прямо из Гудаури.</p><ul><li>Шаг 1: Выбор объекта + подписание предварительного соглашения — можно онлайн</li><li>Шаг 2: Прямой международный банковский перевод — без посредников, без лишних комиссий</li><li>Шаг 3: Регистрация права собственности — 3–5 рабочих дней в Публичном реестре Грузии</li><li>Шаг 4: Получение грузинского свидетельства о праве собственности — признано международно и защищено юридически</li></ul>',
+        'why.card4.badge': 'От $40 000',
+        'why.card5.title': 'Знакомое сообщество',
+        'why.card5.text': 'Гудаури — популярное направление среди русскоязычных инвесторов. Знакомая культура, русскоязычный сервис и устойчивый поток туристов из России и СНГ обеспечивают постоянный спрос на аренду.',
+        'why.card5.more': '<p class="card-text">В лыжный сезон русская речь на улицах Гудаури — обычное явление. Русскоязычные туристы снимают квартиры, ходят в кафе, берут уроки лыж — и возвращаются из года в год. Как инвестор, это означает стабильный спрос от знакомой базы клиентов.</p><ul><li>Активные русскоязычные группы в Гудаури — направления, рекомендации, аренда</li><li>Несколько русскоязычных предприятий в Гудаури: уроки лыж, прокат снаряжения, рестораны</li><li>Русскоязычные туристы ищут апартаменты на родном языке — ваш объект легче продать/сдать знакомому рынку</li><li>Устойчивый поток туристов из России, Беларуси, Казахстана — круглый год</li></ul>',
+        'why.card5.badge': 'Активное русскоязычное сообщество',
+        'why.card6.title': 'Дружественное регулирование',
+        'why.card6.text': 'Грузия заняла #7 место в мире в индексе "Doing Business" Всемирного банка. Нет ограничений на иностранную собственность, быстрая и полная регистрация права, чёткое и защищённое имущественное право.',
+        'why.card6.more': '<p class="card-text">Грузия не является членом ЕС — но это работает в вашу пользу. Гибкое регулирование, низкое налогообложение (15% корпоративный налог, 20% подоходный налог) и положительное отношение правительства к иностранцам сделали её одной из наиболее рекомендуемых стран для инвестиций в недвижимость.</p><ul><li>Нет ограничений на перевод денег — прибыль можно репатриировать без барьеров</li><li>Соглашение об избежании двойного налогообложения — доход облагается налогом только один раз</li><li>Среднее время регистрации права собственности: 3 рабочих дня — одно из самых быстрых в мире</li><li>Индекс верховенства права World Justice Project ставит Грузию выше Бразилии, Индии и Мексики</li></ul>',
+        'why.card6.badge': 'Всемирный банк #7',
+        'card.read_more': 'Читать далее', 'card.read_less': 'Свернуть',
+        'facts.f1.title': 'Туристов в 2024 г.', 'facts.f1.desc': 'Грузия бьёт туристические рекорды каждый год',
+        'facts.f2.title': 'Дней сезона', 'facts.f2.desc': 'Горные лыжи зимой, походы и природа летом',
+        'facts.f3.title': 'Порог входа', 'facts.f3.desc': 'Начальная цена объекта в New Gudauri',
+        'facts.f4.title': 'Налог на покупку', 'facts.f4.desc': 'Иностранцы покупают без налога',
+        'services.label': 'Что входит в услугу', 'services.title1': 'Полное сопровождение', 'services.title2': 'от А до Я',
+        'services.sub': 'Всё необходимое для правильной инвестиции — под одной крышей, на вашем языке.',
+        'services.s1.title': 'Персональный поиск объектов', 'services.s1.text': 'Не общий список — сфокусированный на вашем профиле. Анализирует бюджет, цель инвестиции (аренда / рост стоимости / личное использование) и представляет только объекты, отвечающие реальным критериям. Включая физические визиты к объектам с подробными отчётами, фото и видео.', 'services.s1.tag': 'Полный личный консалтинг',
+        'services.s2.title': 'Текущее управление объектом', 'services.s2.text': 'После покупки — объект работает на вас. Находим арендаторов, управляем заездом/выездом, решаем проблемы, отчитываемся о доходах и переводим деньги на ваш счёт. Вы в Израиле, объект зарабатывает.', 'services.s2.tag': 'С первого дня',
+        'services.s3.title': 'Полное юридическое сопровождение', 'services.s3.text': 'Работа с признанными грузинскими юристами, опытными в международных сделках. Сопровождение при составлении договора, проверка права собственности и регистрации, передача права — каждый шаг объясняется на понятном языке и утверждается вами до исполнения.', 'services.s3.tag': 'С местным юристом',
+        'services.s4.title': 'Финансовый и доходный консалтинг', 'services.s4.text': 'Помогает понять, что реалистично — а не то, что вы хотели услышать. Анализ ожидаемого дохода, схемы финансирования, возможное плечо, налоговое планирование. Чтобы вы входили в сделку с полностью открытыми глазами.', 'services.s4.tag': 'Полное финансовое планирование',
+        'process.label': 'Как это работает', 'process.title1': '5 шагов', 'process.title2': 'от первого звонка', 'process.title3': 'до объекта, который зарабатывает',
+        'process.s1.title': 'Первичная консультация — бесплатно', 'process.s1.text': 'Знакомимся, понимаем ваши потребности, отвечаем на все вопросы. Каков бюджет? Какова цель? Каковы ожидания? После звонка — у вас чёткая картина возможного.',
+        'process.s2.title': 'Осмотр объектов — лично или виртуально', 'process.s2.text': 'Представляем объекты, подходящие вашему профилю — с фото, видео, размерами, состоянием и реальной ценой. Можно полететь в Гудаури для личного осмотра — настоятельно рекомендуем — но не обязательно.',
+        'process.s3.title': 'Переговоры и проверка', 'process.s3.text': 'Ведём переговоры с вами, проверяем, что цена обоснована относительно рынка, изучаем историю объекта и документы на право собственности. Не торопимся — убеждаемся, что всё в порядке.',
+        'process.s4.title': 'Юридическое сопровождение и подписание', 'process.s4.text': 'Признанный грузинский юрист готовит договор, объясняет каждый пункт, передаёт и регистрирует право собственности на ваше имя. Можно подписать и из Израиля — по доверенности (с дополнительной оплатой).',
+        'process.s5.title': 'Передача и текущее управление', 'process.s5.text': 'Объект готов — начинается управление. Рекламируем, находим арендаторов, управляем, отчитываемся. Ваш объект работает. Вы в Израиле.',
+        'faq.label': 'Вопросы и ответы', 'faq.title1': 'Вопросы', 'faq.title2': 'которые задают все',
+        'faq.q1': 'Может ли израильтянин купить недвижимость в Грузии?',
+        'faq.a1': 'Да, абсолютно. Иностранные граждане, включая израильтян, вправе приобретать недвижимость в Грузии без ограничений. Не требуется вид на жительство, специальная виза или дополнительные условия. Покупка полностью регистрируется на ваше имя. Грузинское регулирование в сфере недвижимости ограничивает только покупку <strong>сельскохозяйственных земель</strong> иностранцами — что не касается городских объектов в New Gudauri.',
+        'faq.q2': 'Нужно ли лететь в Грузию для покупки?',
+        'faq.a2': 'Нет. Весь процесс покупки — договор, оплата, регистрация — осуществляется удалённо с нотариально заверенной доверенностью. Тем не менее, <strong>настоятельно рекомендую слетать хотя бы один раз до покупки</strong> — чтобы увидеть объект, почувствовать район и принять решение с полной уверенностью.',
+        'faq.q3': 'Какова ожидаемая доходность объекта в New Gudauri?',
+        'faq.a3': 'Доходность очень зависит от объекта, местоположения, размера, управления и цены покупки. На основе сделок, которые я сопровождал — валовая годовая арендная доходность составляет от <strong>8% до 20%</strong>. Небольшие, хорошо управляемые объекты рядом с гондолой зарабатывают больше. Кроме того, рост стоимости добавляет к общей доходности со временем. На консультации мы вместе построим реалистичный анализ доходности для конкретного объекта.',
+        'faq.q4': 'Как происходит оплата? Безопасно ли переводить деньги в Грузию?',
+        'faq.a4': 'Оплата производится в долларах или грузинских лари на верифицированный грузинский банковский счёт. Переводы возможны из большинства израильских банков. Регистрация в грузинском земельном реестре (Napr) мгновенна и прозрачна — в течение одного-двух дней после оплаты ваше имя появляется как владелец. В сделках, которые я сопровождаю, я слежу за тем, чтобы деньги переводились только после полной юридической проверки.',
+        'faq.q5': 'Что входит в услугу сопровождения и сколько это стоит?',
+        'faq.a5': 'Первичная консультация бесплатна. За полное сопровождение — от поиска объекта до регистрации — взимается комиссия за сопровождение, согласованная заранее и с полной прозрачностью. Услуга текущего управления после покупки оплачивается отдельно и по разумной ставке. На консультации я объясню полную экономическую структуру — без сюрпризов.',
+        'cta.eyebrow': 'Первый шаг — бесплатно', 'cta.title1': 'Готовы встретить', 'cta.title2': 'вашу следующую инвестицию?',
+        'cta.sub': 'Первичная консультация — бесплатно, без обязательств. 30 минут, которые дадут вам чёткое представление о возможном в Гудаури.',
+        'cta.btn_whatsapp': 'Написать Гидону',
+        'cta.trust1': 'Первый звонок бесплатно', 'cta.trust2': 'Без обязательств', 'cta.trust3': 'Израильтянин, живущий в Гудаури',
+        'footer.tagline': 'Гидон Бритавский — израильтянин, живущий и работающий в New Gudauri. Полное личное сопровождение инвестиций в недвижимость Грузии.',
+        'footer.nav_heading': 'Навигация', 'footer.accommodation': 'Жильё и апартаменты', 'footer.faq': 'FAQ',
+        'footer.contact_heading': 'Контакты', 'footer.whatsapp': 'WhatsApp доступен',
+        'footer.newsletter_heading': 'Обновления рынка', 'footer.newsletter_text': 'Обновления об инвестиционных возможностях, ценах рынка и движениях в Гудаури.',
+        'footer.newsletter_btn': 'Подписаться'
+      },
+
+      ge: {
+        dir: 'ltr', lang: 'ka',
+        'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.equipment': 'ინვენტარი', 'nav.new_gudauri': 'ახალი გუდაური', 'nav.accommodation': 'საცხოვრებელი',
+        'nav.investors': 'ინვესტორებისთვის', 'nav.contact': 'კონტაქტი', 'nav.cta': 'კონსულტაციის დაჯავშნა', 'nav.equipment_rental': 'ინვენტარის გაქირავება',
+        'hero.kicker': '🏔️ New Gudauri · საქართველო · უძრავი ქონება',
+        'hero.headline1': 'თქვენი შემდეგი ინვესტიცია', 'hero.headline2': 'მთებშია',
+        'hero.sub_headline': 'სრული პირადი ხელმძღვანელობა — ოცნებიდან გასაღებამდე',
+        'hero.sub': 'გიდონ ბრიტავსკი — 4+ წელი გუდაურში, 20+ გარიგება. ისრაელელი, რომელიც ცხოვრობს, მუშაობს და იცნობს ახალი გუდაურის ყოველ კუთხეს.',
+        'hero.cta_whatsapp': 'კონსულტაციის დაჯავშნა', 'hero.cta_learn': 'რატომ გუდაური?',
+        'stats.years': 'წელი გუდაურში', 'stats.deals': 'წარმატებული გარიგება',
+        'stats.closing': 'ხელმძღვანელობა დასრულებამდე', 'stats.availability': 'მხარდაჭერა შეძენის შემდეგ',
+        'about.photo_badge': '4+ წელი<br/>გუდაურში', 'about.badge': 'ცხოვრობს ისრაელ-გუდაურის ხაზზე',
+        'about.title1': 'მე გუდაურს არ გყიდით.', 'about.title2': 'მე იქ ვცხოვრობ.',
+        'about.text1': 'თქვენც ერთხელ ნახეთ გუდაურის ზამთრის ფოტოები და გაიფიქრეთ: <em>"მოიცა. აქ რაღაც არის."</em><br/>მეც ზუსტად იმ ადგილას ვიყავი. იგივე კითხვები, იგივე ეჭვები. ერთადერთი განსხვავება? გადავწყვიტე დავრჩენილიყავი.',
+        'about.text2': 'დღეს ვცხოვრობ ამ ხაზზე. არა ტურისტი, რომელიც ეწვია. არა ბროკერი, რომელიც ოფისიდან ყიდის. საკმარისად ისრაელელი, რომ გავიგო თქვენი შიშები — და საკმარისად ადგილობრივი, რომ ვიცოდე რა მოვძებნო, რისგან ვიცილო, და სად არის ნამდვილი ფული.',
+        'about.text3': 'მას შემდეგ ათობით ისრაელური ოჯახი გამოვიყვანე. მათი ქონება მუშაობს. ისინი მშვიდად სძინავთ. ეს ისაა, რასაც თქვენთვის ვისურვებ.',
+        'about.point1': '<strong>საუბრობს თქვენს ენაზე</strong> — ისრაელური მენტალიტეტი, ეჭვების გაგება, რეალური შიშების პასუხები',
+        'about.point2': '<strong>ჩეми ფეხები იქ, სანამ თქვენი აქ</strong> — სტუმრობს, ამოწმებს, იღებს ფოტოს, ატყობინებს. თქვენ ბრმა არ ხართ',
+        'about.point3': '<strong>კავშირები, რომელთა შექმნას წლები სჭირდება</strong> — კონტრაქტორები, დეველოპერები, ქონება ღია ბაზარზე გამოჩენამდე',
+        'about.point4': '<strong>კომპრომისის გარეშე გამჭვირვალობა</strong> — სიურპრიზები არ არის. ფარული საკომისიო არ არის. ათვისება, რომელიც თქვენს ინტერესებს ეწინააღმდეგება, არ არის',
+        'why.label': 'ბაზარი, რომელსაც ყველა ეძებს', 'why.title1': 'რატომ', 'why.title2': 'საქართველო ახლა?',
+        'why.sub': 'სანამ ისრაელსა და ევროპაში უძრავი ქონების ფასები ჭერს მიაღწია, საქართველო გვთავაზობს მზარდ ბაზარს ხელმისაწვდომი შესვლით და მაღალი შემოსავლებით.',
+        'why.card1.title': '0% შესყიდვის გადასახადი უცხოელებისთვის',
+        'why.card1.text': 'საქართველო მსოფლიოს იმ მცირე ქვეყნებს შორისაა, სადაც უცხოელებს შეუძლიათ უძრავი ქონების შეძენა შეძენის გადასახადის გარეშე. ისრაელში ათეულობით ათასი შეკელი — აქ არ არსებობს.',
+        'why.card1.more': '<p class="card-text">ისრაელში მეორე საინვესტიციო ბინის შეძენის გადასახადი 8%-დან იწყება და 10%-მდე აღწევს — მილიონი შეკელის ბინაზე ეს 80 000–100 000 ₪-ია. საქართველოში, მოქალაქეობის მიუხედავად, საცხოვრებელ ქონებაზე შეძენის გადასახადი <strong>0%</strong>-ია.</p><ul><li>გადასახადის მარკა არ არის, მნიშვნელოვანი სარეგისტრაციო გადასახადი არ არის — სახელმწიფო რეგისტრაციის ღირებულება: ~$50</li><li>უცხოელები იღებენ საქართველოს მოქალაქეების თანაბარ საკუთრების უფლებებს</li><li>ყიდვა-გაყიდვის ხელშეკრულება ითარგმნება და დამოწმდება — ისრაელის ნოტარიუსთან შეიძლება ხელმოწერა მინდობილობით</li><li>ყველა საკუთრება სარეგისტრაციო სააგენტოში ირეგისტრირდება — გამჭვირვალე, უსაფრთხო და ონლაინ გადამოწმებადი</li></ul>',
+        'why.card1.badge': 'ნულოვანი შეძენის გადასახადი',
+        'why.card2.title': 'სტაბილური ღირებულების ზრდა',
+        'why.card2.text': 'ბოლო 5 წლის განმავლობაში New Gudauri-ში ქონების ღირებულება დაახლოებით 30–40%-ით გაიზარდა. რუსი, ისრაელური და აღმოსავლეთ ევროპული ინვესტორების მხრიდან მოთხოვნა ფასების ზრდას განაგრძობს.',
+        'why.card2.more': '<p class="card-text">New Gudauri ახალი სარეკრეაციო ქალაქია დაჩქარებული განვითარების სტადიაში. 2019–2020 წლებში $700–$900/კვ.მ-ად შეძენილი ქონება ახლა $1 100–$1 500-ად იყიდება — 35–60%-ის ზრდა მდებარეობისა და დეველოპერის მიხედვით.</p><ul><li>საქართველოში შემომავალი ტურიზმის მდგრადი ზრდა: 7.1 მლნ ტურისტი 2023 წელს — ისტორიული რეკორდი</li><li>სასტუმრო-აპარტამენტების ახალი პროექტები ინტერნეტში გამოჩენამდე გაიყიდება</li><li>თბილისის საერთაშორისო აეროპორტი — ორ საათზე — განაგრძობს გაფართოებას</li><li>სახელმწიფო მხარდაჭერა: საქართველო მთის ტურიზმს ეროვნული ზრდის ძრავად ააქტიურებს</li></ul>',
+        'why.card2.badge': '~35% ღირებულების ზრდა 5 წელში',
+        'why.card3.title': 'მაღალი სარენდო შემოსავალი',
+        'why.card3.text': 'თხილამური სეზონი ზამთარში + ბუნების ტურიზმი ზაფხულში = 365 დღის პოტენციური შემოსავალი. New Gudauri-ს წლიური სარენდო შემოსავალი 8%-დან 20%-მდე მერყეობს ქონებისა და მართვის მიხედვით.',
+        'why.card3.more': '<p class="card-text">New Gudauri-ს საშუალო სტუდია $80–$150 ღამეში გამოიმუშავებს თხილამური სეზონის (დეკემბერი–მარტი) განმავლობაში. ზაფხულში — $40–$80 ღამეში მთის და ბუნების ტურისტებისთვის. სათანადო მართვით, 65–75% წლიური ჩართულობა სრულიად რეალისტურია.</p><ul><li>ძლიერი ზამთრის სეზონი: მაღალი მოთხოვნის 4 თვე — ისრაელელები, რუსები, ევროპელები</li><li>მზარდი ზაფხულის პოტენციალი: ლაშქრობა, მთის ველოსიპედი, ფესტივალები — ზრდაში მეორე სეზონი</li><li>სრული სარენდო მართვა ხელმისაწვდომია გუდაურში — შეიძლება დისტანციური გაქირავება ფრენის გარეშე</li><li>არ არის გადასახადი სარენდო შემოსავალზე საქართველოს გადასახადის გადამხდელი არ-მდგომ უცხოელებზე</li></ul>',
+        'why.card3.badge': '8%–20% წლიური შემოსავალი',
+        'why.card4.title': 'ხელმისაწვდომი შესვლა',
+        'why.card4.text': 'New Gudauri-ში ქონება $40 000-დან იწყება. შეძენის პროცესი მარტივია და შეიძლება რამდენიმე კვირაში დასრულდეს — თუნდაც დისტანციურად, საქართველოში გამოუფრენლად.',
+        'why.card4.more': '<p class="card-text">ესპანეთის, პორტუგალიისა თუ კვიპროსისგან განსხვავებით — ქონების შეძენისთვის ფიზიკურად საქართველოში ჩამოსვლა არ გჭირდებათ. ნოტარიულად დამოწმებული მინდობილობა საკმარისია, რომ გიდონმა მთელი პროცესი თქვენს სახელზე გუდაურიდანვე მართოს.</p><ul><li>ნაბიჯი 1: ქონების შერჩევა + წინასწარი შეთანხმების ხელმოწერა — შეიძლება ონლაინ</li><li>ნაბიჯი 2: პირდაპირი საერთაშორისო საბანკო გადარიცხვა — შუამავლები არ არის, ზედმეტი საკომისიო არ არის</li><li>ნაბიჯი 3: საკუთრების რეგისტრაცია — 3–5 სამუშაო დღე საქართველოს სარეგისტრაციო სამსახურში</li><li>ნაბიჯი 4: ქართული ამონაწერის მიღება — საერთაშორისოდ აღიარებული და იურიდიულად დაცული</li></ul>',
+        'why.card4.badge': '$40 000-დან',
+        'why.card5.title': 'საერთაშორისო საზოგადოება',
+        'why.card5.text': 'გუდაური საერთაშორისო ინვესტორების საყვარელ დანიშნულებად იქცა — საზოგადოება, ინფორმაციის ხელმისაწვდომობა და სხვადასხვა ეროვნების ტურისტები. ეს ინვესტიციას ამარტივებს და სეზონის განმავლობაში მოიჯარეებს უზრუნველყოფს.',
+        'why.card5.more': '<p class="card-text">თხილამური სეზონის დროს გუდაურის ქუჩებში სხვადასხვა ენის მოსმენა ჩვეულებრივია. ტურისტები ბინებს ქირაობენ, კაფეებში დადიან, თხილამური გაკვეთილებს ყიდულობენ — და წელიწადი წელს უბრუნდებიან. ინვესტორად ეს ნიშნავს სტაბილური მოთხოვნა ნაცნობი კლიენტების ბაზიდან.</p><ul><li>გუდაურში უცხოელების აქტიური WhatsApp ჯგუფები — მიმართვები, რეკომენდაციები, გაქირავება</li><li>გუდაურში რამდენიმე ბიზნესი: თხილამური გაკვეთილები, ინვენტარის გაქირავება, რესტორნები</li><li>საერთაშორისო ტურისტები სხვადასხვა ენაზე ეძებენ ბინებს — თქვენი ქონება ადვილად იყიდება/ქირავდება</li><li>Facebook-ის საზოგადოება "Israelis in Gudauri" — ასობით წევრი, ბაზრის მუდმივი განახლებები</li></ul>',
+        'why.card5.badge': 'აქტიური საერთაშორისო საზოგადოება',
+        'why.card6.title': 'ინვესტორის მეგობარი რეგულაცია',
+        'why.card6.text': 'საქართველომ მსოფლიო ბანკის "Doing Business"-ის ინდექსში მსოფლიოში #7 ადგილი დაიკავა. უცხოელი საკუთრებაზე შეზღუდვები არ არის, სწრაფი და სრული საკუთრების რეგისტრაცია, და ნათელი, დაცული ქონების კანონი.',
+        'why.card6.more': '<p class="card-text">საქართველო ევროკავშირის წევრი არ არის — მაგრამ ეს თქვენს სასარგებლოდ მუშაობს. მოქნილი რეგულაცია, დაბალი დაბეგვრა (15% კორპორატიული გადასახადი, 20% საშემოსავლო გადასახადი) და უცხოელების მიმართ მთავრობის პოზიტიური დამოკიდებულება ის ერთ-ერთ ყველაზე რეკომენდებულ ქვეყნად აქცია უძრავ ქონებაში ინვესტიციებისთვის.</p><ul><li>ფულის გადარიცხვაზე შეზღუდვები არ არის — მოგება შეიძლება დაბრუნდეს ბარიერების გარეშე</li><li>ისრაელსა და საქართველოს შორის ორმაგი დაბეგვრის შეთანხმება — შემოსავალი ერთხელ იბეგრება</li><li>საკუთრების რეგისტრაციის საშუალო დრო: 3 სამუშაო დღე — მსოფლიოში ყველაზე სწრაფთა შორის</li><li>World Justice Project კანონის უზენაესობის ინდექსი საქართველოს ბრაზილიაზე, ინდოეთსა და მექსიკაზე მაღლა აყენებს</li></ul>',
+        'why.card6.badge': 'მსოფლიო ბანკი #7',
+        'card.read_more': 'სრულად წაკითხვა', 'card.read_less': 'ნაკლები',
+        'facts.f1.title': 'ტურისტი 2024 წელს', 'facts.f1.desc': 'საქართველო ყოველ წელს ტურიზმის ჩამპიონია',
+        'facts.f2.title': 'სეზონის დღეები', 'facts.f2.desc': 'თხილამური ზამთარში, ლაშქრობა ზაფხულში',
+        'facts.f3.title': 'შესვლის ზღვარი', 'facts.f3.desc': 'ქონების საწყისი ფასი New Gudauri-ში',
+        'facts.f4.title': 'შეძენის გადასახადი', 'facts.f4.desc': 'უცხოელები ყიდულობენ გადასახადის გარეშე',
+        'services.label': 'რა შედის სერვისში', 'services.title1': 'სრული ხელმძღვანელობა', 'services.title2': 'A-დან Z-მდე',
+        'services.sub': 'ყველაფერი, რაც სწორი ინვესტიციისთვის გჭირდებათ — ერთი სახურავის ქვეშ, თქვენს ენაზე.',
+        'services.s1.title': 'პირადი ქონების ძიება', 'services.s1.text': 'არ არის ზოგადი სია — ფოკუსირებულია თქვენს პროფილზე. აანალიზებს ბიუჯეტს, ინვესტიციის მიზანს (გაქირავება / ღირებულების ზრდა / პირადი გამოყენება) და წარუდგენს მხოლოდ ქონებებს, რომლებიც რეალურ კრიტერიუმებს პასუხობს. მოიცავს ქონების ფიზიკურ ვიზიტებს დეტალური ანგარიშებით, ფოტოებით და ვიდეოებით.', 'services.s1.tag': 'სრული პირადი კონსულტაცია',
+        'services.s2.title': 'ქონების მიმდინარე მართვა', 'services.s2.text': 'შეძენის შემდეგ — ქონება თქვენთვის მუშაობს. ვპოულობთ მოიჯარეებს, ვმართავთ შემოსვლა/გასვლას, ვაგვარებთ პრობლემებს, ვაცნობებთ შემოსავლებზე და ვრიცხავთ ფულს თქვენს ანგარიშზე. თქვენ ისრაელში ხართ, ქონება შემოსავლობს.', 'services.s2.tag': 'პირველი დღიდან',
+        'services.s3.title': 'სრული იურიდიული ხელმძღვანელობა', 'services.s3.text': 'მუშაობს საერთაშორისო გარიგებებში გამოცდილ ცნობილ ქართველ იურისტებთან. ხელმძღვანელობა ხელშეკრულებაზე, საკუთრების შემოწმება და რეგისტრაცია, საკუთრების გადაცემა — ყოველი ნაბიჯი განიმარტება გასაგებ ენაზე და თქვენ მიერ დასტურდება შესრულებამდე.', 'services.s3.tag': 'ადგილობრივ იურისტთან',
+        'services.s4.title': 'ფინანსური და შემოსავლობის კონსულტაცია', 'services.s4.text': 'გეხმარებათ გაიგოთ, რა არის რეალისტური — არ ის, რაც გეგონათ. მოსალოდნელი შემოსავლის ანალიზი, დაფინანსების გზები, შესაძლო ბერკეტი, საგადასახადო დაგეგმვა. რომ შეხვიდეთ გარიგებაში სრულად ღია თვალებით.', 'services.s4.tag': 'სრული ფინანსური დაგეგმვა',
+        'process.label': 'როგორ მუშაობს', 'process.title1': '5 ნაბიჯი', 'process.title2': 'პირველი ზარიდან', 'process.title3': 'შემოსავლიან ქონებამდე',
+        'process.s1.title': 'საწყისი კონსულტაცია — უფასო', 'process.s1.text': 'ვეცნობით, ვიგებთ თქვენს საჭიროებებს, ვპასუხობთ ყველა კითხვაზე. რა არის ბიუჯეტი? რა არის მიზანი? რა არის მოლოდინები? ზარის შემდეგ — გაქვთ მკაფიო სურათი, რა შესაძლებელია.',
+        'process.s2.title': 'ქონების ტური — პირადად ან ვირტუალურად', 'process.s2.text': 'ვაჩვენებთ ქონებებს, რომლებიც თქვენს პროფილს შეესაბამება — ფოტოებით, ვიდეოებით, ზომებით, მდგომარეობით და რეალური ფასით. შეგიძლიათ გუდაურში ჩამოფრინდეთ პირადი ტურისთვის — დიდ ენთუზიაზმით ვირჩევთ — მაგრამ სავალდებულო არ არის.',
+        'process.s3.title': 'მოლაპარაკება და გადამოწმება', 'process.s3.text': 'ვაწარმოებთ მოლაპარაკებებს თქვენთან ერთად, ვამოწმებთ, რომ ფასი ბაზართან მიმართებაში გონივრულია, ვამოწმებთ ქონების ისტორიას და საკუთრების დოკუმენტებს. ვჩქარობთ არ ვართ — ვრწმუნდებით, რომ ყველაფერი წესრიგშია.',
+        'process.s4.title': 'იურიდიული ხელმძღვანელობა და ხელმოწერა', 'process.s4.text': 'ცნობილი ქართველი იურისტი ამზადებს ხელშეკრულებას, განმარტავს ყოველ პუნქტს, გადასცემს და თქვენს სახელზე არეგისტრირებს საკუთრებას. ისრაელიდანაც შეიძლება ხელმოწერა — მინდობილობით (დამატებითი გადასახდელი).',
+        'process.s5.title': 'ჩაბარება და მიმდინარე მართვა', 'process.s5.text': 'ქონება მზადაა — ახლა იწყება მართვა. ვაქვეყნებთ, ვპოულობთ მოიჯარეებს, ვმართავთ, ვაცნობებთ. თქვენი ქონება მუშაობს. თქვენ ისრაელში ხართ.',
+        'faq.label': 'კითხვები და პასუხები', 'faq.title1': 'კითხვები', 'faq.title2': 'ყველა სვამს',
+        'faq.q1': 'შეუძლია ისრაელელს საქართველოში უძრავი ქონება შეიძინოს?',
+        'faq.a1': 'დიახ, აბსოლუტურად. უცხოელ მოქალაქეებს, ისრაელელების ჩათვლით, უფლება აქვთ შეიძინონ უძრავი ქონება საქართველოში შეზღუდვების გარეშე. საცხოვრებელი ნებართვა, სპეციალური ვიზა ან დამატებითი პირობები არ გჭირდებათ. შეძენა სრულად თქვენს სახელზე ფიქსირდება. ქართული უძრავი ქონების რეგულაცია მხოლოდ <strong>სასოფლო-სამეურნეო მიწის</strong> შეძენაზე ადგენს შეზღუდვებს უცხოელებისთვის — რაც New Gudauri-ს ურბანულ ქონებებთან შეუსაბამოა.',
+        'faq.q2': 'სავალდებულოა საქართველოში ჩამოფრენა ყიდვისთვის?',
+        'faq.a2': 'არა. შეძენის მთელი პროცესი — ხელშეკრულება, გადახდა, რეგისტრაცია — დისტანციურად ხდება ისრაელელი ნოტარიუსის მინდობილობით. თუმცა, <strong>დიდი ენთუზიაზმით ვირჩევთ შეძენამდე ერთხელ მაინც ჩამოფრინდეთ</strong> — ქონების სანახავად, ტერიტორიის შესაგრძნობად და სრული თავდაჯერებულობით გადაწყვეტილების მისაღებად.',
+        'faq.q3': 'New Gudauri-ს ქონებიდან მოსალოდნელი შემოსავალი?',
+        'faq.a3': 'შემოსავალი ძალიან დამოკიდებულია ქონებაზე, მდებარეობაზე, ზომაზე, მართვაზე და შეძენის ფასზე. ჩემ მიერ გაყვანილი გარიგებების საფუძველზე — მთლიანი წლიური სარენდო შემოსავალი <strong>8%-დან 20%-მდე</strong> მერყეობს. მცირე, კარგად მართული ქონებები გონდოლასთან ახლოს მეტს გამოიმუშავებს. გარდა ამისა, ღირებულების ზრდა დროთა განმავლობაში ჯამურ შემოსავალს ემატება. კონსულტაციაზე ერთად ავაგებთ კონკრეტული ქონების რეალისტურ შემოსავლობის ანალიზს.',
+        'faq.q4': 'როგორ ხდება გადახდა? უსაფრთხოა ფულის გადარიცხვა საქართველოში?',
+        'faq.a4': 'გადახდა ხდება დოლარებში ან ქართულ ლარში, დადასტურებულ ქართულ საბანკო ანგარიშზე. გადარიცხვა შესაძლებელია ისრაელის უმეტეს ბანკებიდან. ქართულ სახელმწიფო რეესტრში (Napr) რეგისტრაცია სწრაფი და გამჭვირვალეა — გადახდიდან ერთ-ორ დღეში თქვენი სახელი მფლობელად ჩანს. ჩემ მიერ გაყვანილ გარიგებებში ვრწმუნდები, რომ ფული გადაირიცხოს მხოლოდ სრული იურიდიული გადამოწმების შემდეგ.',
+        'faq.q5': 'რა შედის ხელმძღვანელობის სერვისში და რა ჯდება?',
+        'faq.a5': 'საწყისი კონსულტაცია უფასოა. სრული ხელმძღვანელობისთვის — ქონების ძიებიდან რეგისტრაციამდე — არის ხელმძღვანელობის საკომისიო, წინასწარ და სრული გამჭვირვალობით შეთანხმებული. შეძენის შემდგომი მიმდინარე მართვის სერვისი ცალკე და გონივრული ფასია. კონსულტაციაზე სრულ ეკონომიკურ სტრუქტურას განვმარტავ — სიურპრიზები არ არის.',
+        'cta.eyebrow': 'პირველი ნაბიჯი — უფასო', 'cta.title1': 'მზად ხართ შეხვდეთ', 'cta.title2': 'თქვენს შემდეგ ინვესტიციას?',
+        'cta.sub': 'საწყისი კონსულტაცია — უფასო, ვალდებულების გარეშე. 30 წუთი, რომელიც მოგცემთ მკაფიო სურათს, რა შეიძლება გუდაურში თქვენთვის.',
+        'cta.btn_whatsapp': 'შეტყობინება გიდონს',
+        'cta.trust1': 'პირველი ზარი უფასო', 'cta.trust2': 'ვალდებულების გარეშე', 'cta.trust3': 'ისრაელელი, გუდაურში მცხოვრები',
+        'footer.tagline': 'გიდონ ბრიტავსკი — ისრაელელი, რომელიც ცხოვრობს და მუშაობს New Gudauri-ში. სრული პირადი ხელმძღვანელობა საქართველოში უძრავი ქონების ინვესტიციებისთვის.',
+        'footer.nav_heading': 'ნავიგაცია', 'footer.accommodation': 'საცხოვრებელი და აპარტამენტები', 'footer.faq': 'FAQ',
+        'footer.contact_heading': 'კონტაქტი', 'footer.whatsapp': 'WhatsApp ხელმისაწვდომია',
+        'footer.newsletter_heading': 'ბაზრის განახლებები', 'footer.newsletter_text': 'განახლებები ინვესტიციის შესაძლებლობებზე, ბაზრის ფასებსა და გუდაურის მოძრაობებზე.',
+        'footer.newsletter_btn': 'გამოწერა'
+      }
+    };
+
+    function setLanguage(lang) {
+      var t = window.TRANSLATIONS[lang];
+      if (!t) return;
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.body.style.direction = t.dir;
+      document.body.style.textAlign = t.dir === 'rtl' ? 'right' : 'left';
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
+      });
+      document.querySelectorAll('a[data-internal]').forEach(function(a) {
+        var base = a.getAttribute('data-internal');
+        a.href = lang !== 'he' ? base + '?lang=' + lang : base;
+      });
+      localStorage.setItem('gudauri-lang', lang);
+    }
+    (function() {
+      var urlLang = new URLSearchParams(window.location.search).get('lang');
+      var savedLang = localStorage.getItem('gudauri-lang');
+      var lang = (urlLang && window.TRANSLATIONS[urlLang]) ? urlLang
+               : (savedLang && window.TRANSLATIONS[savedLang]) ? savedLang
+               : 'he';
+      setLanguage(lang);
+    })();
+  </script>
+
+  <!-- Tabnav Accessibility Widget -->
+  <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>
+  <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
+
+  <!-- ═══ FLOATING WHATSAPP ═══ -->
+  <a href="https://wa.me/972557790955?text=היי גדעון, אני מתעניין בליווי השקעה בגודאורי" class="wa-fab" target="_blank" rel="noopener noreferrer" aria-label="צרו קשר בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
+

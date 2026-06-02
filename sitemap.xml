@@ -39,6 +39,18 @@
   </url>
 
   <url>
+    <loc>https://www.newgudauri.net/equipment.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.newgudauri.net/equipment.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newgudauri.net/equipment.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/equipment.html"/>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/equipment.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/equipment.html"/>
+  </url>
+
+  <url>
     <loc>https://www.newgudauri.net/privacy-policy.html</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>yearly</changefreq>

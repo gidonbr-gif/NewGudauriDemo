@@ -56,6 +56,24 @@ export function buildAirtableFields(input) {
   if (input.marketingConsent === 'on') fields['הסכמה שיווקית'] = true;
   if (Number.isFinite(estimatedValue) && estimatedValue > 0) fields['שווי משוער'] = estimatedValue;
 
+  if (service === 'equipment') {
+    const eqLabels = {
+      checkin: 'תאריך הגעה',
+      checkout: 'תאריך עזיבה',
+      equipmentType: 'סוג ציוד',
+      equipmentLevel: 'רמת ציוד',
+      bootSize: 'מידת נעל',
+      helmetSize: 'מידת קסדה',
+      jacketSize: "מידת ג'קט",
+      pantsSize: 'מידת מכנסיים',
+      goggles: 'משקפי סקי'
+    };
+    for (const key of Object.keys(eqLabels)) {
+      const value = clean(input[key]);
+      if (value) fields[eqLabels[key]] = value;
+    }
+  }
+
   return fields;
 }
 
