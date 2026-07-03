@@ -1,3 +1,5 @@
+import { applyCors } from './_cors.js';
+
 const CARDCOM_API = 'https://secure.cardcom.solutions/api/v11/LowProfile/Create';
 
 const APARTMENT_PRICES = {
@@ -25,9 +27,7 @@ function json(res, status, payload) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  applyCors(req, res);
 
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return json(res, 405, { ok: false, error: 'Method not allowed' });

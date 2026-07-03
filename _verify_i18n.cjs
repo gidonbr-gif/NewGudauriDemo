@@ -11,7 +11,7 @@ const transEnd = html.indexOf('function setLanguage');
 const block = html.slice(transStart, transEnd);
 
 function countLang(key){
-  const esc = key.replace(/[.*+?^${}()|[\]\]/g, '\$&');
+  const esc = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const r = new RegExp("'" + esc + "':", 'g');
   return (block.match(r) || []).length;
 }

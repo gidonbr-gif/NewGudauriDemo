@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>תשלום התקבל — Gudauri Helper</title>
   <meta name="robots" content="noindex" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,6 +19,7 @@
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; padding: 24px;
       text-align: center;
+      direction: rtl;
     }
     html[dir="ltr"] body { direction: ltr; text-align: center; }
     .card {
@@ -44,6 +46,7 @@
     .wa-btn:hover { opacity: .91; transform: translateY(-2px); }
     .back { margin-top: 18px; font-size: 0.875rem; color: var(--slate-400); }
     .back a { color: var(--electric); text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--electric-light, #38BDF8); outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -190,14 +193,19 @@
     document.getElementById('ps-loading').textContent = T.loading;
     document.getElementById('ps-wa-btn').textContent = T.waBtn;
 
-    // build booking details
+    // build booking details — sanitize URL params before injecting into HTML
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
     var params = new URLSearchParams(window.location.search);
     var type   = params.get('type') || '';
     var apt    = params.get('apt') || '';
-    var nights = params.get('nights') || '';
-    var days   = params.get('days') || '';
-    var total  = params.get('total') || '';
-    var ref    = params.get('ref') || '';
+    var nights = esc((params.get('nights') || '').replace(/[^\d]/g, '').slice(0, 3));
+    var days   = esc((params.get('days') || '').replace(/[^\d]/g, '').slice(0, 3));
+    var total  = (params.get('total') || '').replace(/[^\d.]/g, '').slice(0, 10);
+    var ref    = esc((params.get('ref') || '').replace(/[^\w\-]/g, '').slice(0, 40));
 
     var detailsEl = document.getElementById('bookingDetails');
     var waText;

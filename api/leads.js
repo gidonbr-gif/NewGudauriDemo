@@ -1,3 +1,5 @@
+import { applyCors } from './_cors.js';
+
 const SERVICE_LABELS = {
   travel: 'הזמנת נסיעות',
   equipment: 'הזמנת ציוד',
@@ -84,9 +86,7 @@ function sendJson(res, statusCode, payload) {
 }
 
 export async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  applyCors(req, res);
 
   if (req.method === 'OPTIONS') {
     res.status(204);

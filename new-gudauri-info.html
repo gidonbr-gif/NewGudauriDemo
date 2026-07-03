@@ -10,13 +10,14 @@
   <link rel="canonical" href="https://www.newgudauri.net/new-gudauri-info.html" />
 
   <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
 
   <!-- hreflang — multilingual -->
   <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/new-gudauri-info.html" />
-  <link rel="alternate" hreflang="ge" href="https://www.newgudauri.net/new-gudauri-info.html" />
+  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/new-gudauri-info.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/new-gudauri-info.html" />
 
   <!-- OpenGraph -->
@@ -24,7 +25,10 @@
   <meta property="og:url" content="https://www.newgudauri.net/new-gudauri-info.html" />
   <meta property="og:title" content="ניו גודאורי — כפר הסקי המודרני בגאורגיה" />
   <meta property="og:description" content="המדריך המלא לניו גודאורי — גונדולה, קזינו, בריכות, מסעדות, ציוד סקי מקצועי ואופני שלג." />
-  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:image" content="https://www.newgudauri.net/images/new-gudauri-hero.jpg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="453" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="Gudauri Helper" />
 
@@ -32,8 +36,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ניו גודאורי — המדריך המלא לכפר הסקי" />
   <meta name="twitter:description" content="גונדולה, קזינו, בריכות, מסעדות, ציוד סקי. כל מה שצריך לדעת על ניו גודאורי." />
-  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/new-gudauri-hero.jpg" />
 
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1546706442-373624e9c90b?auto=format&fit=crop&w=1920&q=80" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -802,7 +808,7 @@
   </style>
 
   <!-- Lottie player web component -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js" defer></script>
 </head>
 <body>
 
@@ -819,10 +825,22 @@
 
         <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
-            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
-            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+            <g stroke="#0EA5E9" stroke-width="1.8" stroke-linecap="round">
+              <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+              <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+              <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              <g transform="rotate(60 18 18)">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              </g>
+              <g transform="rotate(120 18 18)">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              </g>
+            </g>
+            <circle cx="18" cy="18" r="2" fill="#38BDF8"/>
           </svg>
           <span class="nav-logo-text">Gudauri Helper</span>
         </a>
@@ -1223,9 +1241,22 @@
         <div class="footer-brand">
           <a href="index.html" class="footer-logo" aria-label="Gudauri Helper - חזרה לדף הבית">
             <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
-              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+              <g stroke="#0EA5E9" stroke-width="1.8" stroke-linecap="round">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                <g transform="rotate(60 18 18)">
+                  <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                  <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                  <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                </g>
+                <g transform="rotate(120 18 18)">
+                  <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                  <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                  <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                </g>
+              </g>
+              <circle cx="18" cy="18" r="2" fill="#38BDF8"/>
             </svg>
             <span class="footer-logo-text">Gudauri Helper</span>
           </a>
@@ -1274,7 +1305,7 @@
           <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.nl_heading">עדכונים ומבצעים</h3>
           <p style="font-size:0.9375rem; color:var(--slate-400); line-height:1.65;" data-i18n="footer.nl_text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
           <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר" style="flex-wrap:wrap;">
-            <label for="nl-email" class="sr-only">כתובת אימייל</label>
+            <label for="nl-email" class="sr-only" data-i18n="footer.nl_email_aria">כתובת אימייל</label>
             <input
               type="email"
               id="nl-email"
@@ -1290,8 +1321,8 @@
               <input type="checkbox" id="nl-marketing-consent" required
                 style="margin-top:3px; flex-shrink:0; accent-color:#0EA5E9; cursor:pointer; width:15px; height:15px;" />
               <label for="nl-marketing-consent" style="font-size:12px; color:#94A3B8; cursor:pointer; line-height:1.5;">
-                אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.
-                <a href="privacy-policy.html" style="color:#38BDF8;">מדיניות פרטיות</a>
+                <span data-i18n="footer.nl_consent">אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.</span>
+                <a href="privacy-policy.html" style="color:#38BDF8;" data-i18n="footer.privacy">מדיניות פרטיות</a>
               </label>
             </div>
           </form>
@@ -1306,7 +1337,7 @@
         <nav class="footer-legal" aria-label="קישורים משפטיים">
           <a href="privacy-policy.html" data-i18n="footer.privacy">מדיניות פרטיות</a>
           <a href="terms.html" data-i18n="footer.terms">תנאי שימוש</a>
-          <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;">הגדרות קוקיז</a>
+          <a href="#" onclick="window.ngCookieConsent && window.ngCookieConsent.reopen(); return false;" data-i18n="footer.cookies">הגדרות קוקיז</a>
           <a href="#" data-i18n="footer.accessibility">נגישות</a>
         </nav>
       </div>
@@ -1479,6 +1510,7 @@
         'footer.nl_submit': 'הרשם',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.',
         'footer.privacy': 'מדיניות פרטיות',
+        'footer.nl_consent': 'אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.', 'footer.nl_email_aria': 'כתובת אימייל', 'footer.cookies': 'הגדרות קוקיז',
         'footer.terms': 'תנאי שימוש',
         'footer.accessibility': 'נגישות'
       },
@@ -1573,6 +1605,7 @@
         'footer.nl_submit': 'Subscribe',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. All rights reserved.',
         'footer.privacy': 'Privacy Policy',
+        'footer.nl_consent': 'I agree to receive marketing updates and offers from NewGudauri. You can unsubscribe anytime.', 'footer.nl_email_aria': 'Email address', 'footer.cookies': 'Cookie Settings',
         'footer.terms': 'Terms of Use',
         'footer.accessibility': 'Accessibility'
       },
@@ -1667,6 +1700,7 @@
         'footer.nl_submit': 'Подписаться',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. Все права защищены.',
         'footer.privacy': 'Политика конфиденциальности',
+        'footer.nl_consent': 'Я согласен(на) получать маркетинговые рассылки и предложения от NewGudauri. Отписаться можно в любой момент.', 'footer.nl_email_aria': 'Адрес эл. почты', 'footer.cookies': 'Настройки cookie',
         'footer.terms': 'Условия использования',
         'footer.accessibility': 'Доступность'
       },
@@ -1761,6 +1795,7 @@
         'footer.nl_submit': 'გამოწერა',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. ყველა უფლება დაცულია.',
         'footer.privacy': 'კონფიდენციალურობის პოლიტიკა',
+        'footer.nl_consent': 'ვეთანხმები მივიღო მარკეტინგული განახლებები და შეთავაზებები NewGudauri-სგან. გაუქმება ნებისმიერ დროს შესაძლებელია.', 'footer.nl_email_aria': 'ელ-ფოსტის მისამართი', 'footer.cookies': 'Cookie პარამეტრები',
         'footer.terms': 'გამოყენების პირობები',
         'footer.accessibility': 'ხელმისაწვდომობა'
       }

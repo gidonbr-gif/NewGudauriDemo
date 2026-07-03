@@ -10,13 +10,14 @@
   <link rel="canonical" href="https://www.newgudauri.net/lina.html" />
 
   <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
 
   <!-- hreflang — multilingual -->
   <link rel="alternate" hreflang="he" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="en" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="ru" href="https://www.newgudauri.net/lina.html" />
-  <link rel="alternate" hreflang="ge" href="https://www.newgudauri.net/lina.html" />
+  <link rel="alternate" hreflang="ka" href="https://www.newgudauri.net/lina.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.newgudauri.net/lina.html" />
 
   <!-- OpenGraph -->
@@ -24,7 +25,10 @@
   <meta property="og:url" content="https://www.newgudauri.net/lina.html" />
   <meta property="og:title" content="דירות גודאורי — CozyCasa Atrium & Suits | 50-100מ׳ מהגונדולה" />
   <meta property="og:description" content="שש דירות פרמיום בניו גודאורי — 50-100 מ׳ מהגונדולה הראשית, גובה 2,200 מטר. CozyCasa Atrium, Suits, Loft 2, Siot, F2 Duplex ועוד." />
-  <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta property="og:image" content="https://www.newgudauri.net/images/atrium/IMG_9631.jpg" />
+  <meta property="og:image:width" content="1290" />
+  <meta property="og:image:height" content="825" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="Gudauri Helper" />
 
@@ -32,8 +36,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="דירות גודאורי — CozyCasa | 50-100מ׳ מהגונדולה" />
   <meta name="twitter:description" content="שתי דירות פרמיום בניו גודאורי — $370-$450 ללילה. 50-100 מ׳ מהגונדולה." />
-  <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-ski-village.jpg" />
+  <meta name="twitter:image" content="https://www.newgudauri.net/images/atrium/IMG_9631.jpg" />
 
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1699894068149-7a1f43e33a6b?auto=format&fit=crop&w=1920&q=80" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -892,10 +898,22 @@
 
         <a href="index.html" class="nav-logo" aria-label="Gudauri Helper - דף הבית">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
-            <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
-            <circle cx="18" cy="30" r="1.5" fill="#38BDF8"/>
+            <g stroke="#0EA5E9" stroke-width="1.8" stroke-linecap="round">
+              <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+              <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+              <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              <g transform="rotate(60 18 18)">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              </g>
+              <g transform="rotate(120 18 18)">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+              </g>
+            </g>
+            <circle cx="18" cy="18" r="2" fill="#38BDF8"/>
           </svg>
           <span class="nav-logo-text">Gudauri Helper</span>
         </a>
@@ -988,16 +1006,16 @@
         <div class="apt-gallery" role="region" aria-label="גלריה - דופלקס F2" aria-roledescription="carousel">
           <div class="apt-slides" id="f2duplex-slides">
             <div class="apt-slide" style="background-image:url('images/f2/IMG_1707.jpg')" role="img" aria-label="סלון דופלקס - ספה ענקית, אמנות, מדרגות לקומה שנייה"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1706.jpg')" role="img" aria-label="חדר שינה ראשי עם חלון גג + חדר רחצה מפואר"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1708.jpg')" role="img" aria-label="חדר רחצה עם סאונה פרטית ואינפרא אדום"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1702.jpg')" role="img" aria-label="סלון - מטבח, אי אוכל ומדרגות הדופלקס"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1704.jpg')" role="img" aria-label="מטבח מעוצב ואמבטיה עם אמבטיית ספא"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1709.jpg')" role="img" aria-label="חדר שינה 2 - שתי מיטות יחיד עם חלון גג"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1711.jpg')" role="img" aria-label="סאונה + חדר רחצה קומה שנייה"></div>
-            <div class="apt-slide" style="background-image:url('images/f2/IMG_1712.jpg')" role="img" aria-label="קומה שנייה - פרוזדור ומדרגות עם תאורת לד דרמטית"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1706.jpg" role="img" aria-label="חדר שינה ראשי עם חלון גג + חדר רחצה מפואר"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1708.jpg" role="img" aria-label="חדר רחצה עם סאונה פרטית ואינפרא אדום"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1702.jpg" role="img" aria-label="סלון - מטבח, אי אוכל ומדרגות הדופלקס"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1704.jpg" role="img" aria-label="מטבח מעוצב ואמבטיה עם אמבטיית ספא"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1709.jpg" role="img" aria-label="חדר שינה 2 - שתי מיטות יחיד עם חלון גג"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1711.jpg" role="img" aria-label="סאונה + חדר רחצה קומה שנייה"></div>
+            <div class="apt-slide" data-bg="images/f2/IMG_1712.jpg" role="img" aria-label="קומה שנייה - פרוזדור ומדרגות עם תאורת לד דרמטית"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('f2duplex',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1093,16 +1111,16 @@
         <div class="apt-gallery" role="region" aria-label="גלריה - דירת Atrium" aria-roledescription="carousel">
           <div class="apt-slides" id="atrium-slides">
             <div class="apt-slide" style="background-image:url('images/atrium/f8165cf4-f5d3-4dd0-bbd3-bbad1d79f1b8.JPG')" role="img" aria-label="בניין האטריום - חזית עם נוף הרים"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/60cdc2cd-efdb-4c33-b0f9-564c3d8f7391.JPG')" role="img" aria-label="חדר השינה - מיטה זוגית מלכותית"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/c0b8f620-e3ce-4aed-bbb6-f988f197b349.jpg')" role="img" aria-label="סלון ושינה - מרחב פתוח עם מחיצת עיצוב"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/IMG_9631.jpg')" role="img" aria-label="בריכה מקורה מחוממת עם נוף להרים"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/IMG_9660.jpg')" role="img" aria-label="פינת אח וכורסאות עם נוף לגונדולה"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/97d064a5-5be7-4b70-989b-d4baf955c2c9.jpg')" role="img" aria-label="סלון נוח עם ספה כחולה"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/d3e5d5bf-c9ba-4804-9e4e-51fb4132835c.jpg')" role="img" aria-label="מטבחון מאובזר"></div>
-            <div class="apt-slide" style="background-image:url('images/atrium/99425a4b-4a8c-441b-a8ce-cf5d05162afa.JPG')" role="img" aria-label="חדר רחצה מעוצב עם מקלחת"></div>
+            <div class="apt-slide" data-bg="images/atrium/60cdc2cd-efdb-4c33-b0f9-564c3d8f7391.JPG" role="img" aria-label="חדר השינה - מיטה זוגית מלכותית"></div>
+            <div class="apt-slide" data-bg="images/atrium/c0b8f620-e3ce-4aed-bbb6-f988f197b349.jpg" role="img" aria-label="סלון ושינה - מרחב פתוח עם מחיצת עיצוב"></div>
+            <div class="apt-slide" data-bg="images/atrium/IMG_9631.jpg" role="img" aria-label="בריכה מקורה מחוממת עם נוף להרים"></div>
+            <div class="apt-slide" data-bg="images/atrium/IMG_9660.jpg" role="img" aria-label="פינת אח וכורסאות עם נוף לגונדולה"></div>
+            <div class="apt-slide" data-bg="images/atrium/97d064a5-5be7-4b70-989b-d4baf955c2c9.jpg" role="img" aria-label="סלון נוח עם ספה כחולה"></div>
+            <div class="apt-slide" data-bg="images/atrium/d3e5d5bf-c9ba-4804-9e4e-51fb4132835c.jpg" role="img" aria-label="מטבחון מאובזר"></div>
+            <div class="apt-slide" data-bg="images/atrium/99425a4b-4a8c-441b-a8ce-cf5d05162afa.JPG" role="img" aria-label="חדר רחצה מעוצב עם מקלחת"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('atrium',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1179,7 +1197,7 @@
             <div class="apt-price-row">
               <div>
                 <div class="apt-price-label" data-i18n="lina.atrium.price_label">מחיר ללילה</div>
-                <div class="apt-price-amount"><small>החל מ-</small>₪370</div>
+                <div class="apt-price-amount"><small data-i18n="lina.price.from">החל מ-</small>₪370</div>
               </div>
               <div>
                 <div style="font-size:0.72rem;color:var(--slate-600);margin-bottom:5px;text-align:left;" data-i18n="lina.airbnb_rating">דירוג Airbnb</div>
@@ -1217,15 +1235,15 @@
 
         <div class="apt-gallery" role="region" aria-label="גלריה - סיוט" aria-roledescription="carousel">
           <div class="apt-slides" id="siot-slides">
-            <div class="apt-slide" style="background-image:url('images/siot/siot-1.png')" role="img" aria-label="Suite Block 5 - תמונה 1"></div>
-            <div class="apt-slide" style="background-image:url('images/siot/siot-2.png')" role="img" aria-label="Suite Block 5 - תמונה 2"></div>
-            <div class="apt-slide" style="background-image:url('images/siot/siot-3.png')" role="img" aria-label="Suite Block 5 - תמונה 3"></div>
-            <div class="apt-slide" style="background-image:url('images/siot/siot-4.png')" role="img" aria-label="Suite Block 5 - תמונה 4"></div>
-            <div class="apt-slide" style="background-image:url('images/siot/siot-5.png')" role="img" aria-label="Suite Block 5 - תמונה 5"></div>
-            <div class="apt-slide" style="background-image:url('images/siot/siot-6.png')" role="img" aria-label="Suite Block 5 - תמונה 6"></div>
+            <div class="apt-slide" style="background-image:url('images/siot/siot-1.jpg')" role="img" aria-label="Suite Block 5 - תמונה 1"></div>
+            <div class="apt-slide" data-bg="images/siot/siot-2.jpg" role="img" aria-label="Suite Block 5 - תמונה 2"></div>
+            <div class="apt-slide" data-bg="images/siot/siot-3.jpg" role="img" aria-label="Suite Block 5 - תמונה 3"></div>
+            <div class="apt-slide" data-bg="images/siot/siot-4.jpg" role="img" aria-label="Suite Block 5 - תמונה 4"></div>
+            <div class="apt-slide" data-bg="images/siot/siot-5.jpg" role="img" aria-label="Suite Block 5 - תמונה 5"></div>
+            <div class="apt-slide" data-bg="images/siot/siot-6.jpg" role="img" aria-label="Suite Block 5 - תמונה 6"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('siot',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1326,16 +1344,16 @@
         <div class="apt-gallery" role="region" aria-label="גלריה - דירת Suits" aria-roledescription="carousel">
           <div class="apt-slides" id="suits-slides">
             <div class="apt-slide" style="background-image:url('images/suite/IMG_3605.jpg')" role="img" aria-label="בניין Suits - חזית ביום עם שיפועי סקי"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3612.jpg')" role="img" aria-label="הדירה - מיטה, ספה וסלון מאוחדים"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3611.jpg')" role="img" aria-label="חדר שינה עם תקרת מגרש וחלון גג"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3603.jpg')" role="img" aria-label="לובי הבניין - עץ חם ותאורת LED"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3604.jpg')" role="img" aria-label="מסעדת הבניין עם נוף ישיר לשיפוע"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3606.jpg')" role="img" aria-label="קבלה ולובי - שירות 24/7"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3601.jpg')" role="img" aria-label="ניו גודאורי בלילה - אווירה ותוסס"></div>
-            <div class="apt-slide" style="background-image:url('images/suite/IMG_3610.jpg')" role="img" aria-label="הדירה המלאה - מטבחון וסלון"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3612.jpg" role="img" aria-label="הדירה - מיטה, ספה וסלון מאוחדים"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3611.jpg" role="img" aria-label="חדר שינה עם תקרת מגרש וחלון גג"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3603.jpg" role="img" aria-label="לובי הבניין - עץ חם ותאורת LED"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3604.jpg" role="img" aria-label="מסעדת הבניין עם נוף ישיר לשיפוע"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3606.jpg" role="img" aria-label="קבלה ולובי - שירות 24/7"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3601.jpg" role="img" aria-label="ניו גודאורי בלילה - אווירה ותוסס"></div>
+            <div class="apt-slide" data-bg="images/suite/IMG_3610.jpg" role="img" aria-label="הדירה המלאה - מטבחון וסלון"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('suits',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1450,16 +1468,16 @@
         <div class="apt-gallery" role="region" aria-label="גלריה - לופט 2א" aria-roledescription="carousel">
           <div class="apt-slides" id="loft2a-slides">
             <div class="apt-slide" style="background-image:url('images/loft2/IMG_0821.JPG')" role="img" aria-label="הדירה מבוימת - מיטה, ספה ושולחן ערוך עם יין"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0814.jpg')" role="img" aria-label="שינה + סלון - קיר טפט כחול גיאומטרי ייחודי"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0816.jpg')" role="img" aria-label="הדירה המלאה - סלון, פינת אוכל ומטבח"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0815.jpg')" role="img" aria-label="מטבח מאובזר וסלון - זווית נוספת"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0820.jpg')" role="img" aria-label="חדר רחצה - מראת LED עגולה ומקלחת"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0819.jpg')" role="img" aria-label="חדר רחצה - כיור ומראת LED"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0817.jpg')" role="img" aria-label="מטבחון מאובזר עם מיקרוגל וכיור"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2/IMG_0818.jpg')" role="img" aria-label="פרוזדור כניסה עם ארון בנוי"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0814.jpg" role="img" aria-label="שינה + סלון - קיר טפט כחול גיאומטרי ייחודי"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0816.jpg" role="img" aria-label="הדירה המלאה - סלון, פינת אוכל ומטבח"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0815.jpg" role="img" aria-label="מטבח מאובזר וסלון - זווית נוספת"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0820.jpg" role="img" aria-label="חדר רחצה - מראת LED עגולה ומקלחת"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0819.jpg" role="img" aria-label="חדר רחצה - כיור ומראת LED"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0817.jpg" role="img" aria-label="מטבחון מאובזר עם מיקרוגל וכיור"></div>
+            <div class="apt-slide" data-bg="images/loft2/IMG_0818.jpg" role="img" aria-label="פרוזדור כניסה עם ארון בנוי"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('loft2a',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1547,14 +1565,14 @@
         <div class="apt-gallery" role="region" aria-label="גלריה - לופט 2ב" aria-roledescription="carousel">
           <div class="apt-slides" id="loft2b-slides">
             <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0826.jpg')" role="img" aria-label="חדר שינה עם נוף ישיר להרים המושלגים"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0823.jpg')" role="img" aria-label="שינה + סלון + TV - המרחב המלא"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0824.jpg')" role="img" aria-label="סלון, מטבח ופינת אוכל"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0827.jpg')" role="img" aria-label="חדר רחצה - כיור בולי מעוצב עם מגבות"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0825.jpg')" role="img" aria-label="חדר רחצה עם מקלחת ועיצוב ירוק"></div>
-            <div class="apt-slide" style="background-image:url('images/loft2b/IMG_0828.jpg')" role="img" aria-label="פרוזדור כניסה ופינת אוכל"></div>
+            <div class="apt-slide" data-bg="images/loft2b/IMG_0823.jpg" role="img" aria-label="שינה + סלון + TV - המרחב המלא"></div>
+            <div class="apt-slide" data-bg="images/loft2b/IMG_0824.jpg" role="img" aria-label="סלון, מטבח ופינת אוכל"></div>
+            <div class="apt-slide" data-bg="images/loft2b/IMG_0827.jpg" role="img" aria-label="חדר רחצה - כיור בולי מעוצב עם מגבות"></div>
+            <div class="apt-slide" data-bg="images/loft2b/IMG_0825.jpg" role="img" aria-label="חדר רחצה עם מקלחת ועיצוב ירוק"></div>
+            <div class="apt-slide" data-bg="images/loft2b/IMG_0828.jpg" role="img" aria-label="פרוזדור כניסה ופינת אוכל"></div>
           </div>
           <div class="gallery-shadow" aria-hidden="true"></div>
-          <div class="gallery-arrows" aria-hidden="true">
+          <div class="gallery-arrows">
             <button class="gallery-arrow" onclick="slideGallery('loft2b',-1)" aria-label="תמונה קודמת">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -1710,9 +1728,22 @@
         <div class="footer-brand">
           <a href="index.html" class="footer-logo" aria-label="Gudauri Helper - חזרה לדף הבית">
             <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <path d="M18 4L32 28H4L18 4Z" fill="#0EA5E9" fill-opacity="0.15" stroke="#0EA5E9" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M18 10L26 24H10L18 10Z" fill="#0EA5E9" fill-opacity="0.3"/>
-              <path d="M18 16L22 24H14L18 16Z" fill="#0EA5E9"/>
+              <g stroke="#0EA5E9" stroke-width="1.8" stroke-linecap="round">
+                <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                <g transform="rotate(60 18 18)">
+                  <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                  <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                  <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                </g>
+                <g transform="rotate(120 18 18)">
+                  <line x1="18" y1="4.5" x2="18" y2="31.5"/>
+                  <line x1="18" y1="9" x2="14.9" y2="6.5"/><line x1="18" y1="9" x2="21.1" y2="6.5"/>
+                  <line x1="18" y1="27" x2="14.9" y2="29.5"/><line x1="18" y1="27" x2="21.1" y2="29.5"/>
+                </g>
+              </g>
+              <circle cx="18" cy="18" r="2" fill="#38BDF8"/>
             </svg>
             <span class="footer-logo-text">Gudauri Helper</span>
           </a>
@@ -1762,15 +1793,15 @@
           <h3 class="footer-heading" id="newsletter-heading" data-i18n="footer.newsletter.heading">עדכונים ומבצעים</h3>
           <p style="font-size:0.9375rem;color:var(--slate-400);" data-i18n="footer.newsletter.text">קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.</p>
           <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="הרשמה לניוזלטר" style="flex-wrap:wrap;">
-            <label for="nl-email" class="sr-only">כתובת אימייל</label>
+            <label for="nl-email" class="sr-only" data-i18n="footer.newsletter.email_aria">כתובת אימייל</label>
             <input type="email" id="nl-email" class="newsletter-input" placeholder="האימייל שלך" required autocomplete="email" dir="ltr" data-i18n-placeholder="footer.newsletter.placeholder" />
             <button type="submit" class="newsletter-submit" data-i18n="footer.newsletter.submit">הרשם</button>
             <div style="flex-basis:100%; display:flex; align-items:flex-start; gap:8px; margin-top:10px;">
               <input type="checkbox" id="nl-marketing-consent" required
                 style="margin-top:3px; flex-shrink:0; accent-color:#0EA5E9; cursor:pointer; width:15px; height:15px;" />
               <label for="nl-marketing-consent" style="font-size:12px; color:#94A3B8; cursor:pointer; line-height:1.5;">
-                אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.
-                <a href="privacy-policy.html" style="color:#38BDF8;">מדיניות פרטיות</a>
+                <span data-i18n="footer.newsletter.consent">אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.</span>
+                <a href="privacy-policy.html" style="color:#38BDF8;" data-i18n="footer.legal.privacy">מדיניות פרטיות</a>
               </label>
             </div>
           </form>
@@ -1834,13 +1865,34 @@
       f2duplex: { idx: 0, total: 8 },
     };
 
+    // Lazy galleries: only the first photo of each gallery loads with the page;
+    // the rest hydrate when the gallery nears the viewport or on first interaction
+    function hydrateGallery(id) {
+      document.querySelectorAll('#' + id + '-slides .apt-slide[data-bg]').forEach(function(s) {
+        s.style.backgroundImage = "url('" + s.getAttribute('data-bg') + "')";
+        s.removeAttribute('data-bg');
+      });
+    }
+    const galleryIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const slidesEl = e.target.querySelector('.apt-slides');
+          if (slidesEl) hydrateGallery(slidesEl.id.replace('-slides', ''));
+          galleryIO.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    document.querySelectorAll('.apt-gallery').forEach(el => galleryIO.observe(el));
+
     function slideGallery(id, dir) {
+      hydrateGallery(id);
       const g = galleries[id];
       g.idx = (g.idx + dir + g.total) % g.total;
       renderGallery(id);
     }
 
     function goToSlide(id, n) {
+      hydrateGallery(id);
       galleries[id].idx = n;
       renderGallery(id);
     }
@@ -2159,6 +2211,7 @@
         'footer.newsletter.heading': 'עדכונים ומבצעים',
         'footer.newsletter.text': 'קבלו עדכונים על עונת הסקי, מבצעים מוגבלים, ותמונות שיגרמו לכם לארוז מזוודה.',
         'footer.newsletter.placeholder': 'האימייל שלך', 'footer.newsletter.submit': 'הרשם', 'footer.newsletter.success': 'נרשמת!',
+        'footer.newsletter.consent': 'אני מסכים/ה לקבל עדכונים שיווקיים ומבצעים מ-NewGudauri. ניתן לבטל בכל עת.', 'footer.newsletter.email_aria': 'כתובת אימייל', 'lina.price.from': 'החל מ-',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. כל הזכויות שמורות.',
         'footer.legal.privacy': 'מדיניות פרטיות', 'footer.legal.terms': 'תנאי שימוש', 'footer.legal.cookies': 'הגדרות קוקיז',
       },
@@ -2242,6 +2295,7 @@
         'footer.newsletter.heading': 'Updates & Deals',
         'footer.newsletter.text': 'Get updates on the ski season, limited deals, and photos that will make you pack your bags.',
         'footer.newsletter.placeholder': 'Your email', 'footer.newsletter.submit': 'Subscribe', 'footer.newsletter.success': 'Subscribed!',
+        'footer.newsletter.consent': 'I agree to receive marketing updates and offers from NewGudauri. You can unsubscribe anytime.', 'footer.newsletter.email_aria': 'Email address', 'lina.price.from': 'From ',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. All rights reserved.',
         'footer.legal.privacy': 'Privacy Policy', 'footer.legal.terms': 'Terms of Use', 'footer.legal.cookies': 'Cookie Settings',
       },
@@ -2325,6 +2379,7 @@
         'footer.newsletter.heading': 'Новости и акции',
         'footer.newsletter.text': 'Получайте обновления о сезоне, ограниченные предложения и фотографии, которые заставят вас паковать чемодан.',
         'footer.newsletter.placeholder': 'Ваш email', 'footer.newsletter.submit': 'Подписаться', 'footer.newsletter.success': 'Подписались!',
+        'footer.newsletter.consent': 'Я согласен(на) получать маркетинговые рассылки и предложения от NewGudauri. Отписаться можно в любой момент.', 'footer.newsletter.email_aria': 'Адрес эл. почты', 'lina.price.from': 'От ',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. Все права защищены.',
         'footer.legal.privacy': 'Политика конфиденциальности', 'footer.legal.terms': 'Условия использования', 'footer.legal.cookies': 'Настройки cookie',
       },
@@ -2408,6 +2463,7 @@
         'footer.newsletter.heading': 'განახლებები და შეთავაზებები',
         'footer.newsletter.text': 'მიიღე განახლებები სასრიალო სეზონის შესახებ, შეზღუდული შეთავაზებები და ფოტოები.',
         'footer.newsletter.placeholder': 'შენი ელ-ფოსტა', 'footer.newsletter.submit': 'გამოწერა', 'footer.newsletter.success': 'გამოწერილია!',
+        'footer.newsletter.consent': 'ვეთანხმები მივიღო მარკეტინგული განახლებები და შეთავაზებები NewGudauri-სგან. გაუქმება ნებისმიერ დროს შესაძლებელია.', 'footer.newsletter.email_aria': 'ელ-ფოსტის მისამართი', 'lina.price.from': 'დაწყებული ',
         'footer.copy': '&copy; 2025 <a href="index.html">Gudauri Helper</a>. ყველა უფლება დაცულია.',
         'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.cookies': 'Cookie პარამეტრები',
       }

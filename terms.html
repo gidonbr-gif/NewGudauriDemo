@@ -10,6 +10,7 @@
   <link rel="canonical" href="https://www.newgudauri.net/terms.html" />
 
   <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/gudauri-ski-village.jpg" type="image/jpeg" />
 
   <!-- OpenGraph -->
@@ -132,6 +133,7 @@
     .page-footer a:hover { color: var(--snow); }
     .footer-sep { margin: 12px 0; }
     .lottie-badge-anim { width: 90px; height: 90px; margin: 0 auto 12px; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--electric-light, #38BDF8); outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -343,11 +345,12 @@
   <noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>
 
   <!-- Lottie Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js" defer></script>
   <script>
-    (function () {
+    // lottie.min.js is deferred, so wait for DOMContentLoaded (deferred scripts run first)
+    document.addEventListener('DOMContentLoaded', function () {
       var el = document.getElementById('lottie-badge');
-      if (el) {
+      if (el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         lottie.loadAnimation({
           container: el,
           renderer: 'svg',
@@ -356,7 +359,7 @@
           path: 'lotties/success.json'
         });
       }
-    })();
+    });
   </script>
 
 </body>
