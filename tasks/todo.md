@@ -83,3 +83,21 @@ Headless-browser smoke test (Chromium via playwright-core): all 8 pages loaded a
 
 ### Final checks
 - npm test 7/7; _verify_i18n.cjs 140 keys ×4 langs OK; all inline scripts parse; all local refs resolve (exact case); no hreflang="ge" left; preloaded heroes match used images; sitemap covers all indexable pages
+
+## Critical self-review round 2 (2026-07-05, launch)
+Static audit script (i18n parity x4, alt text, internal links/anchors, dup IDs, local assets, lottie paths, chat KB link targets) + JSON-LD validation on all pages + full test suite.
+
+### Bugs found & fixed
+- [x] Chat matcher under-scored short keywords: most Hebrew core words (4 chars) scored 1 < threshold 2, so "?yesh dira pnuya" style questions fell to WhatsApp fallback -> whole-word hits now score 2
+- [x] Ambiguous multi-topic questions ("rental income") lost ties to earlier KB topics -> multi-word phrases now score 4
+- [x] Chat widget was only on index.html though designed site-wide -> added to lina/equipment/investors/new-gudauri-info (z-index verified: under payment modals (2000), launcher under wa-fab (998))
+- [x] Chat input: added autocomplete="off" + enterkeyhint="send" for mobile keyboards
+
+### New regression tests
+- tests/chat.test.mjs: matcher smoke tests x4 langs via vm sandbox + "chat included on every main page" guard (suite now 12/12)
+
+### Verified non-issues
+- #lead-form anchors: section injected at runtime by crm-leads.js on index (works before load event)
+- investors.html without cookie-consent.js: page has no gtag/tracking cookies, banner not legally required
+- hreflang alternates all point to the same URL: language is client-side (?lang= + localStorage); acceptable, revisit if SSR per-language pages ever exist
+- audit [NO-ALT] on investors.html: <img> string inside a CSS comment, not markup

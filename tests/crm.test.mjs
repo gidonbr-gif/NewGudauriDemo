@@ -8,10 +8,12 @@ import { buildAirtableFields, handler, validateLead } from '../api/leads.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 
+const SKIP_DIRS = new Set(['node_modules', '.git', '.vercel']);
+
 function listFiles(directory, predicate) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const fullPath = join(directory, entry.name);
-    if (entry.isDirectory()) return listFiles(fullPath, predicate);
+    if (entry.isDirectory()) return SKIP_DIRS.has(entry.name) ? [] : listFiles(fullPath, predicate);
     return predicate(fullPath) ? [fullPath] : [];
   });
 }

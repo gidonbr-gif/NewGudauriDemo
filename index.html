@@ -623,6 +623,42 @@
       animation: none;
     }
     .btn-whatsapp svg { flex-shrink: 0; }
+
+    /* hero chatbot CTA — violet "AI" accent, pulse offset from the WhatsApp one */
+    .btn-chatbot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 55%, #6366F1 100%);
+      background-size: 200% 200%;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 0 0 0 rgba(139,92,246,0);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      animation: bot-pulse 2.4s ease-in-out 1.2s infinite, bot-shimmer 6s ease infinite;
+    }
+    @keyframes bot-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(139,92,246,0.55); }
+      60%  { box-shadow: 0 0 0 14px rgba(139,92,246,0); }
+      100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+    }
+    @keyframes bot-shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    .btn-chatbot:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(139,92,246,0.5);
+      animation: none;
+    }
+    .btn-chatbot svg { flex-shrink: 0; }
+    @media (prefers-reduced-motion: reduce) { .btn-chatbot { animation: none; } }
+
     .lang-btn img { display: block; border-radius: 2px; }
 
     /* Scroll indicator */
@@ -1925,7 +1961,76 @@
     }
 
     /* ═══════════════════════════════════════
-       9. FOOTER
+       9. GUDAURI HELPER — ASK ANYTHING
+    ═══════════════════════════════════════ */
+    #helper {
+      padding: 96px 0;
+      background: var(--slate-900);
+      position: relative;
+      overflow: hidden;
+    }
+    #helper::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: -180px;
+      top: -120px;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(14,165,233,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .helper-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .helper-copy .section-label { letter-spacing: 0.22em; }
+    .helper-copy .section-title { margin-bottom: 20px; }
+
+    .helper-lead {
+      font-size: 1.0625rem;
+      color: var(--slate-400);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+
+    .helper-points {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .helper-points li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.9375rem;
+      color: var(--slate-200);
+      line-height: 1.6;
+    }
+    .helper-points li svg {
+      width: 20px;
+      height: 20px;
+      color: var(--electric-light);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .helper-points strong { color: var(--snow); font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .helper-grid { grid-template-columns: 1fr; gap: 40px; }
+      .helper-copy { text-align: center; }
+      .helper-lead { margin-inline: auto; }
+      .helper-points { max-width: 440px; margin-inline: auto; text-align: start; }
+    }
+
+    /* ═══════════════════════════════════════
+       10. FOOTER
     ═══════════════════════════════════════ */
     #footer {
       background: var(--slate-900);
@@ -2088,7 +2193,6 @@
       .scroll-wheel { animation: none; }
       .hero-kicker::before { animation: none; }
       .snow-particle { animation: none; display: none; }
-      .lottie-snow { display: none; }
       * { transition-duration: 0.01ms !important; }
     }
 
@@ -2284,19 +2388,6 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <!-- Lottie styles -->
-  <style>
-    .lottie-snow {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 3;
-      opacity: 0.45;
-    }
-    .lottie-snow svg { width: 100% !important; height: 100% !important; }
-  </style>
 </head>
 <body>
 
@@ -2407,7 +2498,6 @@
       <div class="parallax-layer layer-resort" data-speed="0.58"></div>
       <div class="parallax-overlay"></div>
     </div>
-    <div id="lottie-snow" class="lottie-snow" aria-hidden="true"></div>
     <div class="hero-grain" aria-hidden="true"></div>
 
     <div class="hero-content container">
@@ -2423,6 +2513,10 @@
         75+ ק״מ מסלולים. 300 ימי שמש. בלי תור. בלי הגזמה אירופאית.
       </p>
       <div class="hero-ctas">
+        <a href="#helper" class="btn-chatbot">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="15.5" x2="8" y2="16.5"/><line x1="16" y1="15.5" x2="16" y2="16.5"/></svg>
+          <span data-i18n="hero.chat_cta">צ׳אט־בוט חכם — תשובה בשנייה</span>
+        </a>
         <a href="https://wa.me/972557790955" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="שלח הודעת וואטסאפ">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.733-.524-5.282-1.435l-.378-.225-3.922 1.037 1.05-3.83-.247-.395A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
           <span data-i18n="hero.contact_cta">וואטסאפ</span>
@@ -3146,7 +3240,48 @@
 
 
   <!-- ═══════════════════════════════════════
-       9. FOOTER
+       9. GUDAURI HELPER — ASK ANYTHING
+  ═══════════════════════════════════════ -->
+  <section id="helper" aria-labelledby="helper-title">
+    <div class="container">
+      <div class="helper-grid">
+
+        <div class="helper-copy reveal">
+          <span class="section-label" data-i18n="helper.label">העוזר האישי שלכם</span>
+          <h2 class="section-title" id="helper-title" data-i18n-html="helper.title">
+            שאלו אותי <span class="electric">הכול</span><br/>על גודאורי.
+          </h2>
+          <p class="helper-lead" data-i18n="helper.lead">
+            Gudauri Helper הוא עוזר דיגיטלי שמכיר את האתר, את הדירות ואת ההר —
+            עונה מיד, בשפה שלכם, מתוך הידע האמיתי שלנו.
+          </p>
+          <ul class="helper-points">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              <span><strong data-i18n="helper.p1.strong">מחירים ומרחקים</strong> <span data-i18n="helper.p1.text">— נתונים אמיתיים מהאתר: דירות, ציוד, מסלולים.</span></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              <span><strong data-i18n="helper.p2.strong">טיפים של מקומיים</strong> <span data-i18n="helper.p2.text">— איפה גולשים, איפה אוכלים ומה עושים בערב.</span></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              <span><strong data-i18n="helper.p3.strong">מעבר חלק לאנושי</strong> <span data-i18n="helper.p3.text">— כששאלה צריכה בן אדם, עוברים לגדעון בוואטסאפ בלחיצה.</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="helper-chat reveal" style="transition-delay:0.12s">
+          <div id="gh-inline"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       10. FOOTER
   ═══════════════════════════════════════ -->
   <footer id="footer" aria-label="פוטר">
     <div class="container">
@@ -3496,7 +3631,7 @@
         'hero.kicker': 'הר שמשנה תפיסות', 'hero.headline_1': '3,200+ מטר', 'hero.headline_accent': 'שלך',
         'hero.sub_headline': 'הישראלים שגילו את גודאורי לא מספרים. עכשיו אתה יודע.',
         'hero.sub': '75+ ק״מ מסלולים. 300 ימי שמש. בלי תור. בלי הגזמה אירופאית.',
-        'hero.book_cta': 'הזמינו דירה עכשיו', 'hero.contact_cta': 'וואטסאפ', 'hero.scroll': 'גלול למטה',
+        'hero.book_cta': 'הזמינו דירה עכשיו', 'hero.contact_cta': 'וואטסאפ', 'hero.chat_cta': 'צ׳אט־בוט חכם — תשובה בשנייה', 'hero.scroll': 'גלול למטה',
         'stats.km_label': 'ק״מ מסלולי סקי', 'stats.altitude_label': 'מטר גובה מקסימלי',
         'stats.sun_label': 'ימי שמש בשנה', 'stats.lifts_label': 'מתקני רכבל מודרניים',
         'why.label': 'למה גודאורי',
@@ -3576,6 +3711,12 @@
         'accom.sub': 'בין אם זה טיול זוגי, חבורת חברים, או משפחה בפעם הראשונה — נסדר לך הכל: טיסות, לינה ליד המסלולים, ציוד השכרה, ומדריך שמדבר עברית.',
         'accom.f1': 'מלון 50 מטר מהמסלולים', 'accom.f2': 'ליווי דובר עברית', 'accom.f3': 'הזמנת כרטיסי טיסה', 'accom.f4': 'העברות מטביליסי',
         'accom.cta1': 'הזמן עכשיו', 'accom.cta2': 'וואטסאפ',
+        'helper.label': 'העוזר האישי שלכם',
+        'helper.title': 'שאלו אותי <span class="electric">הכול</span><br/>על גודאורי.',
+        'helper.lead': 'Gudauri Helper הוא עוזר דיגיטלי שמכיר את האתר, את הדירות ואת ההר — עונה מיד, בשפה שלכם, מתוך הידע האמיתי שלנו.',
+        'helper.p1.strong': 'מחירים ומרחקים', 'helper.p1.text': '— נתונים אמיתיים מהאתר: דירות, ציוד, מסלולים.',
+        'helper.p2.strong': 'טיפים של מקומיים', 'helper.p2.text': '— איפה גולשים, איפה אוכלים ומה עושים בערב.',
+        'helper.p3.strong': 'מעבר חלק לאנושי', 'helper.p3.text': '— כששאלה צריכה בן אדם, עוברים לגדעון בוואטסאפ בלחיצה.',
         'test.label': 'מה אומרים',
         'test.title': 'ישראלים שכבר<br/><span class="electric">גילו את הסוד</span>',
         'test1.text': 'הלכנו לגודאורי כניסיון. עכשיו זה הוא הדבר הקבוע. הצלחנו להוריד 8 ק״מ בלי עצירה ביום השני — בוורבייה זה לוקח שבוע. האנשים חמים, השלג מטורף, והמחירים גרמו לנו להרגיש שאנחנו מרמים מישהו.',
@@ -3604,7 +3745,7 @@
         'hero.kicker': 'A Mountain That Changes Everything', 'hero.headline_1': '3,200+ m', 'hero.headline_accent': 'Yours',
         'hero.sub_headline': 'Those who found Gudauri keep it secret. Now you know.',
         'hero.sub': '75+ km of runs. 300 sunny days. No queues. No European price tags.',
-        'hero.book_cta': 'Book an Apartment', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'Scroll down',
+        'hero.book_cta': 'Book an Apartment', 'hero.contact_cta': 'WhatsApp', 'hero.chat_cta': 'Smart chatbot — instant answers', 'hero.scroll': 'Scroll down',
         'stats.km_label': 'km of ski runs', 'stats.altitude_label': 'meters max elevation',
         'stats.sun_label': 'sunny days per year', 'stats.lifts_label': 'modern ski lifts',
         'why.label': 'Why Gudauri',
@@ -3684,6 +3825,12 @@
         'accom.sub': 'Whether it\'s a couple\'s trip, a group of friends, or a family first-timer — we\'ll arrange everything: flights, ski-in/ski-out accommodation, rental gear, and a guide.',
         'accom.f1': 'Hotel 50 m from the slopes', 'accom.f2': 'English-speaking guide', 'accom.f3': 'Lift passes included', 'accom.f4': 'Transfers from Tbilisi',
         'accom.cta1': 'Contact Us Now', 'accom.cta2': 'WhatsApp',
+        'helper.label': 'Your personal assistant',
+        'helper.title': 'Ask me <span class="electric">anything</span><br/>about Gudauri.',
+        'helper.lead': 'Gudauri Helper is a digital assistant that knows the site, the apartments and the mountain — instant answers, in your language, from our real knowledge.',
+        'helper.p1.strong': 'Prices & distances', 'helper.p1.text': '— real data from the site: apartments, gear, pistes.',
+        'helper.p2.strong': 'Local tips', 'helper.p2.text': '— where to ride, where to eat, what to do at night.',
+        'helper.p3.strong': 'Smooth human handoff', 'helper.p3.text': '— when a question needs a person, one tap takes it to Gidon on WhatsApp.',
         'test.label': 'What People Say',
         'test.title': 'Israelis Who Already<br/><span class="electric">Discovered the Secret</span>',
         'test1.text': 'We went to Gudauri as a trial run. Now it\'s our permanent spot. We managed 8 km without stopping on day two — in Verbier that takes a week. The people are warm, the snow is incredible, and the prices made us feel like we were getting away with something.',
@@ -3712,7 +3859,7 @@
         'hero.kicker': 'Гора, которая меняет всё', 'hero.headline_1': '3 279 м', 'hero.headline_accent': 'Ваш',
         'hero.sub_headline': 'Те, кто открыл для себя Гудаури, молчат об этом. Теперь вы знаете.',
         'hero.sub': '75+ км трасс. 300 солнечных дней. Без очередей. Без европейских цен.',
-        'hero.book_cta': 'Забронировать апартамент', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'Прокрутить вниз',
+        'hero.book_cta': 'Забронировать апартамент', 'hero.contact_cta': 'WhatsApp', 'hero.chat_cta': 'Умный чат-бот — ответ за секунду', 'hero.scroll': 'Прокрутить вниз',
         'stats.km_label': 'км горнолыжных трасс', 'stats.altitude_label': 'метров макс. высота',
         'stats.sun_label': 'солнечных дней в году', 'stats.lifts_label': 'современных подъёмников',
         'why.label': 'Почему Гудаури',
@@ -3792,6 +3939,12 @@
         'accom.sub': 'Пара, компания друзей или семья впервые — мы организуем всё: перелёты, проживание у склонов, прокат снаряжения и русскоязычный гид.',
         'accom.f1': 'Отель в 50 м от трасс', 'accom.f2': 'Русскоязычный гид', 'accom.f3': 'Ски-пассы включены', 'accom.f4': 'Трансфер из Тбилиси',
         'accom.cta1': 'Связаться с нами', 'accom.cta2': 'WhatsApp',
+        'helper.label': 'Ваш личный помощник',
+        'helper.title': 'Спросите меня <span class="electric">о чём угодно</span><br/>про Гудаури.',
+        'helper.lead': 'Gudauri Helper — цифровой помощник, который знает сайт, апартаменты и гору. Мгновенные ответы на вашем языке, из наших реальных данных.',
+        'helper.p1.strong': 'Цены и расстояния', 'helper.p1.text': '— реальные данные с сайта: апартаменты, снаряжение, трассы.',
+        'helper.p2.strong': 'Советы местных', 'helper.p2.text': '— где кататься, где поесть и чем заняться вечером.',
+        'helper.p3.strong': 'Передача человеку', 'helper.p3.text': '— когда нужен живой человек, одно нажатие — и вопрос у Гидона в WhatsApp.',
         'test.label': 'Отзывы',
         'test.title': 'Туристы, которые уже<br/><span class="electric">открыли секрет</span>',
         'test1.text': 'Мы поехали в Гудаури на пробу. Теперь это наше постоянное место. Во второй день мы проехали 8 км без остановки — в Вербье на это уходит неделя. Люди тёплые, снег отличный, а цены заставили чувствовать себя так, будто мы поймали удачу.',
@@ -3820,7 +3973,7 @@
         'hero.kicker': 'მთა, რომელიც ყველაფერს ცვლის', 'hero.headline_1': '3,200+ მ', 'hero.headline_accent': 'შენია',
         'hero.sub_headline': 'ვინც გუდაური აღმოაჩინა — დუმს. ახლა შენ იცი.',
         'hero.sub': '75+ კმ ფერდობი. 300 მზიანი დღე. რიგების გარეშე. ევროპული ფასების გარეშე.',
-        'hero.book_cta': 'დაჯავშნე სახლი', 'hero.contact_cta': 'WhatsApp', 'hero.scroll': 'გადაახვიე ქვევით',
+        'hero.book_cta': 'დაჯავშნე სახლი', 'hero.contact_cta': 'WhatsApp', 'hero.chat_cta': 'ჭკვიანი ჩატ-ბოტი — პასუხი წამში', 'hero.scroll': 'გადაახვიე ქვევით',
         'stats.km_label': 'კმ სასლალომო ბილიკი', 'stats.altitude_label': 'მეტრი მაქს. სიმაღლე',
         'stats.sun_label': 'მზიანი დღე წელიწადში', 'stats.lifts_label': 'თანამედროვე ლიფტი',
         'why.label': 'რატომ გუდაური',
@@ -3900,6 +4053,12 @@
         'accom.sub': 'წყვილის მოგზაურობა, მეგობართა ჯგუფი, თუ ოჯახი პირველად — ყველაფერს მოვაგვარებთ: ფრენები, განთავსება ფერდობებთან, ინვენტარის გაქირავება და გიდი.',
         'accom.f1': 'სასტუმრო ფერდობებიდან 50 მ', 'accom.f2': 'ქართულენოვანი გიდი', 'accom.f3': 'ლიფტის ბილეთები შედის', 'accom.f4': 'ტრანსფერი თბილისიდან',
         'accom.cta1': 'დაგვიკავშირდი ახლა', 'accom.cta2': 'WhatsApp',
+        'helper.label': 'თქვენი პირადი ასისტენტი',
+        'helper.title': 'მკითხეთ <span class="electric">ყველაფერი</span><br/>გუდაურზე.',
+        'helper.lead': 'Gudauri Helper ციფრული ასისტენტია, რომელიც იცნობს საიტს, აპარტამენტებსა და მთას — მყისიერი პასუხები თქვენს ენაზე, ჩვენი რეალური ცოდნიდან.',
+        'helper.p1.strong': 'ფასები და მანძილები', 'helper.p1.text': '— რეალური მონაცემები საიტიდან: აპარტამენტები, აღჭურვილობა, ტრასები.',
+        'helper.p2.strong': 'ადგილობრივების რჩევები', 'helper.p2.text': '— სად ისრიალოთ, სად ჭამოთ, რა გააკეთოთ საღამოს.',
+        'helper.p3.strong': 'გადართვა ადამიანზე', 'helper.p3.text': '— როცა კითხვას ადამიანი სჭირდება, ერთი დაჭერით გიდონთან WhatsApp-ში.',
         'test.label': 'მოსაზრებები',
         'test.title': 'ვინც<br/><span class="electric">საიდუმლო უკვე იცის</span>',
         'test1.text': 'გუდაურში პირველ ჯერზე გამოსაცდელად წავედით. ახლა ეს ჩვენი მუდმივი ადგილია. მეორე დღეს 8 კმ გავიარეთ გაჩერების გარეშე — ვერბიეში ამას კვირა სჭირდება. ადამიანები თბილები არიან, თოვლი ფანტასტიკურია, ხოლო ფასებმა ისეთი შეგრძნება შეგვიქმნა, თითქოს ვინმეს ვატყუებდით.',
@@ -4019,12 +4178,6 @@
     // lottie.min.js is deferred, so wait for DOMContentLoaded (deferred scripts run first)
     document.addEventListener('DOMContentLoaded', function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      // Hero snow overlay
-      var snowEl = document.getElementById('lottie-snow');
-      if (snowEl && !reduceMotion) {
-        lottie.loadAnimation({ container: snowEl, renderer: 'svg', loop: true, autoplay: true, path: 'lotties/snow.json' });
-      }
 
       // Card icons
       var cardAnims = [

@@ -275,7 +275,10 @@
         if (!k) return;
         if (qTrim === k) { score += 4; return; } /* the whole message is the keyword ("שלום", "hi") */
         if (q.indexOf(k) !== -1) {
-          score += k.indexOf(' ') !== -1 ? 3 : (k.length >= 5 ? 2 : 1);
+          /* specific multi-word phrases outrank accumulated single-word hits;
+             whole-word hit counts like a long keyword — Hebrew/Georgian core words are short */
+          var whole = q.indexOf(' ' + k + ' ') !== -1;
+          score += k.indexOf(' ') !== -1 ? 4 : (k.length >= 5 || whole ? 2 : 1);
         }
       });
       if (score > bestScore) { bestScore = score; best = topic; }
@@ -295,6 +298,7 @@
     'background:linear-gradient(135deg,#0EA5E9 0%,#0284C7 100%);color:#fff;display:flex;align-items:center;justify-content:center;',
     'box-shadow:0 4px 20px rgba(14,165,233,.45);z-index:997;border:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;}',
     '#gh-chat-btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(14,165,233,.55);}',
+    '#gh-chat-btn.gh-hidden{opacity:0;pointer-events:none;transform:translateY(8px);}',
     '#gh-chat-btn svg{width:26px;height:26px;}',
     '#gh-chat-btn .gh-dot{position:absolute;top:2px;inset-inline-end:2px;width:12px;height:12px;border-radius:50%;background:#22C55E;border:2px solid #0F172A;}',
     '#gh-chat-panel{position:fixed;bottom:96px;left:24px;width:376px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100dvh - 120px);',
@@ -302,6 +306,9 @@
     'z-index:1050;display:none;flex-direction:column;overflow:hidden;font-family:Heebo,-apple-system,sans-serif;}',
     '#gh-chat-panel.gh-open{display:flex;animation:ghUp .25s ease;}',
     '@keyframes ghUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}',
+    '.gh-embed{position:relative;display:flex;flex-direction:column;overflow:hidden;width:100%;height:560px;',
+    'background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.12);',
+    'border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,.35);font-family:Heebo,-apple-system,sans-serif;}',
     '.gh-head{display:flex;align-items:center;gap:12px;padding:16px 18px;background:linear-gradient(135deg,rgba(14,165,233,.18) 0%,rgba(15,23,42,0) 70%);border-bottom:1px solid rgba(255,255,255,.08);}',
     '.gh-head-logo{width:38px;height:38px;border-radius:10px;background:rgba(14,165,233,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}',
     '.gh-head-logo svg{width:22px;height:22px;}',
@@ -339,209 +346,244 @@
     '#gh-chat-btn{bottom:78px;left:16px;width:50px;height:50px;}',
     '#gh-chat-btn svg{width:23px;height:23px;}',
     '#gh-chat-panel{left:8px;right:8px;bottom:8px;width:auto;height:78dvh;max-height:none;border-radius:18px;}',
+    '.gh-embed{height:480px;}',
+    '.gh-input{font-size:16px;}', /* ≥16px so iOS Safari doesn't zoom on focus */
     '}',
     '@media (prefers-reduced-motion:reduce){#gh-chat-panel.gh-open{animation:none;}#gh-chat-btn{transition:none;}.gh-typing i{animation:none;opacity:.6;}}'
   ].join('');
 
-  /* ─── DOM ─── */
-  function build() {
+  /* ─── shared SVG fragments ─── */
+  var LOGO_SVG = '<svg viewBox="0 0 36 36" fill="none"><g stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/><g transform="rotate(60 18 18)"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/></g><g transform="rotate(120 18 18)"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/></g></g><circle cx="18" cy="18" r="2" fill="#7DD3FC"/></svg>';
+  var SEND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
+  var WA_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+
+  /* ─── chat instance factory — used by the floating panel AND the inline embed ─── */
+  function createChat(root, withClose) {
+    var t = UI[lang()];
+    root.innerHTML =
+      '<div class="gh-head">' +
+        '<div class="gh-head-logo" aria-hidden="true">' + LOGO_SVG + '</div>' +
+        '<div><div class="gh-head-name">' + esc(t.title) + '</div>' +
+        '<div class="gh-head-sub">' + esc(t.subtitle) + '</div></div>' +
+        (withClose ? '<button class="gh-close" type="button" aria-label="' + esc(t.close) + '">✕</button>' : '') +
+      '</div>' +
+      '<div class="gh-msgs" aria-live="polite"></div>' +
+      '<div class="gh-chips"></div>' +
+      '<div class="gh-input-row">' +
+        '<input class="gh-input" type="text" maxlength="300" autocomplete="off" enterkeyhint="send" placeholder="' + esc(t.placeholder) + '" aria-label="' + esc(t.placeholder) + '" />' +
+        '<button class="gh-send" type="button" aria-label="' + esc(t.send) + '">' + SEND_SVG + '</button>' +
+      '</div>';
+
+    var inst = {
+      root: root,
+      greeted: false,
+      pristine: true, /* nothing but the greeting yet — safe to re-render on language switch */
+      msgs: root.querySelector('.gh-msgs'),
+      chips: root.querySelector('.gh-chips'),
+      input: root.querySelector('.gh-input')
+    };
+
+    function scrollDown() { inst.msgs.scrollTop = inst.msgs.scrollHeight; }
+
+    function topicHtml(topic, L) {
+      var html = esc(topic.ans[L]).replace(/\n/g, '<br>');
+      (topic.links || []).forEach(function (link) {
+        html += '<br><a class="gh-link" href="' + esc(link.href) + '"' +
+          (link.ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + esc(link.t[L]) + '</a>';
+      });
+      return html;
+    }
+
+    inst.addUser = function (text) {
+      inst.pristine = false;
+      var d = document.createElement('div');
+      d.className = 'gh-msg gh-msg-user';
+      d.textContent = text;
+      inst.msgs.appendChild(d);
+      scrollDown();
+    };
+
+    inst.addBot = function (html) {
+      var d = document.createElement('div');
+      d.className = 'gh-msg gh-msg-bot';
+      d.innerHTML = html; /* bot content only — never user input */
+      inst.msgs.appendChild(d);
+      scrollDown();
+      return d;
+    };
+
+    inst.typing = function () {
+      var d = document.createElement('div');
+      d.className = 'gh-msg gh-msg-bot gh-typing';
+      d.setAttribute('aria-hidden', 'true');
+      d.innerHTML = '<i></i><i></i><i></i>';
+      inst.msgs.appendChild(d);
+      scrollDown();
+      return d;
+    };
+
+    inst.answer = function (question) {
+      var L = lang();
+      var ui = UI[L];
+      var dots = inst.typing();
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(function () {
+        dots.remove();
+        var topic = findTopic(question);
+        if (topic) {
+          inst.addBot(topicHtml(topic, L));
+        } else {
+          var waHref = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(question);
+          inst.addBot(
+            esc(ui.fallback) +
+            '<br><a class="gh-wa" href="' + waHref + '" target="_blank" rel="noopener noreferrer">' +
+            WA_SVG + esc(ui.waBtn) + '</a>'
+          );
+        }
+      }, reduce ? 60 : 550 + Math.random() * 350);
+    };
+
+    inst.send = function () {
+      var text = inst.input.value.trim();
+      if (!text) return;
+      inst.input.value = '';
+      inst.addUser(text);
+      inst.answer(text);
+    };
+
+    inst.renderChips = function () {
+      var L = lang();
+      inst.chips.innerHTML = '';
+      UI[L].chips.forEach(function (label, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'gh-chip';
+        b.textContent = label;
+        b.addEventListener('click', function () {
+          inst.addUser(label.replace(/^[^\s]+\s/, ''));
+          var topic = KB.filter(function (k) { return k.id === CHIP_TOPICS[i]; })[0];
+          var dots = inst.typing();
+          setTimeout(function () {
+            dots.remove();
+            inst.addBot(topicHtml(topic, lang()));
+          }, 450);
+        });
+        inst.chips.appendChild(b);
+      });
+    };
+
+    inst.greet = function () {
+      inst.greeted = true;
+      inst.addBot(esc(UI[lang()].greeting).replace(/\n/g, '<br>'));
+    };
+
+    inst.applyLang = function () {
+      var L = lang();
+      var ui = UI[L];
+      root.dir = ui.dir;
+      root.setAttribute('aria-label', ui.title);
+      root.querySelector('.gh-head-sub').textContent = ui.subtitle;
+      inst.input.placeholder = ui.placeholder;
+      inst.input.setAttribute('aria-label', ui.placeholder);
+      root.querySelector('.gh-send').setAttribute('aria-label', ui.send);
+      var closeBtn = root.querySelector('.gh-close');
+      if (closeBtn) closeBtn.setAttribute('aria-label', ui.close);
+      inst.renderChips();
+      /* untouched chat → re-render the greeting in the new language */
+      if (inst.greeted && inst.pristine) {
+        inst.msgs.innerHTML = '';
+        inst.addBot(esc(ui.greeting).replace(/\n/g, '<br>'));
+      }
+    };
+
+    root.querySelector('.gh-send').addEventListener('click', inst.send);
+    inst.input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); inst.send(); }
+    });
+
+    return inst;
+  }
+
+  /* ─── floating widget + inline embed ─── */
+  var floatChat = null, inlineChat = null, floatBtn = null, floatPanel = null, opened = false;
+
+  function toggle(open) {
+    opened = open === undefined ? !opened : open;
+    floatPanel.classList.toggle('gh-open', opened);
+    floatBtn.setAttribute('aria-expanded', String(opened));
+    if (opened) {
+      floatChat.applyLang();
+      if (!floatChat.greeted) floatChat.greet();
+      floatChat.input.focus();
+    } else {
+      floatBtn.focus();
+    }
+  }
+
+  function init() {
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
 
     var t = UI[lang()];
 
-    var btn = document.createElement('button');
-    btn.id = 'gh-chat-btn';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', t.launcher);
-    btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML =
+    /* floating launcher + panel (every page) */
+    floatBtn = document.createElement('button');
+    floatBtn.id = 'gh-chat-btn';
+    floatBtn.type = 'button';
+    floatBtn.setAttribute('aria-label', t.launcher);
+    floatBtn.setAttribute('aria-expanded', 'false');
+    floatBtn.innerHTML =
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
       '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' +
       '<line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/></svg>' +
       '<span class="gh-dot" aria-hidden="true"></span>';
 
-    var panel = document.createElement('div');
-    panel.id = 'gh-chat-panel';
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-modal', 'false');
-    panel.setAttribute('aria-label', t.title);
-    panel.innerHTML =
-      '<div class="gh-head">' +
-        '<div class="gh-head-logo" aria-hidden="true">' +
-          '<svg viewBox="0 0 36 36" fill="none"><g stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/><g transform="rotate(60 18 18)"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/></g><g transform="rotate(120 18 18)"><line x1="18" y1="5" x2="18" y2="31"/><line x1="18" y1="9.5" x2="15" y2="7"/><line x1="18" y1="9.5" x2="21" y2="7"/><line x1="18" y1="26.5" x2="15" y2="29"/><line x1="18" y1="26.5" x2="21" y2="29"/></g></g><circle cx="18" cy="18" r="2" fill="#7DD3FC"/></svg>' +
-        '</div>' +
-        '<div><div class="gh-head-name">' + esc(t.title) + '</div>' +
-        '<div class="gh-head-sub" id="gh-sub">' + esc(t.subtitle) + '</div></div>' +
-        '<button class="gh-close" id="gh-close" type="button" aria-label="' + esc(t.close) + '">✕</button>' +
-      '</div>' +
-      '<div class="gh-msgs" id="gh-msgs" aria-live="polite"></div>' +
-      '<div class="gh-chips" id="gh-chips"></div>' +
-      '<div class="gh-input-row">' +
-        '<input class="gh-input" id="gh-input" type="text" maxlength="300" placeholder="' + esc(t.placeholder) + '" aria-label="' + esc(t.placeholder) + '" />' +
-        '<button class="gh-send" id="gh-send" type="button" aria-label="' + esc(t.send) + '">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>' +
-        '</button>' +
-      '</div>';
+    floatPanel = document.createElement('div');
+    floatPanel.id = 'gh-chat-panel';
+    floatPanel.setAttribute('role', 'dialog');
+    floatPanel.setAttribute('aria-modal', 'false');
 
-    document.body.appendChild(btn);
-    document.body.appendChild(panel);
-    return { btn: btn, panel: panel };
-  }
+    document.body.appendChild(floatBtn);
+    document.body.appendChild(floatPanel);
+    floatChat = createChat(floatPanel, true);
+    floatChat.applyLang();
 
-  /* ─── chat logic ─── */
-  var els, opened = false, greeted = false;
-
-  function msgsEl() { return document.getElementById('gh-msgs'); }
-
-  function scrollDown() {
-    var m = msgsEl();
-    m.scrollTop = m.scrollHeight;
-  }
-
-  function addUser(text) {
-    var d = document.createElement('div');
-    d.className = 'gh-msg gh-msg-user';
-    d.textContent = text;
-    msgsEl().appendChild(d);
-    scrollDown();
-  }
-
-  function addBot(html) {
-    var d = document.createElement('div');
-    d.className = 'gh-msg gh-msg-bot';
-    d.innerHTML = html; /* bot content only — never user input */
-    msgsEl().appendChild(d);
-    scrollDown();
-    return d;
-  }
-
-  function typing() {
-    var d = document.createElement('div');
-    d.className = 'gh-msg gh-msg-bot gh-typing';
-    d.setAttribute('aria-hidden', 'true');
-    d.innerHTML = '<i></i><i></i><i></i>';
-    msgsEl().appendChild(d);
-    scrollDown();
-    return d;
-  }
-
-  function answer(question) {
-    var L = lang();
-    var t = UI[L];
-    var dots = typing();
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(function () {
-      dots.remove();
-      var topic = findTopic(question);
-      if (topic) {
-        var html = esc(topic.ans[L]).replace(/\n/g, '<br>');
-        (topic.links || []).forEach(function (link) {
-          html += '<br><a class="gh-link" href="' + esc(link.href) + '"' +
-            (link.ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + esc(link.t[L]) + '</a>';
-        });
-        addBot(html);
-      } else {
-        var waHref = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(question);
-        addBot(
-          esc(t.fallback) +
-          '<br><a class="gh-wa" href="' + waHref + '" target="_blank" rel="noopener noreferrer">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
-          esc(t.waBtn) + '</a>'
-        );
-      }
-    }, reduce ? 60 : 550 + Math.random() * 350);
-  }
-
-  function send() {
-    var input = document.getElementById('gh-input');
-    var text = input.value.trim();
-    if (!text) return;
-    input.value = '';
-    addUser(text);
-    answer(text);
-  }
-
-  function renderChips() {
-    var L = lang();
-    var wrap = document.getElementById('gh-chips');
-    wrap.innerHTML = '';
-    UI[L].chips.forEach(function (label, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'gh-chip';
-      b.textContent = label;
-      b.addEventListener('click', function () {
-        addUser(label.replace(/^[^\s]+\s/, ''));
-        var topic = KB.filter(function (k) { return k.id === CHIP_TOPICS[i]; })[0];
-        var dots = typing();
-        setTimeout(function () {
-          dots.remove();
-          var html = esc(topic.ans[L]).replace(/\n/g, '<br>');
-          (topic.links || []).forEach(function (link) {
-            html += '<br><a class="gh-link" href="' + esc(link.href) + '"' +
-              (link.ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + esc(link.t[L]) + '</a>';
-          });
-          addBot(html);
-        }, 450);
-      });
-      wrap.appendChild(b);
-    });
-  }
-
-  function applyLang() {
-    var L = lang();
-    var t = UI[L];
-    els.panel.dir = t.dir;
-    els.panel.setAttribute('aria-label', t.title);
-    els.btn.setAttribute('aria-label', t.launcher);
-    document.getElementById('gh-sub').textContent = t.subtitle;
-    var input = document.getElementById('gh-input');
-    input.placeholder = t.placeholder;
-    input.setAttribute('aria-label', t.placeholder);
-    document.getElementById('gh-send').setAttribute('aria-label', t.send);
-    document.getElementById('gh-close').setAttribute('aria-label', t.close);
-    renderChips();
-  }
-
-  function toggle(open) {
-    opened = open === undefined ? !opened : open;
-    els.panel.classList.toggle('gh-open', opened);
-    els.btn.setAttribute('aria-expanded', String(opened));
-    if (opened) {
-      applyLang();
-      if (!greeted) {
-        greeted = true;
-        addBot(esc(UI[lang()].greeting).replace(/\n/g, '<br>'));
-      }
-      document.getElementById('gh-input').focus();
-    } else {
-      els.btn.focus();
-    }
-  }
-
-  function init() {
-    els = build();
-    els.btn.addEventListener('click', function () { toggle(); });
-    document.getElementById('gh-close').addEventListener('click', function () { toggle(false); });
-    document.getElementById('gh-send').addEventListener('click', send);
-    document.getElementById('gh-input').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); send(); }
-    });
+    floatBtn.addEventListener('click', function () { toggle(); });
+    floatPanel.querySelector('.gh-close').addEventListener('click', function () { toggle(false); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && opened) toggle(false);
     });
+
+    /* inline embed — any page with a #gh-inline mount gets an always-open chat */
+    var mount = document.getElementById('gh-inline');
+    if (mount) {
+      mount.classList.add('gh-embed');
+      mount.setAttribute('role', 'group');
+      inlineChat = createChat(mount, false);
+      inlineChat.applyLang();
+      inlineChat.greet();
+
+      /* the launcher is redundant while the inline chat is on screen */
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          floatBtn.classList.toggle('gh-hidden', entries[0].isIntersecting);
+        }, { threshold: 0.2 }).observe(mount);
+      }
+    }
+
     /* follow the site language switcher */
-    new MutationObserver(function () { if (opened) applyLang(); })
-      .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    new MutationObserver(function () {
+      if (opened) floatChat.applyLang();
+      if (inlineChat) inlineChat.applyLang();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   }
 
   /* minimal public API — lets other scripts (or tests) open the chat or query the matcher */
   window.GudauriChat = {
     match: findTopic,
-    open: function () { if (els) toggle(true); },
-    close: function () { if (els) toggle(false); }
+    open: function () { if (floatPanel) toggle(true); },
+    close: function () { if (floatPanel) toggle(false); }
   };
 
   if (document.readyState === 'loading') {
