@@ -129,6 +129,12 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    /* mobile: pre-reveal X-offsets on near-full-width images widen the layout
+       viewport (Chrome zoom-fit shrinks the page) — reveal vertically instead */
+    @media (max-width: 640px) {
+      .reveal-left, .reveal-right { transform: translateY(32px); }
+      .reveal-left.visible, .reveal-right.visible { transform: translateY(0); }
+    }
 
     /* ── NAV ── */
     #nav {
