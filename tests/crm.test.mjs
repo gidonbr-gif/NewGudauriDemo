@@ -94,6 +94,7 @@ test('handler creates an Airtable record for a valid POST', async () => {
     body: {
       name: 'Test Lead',
       phone: '+972501234567',
+      email: 'test@example.com',
       service: 'equipment',
       source: 'website form'
     }
@@ -138,7 +139,7 @@ test('equipment order is still saved when Airtable rejects an equipment field', 
   await handler({
     method: 'POST',
     body: {
-      name: 'Test Lead', phone: '+972501234567', service: 'equipment', notes: 'two people',
+      name: 'Test Lead', phone: '+972501234567', email: 'test@example.com', service: 'equipment', notes: 'two people',
       checkin: '2026-12-01', equipmentType: 'ski', equipmentLevel: 'basic', bootSize: '42'
     }
   }, res);
@@ -168,6 +169,56 @@ test('a rejected lead without equipment details is reported, not retried', async
   assert.equal(res.statusCode, 502);
   assert.equal(res.body.ok, false);
   assert.equal(airtable.calls.length, 1);
+});
+
+test('equipment orders need a valid email; other services keep it optional', async () => {
+  assert.deepEqual(validateLead({ name: 'A', phone: '1', service: 'equipment' }).errors, ['email is required']);
+  assert.deepEqual(validateLead({ name: 'A', phone: '1', service: 'equipment', email: 'not-an-email' }).errors, ['email is invalid']);
+  assert.equal(validateLead({ name: 'A', phone: '1', service: 'equipment', email: 'a@b.co' }).valid, true);
+  assert.equal(validateLead({ name: 'A', phone: '1', service: 'apartments' }).valid, true);
+
+  const airtable = stubAirtable([airtableAccepts]);
+  const res = createResponse();
+  await handler({ method: 'POST', body: { name: 'A', phone: '1', service: 'equipment' } }, res);
+  airtable.restore();
+
+  assert.equal(res.statusCode, 400);
+  assert.deepEqual(res.body.errors, ['email is required']);
+  assert.equal(airtable.calls.length, 0, 'nothing may be saved without an email');
+});
+
+test('group equipment order lists every person and the estimate in the notes', () => {
+  const fields = buildAirtableFields({
+    name: 'Test Lead', phone: '+972501234567', email: 'test@example.com', service: 'equipment', notes: 'ski school friends',
+    checkin: '2026-12-01', checkout: '2026-12-04',
+    equipmentType: 'ski', equipmentLevel: 'basic', bootSize: '42', helmetSize: 'M', goggles: 'yes',
+    people: [
+      { equipmentType: 'ski', equipmentLevel: 'basic', bootSize: '42', helmetSize: 'M', goggles: 'yes' },
+      { equipmentType: 'snowboard', equipmentLevel: 'kids', bootSize: '33', jacketSize: 'S', pantsSize: 'S', goggles: 'no' }
+    ]
+  });
+
+  // person 1 stays in the structured columns
+  assert.equal(fields['סוג ציוד'], 'ski');
+  assert.equal(fields['רמת ציוד'], 'basic');
+  assert.equal(fields['מידת נעל'], '42');
+  assert.equal(fields['הערות'], [
+    'ski school friends',
+    'מספר אנשים: 2',
+    'אדם 1: סט סקי, רמה בסיסי, נעל 42, קסדה M, גוגלס',
+    'אדם 2: סט סנובורד, רמה ילדים, נעל 33, מעיל S, מכנסיים S',
+    // (50 + 10 + 10) + (60 + 20 + 20) = ₾170 a day × 3 days = ₾510 → ₪689 at 1.35
+    'הערכת עלות: ₾510 (≈ ₪689) · 3 ימים · 2 אנשים'
+  ].join('\n'));
+});
+
+test('a single-person equipment order gets a price estimate but no group lines', () => {
+  const fields = buildAirtableFields({
+    name: 'A', phone: '1', email: 'a@b.co', service: 'equipment',
+    checkin: '2026-12-01', checkout: '2026-12-03', equipmentType: 'snowboard', equipmentLevel: 'pro'
+  });
+
+  assert.equal(fields['הערות'], 'הערכת עלות: ₾180 (≈ ₪243) · 2 ימים · אדם אחד');
 });
 
 test('handler rejects invalid POST without calling Airtable', async () => {

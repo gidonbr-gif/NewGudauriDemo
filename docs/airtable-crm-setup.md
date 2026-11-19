@@ -16,6 +16,15 @@ Create an Airtable base named `Gudauri CRM` with one table named `Leads`.
 | שווי משוער | Currency or number | Optional estimated value |
 | תאריך יצירה | Date/time | Sent by the website API |
 
+## Equipment orders
+
+Orders from `equipment.html` need a valid email (the API rejects an equipment lead without one).
+Person 1's choices go to the equipment columns (`סוג ציוד`, `רמת ציוד`, `מידת נעל`, …).
+For groups, `הערות` also lists `מספר אנשים` and one `אדם N: …` line per person (type, level, sizes, goggles),
+plus the price estimate (`הערכת עלות: ₾… (≈ ₪…)`), so no extra column is needed.
+Equipment levels are now `kids`, `basic` and `pro`; if a select column rejects a value the order is still saved,
+with the equipment details written into `הערות`.
+
 ## Recommended Views
 
 - `כל הלידים`: all records, newest first.

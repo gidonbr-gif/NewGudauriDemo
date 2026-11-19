@@ -4,7 +4,7 @@ const html = fs.readFileSync('equipment.html','utf8');
 const usedKeys = new Set();
 const re = /data-i18n(?:-html|-placeholder|-alt)?="([^"]+)"/g;
 let m;
-while ((m = re.exec(html)) !== null) usedKeys.add(m[1]);
+while ((m = re.exec(html)) !== null) { if (/^[A-Za-z0-9_.-]+$/.test(m[1])) usedKeys.add(m[1]); }
 
 const transStart = html.indexOf('window.TRANSLATIONS = {');
 const transEnd = html.indexOf('function setLanguage');

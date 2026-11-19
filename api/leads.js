@@ -1,4 +1,7 @@
 import { applyCors } from './_cors.js';
+import {
+  EMAIL_RE, groupTotal, ilsRate, normalizePeople, rentalDays, validatePeople
+} from './_equipment.js';
 
 const SERVICE_LABELS = {
   travel: 'הזמנת נסיעות',
@@ -8,6 +11,9 @@ const SERVICE_LABELS = {
 };
 
 const ALLOWED_SERVICES = new Set(Object.keys(SERVICE_LABELS));
+
+const TYPE_LABELS = { ski: 'סט סקי', snowboard: 'סט סנובורד', both: 'סקי + סנובורד' };
+const LEVEL_LABELS = { kids: 'ילדים', basic: 'בסיסי', pro: 'פרו' };
 
 // Equipment order details: form field -> Airtable column.
 const EQUIPMENT_FIELDS = {
@@ -48,6 +54,13 @@ export function validateLead(input) {
   if (!phone) errors.push('phone is required');
   if (service && !ALLOWED_SERVICES.has(service)) errors.push('service is invalid');
 
+  // The shop and the team confirm equipment orders by email, so it is mandatory there.
+  if (service === 'equipment') {
+    const email = clean(input.email);
+    if (!email) errors.push('email is required');
+    else if (!EMAIL_RE.test(email)) errors.push('email is invalid');
+  }
+
   return {
     valid: errors.length === 0,
     errors
@@ -76,9 +89,44 @@ export function buildAirtableFields(input) {
       const value = clean(input[key]);
       if (value) fields[EQUIPMENT_FIELDS[key]] = value;
     }
+    const details = equipmentOrderNotes(input);
+    if (details.length > 0) fields['הערות'] = [fields['הערות'], ...details].filter(Boolean).join('\n');
   }
 
   return fields;
+}
+
+function describePerson(person) {
+  return [
+    TYPE_LABELS[person.equipmentType],
+    LEVEL_LABELS[person.equipmentLevel] && `רמה ${LEVEL_LABELS[person.equipmentLevel]}`,
+    person.bootSize && `נעל ${person.bootSize}`,
+    person.helmetSize && `קסדה ${person.helmetSize}`,
+    person.jacketSize && `מעיל ${person.jacketSize}`,
+    person.pantsSize && `מכנסיים ${person.pantsSize}`,
+    person.goggles === 'yes' && 'גוגלס'
+  ].filter(Boolean).join(', ') || '—';
+}
+
+// Lines for the notes column: who is coming and what each person rents (groups only),
+// plus the price estimate. The structured equipment columns describe person 1.
+function equipmentOrderNotes(input) {
+  const people = normalizePeople(input);
+  const lines = [];
+
+  if (people.length > 1) {
+    lines.push(`מספר אנשים: ${people.length}`);
+    people.forEach((person, index) => lines.push(`אדם ${index + 1}: ${describePerson(person)}`));
+  }
+
+  const days = rentalDays(clean(input.checkin), clean(input.checkout));
+  if (days && !validatePeople(people)) {
+    const total = groupTotal(people, days);
+    const who = people.length > 1 ? `${people.length} אנשים` : 'אדם אחד';
+    lines.push(`הערכת עלות: ₾${total} (≈ ₪${Math.round(total * ilsRate())}) · ${days} ימים · ${who}`);
+  }
+
+  return lines;
 }
 
 // Same lead with the equipment details written into the notes instead of their own

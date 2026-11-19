@@ -87,6 +87,7 @@
         backEquip: '← חזרה לדף הציוד',
         equipName: 'השכרת ציוד סקי — ניו גודאורי',
         rentDays: 'ימי השכרה',
+        peopleLabel: 'מספר אנשים',
         totalOrder: 'סה״כ הזמנה',
         deposit: 'שולמה מקדמה של',
         refNum: 'מספר אסמכתא',
@@ -111,6 +112,7 @@
         backEquip: '← Back to Equipment Page',
         equipName: 'Ski Equipment Rental — New Gudauri',
         rentDays: 'Rental Days',
+        peopleLabel: 'People',
         totalOrder: 'Order Total',
         deposit: 'Deposit paid',
         refNum: 'Reference Number',
@@ -135,6 +137,7 @@
         backEquip: '← Вернуться на страницу оборудования',
         equipName: 'Аренда лыжного снаряжения — New Gudauri',
         rentDays: 'Дней аренды',
+        peopleLabel: 'Человек',
         totalOrder: 'Итого',
         deposit: 'Задаток оплачен',
         refNum: 'Номер заказа',
@@ -159,6 +162,7 @@
         backEquip: '← აღჭურვილობის გვერდზე დაბრუნება',
         equipName: 'სათხილამურო აღჭურვილობის გაქირავება — New Gudauri',
         rentDays: 'გაქირავების დღეები',
+        peopleLabel: 'ადამიანი',
         totalOrder: 'სულ',
         deposit: 'ანაბარი გადახდილია',
         refNum: 'შეკვეთის ნომერი',
@@ -204,6 +208,7 @@
     var apt    = params.get('apt') || '';
     var nights = esc((params.get('nights') || '').replace(/[^\d]/g, '').slice(0, 3));
     var days   = esc((params.get('days') || '').replace(/[^\d]/g, '').slice(0, 3));
+    var people = esc((params.get('people') || '').replace(/[^\d]/g, '').slice(0, 2));
     var total  = (params.get('total') || '').replace(/[^\d.]/g, '').slice(0, 10);
     var dep    = (params.get('dep') || '').replace(/[^\d.]/g, '').slice(0, 10);
     var ref    = esc((params.get('ref') || '').replace(/[^\w\-]/g, '').slice(0, 40));
@@ -217,6 +222,7 @@
       detailsEl.innerHTML =
         '<strong>' + T.equipName + '</strong><br>' +
         (days  ? '<strong>' + T.rentDays + ':</strong> ' + days + '<br>' : '') +
+        (people && people !== '1' ? '<strong>' + T.peopleLabel + ':</strong> ' + people + '<br>' : '') +
         (total ? '<strong>' + T.totalOrder + ':</strong> ₾' + total + ' (' + T.deposit + ' ₪' + deposit + ')<br>' : '') +
         '<strong>' + T.refNum + ':</strong> ' + (ref || '—');
       waText = encodeURIComponent(T.waMsg_equip + ' (' + (days || '?') + ' ' + T.rentDays.toLowerCase() + '). ' + T.waMsg_ref + ': ' + (ref || '—'));

@@ -637,6 +637,8 @@
     .price-amount { font-size: 1.35rem; font-weight: 900; color: var(--snow); line-height: 1; }
     .price-unit { font-size: 0.75rem; color: var(--slate-400); margin-top: 3px; }
     .price-cell.same { color: var(--slate-400); }
+    /* keep "≈ ₪54" in reading order inside right-to-left pages (the ≈ sign would flip sides) */
+    .price-ils, .ltr-iso { direction: ltr; unicode-bidi: isolate; }
     .price-ils { font-size: 0.8125rem; font-weight: 700; color: var(--slate-400); margin-top: 5px; }
     .items-head { text-align: center; margin: 48px 0 22px; }
     .items-title { font-size: 1.375rem; font-weight: 900; color: var(--snow); }
@@ -796,6 +798,35 @@
       margin-top: 10px; font-size: 0.875rem; font-weight: 700;
       color: var(--electric); min-height: 20px;
     }
+    .eq-people-field { margin-top: 18px; margin-bottom: 0; }
+    .eq-hint { font-size: 0.8125rem; color: var(--slate-400); line-height: 1.5; margin: 0; }
+    .eq-person-tag {
+      margin: -4px 0 14px; padding: 9px 13px; border-radius: 8px;
+      background: rgba(14,165,233,0.10); border: 1px solid rgba(14,165,233,0.25);
+      color: var(--electric-light); font-size: 0.8125rem; font-weight: 600; line-height: 1.5;
+    }
+    .eq-person-tag[hidden] { display: none; }
+    .eq-person {
+      border: 1px solid var(--glass-border); border-radius: 12px;
+      padding: 18px 18px 6px; margin-bottom: 14px; background: rgba(15,23,42,0.35);
+    }
+    .eq-person-title {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.9375rem; font-weight: 800; color: var(--snow); margin: 0 0 14px;
+    }
+    .eq-person-title::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--electric); }
+    .eq-person .eq-grid-2 { row-gap: 14px; }
+    .eq-person .eq-field { margin-bottom: 0; }
+    .eq-person .eq-grid-2 { margin-bottom: 14px; }
+    .eq-field input[aria-invalid="true"], .eq-field select[aria-invalid="true"], .eq-checkbox input[aria-invalid="true"] {
+      border-color: #f87171; outline: 2px solid rgba(248,113,113,0.35);
+    }
+    .eq-sum-list {
+      list-style: none; margin: 10px 0 0; padding: 10px 0 0;
+      border-top: 1px solid rgba(14,165,233,0.2); display: grid; gap: 4px; font-size: 0.875rem;
+    }
+    .eq-sum-list li { display: flex; justify-content: space-between; gap: 12px; }
+    .eq-sum-note { color: var(--amber); font-size: 0.8125rem; margin-top: 8px; }
     .eq-checkboxes { display: grid; gap: 11px; margin-bottom: 18px; }
     .eq-checkbox {
       display: flex; align-items: flex-start; gap: 10px;
@@ -1403,7 +1434,7 @@
 
         <form id="eq-form" class="eq-form reveal" novalidate>
           <fieldset class="eq-fieldset">
-            <legend><span class="step-num">1</span><span data-i18n="eq.fs.dates">תאריכי השכרה</span></legend>
+            <legend><span class="step-num">1</span><span data-i18n="eq.fs.dates">תאריכים וכמות אנשים</span></legend>
             <div class="eq-grid-2">
               <div class="eq-field">
                 <label for="eq-checkin" data-i18n="eq.checkin">תאריך הגעה</label>
@@ -1415,10 +1446,21 @@
               </div>
             </div>
             <div class="eq-days-display" id="eq-days-display" aria-live="polite"></div>
+            <div class="eq-field eq-people-field">
+              <label for="eq-people" data-i18n="eq.people.label">כמה אנשים מגיעים?</label>
+              <select id="eq-people" name="peopleCount">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <p class="eq-hint" data-i18n="eq.people.hint">לכל אחד מהמשתתפים אפשר לבחור ציוד ומידות משלו. לקבוצות של יותר מ-10 אנשים — כתבו לנו בוואטסאפ.</p>
+            </div>
           </fieldset>
 
           <fieldset class="eq-fieldset">
             <legend><span class="step-num">2</span><span data-i18n="eq.fs.equipment">סוג ורמת ציוד</span></legend>
+            <p class="eq-person-tag" id="eq-p1-tag" data-i18n="eq.p1.tag" hidden>הבחירות כאן הן עבור אדם 1 (המזמין). את שאר חברי הקבוצה ממלאים בהמשך.</p>
             <div class="eq-grid-2">
               <div class="eq-field">
                 <label for="eq-type" data-i18n="eq.type">סוג ציוד</label>
@@ -1426,7 +1468,7 @@
                   <option value="" data-i18n="eq.choose">בחרו...</option>
                   <option value="ski" data-i18n="eq.type.ski">סט סקי</option>
                   <option value="snowboard" data-i18n="eq.type.snowboard">סט סנובורד</option>
-                  <option value="both" data-i18n="eq.type.both">גם וגם (קבוצה)</option>
+                  <option value="both" data-i18n="eq.type.both">גם סקי וגם סנובורד</option>
                 </select>
               </div>
               <div class="eq-field">
@@ -1481,6 +1523,11 @@
             </div>
           </fieldset>
 
+          <fieldset class="eq-fieldset" id="eq-group-fs" hidden>
+            <legend><span class="step-num">👥</span><span data-i18n="eq.fs.group">ציוד לשאר חברי הקבוצה</span></legend>
+            <div id="eq-group"></div>
+          </fieldset>
+
           <fieldset class="eq-fieldset">
             <legend><span class="step-num">4</span><span data-i18n="eq.fs.personal">פרטים אישיים</span></legend>
             <div class="eq-grid-2">
@@ -1494,12 +1541,12 @@
               </div>
             </div>
             <div class="eq-field" style="margin-top:14px;">
-              <label for="eq-email" data-i18n="eq.email">מייל (אופציונלי)</label>
-              <input type="email" id="eq-email" name="email" autocomplete="email" placeholder="example@email.com" dir="ltr">
+              <label for="eq-email" data-i18n="eq.email">מייל</label>
+              <input type="email" id="eq-email" name="email" autocomplete="email" placeholder="example@email.com" dir="ltr" required aria-required="true">
             </div>
             <div class="eq-field">
               <label for="eq-notes" data-i18n="eq.notes">הערות נוספות</label>
-              <textarea id="eq-notes" name="notes" data-i18n-placeholder="eq.notes.placeholder" placeholder="לדוגמה: כמה אנשים בקבוצה, גובה ומשקל לרוכבים, בקשות מיוחדות"></textarea>
+              <textarea id="eq-notes" name="notes" data-i18n-placeholder="eq.notes.placeholder" placeholder="לדוגמה: גובה ומשקל לרוכבים, בקשות מיוחדות"></textarea>
             </div>
           </fieldset>
 
@@ -1818,7 +1865,7 @@
     // ── Boot size options (35–48) ──
     (function() {
       const sel = document.getElementById('eq-boot-size');
-      for (let i = 35; i <= 48; i++) {
+      for (let i = 24; i <= 48; i++) {
         const opt = document.createElement('option');
         opt.value = i; opt.textContent = i;
         sel.appendChild(opt);
@@ -1870,94 +1917,259 @@
       return days;
     }
 
-    function updatePriceSummary() {
-      const type = document.getElementById('eq-type').value;
-      const level = document.getElementById('eq-level').value;
-      const jacket = document.getElementById('eq-jacket').value;
-      const pants = document.getElementById('eq-pants').value;
-      const goggles = document.getElementById('eq-goggles').value;
-      const days = calcDays();
-      const summary = document.getElementById('eq-price-summary');
+    // ── Group orders ──
+    // Person 1 uses the main form; every extra person gets a card with the same choices.
+    const MAX_PEOPLE = 10;
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!type || !level || days <= 0) {
+    function byId(id) { return document.getElementById(id); }
+
+    // Cards are built after the language was applied, so translate their texts right away.
+    function translateWithin(root) {
+      const lang = localStorage.getItem('gudauri-lang') || 'he';
+      const t = window.TRANSLATIONS && window.TRANSLATIONS[lang];
+      if (!t) return;
+      root.querySelectorAll('[data-i18n]').forEach(function(el) {
+        const v = t[el.getAttribute('data-i18n')];
+        if (v !== undefined) el.textContent = v;
+      });
+    }
+
+    function personCardHtml(n) {
+      const id = 'eq-p' + n + '-';
+      const choose = '<option value="" data-i18n="eq.choose">בחרו...</option>';
+      const none = '<option value="" data-i18n="eq.none">ללא</option>';
+      const sizes = ['S', 'M', 'L', 'XL'].map(function(x) { return '<option value="' + x + '">' + x + '</option>'; }).join('');
+      let boots = '';
+      for (let i = 24; i <= 48; i++) boots += '<option value="' + i + '">' + i + '</option>';
+      function field(key, labelKey, label, options, wide) {
+        return '<div class="eq-field"' + (wide ? ' style="grid-column:1/-1"' : '') + '>' +
+          '<label for="' + id + key + '" data-i18n="' + labelKey + '">' + label + '</label>' +
+          '<select id="' + id + key + '" data-f="' + key + '">' + options + '</select></div>';
+      }
+      return '<div class="eq-person" data-person="' + n + '">' +
+        '<h3 class="eq-person-title"><span data-i18n="eq.person">אדם</span> ' + n + '</h3>' +
+        '<div class="eq-grid-2">' +
+        field('type', 'eq.type', 'סוג ציוד', choose +
+          '<option value="ski" data-i18n="eq.type.ski">סט סקי</option>' +
+          '<option value="snowboard" data-i18n="eq.type.snowboard">סט סנובורד</option>' +
+          '<option value="both" data-i18n="eq.type.both">גם סקי וגם סנובורד</option>') +
+        field('level', 'eq.level', 'רמת ציוד', choose +
+          '<option value="kids" data-i18n="eq.level.kids">ילדים</option>' +
+          '<option value="basic" data-i18n="eq.level.basic">בסיסי</option>' +
+          '<option value="pro" data-i18n="eq.level.pro">פרו</option>') +
+        field('boot', 'eq.boot', 'מידת נעל (EU)', choose + boots) +
+        field('helmet', 'eq.helmet', 'מידת קסדה', choose + sizes) +
+        field('jacket', 'eq.jacket', 'מידת מעיל', none + sizes) +
+        field('pants', 'eq.pants', 'מידת מכנסיים', none + sizes) +
+        field('goggles', 'eq.goggles', 'משקפי סקי (גוגלס)',
+          '<option value="yes" data-i18n="eq.goggles.yes">כן, צריך גוגלס</option>' +
+          '<option value="no" data-i18n="eq.goggles.no">לא, יש לי משלי</option>', true) +
+        '</div></div>';
+    }
+
+    // Shows one card per extra person; cards that already exist keep what was chosen in them.
+    function renderGroup() {
+      const n = Math.min(MAX_PEOPLE, Math.max(1, parseInt(byId('eq-people').value, 10) || 1));
+      const box = byId('eq-group');
+      for (let i = box.children.length + 2; i <= n; i++) {
+        box.insertAdjacentHTML('beforeend', personCardHtml(i));
+        translateWithin(box.lastElementChild);
+      }
+      while (box.children.length > n - 1) box.removeChild(box.lastElementChild);
+      byId('eq-group-fs').hidden = n < 2;
+      byId('eq-p1-tag').hidden = n < 2;
+      updatePriceSummary();
+    }
+
+    function collectPeople() {
+      const first = {
+        equipmentType: byId('eq-type').value,
+        equipmentLevel: byId('eq-level').value,
+        bootSize: byId('eq-boot-size').value,
+        helmetSize: byId('eq-helmet').value,
+        jacketSize: byId('eq-jacket').value,
+        pantsSize: byId('eq-pants').value,
+        goggles: byId('eq-goggles').value
+      };
+      const extra = Array.prototype.map.call(document.querySelectorAll('#eq-group .eq-person'), function(card) {
+        const v = function(key) { return card.querySelector('[data-f="' + key + '"]').value; };
+        return {
+          equipmentType: v('type'), equipmentLevel: v('level'), bootSize: v('boot'),
+          helmetSize: v('helmet'), jacketSize: v('jacket'), pantsSize: v('pants'), goggles: v('goggles')
+        };
+      });
+      return [first].concat(extra);
+    }
+
+    // GEL per day for one person; 0 while type or level is still missing.
+    function personDaily(p) {
+      if (!p.equipmentType || !p.equipmentLevel) return 0;
+      const base = (p.equipmentType === 'snowboard') ? PRICES.snowboard[p.equipmentLevel]
+                 : (p.equipmentType === 'both') ? (PRICES.ski[p.equipmentLevel] + PRICES.snowboard[p.equipmentLevel])
+                 : PRICES.ski[p.equipmentLevel];
+      if (!base) return 0;
+      return base + (p.helmetSize ? PRICES.helmet : 0) + (p.jacketSize ? PRICES.jacket : 0) +
+             (p.pantsSize ? PRICES.pants : 0) + ((p.goggles === 'yes') ? PRICES.goggles : 0);
+    }
+
+    function rentalDaysOf(checkin, checkout) {
+      if (!checkin || !checkout) return 0;
+      const n = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
+      return n > 0 ? n : 0;
+    }
+
+    function updatePriceSummary() {
+      const days = calcDays();
+      const summary = byId('eq-price-summary');
+      const people = collectPeople();
+      const daily = people.map(personDaily);
+      const complete = daily.filter(Boolean).length;
+
+      if (days <= 0 || complete === 0) {
         summary.classList.remove('show'); summary.innerHTML = ''; return;
       }
-      const base = (type === 'snowboard') ? PRICES.snowboard[level]
-                 : (type === 'both') ? (PRICES.ski[level] + PRICES.snowboard[level])
-                 : PRICES.ski[level];
-      if (!base) { summary.classList.remove('show'); summary.innerHTML = ''; return; }
-      const helmet = document.getElementById('eq-helmet').value ? PRICES.helmet : 0;
-      const daily = base + helmet + (jacket ? PRICES.jacket : 0) + (pants ? PRICES.pants : 0) +
-                    ((goggles === 'yes') ? PRICES.goggles : 0);
-      const total = daily * days;
+      const total = daily.reduce(function(sum, d) { return sum + d; }, 0) * days;
 
       const estLabel = getLangText('eq.summary.est') || 'הערכת עלות';
       const daysLabel = getLangText('eq.days_label') || 'ימי השכרה';
-      const pkgLabel = getLangText('eq.summary.pkg') || 'לאדם, כולל הפריטים שבחרתם';
-      summary.innerHTML = '<strong>' + estLabel + ':</strong> ' +
-        '<strong class="electric" style="font-size:1.15rem">₾' + total + '</strong> ' +
-        '<span style="color:var(--slate-200)">(≈ ₪' + toIls(total) + ')</span> ' +
-        '<span style="color:var(--slate-400)">· ' + days + ' ' + daysLabel + ' · ' + pkgLabel + '</span>';
+      const head = '<strong>' + estLabel + ':</strong> ' +
+        '<span class="ltr-iso"><strong class="electric" style="font-size:1.15rem">₾' + total + '</strong> ' +
+        '<span style="color:var(--slate-200)">(≈ ₪' + toIls(total) + ')</span></span> ';
+
+      if (people.length === 1) {
+        const pkgLabel = getLangText('eq.summary.pkg') || 'לאדם, כולל הפריטים שבחרתם';
+        summary.innerHTML = head + '<span style="color:var(--slate-400)">· ' + days + ' ' + daysLabel + ' · ' + pkgLabel + '</span>';
+      } else {
+        const personLabel = getLangText('eq.person') || 'אדם';
+        const peopleLabel = getLangText('eq.summary.people') || 'אנשים';
+        let html = head + '<span style="color:var(--slate-400)">· ' + people.length + ' ' + peopleLabel + ' · ' + days + ' ' + daysLabel + '</span>' +
+          '<ul class="eq-sum-list">' + daily.map(function(d, i) {
+            const cost = d ? '<span class="ltr-iso">₾' + (d * days) + ' (≈ ₪' + toIls(d * days) + ')</span>' : '—';
+            return '<li><span>' + personLabel + ' ' + (i + 1) + '</span><span>' + cost + '</span></li>';
+          }).join('') + '</ul>';
+        if (complete < people.length) {
+          html += '<div class="eq-sum-note">' + (getLangText('eq.summary.incomplete') ||
+            'חסרים סוג ורמת ציוד לחלק מהאנשים — המחיר יתעדכן כשתשלימו.') + '</div>';
+        }
+        summary.innerHTML = html;
+      }
       summary.classList.add('show');
     }
 
     ['eq-checkin','eq-checkout','eq-type','eq-level','eq-helmet','eq-jacket','eq-pants','eq-goggles'].forEach(function(id) {
-      const el = document.getElementById(id);
+      const el = byId(id);
       if (el) el.addEventListener('change', updatePriceSummary);
     });
+    byId('eq-people').addEventListener('change', renderGroup);
+    byId('eq-group').addEventListener('change', updatePriceSummary);
+    renderGroup(); // browsers restore a previous "number of people" on reload
 
     // ── Collect form data ──
+    // Top-level equipment fields describe person 1 (the CRM columns); `people` lists everyone.
     function collectFormData() {
+      const people = collectPeople();
+      const first = people[0];
       return {
-        name:          document.getElementById('eq-name').value.trim(),
-        phone:         document.getElementById('eq-phone').value.trim(),
-        email:         document.getElementById('eq-email').value.trim(),
-        checkin:       document.getElementById('eq-checkin').value,
-        checkout:      document.getElementById('eq-checkout').value,
-        equipmentType: document.getElementById('eq-type').value,
-        equipmentLevel:document.getElementById('eq-level').value,
-        bootSize:      document.getElementById('eq-boot-size').value,
-        helmetSize:    document.getElementById('eq-helmet').value,
-        jacketSize:    document.getElementById('eq-jacket').value,
-        pantsSize:     document.getElementById('eq-pants').value,
-        goggles:       document.getElementById('eq-goggles').value,
-        notes:         document.getElementById('eq-notes').value.trim()
+        name:          byId('eq-name').value.trim(),
+        phone:         byId('eq-phone').value.trim(),
+        email:         byId('eq-email').value.trim(),
+        checkin:       byId('eq-checkin').value,
+        checkout:      byId('eq-checkout').value,
+        equipmentType: first.equipmentType,
+        equipmentLevel:first.equipmentLevel,
+        bootSize:      first.bootSize,
+        helmetSize:    first.helmetSize,
+        jacketSize:    first.jacketSize,
+        pantsSize:     first.pantsSize,
+        goggles:       first.goggles,
+        peopleCount:   people.length,
+        people:        people,
+        notes:         byId('eq-notes').value.trim()
       };
+    }
+
+    // ── Validation: contact details, group choices, terms ──
+    function clearInvalid() {
+      document.querySelectorAll('#eq-form [aria-invalid]').forEach(function(el) { el.removeAttribute('aria-invalid'); });
+    }
+    function fail(key, fallback, el) {
+      const status = byId('eq-status');
+      status.dataset.state = 'error';
+      status.textContent = getLangText(key) || fallback;
+      if (el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
+      return false;
+    }
+    function validateContact(d) {
+      clearInvalid();
+      if (!d.name) return fail('eq.err.required', 'נא למלא שם וטלפון.', byId('eq-name'));
+      if (!d.phone) return fail('eq.err.required', 'נא למלא שם וטלפון.', byId('eq-phone'));
+      if (!EMAIL_RE.test(d.email)) return fail('eq.err.email', 'נא למלא כתובת מייל תקינה.', byId('eq-email'));
+      return true;
+    }
+    // In a group everybody needs a type and a level — the price and the shop's prep depend on it.
+    function validateGroup(people) {
+      if (people.length < 2) return true;
+      for (let i = 0; i < people.length; i++) {
+        const missing = !people[i].equipmentType ? 'type' : !people[i].equipmentLevel ? 'level' : '';
+        if (!missing) continue;
+        const el = i === 0 ? byId(missing === 'type' ? 'eq-type' : 'eq-level')
+          : document.querySelector('#eq-group .eq-person[data-person="' + (i + 1) + '"] [data-f="' + missing + '"]');
+        return fail('eq.err.group', 'נא לבחור סוג ורמת ציוד לכל אחד מהאנשים בקבוצה.', el);
+      }
+      return true;
+    }
+    function validateTerms(form) {
+      const box = form.querySelector('[name="termsAccepted"]');
+      if (box.checked) return true;
+      return fail('eq.err.terms', 'יש לאשר את התקנון ומדיניות הפרטיות.', box);
     }
 
     // ── WhatsApp message builder ──
     function buildWhatsAppMessage(d) {
       const TYPE = { ski: 'סט סקי', snowboard: 'סט סנובורד', both: 'סקי + סנובורד' };
       const LEVEL = { kids: 'ילדים', basic: 'בסיסי', pro: 'פרו' };
+      const gear = function(p) {
+        return [
+          '🎿 ציוד: ' + (TYPE[p.equipmentType] || '—'),
+          '📊 רמה: ' + (LEVEL[p.equipmentLevel] || '—'),
+          '👟 מידת נעל (EU): ' + (p.bootSize || '—'),
+          '🪖 קסדה: ' + (p.helmetSize || '—'),
+          '🧥 מעיל: ' + (p.jacketSize || 'ללא'),
+          '👖 מכנסיים: ' + (p.pantsSize || 'ללא'),
+          '🥽 גוגלס: ' + (p.goggles === 'yes' ? 'כן' : 'לא')
+        ];
+      };
       const lines = [
         'שלום! אני רוצה להזמין ציוד מראש (Ski Boom):',
         '━━━━━━━━━━━━━━━',
         '👤 שם: ' + (d.name || '—'),
         '📞 טלפון: ' + (d.phone || '—'),
+        '✉️ מייל: ' + (d.email || '—'),
         '📅 הגעה: ' + (d.checkin || '—'),
-        '📅 עזיבה: ' + (d.checkout || '—'),
-        '🎿 ציוד: ' + (TYPE[d.equipmentType] || '—'),
-        '📊 רמה: ' + (LEVEL[d.equipmentLevel] || '—'),
-        '👟 מידת נעל (EU): ' + (d.bootSize || '—'),
-        '🪖 קסדה: ' + (d.helmetSize || '—'),
-        '🧥 מעיל: ' + (d.jacketSize || 'ללא'),
-        '👖 מכנסיים: ' + (d.pantsSize || 'ללא'),
-        '🥽 גוגלס: ' + (d.goggles === 'yes' ? 'כן' : 'לא')
+        '📅 עזיבה: ' + (d.checkout || '—')
       ];
+      if (d.people.length > 1) {
+        lines.push('👥 מספר אנשים: ' + d.people.length);
+        d.people.forEach(function(p, i) {
+          lines.push('', '— אדם ' + (i + 1) + ' —');
+          gear(p).forEach(function(line) { lines.push(line); });
+        });
+      } else {
+        gear(d.people[0]).forEach(function(line) { lines.push(line); });
+      }
+      const days = rentalDaysOf(d.checkin, d.checkout);
+      const total = d.people.reduce(function(sum, p) { return sum + personDaily(p); }, 0) * days;
+      if (total > 0) lines.push('', '💰 הערכת עלות: ₾' + total + ' (≈ ₪' + toIls(total) + ')');
       if (d.notes) lines.push('📝 הערות: ' + d.notes);
       lines.push('━━━━━━━━━━━━━━━');
       lines.push('תודה!');
       return lines.join('\n');
     }
 
-    document.getElementById('eq-wa-btn').addEventListener('click', function() {
+    byId('eq-wa-btn').addEventListener('click', function() {
       const d = collectFormData();
-      const status = document.getElementById('eq-status');
-      if (!d.name || !d.phone) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.required') || 'נא למלא שם וטלפון לפני שליחה בוואטסאפ.';
-        return;
-      }
+      if (!validateContact(d) || !validateGroup(d.people)) return;
       const url = 'https://wa.me/972557790955?text=' + encodeURIComponent(buildWhatsAppMessage(d));
       window.open(url, '_blank', 'noopener,noreferrer');
     });
@@ -1970,16 +2182,7 @@
       const submit = document.getElementById('eq-submit');
       const d = collectFormData();
 
-      if (!d.name || !d.phone) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.required') || 'נא למלא שם וטלפון.';
-        return;
-      }
-      if (!form.querySelector('[name="termsAccepted"]').checked) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.terms') || 'יש לאשר את התקנון ומדיניות הפרטיות.';
-        return;
-      }
+      if (!validateContact(d) || !validateGroup(d.people) || !validateTerms(form)) return;
 
       const payload = Object.assign({}, d, {
         service: 'equipment',
@@ -1999,6 +2202,7 @@
         });
         if (!res.ok) throw new Error('API error');
         form.reset();
+        renderGroup();
         document.getElementById('eq-days-display').textContent = '';
         document.getElementById('eq-price-summary').classList.remove('show');
         document.getElementById('eq-price-summary').innerHTML = '';
@@ -2019,21 +2223,13 @@
       const status = document.getElementById('eq-status');
       const btn = this;
 
-      if (!d.name || !d.phone) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.required') || 'נא למלא שם וטלפון.';
-        return;
-      }
-      if (!form.querySelector('[name="termsAccepted"]').checked) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.terms') || 'יש לאשר את התקנון ומדיניות הפרטיות.';
-        return;
-      }
+      if (!validateContact(d) || !validateTerms(form)) return;
       if (!d.checkin || !d.checkout || !d.equipmentType || !d.equipmentLevel) {
-        status.dataset.state = 'error';
-        status.textContent = getLangText('eq.err.pay_data') || 'נא למלא תאריכים, סוג ורמת ציוד לפני תשלום.';
+        fail('eq.err.pay_data', 'נא למלא תאריכים, סוג ורמת ציוד לפני תשלום.',
+          !d.checkin ? byId('eq-checkin') : !d.checkout ? byId('eq-checkout') : !d.equipmentType ? byId('eq-type') : byId('eq-level'));
         return;
       }
+      if (!validateGroup(d.people)) return;
 
       btn.disabled = true;
       status.dataset.state = '';
@@ -2159,13 +2355,13 @@
         'eq.form.sub': 'מלאו את הפרטים והמידות, ואנחנו נתאם מול Ski Boom מבעוד מועד שהציוד המדויק יחכה לכם ביום ההגעה — התאמה קצרה בחנות, בלי לבזבז שעה בתור.',
         'eq.form.trust1': '10% דמי אישור — השאר בחנות', 'eq.form.trust2': 'ביטול חינם עד 24 שעות לפני ההגעה',
         'eq.form.trust3': 'החלפת מידה או רמה בחנות ללא עלות', 'eq.form.trust4': 'מענה אנושי בעברית לכל שאלה',
-        'eq.fs.dates': 'תאריכי השכרה', 'eq.checkin': 'תאריך הגעה', 'eq.checkout': 'תאריך עזיבה', 'eq.days_label': 'ימי השכרה',
+        'eq.fs.dates': 'תאריכים וכמות אנשים', 'eq.checkin': 'תאריך הגעה', 'eq.checkout': 'תאריך עזיבה', 'eq.days_label': 'ימי השכרה',
         'eq.fs.equipment': 'סוג ורמת ציוד', 'eq.type': 'סוג ציוד', 'eq.choose': 'בחרו...', 'eq.none': 'ללא',
-        'eq.type.ski': 'סט סקי', 'eq.type.snowboard': 'סט סנובורד', 'eq.type.both': 'גם וגם (קבוצה)', 'eq.level': 'רמת ציוד',
+        'eq.type.ski': 'סט סקי', 'eq.type.snowboard': 'סט סנובורד', 'eq.type.both': 'גם סקי וגם סנובורד', 'eq.level': 'רמת ציוד',
         'eq.fs.sizing': 'מידות', 'eq.boot': 'מידת נעל (EU)', 'eq.helmet': 'מידת קסדה', 'eq.jacket': 'מידת מעיל', 'eq.pants': 'מידת מכנסיים',
         'eq.goggles': 'משקפי סקי (גוגלס)', 'eq.goggles.yes': 'כן, צריך גוגלס', 'eq.goggles.no': 'לא, יש לי משלי',
-        'eq.fs.personal': 'פרטים אישיים', 'eq.name': 'שם מלא', 'eq.phone': 'טלפון', 'eq.email': 'מייל (אופציונלי)',
-        'eq.notes': 'הערות נוספות', 'eq.notes.placeholder': 'לדוגמה: כמה אנשים בקבוצה, גובה ומשקל לרוכבים, בקשות מיוחדות',
+        'eq.fs.personal': 'פרטים אישיים', 'eq.name': 'שם מלא', 'eq.phone': 'טלפון', 'eq.email': 'מייל',
+        'eq.notes': 'הערות נוספות', 'eq.notes.placeholder': 'לדוגמה: גובה ומשקל לרוכבים, בקשות מיוחדות',
         'eq.consent.marketing': 'אני מסכים/ת לקבלת עדכונים ומבצעים בדוא"ל',
         'eq.consent.terms': 'קראתי ואני מסכים/ת ל<a href="terms.html" target="_blank">תקנון</a> ול<a href="privacy-policy.html" target="_blank">מדיניות הפרטיות</a>',
         'eq.submit': 'שלחו הזמנה', 'eq.wa_send': 'שלחו בוואטסאפ',
@@ -2177,6 +2373,15 @@
         'eq.summary.est': 'הערכת עלות', 'eq.summary.pkg': 'לאדם, כולל הפריטים שבחרתם',
         'eq.sending': 'שולח...', 'eq.success': 'ההזמנה נשלחה! נחזור אליכם בהקדם לתיאום הציוד.',
         'eq.err.required': 'נא למלא שם וטלפון.', 'eq.err.terms': 'יש לאשר את התקנון ומדיניות הפרטיות.', 'eq.err.send': 'לא הצלחנו לשלוח כרגע. נסו שוב או פנו בוואטסאפ.',
+        'eq.people.label': 'כמה אנשים מגיעים?',
+        'eq.people.hint': 'לכל אחד מהמשתתפים אפשר לבחור ציוד ומידות משלו. לקבוצות של יותר מ-10 אנשים — כתבו לנו בוואטסאפ.',
+        'eq.p1.tag': 'הבחירות כאן הן עבור אדם 1 (המזמין). את שאר חברי הקבוצה ממלאים בהמשך.',
+        'eq.fs.group': 'ציוד לשאר חברי הקבוצה',
+        'eq.person': 'אדם',
+        'eq.err.email': 'נא למלא כתובת מייל תקינה.',
+        'eq.err.group': 'נא לבחור סוג ורמת ציוד לכל אחד מהאנשים בקבוצה.',
+        'eq.summary.people': 'אנשים',
+        'eq.summary.incomplete': 'חסרים סוג ורמת ציוד לחלק מהאנשים — המחיר יתעדכן כשתשלימו.',
         'eq.faq.label': 'שאלות נפוצות', 'eq.faq.title': 'כל מה שרציתם לדעת',
         'eq.faq1.q': 'מה ההבדל בין סט ילדים, בסיסי ופרו?', 'eq.faq1.a': 'סט בסיסי מתאים לרוב הגולשים — מתחילים ובינוניים, עם ציוד נוח וסלחני. סט פרו מיועד לגולשים מנוסים שמחפשים ציוד מהיר, נוקשה ומדויק יותר. סט ילדים מותאם במידות ובמשקל לגולשים הצעירים.',
         'eq.faq2.q': 'איפה נמצאת החנות בניו גודאורי?', 'eq.faq2.a': 'Ski Boom, השותף הבלעדי שלנו, נמצאת בלב ניו גודאורי ליד Suite & LOFT 1 — במרחק הליכה קצר מהגונדולה ומרוב המלונות. אנחנו מתאמים הכל מראש, ואתם מגיעים רק להתאמה קצרה.',
@@ -2266,13 +2471,13 @@
         'eq.form.sub': 'Fill in your details and sizes, and we\'ll coordinate with Ski Boom in advance so your exact gear is waiting on arrival day — a quick fitting at the shop, no wasting an hour in line.',
         'eq.form.trust1': '10% deposit — rest paid at the shop', 'eq.form.trust2': 'Free cancellation up to 24h before arrival',
         'eq.form.trust3': 'Swap size or level at the shop, free', 'eq.form.trust4': 'Real human answers in your language',
-        'eq.fs.dates': 'Rental Dates', 'eq.checkin': 'Arrival date', 'eq.checkout': 'Departure date', 'eq.days_label': 'rental days',
+        'eq.fs.dates': 'Dates & Group Size', 'eq.checkin': 'Arrival date', 'eq.checkout': 'Departure date', 'eq.days_label': 'rental days',
         'eq.fs.equipment': 'Equipment Type & Level', 'eq.type': 'Equipment type', 'eq.choose': 'Choose...', 'eq.none': 'None',
-        'eq.type.ski': 'Ski Set', 'eq.type.snowboard': 'Snowboard Set', 'eq.type.both': 'Both (group)', 'eq.level': 'Gear level',
+        'eq.type.ski': 'Ski Set', 'eq.type.snowboard': 'Snowboard Set', 'eq.type.both': 'Both ski and snowboard', 'eq.level': 'Gear level',
         'eq.fs.sizing': 'Sizes', 'eq.boot': 'Boot size (EU)', 'eq.helmet': 'Helmet size', 'eq.jacket': 'Jacket size', 'eq.pants': 'Pants size',
         'eq.goggles': 'Ski goggles', 'eq.goggles.yes': 'Yes, I need goggles', 'eq.goggles.no': 'No, I have my own',
-        'eq.fs.personal': 'Personal Details', 'eq.name': 'Full name', 'eq.phone': 'Phone', 'eq.email': 'Email (optional)',
-        'eq.notes': 'Additional notes', 'eq.notes.placeholder': 'E.g.: group size, height & weight per rider, special requests',
+        'eq.fs.personal': 'Personal Details', 'eq.name': 'Full name', 'eq.phone': 'Phone', 'eq.email': 'Email',
+        'eq.notes': 'Additional notes', 'eq.notes.placeholder': 'E.g.: height & weight per rider, special requests',
         'eq.consent.marketing': 'I agree to receive updates and offers by email',
         'eq.consent.terms': 'I have read and agree to the <a href="terms.html" target="_blank">Terms</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
         'eq.submit': 'Send Order', 'eq.wa_send': 'Send via WhatsApp',
@@ -2284,6 +2489,15 @@
         'eq.summary.est': 'Estimated cost', 'eq.summary.pkg': 'per person, incl. selected items',
         'eq.sending': 'Sending...', 'eq.success': 'Order sent! We\'ll get back to you shortly to arrange your gear.',
         'eq.err.required': 'Please fill in name and phone.', 'eq.err.terms': 'Please accept the Terms and Privacy Policy.', 'eq.err.send': 'Couldn\'t send right now. Try again or reach us on WhatsApp.',
+        'eq.people.label': 'How many people are coming?',
+        'eq.people.hint': 'Everyone can choose their own gear and sizes. For groups of more than 10, message us on WhatsApp.',
+        'eq.p1.tag': 'The choices here are for person 1 (the person booking). Fill in the rest of the group below.',
+        'eq.fs.group': 'Gear for the rest of the group',
+        'eq.person': 'Person',
+        'eq.err.email': 'Please enter a valid email address.',
+        'eq.err.group': 'Please choose gear type and level for every person in the group.',
+        'eq.summary.people': 'people',
+        'eq.summary.incomplete': 'Gear type and level are missing for some people — the price will update once you complete them.',
         'eq.faq.label': 'FAQ', 'eq.faq.title': 'Everything You Wanted to Know',
         'eq.faq1.q': 'What\'s the difference between Kids, Basic and Pro?', 'eq.faq1.a': 'The Basic set suits most riders — beginners and intermediates — with comfortable, forgiving gear. The Pro set is for experienced riders who want faster, stiffer and more precise equipment. The Kids set is sized and weighted for young riders.',
         'eq.faq2.q': 'Where is the shop in New Gudauri?', 'eq.faq2.a': 'Ski Boom, our exclusive partner, is in the heart of New Gudauri next to Suite & LOFT 1 — a short walk from the gondola and most hotels. We arrange everything ahead, so you only come in for a quick fitting.',
@@ -2379,13 +2593,13 @@
         'eq.form.sub': 'Заполните данные и размеры, а мы заранее согласуем с Ski Boom, чтобы ваше снаряжение ждало в день приезда — короткая примерка в магазине, без часа в очереди.',
         'eq.form.trust1': '10% депозит — остаток в магазине', 'eq.form.trust2': 'Бесплатная отмена за 24 часа до приезда',
         'eq.form.trust3': 'Замена размера или уровня бесплатно', 'eq.form.trust4': 'Живые ответы на вашем языке',
-        'eq.fs.dates': 'Даты проката', 'eq.checkin': 'Дата приезда', 'eq.checkout': 'Дата отъезда', 'eq.days_label': 'дней проката',
+        'eq.fs.dates': 'Даты и количество человек', 'eq.checkin': 'Дата приезда', 'eq.checkout': 'Дата отъезда', 'eq.days_label': 'дней проката',
         'eq.fs.equipment': 'Тип и уровень снаряжения', 'eq.type': 'Тип снаряжения', 'eq.choose': 'Выберите...', 'eq.none': 'Без',
-        'eq.type.ski': 'Лыжный комплект', 'eq.type.snowboard': 'Комплект сноуборда', 'eq.type.both': 'Оба (группа)', 'eq.level': 'Уровень',
+        'eq.type.ski': 'Лыжный комплект', 'eq.type.snowboard': 'Комплект сноуборда', 'eq.type.both': 'И лыжи, и сноуборд', 'eq.level': 'Уровень',
         'eq.fs.sizing': 'Размеры', 'eq.boot': 'Размер ботинок (EU)', 'eq.helmet': 'Размер шлема', 'eq.jacket': 'Размер куртки', 'eq.pants': 'Размер штанов',
         'eq.goggles': 'Лыжная маска', 'eq.goggles.yes': 'Да, нужна маска', 'eq.goggles.no': 'Нет, своя есть',
-        'eq.fs.personal': 'Личные данные', 'eq.name': 'Полное имя', 'eq.phone': 'Телефон', 'eq.email': 'Email (необязательно)',
-        'eq.notes': 'Дополнительно', 'eq.notes.placeholder': 'Напр.: размер группы, рост и вес райдеров, особые пожелания',
+        'eq.fs.personal': 'Личные данные', 'eq.name': 'Полное имя', 'eq.phone': 'Телефон', 'eq.email': 'Email',
+        'eq.notes': 'Дополнительно', 'eq.notes.placeholder': 'Напр.: рост и вес райдеров, особые пожелания',
         'eq.consent.marketing': 'Согласен получать новости и предложения по email',
         'eq.consent.terms': 'Я прочитал и согласен с <a href="terms.html" target="_blank">Условиями</a> и <a href="privacy-policy.html" target="_blank">Политикой конфиденциальности</a>',
         'eq.submit': 'Отправить заказ', 'eq.wa_send': 'Через WhatsApp',
@@ -2397,6 +2611,15 @@
         'eq.summary.est': 'Примерная стоимость', 'eq.summary.pkg': 'на человека, с выбранными позициями',
         'eq.sending': 'Отправка...', 'eq.success': 'Заказ отправлен! Мы свяжемся с вами для согласования снаряжения.',
         'eq.err.required': 'Заполните имя и телефон.', 'eq.err.terms': 'Примите Условия и Политику конфиденциальности.', 'eq.err.send': 'Не удалось отправить. Попробуйте снова или напишите в WhatsApp.',
+        'eq.people.label': 'Сколько человек приедет?',
+        'eq.people.hint': 'Каждый участник выбирает своё снаряжение и размеры. Для групп больше 10 человек напишите нам в WhatsApp.',
+        'eq.p1.tag': 'Выбор здесь — для человека 1 (того, кто бронирует). Остальных участников группы заполните ниже.',
+        'eq.fs.group': 'Снаряжение для остальной группы',
+        'eq.person': 'Человек',
+        'eq.err.email': 'Введите корректный адрес email.',
+        'eq.err.group': 'Выберите тип и уровень снаряжения для каждого человека в группе.',
+        'eq.summary.people': 'чел.',
+        'eq.summary.incomplete': 'Для части людей не выбраны тип и уровень снаряжения — цена обновится, когда вы их заполните.',
         'eq.faq.label': 'Вопросы', 'eq.faq.title': 'Всё, что вы хотели знать',
         'eq.faq1.q': 'Чем отличаются Детский, Базовый и Про?', 'eq.faq1.a': 'Базовый комплект подходит большинству — новичкам и райдерам среднего уровня: удобное и прощающее ошибки снаряжение. Про — для опытных райдеров, которым нужно более быстрое, жёсткое и точное снаряжение. Детский комплект подобран по размеру и весу для юных райдеров.',
         'eq.faq2.q': 'Где находится магазин в Новом Гудаури?', 'eq.faq2.a': 'Ski Boom, наш эксклюзивный партнёр, находится в центре Нового Гудаури рядом с Suite & LOFT 1 — недалеко от гондолы и большинства отелей. Мы всё организуем заранее, вам остаётся только короткая примерка.',
@@ -2492,13 +2715,13 @@
         'eq.form.sub': 'შეავსეთ მონაცემები და ზომები, ჩვენ წინასწარ შევათანხმებთ Ski Boom-თან, რომ ინვენტარი მზად დაგხვდეთ ჩამოსვლის დღეს — მოკლე მორგება მაღაზიაში, რიგის გარეშე.',
         'eq.form.trust1': '10% დეპოზიტი — დანარჩენი მაღაზიაში', 'eq.form.trust2': 'უფასო გაუქმება ჩამოსვლამდე 24 საათით ადრე',
         'eq.form.trust3': 'ზომის ან დონის შეცვლა მაღაზიაში უფასოდ', 'eq.form.trust4': 'ცოცხალი პასუხები თქვენს ენაზე',
-        'eq.fs.dates': 'გაქირავების თარიღები', 'eq.checkin': 'ჩამოსვლის თარიღი', 'eq.checkout': 'გამგზავრების თარიღი', 'eq.days_label': 'გაქირავების დღე',
+        'eq.fs.dates': 'თარიღები და ადამიანების რაოდენობა', 'eq.checkin': 'ჩამოსვლის თარიღი', 'eq.checkout': 'გამგზავრების თარიღი', 'eq.days_label': 'გაქირავების დღე',
         'eq.fs.equipment': 'ინვენტარის ტიპი და დონე', 'eq.type': 'ინვენტარის ტიპი', 'eq.choose': 'აირჩიეთ...', 'eq.none': 'არცერთი',
-        'eq.type.ski': 'თხილამურის ნაკრები', 'eq.type.snowboard': 'სნოუბორდის ნაკრები', 'eq.type.both': 'ორივე (ჯგუფი)', 'eq.level': 'დონე',
+        'eq.type.ski': 'თხილამურის ნაკრები', 'eq.type.snowboard': 'სნოუბორდის ნაკრები', 'eq.type.both': 'თხილამურიც და სნოუბორდიც', 'eq.level': 'დონე',
         'eq.fs.sizing': 'ზომები', 'eq.boot': 'ფეხსაცმლის ზომა (EU)', 'eq.helmet': 'ჩაფხუტის ზომა', 'eq.jacket': 'ქურთუკის ზომა', 'eq.pants': 'შარვლის ზომა',
         'eq.goggles': 'სათხილამურო სათვალე', 'eq.goggles.yes': 'კი, მჭირდება სათვალე', 'eq.goggles.no': 'არა, საკუთარი მაქვს',
-        'eq.fs.personal': 'პირადი მონაცემები', 'eq.name': 'სრული სახელი', 'eq.phone': 'ტელეფონი', 'eq.email': 'ელ-ფოსტა (არასავალდებულო)',
-        'eq.notes': 'დამატებითი შენიშვნები', 'eq.notes.placeholder': 'მაგ.: ჯგუფის ზომა, სიმაღლე და წონა, განსაკუთრებული მოთხოვნები',
+        'eq.fs.personal': 'პირადი მონაცემები', 'eq.name': 'სრული სახელი', 'eq.phone': 'ტელეფონი', 'eq.email': 'ელ-ფოსტა',
+        'eq.notes': 'დამატებითი შენიშვნები', 'eq.notes.placeholder': 'მაგ.: მოთხილამურეების სიმაღლე და წონა, განსაკუთრებული მოთხოვნები',
         'eq.consent.marketing': 'ვეთანხმები სიახლეებისა და შეთავაზებების მიღებას ელ-ფოსტით',
         'eq.consent.terms': 'წავიკითხე და ვეთანხმები <a href="terms.html" target="_blank">წესებსა</a> და <a href="privacy-policy.html" target="_blank">კონფიდენციალობის პოლიტიკას</a>',
         'eq.submit': 'შეკვეთის გაგზავნა', 'eq.wa_send': 'WhatsApp-ით',
@@ -2510,6 +2733,15 @@
         'eq.summary.est': 'სავარაუდო ღირებულება', 'eq.summary.pkg': 'ერთ ადამიანზე, არჩეული ნივთებით',
         'eq.sending': 'იგზავნება...', 'eq.success': 'შეკვეთა გაიგზავნა! მალე დაგიკავშირდებით ინვენტარის შესათანხმებლად.',
         'eq.err.required': 'შეავსეთ სახელი და ტელეფონი.', 'eq.err.terms': 'დაეთანხმეთ წესებსა და კონფიდენციალობის პოლიტიკას.', 'eq.err.send': 'ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ში.',
+        'eq.people.label': 'რამდენი ადამიანი ჩამოდის?',
+        'eq.people.hint': 'თითოეულ მონაწილეს შეუძლია საკუთარი ინვენტარისა და ზომების არჩევა. 10-ზე მეტი ადამიანის ჯგუფისთვის მოგვწერეთ WhatsApp-ზე.',
+        'eq.p1.tag': 'აქ არჩევანი 1-ლი ადამიანისთვისაა (დამკვეთისთვის). დანარჩენი ჯგუფი შეავსეთ ქვემოთ.',
+        'eq.fs.group': 'ინვენტარი ჯგუფის დანარჩენი წევრებისთვის',
+        'eq.person': 'ადამიანი',
+        'eq.err.email': 'შეიყვანეთ სწორი ელ-ფოსტის მისამართი.',
+        'eq.err.group': 'აირჩიეთ ინვენტარის ტიპი და დონე ჯგუფის ყველა წევრისთვის.',
+        'eq.summary.people': 'ადამიანი',
+        'eq.summary.incomplete': 'ზოგი ადამიანისთვის არჩეული არ არის ინვენტარის ტიპი და დონე — ფასი განახლდება შევსებისას.',
         'eq.faq.label': 'კითხვები', 'eq.faq.title': 'ყველაფერი, რისი ცოდნაც გსურდათ',
         'eq.faq1.q': 'რა განსხვავებაა საბავშვო, საბაზისო და პრო ნაკრებებს შორის?', 'eq.faq1.a': 'საბაზისო ნაკრები უმეტესობას ერგება — დამწყებებს და საშუალო დონეს: კომფორტული და მარტივად სამართავი ინვენტარი. პრო განკუთვნილია გამოცდილი მოთხილამურეებისთვის, ვისაც უფრო სწრაფი, ხისტი და ზუსტი ინვენტარი სჭირდება. საბავშვო ნაკრები ზომით და წონით მორგებულია ბავშვებზე.',
         'eq.faq2.q': 'სად მდებარეობს მაღაზია ახალ გუდაურში?', 'eq.faq2.a': 'Ski Boom, ჩვენი ექსკლუზიური პარტნიორი, ახალი გუდაურის ცენტრშია Suite & LOFT 1-თან — გონდოლასა და სასტუმროებთან ახლოს. ყველაფერს წინასწარ ვაწყობთ, თქვენ მხოლოდ მოკლე მორგებაზე მოდიხართ.',
@@ -2557,6 +2789,11 @@
       });
       localStorage.setItem('gudauri-lang', lang);
     }
+    // the estimate is built from translated strings — rebuild it after a language switch
+    (function() {
+      var applyLanguage = window.setLanguage;
+      window.setLanguage = function(lang) { applyLanguage(lang); updatePriceSummary(); };
+    })();
 
     (function() {
       var urlLang = new URLSearchParams(window.location.search).get('lang');
