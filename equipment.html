@@ -821,6 +821,23 @@
     .eq-field input[aria-invalid="true"], .eq-field select[aria-invalid="true"], .eq-checkbox input[aria-invalid="true"] {
       border-color: #f87171; outline: 2px solid rgba(248,113,113,0.35);
     }
+    .eq-sum-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+    .eq-sum-meta { color: var(--slate-400); font-size: 0.875rem; }
+    .eq-sum-totals {
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(14,165,233,0.25);
+      display: grid; gap: 8px;
+    }
+    .eq-sum-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .eq-sum-row > span:first-child { color: var(--slate-200); }
+    .eq-sum-row > .ltr-iso, .eq-sum-list .ltr-iso { white-space: nowrap; flex-shrink: 0; }
+    @media (max-width: 480px) { .eq-sum-row { flex-direction: column; align-items: flex-start; gap: 2px; } }
+    .eq-sum-full strong { font-size: 1.3rem; }
+    .eq-sum-deposit {
+      padding: 9px 12px; border-radius: 8px;
+      background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.30);
+    }
+    .eq-sum-deposit strong { color: var(--amber); font-size: 1.1rem; }
+    .eq-sum-balance { color: var(--slate-400); }
     .eq-sum-list {
       list-style: none; margin: 10px 0 0; padding: 10px 0 0;
       border-top: 1px solid rgba(14,165,233,0.2); display: grid; gap: 4px; font-size: 0.875rem;
@@ -2019,6 +2036,14 @@
       return n > 0 ? n : 0;
     }
 
+    // The deposit is 10% of the full price and is deducted from it; the rest is paid at the shop.
+    // The card is charged in whole shekels. Keep these formulas identical to api/_equipment.js
+    // (tests/equipment.test.mjs compares them), so the amount shown is the amount charged.
+    function depositGelFor(total) { return Math.round(total * 0.10 * 100) / 100; }
+    function balanceGelFor(total) { return Math.round((total - depositGelFor(total)) * 100) / 100; }
+    function depositIlsFor(total) { return Math.ceil(Math.round(total * 0.10 * GEL_TO_ILS * 100) / 100); }
+    function fmtGel(n) { return Number.isInteger(n) ? String(n) : n.toFixed(2); }
+
     function updatePriceSummary() {
       const days = calcDays();
       const summary = byId('eq-price-summary');
@@ -2029,31 +2054,43 @@
       if (days <= 0 || complete === 0) {
         summary.classList.remove('show'); summary.innerHTML = ''; return;
       }
-      const total = daily.reduce(function(sum, d) { return sum + d; }, 0) * days;
+      const T = function(key, fallback) { return getLangText(key) || fallback; };
+      const daysLabel = T('eq.days_label', 'ימי השכרה');
+      const meta = people.length === 1
+        ? days + ' ' + daysLabel + ' · ' + T('eq.summary.pkg', 'לאדם, כולל הפריטים שבחרתם')
+        : people.length + ' ' + T('eq.summary.people', 'אנשים') + ' · ' + days + ' ' + daysLabel;
+      let html = '<div class="eq-sum-title"><strong>' + T('eq.summary.est', 'הערכת עלות') + '</strong>' +
+        '<span class="eq-sum-meta">' + meta + '</span></div>';
 
-      const estLabel = getLangText('eq.summary.est') || 'הערכת עלות';
-      const daysLabel = getLangText('eq.days_label') || 'ימי השכרה';
-      const head = '<strong>' + estLabel + ':</strong> ' +
-        '<span class="ltr-iso"><strong class="electric" style="font-size:1.15rem">₾' + total + '</strong> ' +
-        '<span style="color:var(--slate-200)">(≈ ₪' + toIls(total) + ')</span></span> ';
-
-      if (people.length === 1) {
-        const pkgLabel = getLangText('eq.summary.pkg') || 'לאדם, כולל הפריטים שבחרתם';
-        summary.innerHTML = head + '<span style="color:var(--slate-400)">· ' + days + ' ' + daysLabel + ' · ' + pkgLabel + '</span>';
-      } else {
-        const personLabel = getLangText('eq.person') || 'אדם';
-        const peopleLabel = getLangText('eq.summary.people') || 'אנשים';
-        let html = head + '<span style="color:var(--slate-400)">· ' + people.length + ' ' + peopleLabel + ' · ' + days + ' ' + daysLabel + '</span>' +
-          '<ul class="eq-sum-list">' + daily.map(function(d, i) {
-            const cost = d ? '<span class="ltr-iso">₾' + (d * days) + ' (≈ ₪' + toIls(d * days) + ')</span>' : '—';
-            return '<li><span>' + personLabel + ' ' + (i + 1) + '</span><span>' + cost + '</span></li>';
-          }).join('') + '</ul>';
-        if (complete < people.length) {
-          html += '<div class="eq-sum-note">' + (getLangText('eq.summary.incomplete') ||
-            'חסרים סוג ורמת ציוד לחלק מהאנשים — המחיר יתעדכן כשתשלימו.') + '</div>';
-        }
-        summary.innerHTML = html;
+      if (people.length > 1) {
+        const personLabel = T('eq.person', 'אדם');
+        html += '<ul class="eq-sum-list">' + daily.map(function(d, i) {
+          const cost = d ? '<span class="ltr-iso">₾' + (d * days) + ' (≈ ₪' + toIls(d * days) + ')</span>' : '—';
+          return '<li><span>' + personLabel + ' ' + (i + 1) + '</span><span>' + cost + '</span></li>';
+        }).join('') + '</ul>';
       }
+
+      if (complete < people.length) {
+        // no total until everybody has a type and a level — a partial "full price" would mislead
+        html += '<div class="eq-sum-note">' + T('eq.summary.incomplete',
+          'חסרים סוג ורמת ציוד לחלק מהאנשים — המחיר יתעדכן כשתשלימו.') + '</div>';
+      } else {
+        const total = daily.reduce(function(sum, d) { return sum + d; }, 0) * days;
+        const deposit = depositIlsFor(total);
+        const fullIls = toIls(total);
+        const row = function(cls, key, fallback, value) {
+          return '<div class="eq-sum-row eq-sum-' + cls + '"><span>' + T(key, fallback) + '</span>' +
+            '<span class="ltr-iso">' + value + '</span></div>';
+        };
+        html += '<div class="eq-sum-totals">' +
+          row('full', 'eq.summary.full', 'מחיר מלא', '<strong class="electric">₾' + fmtGel(total) + '</strong> (≈ ₪' + fullIls + ')') +
+          row('deposit', 'eq.summary.deposit', 'מקדמה 10% — מקוזזת מהמחיר המלא',
+            '<strong>₪' + deposit + '</strong> (≈ ₾' + fmtGel(depositGelFor(total)) + ')') +
+          row('balance', 'eq.summary.balance', 'יתרה לתשלום בחנות',
+            '₾' + fmtGel(balanceGelFor(total)) + ' (≈ ₪' + Math.max(0, fullIls - deposit) + ')') +
+          '</div>';
+      }
+      summary.innerHTML = html;
       summary.classList.add('show');
     }
 
@@ -2160,7 +2197,12 @@
       }
       const days = rentalDaysOf(d.checkin, d.checkout);
       const total = d.people.reduce(function(sum, p) { return sum + personDaily(p); }, 0) * days;
-      if (total > 0) lines.push('', '💰 הערכת עלות: ₾' + total + ' (≈ ₪' + toIls(total) + ')');
+      if (total > 0 && d.people.every(personDaily)) {
+        lines.push('',
+          '💰 מחיר מלא: ₾' + fmtGel(total) + ' (≈ ₪' + toIls(total) + ')',
+          '💳 מקדמה 10% (מקוזזת מהמחיר המלא): ₪' + depositIlsFor(total),
+          '🏪 יתרה לתשלום בחנות: ₾' + fmtGel(balanceGelFor(total)));
+      }
       if (d.notes) lines.push('📝 הערות: ' + d.notes);
       lines.push('━━━━━━━━━━━━━━━');
       lines.push('תודה!');
@@ -2373,6 +2415,9 @@
         'eq.summary.est': 'הערכת עלות', 'eq.summary.pkg': 'לאדם, כולל הפריטים שבחרתם',
         'eq.sending': 'שולח...', 'eq.success': 'ההזמנה נשלחה! נחזור אליכם בהקדם לתיאום הציוד.',
         'eq.err.required': 'נא למלא שם וטלפון.', 'eq.err.terms': 'יש לאשר את התקנון ומדיניות הפרטיות.', 'eq.err.send': 'לא הצלחנו לשלוח כרגע. נסו שוב או פנו בוואטסאפ.',
+        'eq.summary.full': 'מחיר מלא',
+        'eq.summary.deposit': 'מקדמה 10% — מקוזזת מהמחיר המלא',
+        'eq.summary.balance': 'יתרה לתשלום בחנות',
         'eq.people.label': 'כמה אנשים מגיעים?',
         'eq.people.hint': 'לכל אחד מהמשתתפים אפשר לבחור ציוד ומידות משלו. לקבוצות של יותר מ-10 אנשים — כתבו לנו בוואטסאפ.',
         'eq.p1.tag': 'הבחירות כאן הן עבור אדם 1 (המזמין). את שאר חברי הקבוצה ממלאים בהמשך.',
@@ -2489,6 +2534,9 @@
         'eq.summary.est': 'Estimated cost', 'eq.summary.pkg': 'per person, incl. selected items',
         'eq.sending': 'Sending...', 'eq.success': 'Order sent! We\'ll get back to you shortly to arrange your gear.',
         'eq.err.required': 'Please fill in name and phone.', 'eq.err.terms': 'Please accept the Terms and Privacy Policy.', 'eq.err.send': 'Couldn\'t send right now. Try again or reach us on WhatsApp.',
+        'eq.summary.full': 'Full price',
+        'eq.summary.deposit': '10% deposit — deducted from the full price',
+        'eq.summary.balance': 'Balance to pay at the shop',
         'eq.people.label': 'How many people are coming?',
         'eq.people.hint': 'Everyone can choose their own gear and sizes. For groups of more than 10, message us on WhatsApp.',
         'eq.p1.tag': 'The choices here are for person 1 (the person booking). Fill in the rest of the group below.',
@@ -2611,6 +2659,9 @@
         'eq.summary.est': 'Примерная стоимость', 'eq.summary.pkg': 'на человека, с выбранными позициями',
         'eq.sending': 'Отправка...', 'eq.success': 'Заказ отправлен! Мы свяжемся с вами для согласования снаряжения.',
         'eq.err.required': 'Заполните имя и телефон.', 'eq.err.terms': 'Примите Условия и Политику конфиденциальности.', 'eq.err.send': 'Не удалось отправить. Попробуйте снова или напишите в WhatsApp.',
+        'eq.summary.full': 'Полная стоимость',
+        'eq.summary.deposit': 'Предоплата 10% — вычитается из полной стоимости',
+        'eq.summary.balance': 'Остаток к оплате в магазине',
         'eq.people.label': 'Сколько человек приедет?',
         'eq.people.hint': 'Каждый участник выбирает своё снаряжение и размеры. Для групп больше 10 человек напишите нам в WhatsApp.',
         'eq.p1.tag': 'Выбор здесь — для человека 1 (того, кто бронирует). Остальных участников группы заполните ниже.',
@@ -2733,6 +2784,9 @@
         'eq.summary.est': 'სავარაუდო ღირებულება', 'eq.summary.pkg': 'ერთ ადამიანზე, არჩეული ნივთებით',
         'eq.sending': 'იგზავნება...', 'eq.success': 'შეკვეთა გაიგზავნა! მალე დაგიკავშირდებით ინვენტარის შესათანხმებლად.',
         'eq.err.required': 'შეავსეთ სახელი და ტელეფონი.', 'eq.err.terms': 'დაეთანხმეთ წესებსა და კონფიდენციალობის პოლიტიკას.', 'eq.err.send': 'ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ში.',
+        'eq.summary.full': 'სრული ფასი',
+        'eq.summary.deposit': 'წინასწარი გადახდა 10% — გამოიქვითება სრული ფასიდან',
+        'eq.summary.balance': 'ნაშთი, რომელიც მაღაზიაში გადაიხდება',
         'eq.people.label': 'რამდენი ადამიანი ჩამოდის?',
         'eq.people.hint': 'თითოეულ მონაწილეს შეუძლია საკუთარი ინვენტარისა და ზომების არჩევა. 10-ზე მეტი ადამიანის ჯგუფისთვის მოგვწერეთ WhatsApp-ზე.',
         'eq.p1.tag': 'აქ არჩევანი 1-ლი ადამიანისთვისაა (დამკვეთისთვის). დანარჩენი ჯგუფი შეავსეთ ქვემოთ.',

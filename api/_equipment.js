@@ -71,3 +71,25 @@ export function groupTotal(people, days) {
 export function ilsRate() {
   return parseFloat(process.env.GEL_ILS_RATE || '1.35');
 }
+
+// The deposit is 10% of the full price. It is deducted from the full price, so the
+// customer pays the rest at the shop.
+export const DEPOSIT_SHARE = 0.10;
+
+// 10% of the lari total, in lari (two decimals).
+export function depositGel(totalGel) {
+  return Math.round(totalGel * DEPOSIT_SHARE * 100) / 100;
+}
+
+// What is left to pay at the shop, in lari.
+export function balanceGel(totalGel) {
+  return Math.round((totalGel - depositGel(totalGel)) * 100) / 100;
+}
+
+// What the card is charged: that 10% converted to shekels and rounded up to a whole shekel.
+// The value is rounded to agorot first so floating-point noise cannot add a shekel
+// (e.g. ₾1800 × 10% × 1.35 is 243 exactly, but 243.00000000000003 unrounded).
+// equipment.html uses the same formula to show the amount before paying.
+export function depositIls(totalGel) {
+  return Math.ceil(Math.round(totalGel * DEPOSIT_SHARE * ilsRate() * 100) / 100);
+}

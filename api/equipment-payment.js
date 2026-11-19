@@ -1,6 +1,6 @@
 import { applyCors } from './_cors.js';
 import {
-  EMAIL_RE, groupTotal, ilsRate, normalizePeople, rentalDays, validatePeople
+  EMAIL_RE, depositIls as depositIlsFor, groupTotal, normalizePeople, rentalDays, validatePeople
 } from './_equipment.js';
 
 const CARDCOM_API = 'https://secure.cardcom.solutions/api/v11/LowProfile/Create';
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: 'Invalid dates' });
 
   const totalGel   = groupTotal(people, days);
-  const depositIls = Math.ceil(totalGel * 0.10 * ilsRate());
+  const depositIls = depositIlsFor(totalGel);
 
   const terminal = process.env.CARDCOM_TERMINAL || '1000';
   const apiName  = process.env.CARDCOM_API_NAME  || 'test2025';

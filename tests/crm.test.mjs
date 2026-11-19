@@ -208,7 +208,9 @@ test('group equipment order lists every person and the estimate in the notes', (
     'אדם 1: סט סקי, רמה בסיסי, נעל 42, קסדה M, גוגלס',
     'אדם 2: סט סנובורד, רמה ילדים, נעל 33, מעיל S, מכנסיים S',
     // (50 + 10 + 10) + (60 + 20 + 20) = ₾170 a day × 3 days = ₾510 → ₪689 at 1.35
-    'הערכת עלות: ₾510 (≈ ₪689) · 3 ימים · 2 אנשים'
+    'הערכת עלות: ₾510 (≈ ₪689) · 3 ימים · 2 אנשים',
+    // deposit: 10% of ₾510 = ₾51 → ₪68.85 → charged ₪69; the other ₾459 is paid at the shop
+    'מקדמה 10% (מקוזזת מהמחיר המלא): ₪69 · יתרה לתשלום בחנות: ₾459'
   ].join('\n'));
 });
 
@@ -218,7 +220,10 @@ test('a single-person equipment order gets a price estimate but no group lines',
     checkin: '2026-12-01', checkout: '2026-12-03', equipmentType: 'snowboard', equipmentLevel: 'pro'
   });
 
-  assert.equal(fields['הערות'], 'הערכת עלות: ₾180 (≈ ₪243) · 2 ימים · אדם אחד');
+  assert.equal(fields['הערות'], [
+    'הערכת עלות: ₾180 (≈ ₪243) · 2 ימים · אדם אחד',
+    'מקדמה 10% (מקוזזת מהמחיר המלא): ₪25 · יתרה לתשלום בחנות: ₾162'
+  ].join('\n'));
 });
 
 test('handler rejects invalid POST without calling Airtable', async () => {

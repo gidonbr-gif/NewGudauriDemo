@@ -159,13 +159,56 @@ test('every translation key the page script uses exists in all four languages', 
 
   const used = new Set();
   for (const m of html.matchAll(/data-i18n(?:-html|-placeholder|-alt)?="([A-Za-z0-9_.-]+)"/g)) used.add(m[1]);
-  for (const m of html.matchAll(/(?:getLangText|fail)\('([A-Za-z0-9_.-]+)'/g)) used.add(m[1]);
-  assert.ok(used.has('eq.person') && used.has('eq.err.email') && used.has('eq.summary.incomplete'), 'group strings must be picked up');
+  // every 'eq.…' string literal in the page script before the dictionary itself (getLangText, fail, T, row, …)
+  for (const m of html.slice(0, start).matchAll(/'(eq\.[A-Za-z0-9_.-]+)'/g)) used.add(m[1]);
+  assert.ok(['eq.person', 'eq.err.email', 'eq.summary.incomplete', 'eq.summary.full', 'eq.summary.deposit', 'eq.summary.balance'].every((key) => used.has(key)), 'group and price strings must be picked up');
 
   for (const lang of ['he', 'en', 'ru', 'ge']) {
     const missing = [...used].filter((key) => dictionary[lang][key] === undefined);
     assert.deepEqual(missing, [], `${lang} is missing translations`);
   }
+});
+
+test('the deposit shown on the page is exactly what the API charges', async () => {
+  delete process.env.GEL_ILS_RATE;
+  const api = await import('../api/_equipment.js');
+  const html = read('equipment.html');
+
+  const grab = (name) => {
+    const found = html.match(new RegExp(`function ${name}\\(total\\) \\{[^\\n]*\\}`));
+    assert.ok(found, `${name}() not found in equipment.html`);
+    return found[0];
+  };
+  const page = vm.runInNewContext(
+    `const GEL_TO_ILS = 1.35;\n${grab('depositGelFor')}\n${grab('balanceGelFor')}\n${grab('depositIlsFor')}\n` +
+    '({ depositGelFor, balanceGelFor, depositIlsFor })'
+  );
+
+  for (let total = 5; total <= 30000; total += 5) {
+    assert.equal(page.depositIlsFor(total), api.depositIls(total), `card deposit differs for ₾${total}`);
+    assert.equal(page.depositGelFor(total), api.depositGel(total), `lari deposit differs for ₾${total}`);
+    assert.equal(page.balanceGelFor(total), api.balanceGel(total), `balance differs for ₾${total}`);
+  }
+  // 10% of ₾1800 × 1.35 is exactly ₪243 — floating point must not turn that into ₪244
+  assert.equal(api.depositIls(1800), 243);
+  assert.equal(api.depositIls(210), 29);
+  assert.equal(api.balanceGel(210), 189);
+});
+
+test('the paid deposit and the CRM note agree for the same order', async () => {
+  const order = await requestDeposit({
+    checkin: '2026-12-01', checkout: '2026-12-04',
+    people: [{ equipmentType: 'ski', equipmentLevel: 'basic', helmetSize: 'M' }, { equipmentType: 'snowboard', equipmentLevel: 'pro' }]
+  });
+  const { buildAirtableFields } = await import('../api/leads.js');
+  const fields = buildAirtableFields({
+    name: 'A', phone: '1', email: 'a@b.co', service: 'equipment', checkin: '2026-12-01', checkout: '2026-12-04',
+    people: [{ equipmentType: 'ski', equipmentLevel: 'basic', helmetSize: 'M' }, { equipmentType: 'snowboard', equipmentLevel: 'pro' }]
+  });
+
+  assert.equal(order.sent.Amount, order.body.depositIls);
+  assert.match(fields['הערות'], new RegExp(`מקדמה 10% \\(מקוזזת מהמחיר המלא\\): ₪${order.body.depositIls} ·`));
+  assert.match(fields['הערות'], new RegExp(`הערכת עלות: ₾${order.body.totalGel} `));
 });
 
 test('Fanatic is gone from the equipment flow', () => {

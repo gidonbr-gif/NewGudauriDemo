@@ -1,6 +1,6 @@
 import { applyCors } from './_cors.js';
 import {
-  EMAIL_RE, groupTotal, ilsRate, normalizePeople, rentalDays, validatePeople
+  EMAIL_RE, balanceGel, depositIls, groupTotal, ilsRate, normalizePeople, rentalDays, validatePeople
 } from './_equipment.js';
 
 const SERVICE_LABELS = {
@@ -124,6 +124,7 @@ function equipmentOrderNotes(input) {
     const total = groupTotal(people, days);
     const who = people.length > 1 ? `${people.length} אנשים` : 'אדם אחד';
     lines.push(`הערכת עלות: ₾${total} (≈ ₪${Math.round(total * ilsRate())}) · ${days} ימים · ${who}`);
+    lines.push(`מקדמה 10% (מקוזזת מהמחיר המלא): ₪${depositIls(total)} · יתרה לתשלום בחנות: ₾${balanceGel(total)}`);
   }
 
   return lines;

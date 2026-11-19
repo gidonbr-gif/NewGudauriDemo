@@ -88,6 +88,7 @@
         equipName: 'השכרת ציוד סקי — ניו גודאורי',
         rentDays: 'ימי השכרה',
         peopleLabel: 'מספר אנשים',
+        balanceLabel: 'יתרה לתשלום בחנות',
         totalOrder: 'סה״כ הזמנה',
         deposit: 'שולמה מקדמה של',
         refNum: 'מספר אסמכתא',
@@ -113,6 +114,7 @@
         equipName: 'Ski Equipment Rental — New Gudauri',
         rentDays: 'Rental Days',
         peopleLabel: 'People',
+        balanceLabel: 'Balance to pay at the shop',
         totalOrder: 'Order Total',
         deposit: 'Deposit paid',
         refNum: 'Reference Number',
@@ -138,6 +140,7 @@
         equipName: 'Аренда лыжного снаряжения — New Gudauri',
         rentDays: 'Дней аренды',
         peopleLabel: 'Человек',
+        balanceLabel: 'Остаток к оплате в магазине',
         totalOrder: 'Итого',
         deposit: 'Задаток оплачен',
         refNum: 'Номер заказа',
@@ -163,6 +166,7 @@
         equipName: 'სათხილამურო აღჭურვილობის გაქირავება — New Gudauri',
         rentDays: 'გაქირავების დღეები',
         peopleLabel: 'ადამიანი',
+        balanceLabel: 'ნაშთი მაღაზიაში გადასახდელი',
         totalOrder: 'სულ',
         deposit: 'ანაბარი გადახდილია',
         refNum: 'შეკვეთის ნომერი',
@@ -224,6 +228,7 @@
         (days  ? '<strong>' + T.rentDays + ':</strong> ' + days + '<br>' : '') +
         (people && people !== '1' ? '<strong>' + T.peopleLabel + ':</strong> ' + people + '<br>' : '') +
         (total ? '<strong>' + T.totalOrder + ':</strong> ₾' + total + ' (' + T.deposit + ' ₪' + deposit + ')<br>' : '') +
+        (total ? '<strong>' + T.balanceLabel + ':</strong> ₾' + (Math.round(parseFloat(total) * 90) / 100) + '<br>' : '') +
         '<strong>' + T.refNum + ':</strong> ' + (ref || '—');
       waText = encodeURIComponent(T.waMsg_equip + ' (' + (days || '?') + ' ' + T.rentDays.toLowerCase() + '). ' + T.waMsg_ref + ': ' + (ref || '—'));
     } else {
