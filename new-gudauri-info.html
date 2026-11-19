@@ -129,9 +129,10 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    /* mobile: pre-reveal X-offsets on near-full-width images widen the layout
-       viewport (Chrome zoom-fit shrinks the page) — reveal vertically instead */
-    @media (max-width: 640px) {
+    /* below the 1200px container the pre-reveal X-offsets on the split images poke
+       past the screen edge and widen the layout viewport (phones zoom the page out,
+       tablets and narrow laptop windows get 24px of sideways scroll) — reveal vertically instead */
+    @media (max-width: 1280px) {
       .reveal-left, .reveal-right { transform: translateY(32px); }
       .reveal-left.visible, .reveal-right.visible { transform: translateY(0); }
     }
@@ -327,12 +328,35 @@
       .nav-inner .lang-switcher { margin-inline-start: auto; }
     }
 
+    /* ═══ NAV FIT — keeps the bar usable in long languages (logic in nav-fit.js) ═══ */
+    #nav .lang-switcher, #nav .lang-btn, #nav .lang-btn img { flex-shrink: 0; }
+    #nav .lang-btn img { max-width: none; }
+    html.nav-wide #nav > .container { max-width: 1600px; }
+    html.nav-compact #nav .nav-links,
+    html.nav-compact #nav .nav-cta-desktop { display: none; }
+    html.nav-compact #nav .nav-burger { display: flex; }
+    html.nav-compact #nav .nav-cta-strip { display: flex; }
+    html.nav-compact #nav .nav-inner > .lang-switcher { margin-inline-start: auto; }
+    #nav .nav-inner > .lang-switcher + .nav-burger { margin-inline-start: 8px; }
+    html.nav-no-strip #nav .nav-cta-strip { display: none; }
+    /* small phones: tighter logo + flags; last resort keeps the flags only inside the menu */
+    html.nav-tight #nav .nav-logo { gap: 8px; }
+    html.nav-tight #nav .nav-logo svg { width: 30px; height: 30px; }
+    html.nav-tight #nav .nav-logo-text { font-size: 1rem; }
+    html.nav-tight #nav .nav-end, html.nav-tight #nav .nav-logo-group { gap: 8px; }
+    html.nav-tight #nav .lang-switcher { gap: 0; }
+    html.nav-tight #nav .lang-btn { padding: 3px 2px; }
+    html.nav-tight #nav .lang-btn img { width: 20px; height: 15px; }
+    html.nav-no-flags #nav .lang-switcher { display: none; }
+
     /* ── HERO ── */
     .ng-hero {
       position: relative;
-      height: 70vh; min-height: 520px;
+      /* min-height + top padding: longer languages need more lines, so the banner
+         grows instead of sliding its text under the fixed nav */
+      min-height: max(70vh, 520px);
       display: flex; align-items: flex-end;
-      padding-bottom: 88px; overflow: hidden;
+      padding: calc(var(--nav-h) + 32px) 0 88px; overflow: hidden;
     }
     .ng-hero-bg {
       position: absolute; inset: 0;
@@ -369,6 +393,8 @@
       margin-bottom: 16px;
     }
     .ng-hero-title .accent { color: var(--electric); display: block; }
+    /* English / Russian / Georgian titles are longer: smaller type keeps the banner on one screen */
+    html[dir="ltr"] .ng-hero-title { font-size: clamp(2.5rem, 5.6vw, 4.75rem); line-height: 1.05; }
     .ng-hero-sub {
       font-size: clamp(1rem, 2vw, 1.25rem);
       color: var(--slate-200); max-width: 560px;
@@ -691,7 +717,7 @@
     }
     .footer-copy { font-size: 0.875rem; color: var(--slate-600); }
     .footer-copy a:hover { color: var(--slate-400); }
-    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 20px; }
     .footer-legal a { font-size: 0.8125rem; color: var(--slate-600); transition: color var(--transition); }
     .footer-legal a:hover { color: var(--slate-400); }
     @media (max-width: 900px) {
@@ -1868,6 +1894,7 @@
 
   <!-- Site Chat Assistant -->
   <script src="gudauri-chat.js" defer></script>
+  <script src="nav-fit.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>

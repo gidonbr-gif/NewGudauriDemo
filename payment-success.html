@@ -205,17 +205,19 @@
     var nights = esc((params.get('nights') || '').replace(/[^\d]/g, '').slice(0, 3));
     var days   = esc((params.get('days') || '').replace(/[^\d]/g, '').slice(0, 3));
     var total  = (params.get('total') || '').replace(/[^\d.]/g, '').slice(0, 10);
+    var dep    = (params.get('dep') || '').replace(/[^\d.]/g, '').slice(0, 10);
     var ref    = esc((params.get('ref') || '').replace(/[^\w\-]/g, '').slice(0, 40));
 
     var detailsEl = document.getElementById('bookingDetails');
     var waText;
 
     if (type === 'equipment') {
-      var deposit = total ? Math.ceil(parseFloat(total) * 0.10) : '';
+      // total is in GEL; deposit was charged in ILS (1 GEL ≈ 1.35 ILS)
+      var deposit = dep || (total ? Math.ceil(parseFloat(total) * 0.10 * 1.35) : '');
       detailsEl.innerHTML =
         '<strong>' + T.equipName + '</strong><br>' +
         (days  ? '<strong>' + T.rentDays + ':</strong> ' + days + '<br>' : '') +
-        (total ? '<strong>' + T.totalOrder + ':</strong> $' + total + ' (' + T.deposit + ' $' + deposit + ')<br>' : '') +
+        (total ? '<strong>' + T.totalOrder + ':</strong> ₾' + total + ' (' + T.deposit + ' ₪' + deposit + ')<br>' : '') +
         '<strong>' + T.refNum + ':</strong> ' + (ref || '—');
       waText = encodeURIComponent(T.waMsg_equip + ' (' + (days || '?') + ' ' + T.rentDays.toLowerCase() + '). ' + T.waMsg_ref + ': ' + (ref || '—'));
     } else {

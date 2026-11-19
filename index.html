@@ -371,16 +371,39 @@
       .nav-burger { display: flex; }
     }
 
+    /* ═══ NAV FIT — keeps the bar usable in long languages (logic in nav-fit.js) ═══ */
+    #nav .lang-switcher, #nav .lang-btn, #nav .lang-btn img { flex-shrink: 0; }
+    #nav .lang-btn img { max-width: none; }
+    html.nav-wide #nav > .container { max-width: 1600px; }
+    html.nav-compact #nav .nav-links,
+    html.nav-compact #nav .nav-cta-desktop { display: none; }
+    html.nav-compact #nav .nav-burger { display: flex; }
+    html.nav-compact #nav .nav-cta-strip { display: flex; }
+    html.nav-compact #nav .nav-inner > .lang-switcher { margin-inline-start: auto; }
+    #nav .nav-inner > .lang-switcher + .nav-burger { margin-inline-start: 8px; }
+    html.nav-no-strip #nav .nav-cta-strip { display: none; }
+    /* small phones: tighter logo + flags; last resort keeps the flags only inside the menu */
+    html.nav-tight #nav .nav-logo { gap: 8px; }
+    html.nav-tight #nav .nav-logo svg { width: 30px; height: 30px; }
+    html.nav-tight #nav .nav-logo-text { font-size: 1rem; }
+    html.nav-tight #nav .nav-end, html.nav-tight #nav .nav-logo-group { gap: 8px; }
+    html.nav-tight #nav .lang-switcher { gap: 0; }
+    html.nav-tight #nav .lang-btn { padding: 3px 2px; }
+    html.nav-tight #nav .lang-btn img { width: 20px; height: 15px; }
+    html.nav-no-flags #nav .lang-switcher { display: none; }
+
     /* ═══════════════════════════════════════
        2. HERO — PARALLAX
     ═══════════════════════════════════════ */
     #hero {
       position: relative;
-      height: 100vh;
-      min-height: 600px;
+      /* min-height (not height): longer languages need more lines, so the banner
+         grows instead of hiding its text under the nav or clipping the buttons */
+      min-height: max(100vh, 600px);
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 8px 0 16px;
       overflow: hidden;
     }
 
@@ -494,7 +517,7 @@
     }
 
     .hero-headline {
-      font-size: clamp(3.5rem, 11vw, 9rem);
+      font-size: clamp(3.5rem, min(11vw, 18vh), 9rem);
       font-weight: 900;
       line-height: 0.92;
       letter-spacing: -0.03em;
@@ -2169,7 +2192,8 @@
 
     .footer-legal {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 8px 20px;
     }
     .footer-legal a {
       font-size: 0.8125rem;
@@ -4167,6 +4191,7 @@
 
   <!-- Site Chat Assistant -->
   <script src="gudauri-chat.js" defer></script>
+  <script src="nav-fit.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>

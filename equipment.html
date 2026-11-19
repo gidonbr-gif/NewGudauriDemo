@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="השכרת ציוד סקי וסנובורד בניו גודאורי — Ski Boom & Fanatic. סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות וקבלו עד 20% הנחה על חבילה מלאה." />
-  <title>השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic | Gudauri Helper</title>
+  <meta name="description" content="השכרת ציוד סקי וסנובורד בניו גודאורי — בשיתוף פעולה בלעדי עם Ski Boom. סקי, סנובורד, מגפיים, קסדות וגוגלס. הזמינו מראש לפי מידות, הגיעו להתאמה קצרה — ועולים למדרון." />
+  <title>השכרת ציוד סקי בגודאורי — Ski Boom | Gudauri Helper</title>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.newgudauri.net/equipment.html" />
@@ -23,8 +23,8 @@
   <!-- OpenGraph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.newgudauri.net/equipment.html" />
-  <meta property="og:title" content="השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic" />
-  <meta property="og:description" content="סקי, סנובורד, קסדות, גוגלס וביגוד תרמי. הזמינו מראש לפי מידות וקבלו עד 20% הנחה על חבילה מלאה." />
+  <meta property="og:title" content="השכרת ציוד סקי בגודאורי — Ski Boom" />
+  <meta property="og:description" content="שיתוף פעולה בלעדי עם Ski Boom בניו גודאורי. הזמינו ציוד מראש לפי מידות — הכל מחכה מוכן ביום ההגעה." />
   <meta property="og:image" content="https://www.newgudauri.net/images/gudauri-gondola-hero.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
@@ -34,8 +34,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="השכרת ציוד סקי בגודאורי — Ski Boom & Fanatic" />
-  <meta name="twitter:description" content="סקי, סנובורד, קסדות, גוגלס וביגוד. הזמינו מראש לפי מידות וקבלו עד 20% הנחה." />
+  <meta name="twitter:title" content="השכרת ציוד סקי בגודאורי — Ski Boom" />
+  <meta name="twitter:description" content="שיתוף פעולה בלעדי עם Ski Boom. הזמינו ציוד מראש לפי מידות — והכל מחכה מוכן." />
   <meta name="twitter:image" content="https://www.newgudauri.net/images/gudauri-gondola-hero.jpg" />
 
   <link rel="preconnect" href="https://images.unsplash.com" />
@@ -319,6 +319,27 @@
       .nav-burger { display: flex; }
     }
 
+    /* ═══ NAV FIT — keeps the bar usable in long languages (logic in nav-fit.js) ═══ */
+    #nav .lang-switcher, #nav .lang-btn, #nav .lang-btn img { flex-shrink: 0; }
+    #nav .lang-btn img { max-width: none; }
+    html.nav-wide #nav > .container { max-width: 1600px; }
+    html.nav-compact #nav .nav-links,
+    html.nav-compact #nav .nav-cta-desktop { display: none; }
+    html.nav-compact #nav .nav-burger { display: flex; }
+    html.nav-compact #nav .nav-cta-strip { display: flex; }
+    html.nav-compact #nav .nav-inner > .lang-switcher { margin-inline-start: auto; }
+    #nav .nav-inner > .lang-switcher + .nav-burger { margin-inline-start: 8px; }
+    html.nav-no-strip #nav .nav-cta-strip { display: none; }
+    /* small phones: tighter logo + flags; last resort keeps the flags only inside the menu */
+    html.nav-tight #nav .nav-logo { gap: 8px; }
+    html.nav-tight #nav .nav-logo svg { width: 30px; height: 30px; }
+    html.nav-tight #nav .nav-logo-text { font-size: 1rem; }
+    html.nav-tight #nav .nav-end, html.nav-tight #nav .nav-logo-group { gap: 8px; }
+    html.nav-tight #nav .lang-switcher { gap: 0; }
+    html.nav-tight #nav .lang-btn { padding: 3px 2px; }
+    html.nav-tight #nav .lang-btn img { width: 20px; height: 15px; }
+    html.nav-no-flags #nav .lang-switcher { display: none; }
+
     /* ═══ LANGUAGE SWITCHER ═══ */
     .lang-switcher { display: flex; align-items: center; gap: 2px; }
     .lang-btn {
@@ -517,7 +538,33 @@
     }
     .shop-wa:hover { background: rgba(37,211,102,0.1); transform: translateY(-1px); }
     .shop-wa svg { width: 18px; height: 18px; }
-    @media (max-width: 768px) { .shops-grid { grid-template-columns: 1fr; } }
+    .shops-grid--single { grid-template-columns: 1.25fr 1fr; align-items: stretch; }
+    .shop-card--featured { border-color: rgba(14,165,233,0.35); background: rgba(14,165,233,0.05); }
+    .shop-side { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+    .shop-side .shop-steps { flex: 1; }
+    .shop-media { aspect-ratio: 1280 / 420; border-radius: var(--radius); border: 1px solid var(--glass-border); }
+    .shop-perks { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 10px; }
+    .shop-perks li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9375rem; color: var(--slate-200); line-height: 1.5; }
+    .shop-perks svg { width: 18px; height: 18px; color: var(--electric); flex-shrink: 0; margin-top: 2px; }
+    .shop-link { color: var(--electric); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .shop-steps {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 36px 32px; backdrop-filter: blur(8px);
+    }
+    .shop-steps-title { font-size: 1.25rem; font-weight: 900; color: var(--snow); margin-bottom: 22px; }
+    .shop-steps ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+    .shop-steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .shop-steps .step-num {
+      width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+      background: rgba(14,165,233,0.15); color: var(--electric);
+      display: flex; align-items: center; justify-content: center; font-weight: 900;
+    }
+    .shop-steps strong { display: block; color: var(--snow); font-size: 1rem; margin-bottom: 4px; }
+    .shop-steps p { color: var(--slate-400); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+    @media (max-width: 768px) {
+      .shops-grid, .shops-grid--single { grid-template-columns: 1fr; }
+      .shop-card, .shop-steps { padding: 28px 20px; }
+    }
 
     /* ═══ PRICING ═══ */
     #pricing { padding: 88px 0; position: relative; overflow: hidden; }
@@ -576,7 +623,11 @@
     .pricing-cat-cell {
       padding: 20px 18px; display: flex; align-items: center; gap: 12px;
     }
-    .pricing-cat-cell .eq-emoji { font-size: 1.5rem; flex-shrink: 0; }
+    .eq-thumb {
+      width: 64px; height: 64px; flex-shrink: 0; display: block;
+      border-radius: 14px; object-fit: cover;
+      box-shadow: 0 0 0 1px var(--glass-border), 0 6px 16px rgba(0,0,0,0.35);
+    }
     .pricing-cat-cell strong { display: block; font-size: 0.9375rem; color: var(--snow); font-weight: 700; }
     .pricing-cat-cell small { display: block; font-size: 0.75rem; color: var(--slate-400); margin-top: 2px; }
     .price-cell {
@@ -586,6 +637,34 @@
     .price-amount { font-size: 1.35rem; font-weight: 900; color: var(--snow); line-height: 1; }
     .price-unit { font-size: 0.75rem; color: var(--slate-400); margin-top: 3px; }
     .price-cell.same { color: var(--slate-400); }
+    .price-ils { font-size: 0.8125rem; font-weight: 700; color: var(--slate-400); margin-top: 5px; }
+    .items-head { text-align: center; margin: 48px 0 22px; }
+    .items-title { font-size: 1.375rem; font-weight: 900; color: var(--snow); }
+    .items-sub { color: var(--slate-400); font-size: 0.9375rem; margin-top: 6px; }
+    .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .items-card {
+      background: rgba(15,23,42,0.4); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); overflow: hidden; backdrop-filter: blur(8px);
+    }
+    /* gear photos: card headers + the partner banner fade into the card */
+    .items-media, .shop-media { position: relative; overflow: hidden; background: rgba(15,23,42,0.6); }
+    .items-media { aspect-ratio: 880 / 374; }
+    .items-media img, .shop-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .items-media::after, .shop-media::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(15,23,42,0) 50%, rgba(15,23,42,0.7) 100%);
+    }
+    .items-body { padding: 18px 22px 22px; }
+    .items-card h3 { font-size: 1.0625rem; font-weight: 800; color: var(--snow); margin-bottom: 10px; }
+    .items-list { list-style: none; padding: 0; margin: 0; }
+    .items-list li {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+      padding: 10px 0; font-size: 0.9375rem; color: var(--slate-200);
+    }
+    .items-list li:not(:last-child) { border-bottom: 1px solid var(--glass-border); }
+    .items-price { white-space: nowrap; font-weight: 900; color: var(--snow); }
+    .items-price .price-ils { margin: 0 0 0 0; margin-inline-start: 6px; font-size: 0.8rem; }
+    @media (max-width: 900px) { .items-grid { grid-template-columns: 1fr; } }
     .pricing-package-row {
       background: rgba(14,165,233,0.05);
     }
@@ -897,7 +976,7 @@
     .footer-copy { font-size: 0.8125rem; color: var(--slate-600); }
     .footer-copy a { color: var(--slate-400); transition: color var(--transition); }
     .footer-copy a:hover { color: var(--electric); }
-    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 20px; }
     .footer-legal a { font-size: 0.8125rem; color: var(--slate-600); transition: color var(--transition); }
     .footer-legal a:hover { color: var(--slate-400); }
     @media (max-width: 900px) {
@@ -957,13 +1036,13 @@
           "url": "https://www.newgudauri.net/"
         },
         "areaServed": { "@type": "Place", "name": "New Gudauri, Georgia" },
-        "description": "השכרת ציוד סקי, סנובורד, קסדות, גוגלס וביגוד תרמי מחנויות Ski Boom ו-Fanatic בניו גודאורי. הזמנה מראש לפי מידות."
+        "description": "השכרת ציוד סקי, סנובורד, מגפיים, קסדות וגוגלס בשיתוף פעולה בלעדי עם Ski Boom בניו גודאורי. הזמנה מראש לפי מידות."
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "מה ההבדל בין ציוד מתחילים, בינוני ומתקדם?", "acceptedAnswer": { "@type": "Answer", "text": "ציוד מתחילים סלחני וקל לשליטה, מתאים ללומדים. ציוד בינוני מאוזן לרוכבים מנוסים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר יותר, למי ששולט בכל סוגי המסלולים." } },
-          { "@type": "Question", "name": "איפה נמצאות חנויות Ski Boom ו-Fanatic?", "acceptedAnswer": { "@type": "Answer", "text": "שתי החנויות נמצאות בלב ניו גודאורי, במרחק הליכה מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה." } },
+          { "@type": "Question", "name": "מה ההבדל בין סט ילדים, בסיסי ופרו?", "acceptedAnswer": { "@type": "Answer", "text": "סט בסיסי מתאים לרוב הגולשים — מתחילים ובינוניים, עם ציוד נוח וסלחני. סט פרו מיועד לגולשים מנוסים שמחפשים ציוד מהיר, נוקשה ומדויק יותר. סט ילדים מותאם במידות ובמשקל לגולשים הצעירים." } },
+          { "@type": "Question", "name": "איפה נמצאת חנות Ski Boom?", "acceptedAnswer": { "@type": "Answer", "text": "Ski Boom נמצאת בלב ניו גודאורי, ליד Suite & LOFT 1, במרחק הליכה מהגונדולה ומרוב המלונות. אנחנו מתאמים הכל מראש — אתם מגיעים להתאמה קצרה ויוצאים למדרון." } },
           { "@type": "Question", "name": "מתי משלמים על הציוד?", "acceptedAnswer": { "@type": "Answer", "text": "אין תשלום מראש. ההזמנה רק שומרת לכם את הציוד והמידות, והתשלום מתבצע בחנות ביום האיסוף." } },
           { "@type": "Question", "name": "מה קורה אם הציוד לא מתאים?", "acceptedAnswer": { "@type": "Answer", "text": "אפשר להחליף מידה או רמת ציוד בחנות ללא עלות. אם משהו לא מרגיש טוב על המדרון — חוזרים ומתאימים." } },
           { "@type": "Question", "name": "האם אפשר לשנות ציוד באמצע השהייה?", "acceptedAnswer": { "@type": "Answer", "text": "כן. אם החלטתם לעבור מסקי לסנובורד או לשדרג רמה — אפשר לעשות זאת בחנות, ונחשב את ההפרש בלבד." } }
@@ -1065,7 +1144,7 @@
       <div class="hero-kicker" data-i18n="eq.hero.kicker">ניו גודאורי · השכרת ציוד מקצועי</div>
       <h1 class="hero-headline" id="hero-headline">
         <span data-i18n="eq.hero.title">ציוד שמתאים לך —</span><br/>
-        <span class="accent" data-i18n="eq.hero.title_accent">Ski Boom &amp; Fanatic</span>
+        <span class="accent" data-i18n="eq.hero.title_accent">Ski Boom</span>
       </h1>
       <p class="hero-sub" data-i18n="eq.hero.sub">סקי, סנובורד, קסדות, גוגלס וביגוד סקי. הזמינו מראש לפי מידות — והציוד יחכה לכם מוכן ביום ההגעה.</p>
       <div class="hero-urgency" data-i18n="eq.hero.urgency">מלאי מוגבל בעונת השיא — הזמינו מראש ובטחו את המידות שלכם</div>
@@ -1096,8 +1175,8 @@
           <span class="stat-label" data-i18n="eq.stat1.label">תיירים השכירו דרכנו</span>
         </div>
         <div class="stat-item reveal" style="transition-delay:0.1s">
-          <span class="stat-value">2</span>
-          <span class="stat-label" data-i18n="eq.stat2.label">חנויות שותפות בניו גודאורי</span>
+          <span class="stat-value">1</span>
+          <span class="stat-label" data-i18n="eq.stat2.label">שותף בלעדי בניו גודאורי</span>
         </div>
         <div class="stat-item reveal" style="transition-delay:0.2s">
           <span class="stat-value">3</span>
@@ -1115,48 +1194,49 @@
   <section id="shops" aria-labelledby="shops-title">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="eq.shops.label">החנויות שלנו</span>
-        <h2 class="section-title" id="shops-title" data-i18n="eq.shops.title">שתי חנויות. סטנדרט אחד — מקצועי.</h2>
-        <p class="section-sub" data-i18n="eq.shops.sub">עובדים עם שתי חנויות הציוד המובילות בניו גודאורי. אתם בוחרים — אנחנו מתאמים שהציוד יחכה מוכן.</p>
+        <span class="section-label" data-i18n="eq.shops.label">השותף הבלעדי שלנו</span>
+        <h2 class="section-title" id="shops-title" data-i18n="eq.shops.title">Ski Boom. שיתוף פעולה בלעדי — רק ללקוחות שלנו.</h2>
+        <p class="section-sub" data-i18n="eq.shops.sub">בחרנו לעבוד עם חנות אחת ולעשות את זה עד הסוף. אתם מזמינים מראש — אנחנו דואגים לכל השאר מבעוד מועד.</p>
       </div>
-      <div class="shops-grid">
-        <article class="shop-card reveal">
+      <div class="shops-grid shops-grid--single">
+        <article class="shop-card shop-card--featured reveal">
           <div class="shop-head">
             <div class="shop-logo">🏔️</div>
             <div>
               <div class="shop-name">Ski Boom</div>
-              <span class="shop-badge" data-i18n="eq.shop1.badge">השכרה + שירות</span>
+              <span class="shop-badge" data-i18n="eq.shop1.badge">שותף בלעדי · Gudauri Helper</span>
             </div>
           </div>
-          <p class="shop-desc" data-i18n="eq.shop1.desc">מבחר רחב של סקי וסנובורד לכל הרמות, עם צוות שמתאים לכם את הציוד המדויק. מתמחים במתחילים שצריכים יד מכוונת ובמתקדמים שמחפשים ביצועים.</p>
+          <p class="shop-desc" data-i18n="eq.shop1.desc">חנות ההשכרה המקצועית של ניו גודאורי — סקי, סנובורד, מגפיים, קסדות, מקלות וגוגלס לכל הרמות. במסגרת השיתוף הבלעדי, הציוד שלכם נשמר לפי המידות עוד לפני שנחתתם.</p>
+          <ul class="shop-perks">
+            <li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.shop1.perk1">הציוד שמור לפי המידות שלכם — עוד לפני ההגעה</span></li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.shop1.perk2">התאמה מקצועית קצרה בחנות — ויוצאים למדרון</span></li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.shop1.perk3">ציוד מתוחזק, מושחז ובטוח בכל עונה</span></li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="eq.shop1.perk4">השכרה ליום, לשבוע או לכל העונה</span></li>
+          </ul>
           <div class="shop-meta">
             <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="eq.shop1.location">ליד Suite & LOFT 1 · מרכז ניו גודאורי</span></div>
             <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="eq.shop1.hours">פתוח כל יום · 08:00–20:00</span></div>
+            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg><a href="https://www.gudauriboom.com/equipment-rental" target="_blank" rel="noopener noreferrer" class="shop-link">gudauriboom.com</a></div>
           </div>
           <a href="https://wa.me/972557790955" class="shop-wa" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             <span data-i18n="eq.shop1.cta">שאלו על Ski Boom</span>
           </a>
         </article>
-
-        <article class="shop-card reveal" style="transition-delay:0.1s">
-          <div class="shop-head">
-            <div class="shop-logo">🎿</div>
-            <div>
-              <div class="shop-name">Fanatic</div>
-              <span class="shop-badge" data-i18n="eq.shop2.badge">ציוד פרימיום</span>
-            </div>
+        <div class="shop-side">
+          <div class="shop-media reveal" style="transition-delay:0.1s">
+            <img src="images/equipment/rental-skis.webp" width="1280" height="420" loading="lazy" decoding="async" alt="מגלשי סקי מסודרים בשורה ליד בקתת עץ בהרים" data-i18n-alt="eq.img.rack">
           </div>
-          <p class="shop-desc" data-i18n="eq.shop2.desc">חנות לחובבי הספורט — מותגים מובילים, ביגוד תרמי איכותי וציוד ברמה גבוהה. הבחירה של מי שרוצה את ההרגשה הכי טובה על המדרון.</p>
-          <div class="shop-meta">
-            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="eq.shop2.location">ליד בלוק 4 · מרכז ניו גודאורי</span></div>
-            <div class="shop-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="eq.shop2.hours">פתוח כל יום · 08:00–20:00</span></div>
-          </div>
-          <a href="https://wa.me/972557790955" class="shop-wa" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.549 4.091 1.508 5.815L.057 23.256a.75.75 0 00.921.921l5.462-1.445A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-            <span data-i18n="eq.shop2.cta">שאלו על Fanatic</span>
-          </a>
-        </article>
+          <div class="shop-steps reveal" style="transition-delay:0.15s">
+          <h3 class="shop-steps-title" data-i18n="eq.how.title">איך זה עובד</h3>
+          <ol>
+            <li><span class="step-num">1</span><div><strong data-i18n="eq.how1.title">מזמינים מראש</strong><p data-i18n="eq.how1.text">ממלאים תאריכים, סוג ציוד ומידות בטופס — לוקח 2 דקות.</p></div></li>
+            <li><span class="step-num">2</span><div><strong data-i18n="eq.how2.title">אנחנו דואגים להכל</strong><p data-i18n="eq.how2.text">מתאמים מול Ski Boom מבעוד מועד — הציוד שלכם מחכה מוכן ושמור.</p></div></li>
+            <li><span class="step-num">3</span><div><strong data-i18n="eq.how3.title">התאמה קצרה — ולמדרון</strong><p data-i18n="eq.how3.text">מגיעים בראש שקט, עושים התאמה קטנה בחנות, ולא שורפים זמן יקר של חופשה.</p></div></li>
+          </ol>
+        </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1168,7 +1248,7 @@
       <div class="section-header reveal">
         <span class="section-label" data-i18n="eq.pricing.label">מחירון יומי</span>
         <h2 class="section-title" id="pricing-title" data-i18n="eq.pricing.title">מחיר הוגן. בלי הפתעות.</h2>
-        <p class="section-sub" data-i18n="eq.pricing.sub">בחרו את רמת הציוד המתאימה לכם. חבילה מלאה (ציוד + קסדה + ביגוד) חוסכת לכם עד 20%.</p>
+        <p class="section-sub" data-i18n="eq.pricing.sub">המחירים של Ski Boom ללקוחות שלנו — בלארי, עם הערכה בשקלים. בוחרים סט לפי רמה, ומוסיפים פריטים לפי הצורך.</p>
       </div>
 
       <div class="urgency-bar reveal">
@@ -1181,72 +1261,93 @@
           <div class="pricing-header" role="row">
             <div class="pricing-cat-header" role="columnheader" data-i18n="eq.pricing.category">קטגוריה</div>
             <div class="pricing-level-header" role="columnheader">
-              <span data-i18n="eq.level.beginner">מתחיל</span>
-              <small data-i18n="eq.level.beginner.sub">קל וסלחני</small>
+              <span data-i18n="eq.level.kids">ילדים</span>
+              <small data-i18n="eq.level.kids.sub">מידות לגולשים צעירים</small>
             </div>
             <div class="pricing-level-header featured" role="columnheader">
-              <span data-i18n="eq.level.intermediate">בינוני</span>
-              <small data-i18n="eq.level.intermediate.sub">מאוזן ויציב</small>
+              <span data-i18n="eq.level.basic">בסיסי</span>
+              <small data-i18n="eq.level.basic.sub">למתחילים ובינוניים</small>
               <span class="popular-badge" data-i18n="eq.level.popular">הכי פופולרי</span>
             </div>
             <div class="pricing-level-header" role="columnheader">
-              <span data-i18n="eq.level.advanced">מתקדם</span>
-              <small data-i18n="eq.level.advanced.sub">מהיר ומדויק</small>
+              <span data-i18n="eq.level.pro">פרו</span>
+              <small data-i18n="eq.level.pro.sub">לגולשים מנוסים</small>
             </div>
           </div>
 
           <div class="pricing-row" role="row">
             <div class="pricing-cat-cell" role="rowheader">
-              <span class="eq-emoji">⛷️</span>
-              <div><strong data-i18n="eq.cat.ski">סקי + מקלות</strong><small data-i18n="eq.cat.ski.sub">סקי, מקלות ומגפיים</small></div>
+              <img class="eq-thumb" src="images/equipment/ski-set.webp" width="64" height="64" loading="lazy" decoding="async" alt="">
+              <div><strong data-i18n="eq.cat.skiset">סט סקי</strong><small data-i18n="eq.cat.skiset.sub">מגלשיים, מקלות ונעליים</small></div>
             </div>
-            <div class="price-cell" role="cell"><span class="price-amount">$25</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell featured" role="cell"><span class="price-amount">$35</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell" role="cell"><span class="price-amount">$50</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell" role="cell" data-gel="40"><span class="price-amount">₾40</span><span class="price-ils">≈ ₪54</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell featured" role="cell" data-gel="50"><span class="price-amount">₾50</span><span class="price-ils">≈ ₪68</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell" role="cell" data-gel="70"><span class="price-amount">₾70</span><span class="price-ils">≈ ₪95</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
           </div>
 
           <div class="pricing-row" role="row">
             <div class="pricing-cat-cell" role="rowheader">
-              <span class="eq-emoji">🏂</span>
-              <div><strong data-i18n="eq.cat.snowboard">סנובורד + מגפיים</strong><small data-i18n="eq.cat.snowboard.sub">גלשן ומגפיים</small></div>
+              <img class="eq-thumb" src="images/equipment/snowboard-set.webp" width="64" height="64" loading="lazy" decoding="async" alt="">
+              <div><strong data-i18n="eq.cat.sbset">סט סנובורד</strong><small data-i18n="eq.cat.sbset.sub">בורד, ביינדינג ונעליים</small></div>
             </div>
-            <div class="price-cell" role="cell"><span class="price-amount">$28</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell featured" role="cell"><span class="price-amount">$38</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell" role="cell"><span class="price-amount">$55</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-          </div>
-
-          <div class="pricing-row" role="row">
-            <div class="pricing-cat-cell" role="rowheader">
-              <span class="eq-emoji">🪖</span>
-              <div><strong data-i18n="eq.cat.helmet">קסדה + גוגלס</strong><small data-i18n="eq.cat.helmet.sub">בטיחות וראות</small></div>
-            </div>
-            <div class="price-cell same" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell same featured" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell same" role="cell"><span class="price-amount">$12</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-          </div>
-
-          <div class="pricing-row" role="row">
-            <div class="pricing-cat-cell" role="rowheader">
-              <span class="eq-emoji">🧥</span>
-              <div><strong data-i18n="eq.cat.clothing">ביגוד (מעיל + מכנס)</strong><small data-i18n="eq.cat.clothing.sub">תרמי · S/M/L/XL</small></div>
-            </div>
-            <div class="price-cell same" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell same featured" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-            <div class="price-cell same" role="cell"><span class="price-amount">$20</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
-          </div>
-
-          <div class="pricing-row pricing-package-row" role="row">
-            <div class="pricing-cat-cell" role="rowheader">
-              <span class="eq-emoji">📦</span>
-              <div><strong data-i18n="eq.package">חבילה מלאה</strong><small data-i18n="eq.package.sub">ציוד + קסדה + ביגוד</small></div>
-            </div>
-            <div class="price-cell pkg-cell" role="cell"><s class="price-original">$65</s><span class="price-amount">$52</span><span class="savings-badge" data-i18n="eq.save20">חיסכון 20%</span></div>
-            <div class="price-cell pkg-cell featured" role="cell"><s class="price-original">$85</s><span class="price-amount">$67</span><span class="savings-badge" data-i18n="eq.save21">חיסכון 21%</span></div>
-            <div class="price-cell pkg-cell" role="cell"><s class="price-original">$117</s><span class="price-amount">$94</span><span class="savings-badge" data-i18n="eq.save20">חיסכון 20%</span></div>
+            <div class="price-cell" role="cell" data-gel="60"><span class="price-amount">₾60</span><span class="price-ils">≈ ₪81</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell featured" role="cell" data-gel="70"><span class="price-amount">₾70</span><span class="price-ils">≈ ₪95</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
+            <div class="price-cell" role="cell" data-gel="90"><span class="price-amount">₾90</span><span class="price-ils">≈ ₪122</span><span class="price-unit" data-i18n="eq.per_day">ליום</span></div>
           </div>
         </div>
       </div>
-      <p class="pricing-note reveal" data-i18n="eq.pricing.note">המחירים לאדם ליום בדולר. הזמנה לכמה ימים מקנה הנחה נוספת — ציינו את התאריכים בטופס ונחזור עם הצעה מדויקת.</p>
+
+      <div class="items-head reveal">
+        <h3 class="items-title" data-i18n="eq.items.title">פריטים בודדים, אביזרים וביגוד</h3>
+        <p class="items-sub" data-i18n="eq.items.sub">כבר יש לכם חלק מהציוד? משלימים רק את מה שחסר.</p>
+      </div>
+      <div class="items-grid reveal">
+          <div class="items-card">
+            <div class="items-media">
+              <img src="images/equipment/ski-gear.webp" width="880" height="374" loading="lazy" decoding="async" alt="זוג מגלשי סקי עם משקפי סקי על רקע יער מושלג" data-i18n-alt="eq.img.ski">
+            </div>
+            <div class="items-body">
+            <h3 data-i18n="eq.items.ski">סקי</h3>
+            <ul class="items-list">
+              <li data-gel="40"><span data-i18n="eq.item.skis">מגלשיים בלבד</span><span class="items-price">₾40<small class="price-ils">≈ ₪54</small></span></li>
+              <li data-gel="70"><span data-i18n="eq.item.proskis">מגלשיים פרו</span><span class="items-price">₾70<small class="price-ils">≈ ₪95</small></span></li>
+              <li data-gel="30"><span data-i18n="eq.item.skiboots">נעלי סקי</span><span class="items-price">₾30<small class="price-ils">≈ ₪41</small></span></li>
+              <li data-gel="15"><span data-i18n="eq.item.poles">מקלות</span><span class="items-price">₾15<small class="price-ils">≈ ₪20</small></span></li>
+            </ul>
+            </div>
+          </div>
+          <div class="items-card">
+            <div class="items-media">
+              <img src="images/equipment/snowboard-gear.webp" width="880" height="374" loading="lazy" decoding="async" alt="נעל סנובורד מהודקת לביינדינג על הקרש" data-i18n-alt="eq.img.sb">
+            </div>
+            <div class="items-body">
+            <h3 data-i18n="eq.items.sb">סנובורד</h3>
+            <ul class="items-list">
+              <li data-gel="50"><span data-i18n="eq.item.board">סנובורד בלבד</span><span class="items-price">₾50<small class="price-ils">≈ ₪68</small></span></li>
+              <li data-gel="70"><span data-i18n="eq.item.proboard">סנובורד פרו</span><span class="items-price">₾70<small class="price-ils">≈ ₪95</small></span></li>
+              <li data-gel="40"><span data-i18n="eq.item.sbboots">נעלי סנובורד</span><span class="items-price">₾40<small class="price-ils">≈ ₪54</small></span></li>
+              <li data-gel="120"><span data-i18n="eq.item.stepon">סט Step-On (בורד, נעליים וביינדינג)</span><span class="items-price">₾120<small class="price-ils">≈ ₪162</small></span></li>
+            </ul>
+            </div>
+          </div>
+          <div class="items-card">
+            <div class="items-media">
+              <img src="images/equipment/accessories.webp" width="880" height="374" loading="lazy" decoding="async" alt="משקפי סקי שמשתקף בהם מסלול מושלג" data-i18n-alt="eq.img.acc">
+            </div>
+            <div class="items-body">
+            <h3 data-i18n="eq.items.acc">אביזרים וביגוד</h3>
+            <ul class="items-list">
+              <li data-gel="10"><span data-i18n="eq.item.helmet">קסדה</span><span class="items-price">₾10<small class="price-ils">≈ ₪14</small></span></li>
+              <li data-gel="10"><span data-i18n="eq.item.goggles">גוגלס</span><span class="items-price">₾10<small class="price-ils">≈ ₪14</small></span></li>
+              <li data-gel="10"><span data-i18n="eq.item.gloves">כפפות</span><span class="items-price">₾10<small class="price-ils">≈ ₪14</small></span></li>
+              <li data-gel="20"><span data-i18n="eq.item.jacket">מעיל</span><span class="items-price">₾20<small class="price-ils">≈ ₪27</small></span></li>
+              <li data-gel="20"><span data-i18n="eq.item.pants">מכנסיים</span><span class="items-price">₾20<small class="price-ils">≈ ₪27</small></span></li>
+              <li data-gel="20"><span data-i18n="eq.item.impact">מגיני ישבן</span><span class="items-price">₾20<small class="price-ils">≈ ₪27</small></span></li>
+            </ul>
+            </div>
+          </div>
+      </div>
+      <p class="pricing-note reveal" data-i18n="eq.pricing.note">המחירים לאדם ליום, בלארי גאורגי (₾). המחיר בשקלים הוא הערכה בלבד (1 ₾ ≈ 1.35 ₪) — יתרת התשלום מתבצעת בחנות ביום האיסוף. התמונות להמחשה בלבד.</p>
     </div>
   </section>
 
@@ -1291,7 +1392,7 @@
         <div class="preorder-copy reveal">
           <span class="section-label" data-i18n="eq.form.label">הזמנה מראש</span>
           <h2 data-i18n-html="eq.form.title">הגיעו מוכנים.<br/><span class="electric">הציוד כבר מחכה.</span></h2>
-          <p data-i18n="eq.form.sub">מלאו את הפרטים והמידות, ואנחנו נתאם עם Ski Boom / Fanatic שהציוד המדויק יחכה לכם ביום ההגעה — בלי לבזבז שעה בתור בחנות.</p>
+          <p data-i18n="eq.form.sub">מלאו את הפרטים והמידות, ואנחנו נתאם מול Ski Boom מבעוד מועד שהציוד המדויק יחכה לכם ביום ההגעה — התאמה קצרה בחנות, בלי לבזבז שעה בתור.</p>
           <ul class="preorder-trust-list">
             <li data-i18n="eq.form.trust1">ללא תשלום מראש — משלמים בחנות</li>
             <li data-i18n="eq.form.trust2">ביטול חינם עד 24 שעות לפני ההגעה</li>
@@ -1323,8 +1424,8 @@
                 <label for="eq-type" data-i18n="eq.type">סוג ציוד</label>
                 <select id="eq-type" name="equipmentType" required>
                   <option value="" data-i18n="eq.choose">בחרו...</option>
-                  <option value="ski" data-i18n="eq.type.ski">סקי + מקלות</option>
-                  <option value="snowboard" data-i18n="eq.type.snowboard">סנובורד + מגפיים</option>
+                  <option value="ski" data-i18n="eq.type.ski">סט סקי</option>
+                  <option value="snowboard" data-i18n="eq.type.snowboard">סט סנובורד</option>
                   <option value="both" data-i18n="eq.type.both">גם וגם (קבוצה)</option>
                 </select>
               </div>
@@ -1332,9 +1433,9 @@
                 <label for="eq-level" data-i18n="eq.level">רמת ציוד</label>
                 <select id="eq-level" name="equipmentLevel" required>
                   <option value="" data-i18n="eq.choose">בחרו...</option>
-                  <option value="beginner" data-i18n="eq.level.beginner">מתחיל</option>
-                  <option value="intermediate" data-i18n="eq.level.intermediate">בינוני</option>
-                  <option value="advanced" data-i18n="eq.level.advanced">מתקדם</option>
+                  <option value="kids" data-i18n="eq.level.kids">ילדים</option>
+                  <option value="basic" data-i18n="eq.level.basic">בסיסי</option>
+                  <option value="pro" data-i18n="eq.level.pro">פרו</option>
                 </select>
               </div>
             </div>
@@ -1461,17 +1562,17 @@
       <div class="faq-list">
         <div class="faq-item reveal">
           <button class="faq-question" aria-expanded="false">
-            <span data-i18n="eq.faq1.q">מה ההבדל בין מתחיל, בינוני ומתקדם?</span>
+            <span data-i18n="eq.faq1.q">מה ההבדל בין סט ילדים, בסיסי ופרו?</span>
             <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-answer"><p data-i18n="eq.faq1.a">ציוד מתחילים סלחני וקל לשליטה — מושלם למי שלומד. ציוד בינוני מאוזן ויציב, לרוכבים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר, למי ששולט בכל סוגי המסלולים ומחפש ביצועים.</p></div>
+          <div class="faq-answer"><p data-i18n="eq.faq1.a">סט בסיסי מתאים לרוב הגולשים — מתחילים ובינוניים, עם ציוד נוח וסלחני. סט פרו מיועד לגולשים מנוסים שמחפשים ציוד מהיר, נוקשה ומדויק יותר. סט ילדים מותאם במידות ובמשקל לגולשים הצעירים.</p></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-question" aria-expanded="false">
-            <span data-i18n="eq.faq2.q">איפה נמצאות החנויות בניו גודאורי?</span>
+            <span data-i18n="eq.faq2.q">איפה נמצאת החנות בניו גודאורי?</span>
             <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-answer"><p data-i18n="eq.faq2.a">שתי החנויות, Ski Boom ו-Fanatic, נמצאות בלב ניו גודאורי — במרחק הליכה קצר מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה.</p></div>
+          <div class="faq-answer"><p data-i18n="eq.faq2.a">Ski Boom, השותף הבלעדי שלנו, נמצאת בלב ניו גודאורי ליד Suite & LOFT 1 — במרחק הליכה קצר מהגונדולה ומרוב המלונות. אנחנו מתאמים הכל מראש, ואתם מגיעים רק להתאמה קצרה.</p></div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-question" aria-expanded="false">
@@ -1734,15 +1835,22 @@
       });
     });
 
-    // ── Pricing model ──
+    // ── Pricing model (Ski Boom, GEL per person per day) ──
+    // Keep in sync with api/equipment-payment.js
+    const GEL_TO_ILS = 1.35;
+    const toIls = function(gel) { return Math.round(gel * GEL_TO_ILS); };
     const PRICES = {
-      ski:       { beginner: 25, intermediate: 35, advanced: 50 },
-      snowboard: { beginner: 28, intermediate: 38, advanced: 55 },
-      helmet:    12,
-      clothing:  20,
-      goggles:   5
+      ski:       { kids: 40, basic: 50, pro: 70 },
+      snowboard: { kids: 60, basic: 70, pro: 90 },
+      helmet:    10,
+      jacket:    20,
+      pants:     20,
+      goggles:   10
     };
-    const PACKAGE_DISCOUNT = 0.20;
+    document.querySelectorAll('[data-gel]').forEach(function(el) {
+      const t = el.querySelector('.price-ils');
+      if (t) t.textContent = '≈ ₪' + toIls(Number(el.dataset.gel));
+    });
 
     function getLangText(key) {
       const lang = localStorage.getItem('gudauri-lang') || 'he';
@@ -1777,23 +1885,23 @@
       const base = (type === 'snowboard') ? PRICES.snowboard[level]
                  : (type === 'both') ? (PRICES.ski[level] + PRICES.snowboard[level])
                  : PRICES.ski[level];
-      const helmet = PRICES.helmet;
-      const clo = (jacket || pants) ? PRICES.clothing : 0;
-      const gog = (goggles === 'yes') ? PRICES.goggles : 0;
-      const daily = base + helmet + clo + gog;
-      const full = daily * days;
-      const pkg = Math.round(full * (1 - PACKAGE_DISCOUNT));
+      if (!base) { summary.classList.remove('show'); summary.innerHTML = ''; return; }
+      const helmet = document.getElementById('eq-helmet').value ? PRICES.helmet : 0;
+      const daily = base + helmet + (jacket ? PRICES.jacket : 0) + (pants ? PRICES.pants : 0) +
+                    ((goggles === 'yes') ? PRICES.goggles : 0);
+      const total = daily * days;
 
       const estLabel = getLangText('eq.summary.est') || 'הערכת עלות';
       const daysLabel = getLangText('eq.days_label') || 'ימי השכרה';
-      const pkgLabel = getLangText('eq.summary.pkg') || 'חבילה מלאה כולל קסדה';
-      summary.innerHTML = '<strong>' + estLabel + ':</strong> <s>$' + full + '</s> → ' +
-        '<strong class="electric" style="font-size:1.15rem">$' + pkg + '</strong> ' +
+      const pkgLabel = getLangText('eq.summary.pkg') || 'לאדם, כולל הפריטים שבחרתם';
+      summary.innerHTML = '<strong>' + estLabel + ':</strong> ' +
+        '<strong class="electric" style="font-size:1.15rem">₾' + total + '</strong> ' +
+        '<span style="color:var(--slate-200)">(≈ ₪' + toIls(total) + ')</span> ' +
         '<span style="color:var(--slate-400)">· ' + days + ' ' + daysLabel + ' · ' + pkgLabel + '</span>';
       summary.classList.add('show');
     }
 
-    ['eq-checkin','eq-checkout','eq-type','eq-level','eq-jacket','eq-pants','eq-goggles'].forEach(function(id) {
+    ['eq-checkin','eq-checkout','eq-type','eq-level','eq-helmet','eq-jacket','eq-pants','eq-goggles'].forEach(function(id) {
       const el = document.getElementById(id);
       if (el) el.addEventListener('change', updatePriceSummary);
     });
@@ -1819,10 +1927,10 @@
 
     // ── WhatsApp message builder ──
     function buildWhatsAppMessage(d) {
-      const TYPE = { ski: 'סקי + מקלות', snowboard: 'סנובורד + מגפיים', both: 'סקי + סנובורד' };
-      const LEVEL = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
+      const TYPE = { ski: 'סט סקי', snowboard: 'סט סנובורד', both: 'סקי + סנובורד' };
+      const LEVEL = { kids: 'ילדים', basic: 'בסיסי', pro: 'פרו' };
       const lines = [
-        'שלום! אני רוצה להזמין ציוד מראש (Ski Boom / Fanatic):',
+        'שלום! אני רוצה להזמין ציוד מראש (Ski Boom):',
         '━━━━━━━━━━━━━━━',
         '👤 שם: ' + (d.name || '—'),
         '📞 טלפון: ' + (d.phone || '—'),
@@ -1977,46 +2085,83 @@
         'nav.about': 'על גודאורי', 'nav.activities': 'פעילויות', 'nav.new_gudauri': 'ניו גודאורי', 'nav.equipment': 'ציוד', 'nav.accommodation': 'לינה',
         'nav.investors': 'ליווי משקיעים', 'nav.contact': 'צרו קשר', 'nav.cta_equipment': 'הזמן ציוד', 'nav.equipment_rental': 'השכרת ציוד',
         'eq.hero.kicker': 'ניו גודאורי · השכרת ציוד מקצועי',
-        'eq.hero.title': 'ציוד שמתאים לך —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.title': 'ציוד שמתאים לך —', 'eq.hero.title_accent': 'Ski Boom',
         'eq.hero.sub': 'סקי, סנובורד, קסדות, גוגלס וביגוד סקי. הזמינו מראש לפי מידות — והציוד יחכה לכם מוכן ביום ההגעה.',
         'eq.hero.urgency': 'מלאי מוגבל בעונת השיא — הזמינו מראש ובטחו את המידות שלכם',
         'eq.hero.cta_form': 'הזמן ציוד מראש', 'eq.hero.cta_wa': 'שאלות? וואטסאפ',
         'eq.hero.trust1': 'ציוד מחודש בכל עונה', 'eq.hero.trust2': '10% בלבד מראש', 'eq.hero.trust3': 'שירות בעברית',
-        'eq.stat1.label': 'תיירים השכירו דרכנו', 'eq.stat2.label': 'חנויות שותפות בניו גודאורי',
+        'eq.stat1.label': 'תיירים השכירו דרכנו', 'eq.stat2.label': 'שותף בלעדי בניו גודאורי',
         'eq.stat3.label': 'רמות ציוד לכל גולש', 'eq.stat4.label': 'ציוד מקצועי מחודש',
-        'eq.shops.label': 'החנויות שלנו', 'eq.shops.title': 'שתי חנויות. סטנדרט אחד — מקצועי.',
-        'eq.shops.sub': 'עובדים עם שתי חנויות הציוד המובילות בניו גודאורי. אתם בוחרים — אנחנו מתאמים שהציוד יחכה מוכן.',
-        'eq.shop1.badge': 'השכרה + שירות',
-        'eq.shop1.desc': 'מבחר רחב של סקי וסנובורד לכל הרמות, עם צוות שמתאים לכם את הציוד המדויק. מתמחים במתחילים שצריכים יד מכוונת ובמתקדמים שמחפשים ביצועים.',
+        'eq.shops.label': 'השותף הבלעדי שלנו', 'eq.shops.title': 'Ski Boom. שיתוף פעולה בלעדי — רק ללקוחות שלנו.',
+        'eq.shops.sub': 'בחרנו לעבוד עם חנות אחת ולעשות את זה עד הסוף. אתם מזמינים מראש — אנחנו דואגים לכל השאר מבעוד מועד.',
+        'eq.shop1.badge': 'שותף בלעדי · Gudauri Helper',
+        'eq.shop1.desc': 'חנות ההשכרה המקצועית של ניו גודאורי — סקי, סנובורד, מגפיים, קסדות, מקלות וגוגלס לכל הרמות. במסגרת השיתוף הבלעדי, הציוד שלכם נשמר לפי המידות עוד לפני שנחתתם.',
         'eq.shop1.location': 'ליד Suite & LOFT 1 · מרכז ניו גודאורי', 'eq.shop1.hours': 'פתוח כל יום · 08:00–20:00', 'eq.shop1.cta': 'שאלו על Ski Boom',
-        'eq.shop2.badge': 'ציוד פרימיום',
-        'eq.shop2.desc': 'חנות לחובבי הספורט — מותגים מובילים, ביגוד תרמי איכותי וציוד ברמה גבוהה. הבחירה של מי שרוצה את ההרגשה הכי טובה על המדרון.',
-        'eq.shop2.location': 'ליד בלוק 4 · מרכז ניו גודאורי', 'eq.shop2.hours': 'פתוח כל יום · 08:00–20:00', 'eq.shop2.cta': 'שאלו על Fanatic',
+        'eq.shop1.perk1': 'הציוד שמור לפי המידות שלכם — עוד לפני ההגעה',
+        'eq.shop1.perk2': 'התאמה מקצועית קצרה בחנות — ויוצאים למדרון',
+        'eq.shop1.perk3': 'ציוד מתוחזק, מושחז ובטוח בכל עונה',
+        'eq.shop1.perk4': 'השכרה ליום, לשבוע או לכל העונה',
+        'eq.how.title': 'איך זה עובד',
+        'eq.how1.title': 'מזמינים מראש',
+        'eq.how1.text': 'ממלאים תאריכים, סוג ציוד ומידות בטופס — לוקח 2 דקות.',
+        'eq.how2.title': 'אנחנו דואגים להכל',
+        'eq.how2.text': 'מתאמים מול Ski Boom מבעוד מועד — הציוד שלכם מחכה מוכן ושמור.',
+        'eq.how3.title': 'התאמה קצרה — ולמדרון',
+        'eq.how3.text': 'מגיעים בראש שקט, עושים התאמה קטנה בחנות, ולא שורפים זמן יקר של חופשה.',
         'eq.pricing.label': 'מחירון יומי', 'eq.pricing.title': 'מחיר הוגן. בלי הפתעות.',
-        'eq.pricing.sub': 'בחרו את רמת הציוד המתאימה לכם. חבילה מלאה (ציוד + קסדה + ביגוד) חוסכת לכם עד 20%.',
+        'eq.pricing.sub': 'המחירים של Ski Boom ללקוחות שלנו — בלארי, עם הערכה בשקלים. בוחרים סט לפי רמה, ומוסיפים פריטים לפי הצורך.',
         'eq.pricing.urgency': 'בעונת השיא הציוד אוזל מהר — הזמנה מראש מבטיחה לכם את המידה והרמה הנכונה',
         'eq.pricing.category': 'קטגוריה',
-        'eq.level.beginner': 'מתחיל', 'eq.level.beginner.sub': 'קל וסלחני',
-        'eq.level.intermediate': 'בינוני', 'eq.level.intermediate.sub': 'מאוזן ויציב',
-        'eq.level.advanced': 'מתקדם', 'eq.level.advanced.sub': 'מהיר ומדויק', 'eq.level.popular': 'הכי פופולרי',
-        'eq.cat.ski': 'סקי + מקלות', 'eq.cat.ski.sub': 'סקי, מקלות ומגפיים',
-        'eq.cat.snowboard': 'סנובורד + מגפיים', 'eq.cat.snowboard.sub': 'גלשן ומגפיים',
-        'eq.cat.helmet': 'קסדה + גוגלס', 'eq.cat.helmet.sub': 'בטיחות וראות',
-        'eq.cat.clothing': 'ביגוד (מעיל + מכנס)', 'eq.cat.clothing.sub': 'תרמי · S/M/L/XL',
-        'eq.per_day': 'ליום', 'eq.package': 'חבילה מלאה', 'eq.package.sub': 'ציוד + קסדה + ביגוד',
-        'eq.save20': 'חיסכון 20%', 'eq.save21': 'חיסכון 21%',
-        'eq.pricing.note': 'המחירים לאדם ליום בדולר. הזמנה לכמה ימים מקנה הנחה נוספת — ציינו את התאריכים בטופס ונחזור עם הצעה מדויקת.',
+        'eq.level.kids': 'ילדים',
+        'eq.level.kids.sub': 'מידות לגולשים צעירים',
+        'eq.level.basic': 'בסיסי',
+        'eq.level.basic.sub': 'למתחילים ובינוניים',
+        'eq.level.pro': 'פרו',
+        'eq.level.pro.sub': 'לגולשים מנוסים',
+        'eq.cat.skiset': 'סט סקי',
+        'eq.cat.skiset.sub': 'מגלשיים, מקלות ונעליים',
+        'eq.cat.sbset': 'סט סנובורד',
+        'eq.cat.sbset.sub': 'בורד, ביינדינג ונעליים',
+        'eq.items.title': 'פריטים בודדים, אביזרים וביגוד',
+        'eq.items.sub': 'כבר יש לכם חלק מהציוד? משלימים רק את מה שחסר.',
+        'eq.items.ski': 'סקי',
+        'eq.items.sb': 'סנובורד',
+        'eq.items.acc': 'אביזרים וביגוד',
+        'eq.item.skis': 'מגלשיים בלבד',
+        'eq.item.proskis': 'מגלשיים פרו',
+        'eq.item.skiboots': 'נעלי סקי',
+        'eq.item.poles': 'מקלות',
+        'eq.item.board': 'סנובורד בלבד',
+        'eq.item.proboard': 'סנובורד פרו',
+        'eq.item.sbboots': 'נעלי סנובורד',
+        'eq.item.stepon': 'סט Step-On (בורד, נעליים וביינדינג)',
+        'eq.item.helmet': 'קסדה',
+        'eq.item.goggles': 'גוגלס',
+        'eq.item.gloves': 'כפפות',
+        'eq.item.jacket': 'מעיל',
+        'eq.item.pants': 'מכנסיים',
+        'eq.item.impact': 'מגיני ישבן',
+        
+        'eq.level.popular': 'הכי פופולרי',
+        
+        
+        'eq.per_day': 'ליום', 
+        'eq.pricing.note': 'המחירים לאדם ליום, בלארי גאורגי (₾). המחיר בשקלים הוא הערכה בלבד (1 ₾ ≈ 1.35 ₪) — יתרת התשלום מתבצעת בחנות ביום האיסוף. התמונות להמחשה בלבד.',
+        'eq.img.rack': 'מגלשי סקי מסודרים בשורה ליד בקתת עץ בהרים',
+        'eq.img.ski': 'זוג מגלשי סקי עם משקפי סקי על רקע יער מושלג',
+        'eq.img.sb': 'נעל סנובורד מהודקת לביינדינג על הקרש',
+        'eq.img.acc': 'משקפי סקי שמשתקף בהם מסלול מושלג',
         'eq.trust.label': 'למה דרכנו', 'eq.trust.title': 'שלוש סיבות לישון רגוע',
         'eq.trust1.title': 'ציוד מקצועי ומחודש', 'eq.trust1.text': 'הציוד עובר תחזוקה והשחזה בכל עונה. אתם מקבלים סקי וגלשנים במצב מעולה — לא ציוד שחוק שמקלקל את היום על המדרון.',
         'eq.trust2.title': '10% מראש. 100% שקט נפשי.', 'eq.trust2.text': 'תשלום קטן של 10% נועל את הציוד שלכם ומבטיח שהמידות שמורות. את כל השאר משלמים ישירות בחנות ביום האיסוף — ואתם מגיעים רגועים ובטוחים.',
         'eq.trust3.title': 'שירות וליווי בעברית', 'eq.trust3.text': 'לא צריך להתמודד עם השפה או לתהות אם הבינו אתכם. אנחנו מתאמים מולכם בעברית ודואגים שהכל יהיה מוכן בדיוק כמו שביקשתם.',
         'eq.form.label': 'הזמנה מראש', 'eq.form.title': 'הגיעו מוכנים.<br/><span class="electric">הציוד כבר מחכה.</span>',
-        'eq.form.sub': 'מלאו את הפרטים והמידות, ואנחנו נתאם עם Ski Boom / Fanatic שהציוד המדויק יחכה לכם ביום ההגעה — בלי לבזבז שעה בתור בחנות.',
+        'eq.form.sub': 'מלאו את הפרטים והמידות, ואנחנו נתאם מול Ski Boom מבעוד מועד שהציוד המדויק יחכה לכם ביום ההגעה — התאמה קצרה בחנות, בלי לבזבז שעה בתור.',
         'eq.form.trust1': '10% דמי אישור — השאר בחנות', 'eq.form.trust2': 'ביטול חינם עד 24 שעות לפני ההגעה',
         'eq.form.trust3': 'החלפת מידה או רמה בחנות ללא עלות', 'eq.form.trust4': 'מענה אנושי בעברית לכל שאלה',
         'eq.fs.dates': 'תאריכי השכרה', 'eq.checkin': 'תאריך הגעה', 'eq.checkout': 'תאריך עזיבה', 'eq.days_label': 'ימי השכרה',
         'eq.fs.equipment': 'סוג ורמת ציוד', 'eq.type': 'סוג ציוד', 'eq.choose': 'בחרו...', 'eq.none': 'ללא',
-        'eq.type.ski': 'סקי + מקלות', 'eq.type.snowboard': 'סנובורד + מגפיים', 'eq.type.both': 'גם וגם (קבוצה)', 'eq.level': 'רמת ציוד',
+        'eq.type.ski': 'סט סקי', 'eq.type.snowboard': 'סט סנובורד', 'eq.type.both': 'גם וגם (קבוצה)', 'eq.level': 'רמת ציוד',
         'eq.fs.sizing': 'מידות', 'eq.boot': 'מידת נעל (EU)', 'eq.helmet': 'מידת קסדה', 'eq.jacket': 'מידת מעיל', 'eq.pants': 'מידת מכנסיים',
         'eq.goggles': 'משקפי סקי (גוגלס)', 'eq.goggles.yes': 'כן, צריך גוגלס', 'eq.goggles.no': 'לא, יש לי משלי',
         'eq.fs.personal': 'פרטים אישיים', 'eq.name': 'שם מלא', 'eq.phone': 'טלפון', 'eq.email': 'מייל (אופציונלי)',
@@ -2029,12 +2174,12 @@
         'eq.pay.modal.title': 'תשלום מאובטח — מקדמה 10%',
         'eq.pay.loading': 'מעביר לדף תשלום מאובטח...',
         'eq.err.pay_data': 'נא למלא תאריכים, סוג ורמת ציוד לפני תשלום.',
-        'eq.summary.est': 'הערכת עלות', 'eq.summary.pkg': 'חבילה מלאה כולל קסדה',
+        'eq.summary.est': 'הערכת עלות', 'eq.summary.pkg': 'לאדם, כולל הפריטים שבחרתם',
         'eq.sending': 'שולח...', 'eq.success': 'ההזמנה נשלחה! נחזור אליכם בהקדם לתיאום הציוד.',
         'eq.err.required': 'נא למלא שם וטלפון.', 'eq.err.terms': 'יש לאשר את התקנון ומדיניות הפרטיות.', 'eq.err.send': 'לא הצלחנו לשלוח כרגע. נסו שוב או פנו בוואטסאפ.',
         'eq.faq.label': 'שאלות נפוצות', 'eq.faq.title': 'כל מה שרציתם לדעת',
-        'eq.faq1.q': 'מה ההבדל בין מתחיל, בינוני ומתקדם?', 'eq.faq1.a': 'ציוד מתחילים סלחני וקל לשליטה — מושלם למי שלומד. ציוד בינוני מאוזן ויציב, לרוכבים שכבר יורדים בביטחון. ציוד מתקדם נוקשה ומהיר, למי ששולט בכל סוגי המסלולים ומחפש ביצועים.',
-        'eq.faq2.q': 'איפה נמצאות החנויות בניו גודאורי?', 'eq.faq2.a': 'שתי החנויות, Ski Boom ו-Fanatic, נמצאות בלב ניו גודאורי — במרחק הליכה קצר מהגונדולה ומרוב המלונות. נתאם איתכם איסוף נוח ביום ההגעה.',
+        'eq.faq1.q': 'מה ההבדל בין סט ילדים, בסיסי ופרו?', 'eq.faq1.a': 'סט בסיסי מתאים לרוב הגולשים — מתחילים ובינוניים, עם ציוד נוח וסלחני. סט פרו מיועד לגולשים מנוסים שמחפשים ציוד מהיר, נוקשה ומדויק יותר. סט ילדים מותאם במידות ובמשקל לגולשים הצעירים.',
+        'eq.faq2.q': 'איפה נמצאת החנות בניו גודאורי?', 'eq.faq2.a': 'Ski Boom, השותף הבלעדי שלנו, נמצאת בלב ניו גודאורי ליד Suite & LOFT 1 — במרחק הליכה קצר מהגונדולה ומרוב המלונות. אנחנו מתאמים הכל מראש, ואתם מגיעים רק להתאמה קצרה.',
         'eq.faq3.q': 'מתי משלמים על הציוד?', 'eq.faq3.a': '10% מראש לנעילת ההזמנה — זה מבטיח שהציוד והמידות שמורות לכם. את הסכום הנותר (90%) משלמים ישירות בחנות ביום האיסוף, בלי הפתעות.',
         'eq.faq4.q': 'מה אם הציוד או המידה לא מתאימים?', 'eq.faq4.a': 'מחליפים בחנות ללא עלות. אם משהו לא מרגיש טוב על המדרון — חוזרים ומתאימים מידה או רמת ציוד עד שזה מושלם.',
         'eq.faq5.q': 'אפשר לשנות ציוד באמצע השהייה?', 'eq.faq5.a': 'בהחלט. רוצים לעבור מסקי לסנובורד או לשדרג רמה? אפשר לעשות זאת בחנות בכל רגע, ונחשב רק את ההפרש.',
@@ -2053,46 +2198,77 @@
         'nav.about': 'About Gudauri', 'nav.activities': 'Activities', 'nav.new_gudauri': 'New Gudauri', 'nav.equipment': 'Rentals', 'nav.accommodation': 'Accommodation',
         'nav.investors': 'Investor Services', 'nav.contact': 'Contact', 'nav.cta_equipment': 'Book Gear', 'nav.equipment_rental': 'Gear Rental',
         'eq.hero.kicker': 'New Gudauri · Professional Gear Rental',
-        'eq.hero.title': 'Gear That Fits You —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.title': 'Gear That Fits You —', 'eq.hero.title_accent': 'Ski Boom',
         'eq.hero.sub': 'Skis, snowboards, helmets, goggles and ski clothing. Pre-order by size — and your gear is ready and waiting on arrival day.',
         'eq.hero.urgency': 'Limited stock in peak season — pre-order and lock in your sizes',
         'eq.hero.cta_form': 'Pre-Order Gear', 'eq.hero.cta_wa': 'Questions? WhatsApp',
         'eq.hero.trust1': 'Refreshed every season', 'eq.hero.trust2': 'Just 10% upfront', 'eq.hero.trust3': 'Service in your language',
-        'eq.stat1.label': 'Tourists rented with us', 'eq.stat2.label': 'Partner shops in New Gudauri',
+        'eq.stat1.label': 'Tourists rented with us', 'eq.stat2.label': 'Exclusive partner in New Gudauri',
         'eq.stat3.label': 'Gear levels per skier', 'eq.stat4.label': 'Professional refreshed gear',
-        'eq.shops.label': 'Our Shops', 'eq.shops.title': 'Two shops. One standard — professional.',
-        'eq.shops.sub': 'We work with the two leading gear shops in New Gudauri. You choose — we make sure your gear is ready.',
-        'eq.shop1.badge': 'Rental + Service',
-        'eq.shop1.desc': 'A wide range of skis and snowboards for all levels, with a team that fits you the exact gear. Specialists for beginners who need guidance and advanced riders chasing performance.',
+        'eq.shops.label': 'Our Exclusive Partner', 'eq.shops.title': 'Ski Boom. An exclusive partnership — just for our clients.',
+        'eq.shops.sub': 'We chose to work with one shop and do it properly. You book ahead — we take care of everything else in advance.',
+        'eq.shop1.badge': 'Exclusive partner · Gudauri Helper',
+        'eq.shop1.desc': 'New Gudauri\'s professional rental shop — skis, snowboards, boots, helmets, poles and goggles for every level. Through our exclusive partnership, your gear is reserved in your sizes before you even land.',
         'eq.shop1.location': 'Next to Suite & LOFT 1 · New Gudauri center', 'eq.shop1.hours': 'Open daily · 08:00–20:00', 'eq.shop1.cta': 'Ask about Ski Boom',
-        'eq.shop2.badge': 'Premium Gear',
-        'eq.shop2.desc': 'A shop for sport lovers — leading brands, quality thermal wear and high-end gear. The choice for those who want the best feel on the slope.',
-        'eq.shop2.location': 'Next to Block 4 · New Gudauri center', 'eq.shop2.hours': 'Open daily · 08:00–20:00', 'eq.shop2.cta': 'Ask about Fanatic',
+        'eq.shop1.perk1': 'Gear reserved in your sizes — before you arrive',
+        'eq.shop1.perk2': 'A quick professional fitting at the shop — then hit the slope',
+        'eq.shop1.perk3': 'Maintained, sharpened, safety-certified gear every season',
+        'eq.shop1.perk4': 'Daily, weekly or full-season rental',
+        'eq.how.title': 'How it works','eq.how1.title':'Book ahead','eq.how1.text':'Add your dates, gear type and sizes in the form — takes 2 minutes.','eq.how2.title':'We handle everything','eq.how2.text':'We coordinate with Ski Boom in advance — your gear is reserved and ready.','eq.how3.title':'Quick fitting — then ski','eq.how3.text':'Arrive relaxed, do a short fitting at the shop, and don\'t burn precious holiday time.',
         'eq.pricing.label': 'Daily Pricing', 'eq.pricing.title': 'Fair price. No surprises.',
-        'eq.pricing.sub': 'Choose the gear level that fits you. A full package (gear + helmet + clothing) saves you up to 20%.',
+        'eq.pricing.sub': 'Ski Boom\'s prices for our clients — in Georgian lari, with a shekel estimate. Pick a set by level and add items as needed.',
         'eq.pricing.urgency': 'In peak season gear runs out fast — pre-ordering guarantees your size and level',
         'eq.pricing.category': 'Category',
-        'eq.level.beginner': 'Beginner', 'eq.level.beginner.sub': 'Easy & forgiving',
-        'eq.level.intermediate': 'Intermediate', 'eq.level.intermediate.sub': 'Balanced & stable',
-        'eq.level.advanced': 'Advanced', 'eq.level.advanced.sub': 'Fast & precise', 'eq.level.popular': 'Most Popular',
-        'eq.cat.ski': 'Skis + Poles', 'eq.cat.ski.sub': 'Skis, poles & boots',
-        'eq.cat.snowboard': 'Snowboard + Boots', 'eq.cat.snowboard.sub': 'Board & boots',
-        'eq.cat.helmet': 'Helmet + Goggles', 'eq.cat.helmet.sub': 'Safety & vision',
-        'eq.cat.clothing': 'Clothing (Jacket + Pants)', 'eq.cat.clothing.sub': 'Thermal · S/M/L/XL',
-        'eq.per_day': '/day', 'eq.package': 'Full Package', 'eq.package.sub': 'Gear + helmet + clothing',
-        'eq.save20': 'Save 20%', 'eq.save21': 'Save 21%',
-        'eq.pricing.note': 'Prices per person per day in USD. Multi-day bookings get an extra discount — add your dates in the form and we\'ll reply with an exact quote.',
+        'eq.level.kids': 'Kids',
+        'eq.level.kids.sub': 'Sized for young riders',
+        'eq.level.basic': 'Basic',
+        'eq.level.basic.sub': 'Beginners & intermediates',
+        'eq.level.pro': 'Pro',
+        'eq.level.pro.sub': 'For experienced riders',
+        'eq.cat.skiset': 'Ski Set',
+        'eq.cat.skiset.sub': 'Skis, poles & boots',
+        'eq.cat.sbset': 'Snowboard Set',
+        'eq.cat.sbset.sub': 'Board, bindings & boots',
+        'eq.items.title': 'Single Items, Accessories & Clothing',
+        'eq.items.sub': 'Already have some gear? Just add what\'s missing.',
+        'eq.items.ski': 'Ski',
+        'eq.items.sb': 'Snowboard',
+        'eq.items.acc': 'Accessories & clothing',
+        'eq.item.skis': 'Skis only',
+        'eq.item.proskis': 'Pro skis',
+        'eq.item.skiboots': 'Ski boots',
+        'eq.item.poles': 'Poles',
+        'eq.item.board': 'Snowboard only',
+        'eq.item.proboard': 'Pro snowboard',
+        'eq.item.sbboots': 'Snowboard boots',
+        'eq.item.stepon': 'Step-On set (board, boots & bindings)',
+        'eq.item.helmet': 'Helmet',
+        'eq.item.goggles': 'Goggles',
+        'eq.item.gloves': 'Gloves',
+        'eq.item.jacket': 'Jacket',
+        'eq.item.pants': 'Pants',
+        'eq.item.impact': 'Impact shorts',
+        
+        'eq.level.popular': 'Most Popular',
+        
+        
+        'eq.per_day': '/day', 
+        'eq.pricing.note': 'Prices per person per day in Georgian lari (₾). The shekel price is an estimate only (1 ₾ ≈ 1.35 ₪) — the balance is paid at the shop on pickup day. Photos are for illustration only.',
+        'eq.img.rack': 'Skis lined up beside a wooden mountain hut',
+        'eq.img.ski': 'A pair of skis with ski goggles against a snowy forest',
+        'eq.img.sb': 'Snowboard boot strapped into its binding',
+        'eq.img.acc': 'Ski goggles reflecting a snowy slope',
         'eq.trust.label': 'Why Through Us', 'eq.trust.title': 'Three Reasons to Rest Easy',
         'eq.trust1.title': 'Professional, Refreshed Gear', 'eq.trust1.text': 'Gear is maintained and sharpened every season. You get skis and boards in excellent condition — not worn-out equipment that ruins your day on the slope.',
         'eq.trust2.title': '10% Now. 100% Peace of Mind.', 'eq.trust2.text': 'A small 10% deposit locks in your gear and reserves your exact sizes. The remaining balance is paid directly at the store on pickup day — no stress, no surprises.',
         'eq.trust3.title': 'Service & Support in Your Language', 'eq.trust3.text': 'No need to struggle with the language or wonder if you were understood. We coordinate with you directly and make sure everything is ready exactly as you asked.',
         'eq.form.label': 'Pre-Order', 'eq.form.title': 'Arrive ready.<br/><span class="electric">Your gear is waiting.</span>',
-        'eq.form.sub': 'Fill in your details and sizes, and we\'ll coordinate with Ski Boom / Fanatic so your exact gear is waiting on arrival day — no wasting an hour in line at the shop.',
+        'eq.form.sub': 'Fill in your details and sizes, and we\'ll coordinate with Ski Boom in advance so your exact gear is waiting on arrival day — a quick fitting at the shop, no wasting an hour in line.',
         'eq.form.trust1': '10% deposit — rest paid at the shop', 'eq.form.trust2': 'Free cancellation up to 24h before arrival',
         'eq.form.trust3': 'Swap size or level at the shop, free', 'eq.form.trust4': 'Real human answers in your language',
         'eq.fs.dates': 'Rental Dates', 'eq.checkin': 'Arrival date', 'eq.checkout': 'Departure date', 'eq.days_label': 'rental days',
         'eq.fs.equipment': 'Equipment Type & Level', 'eq.type': 'Equipment type', 'eq.choose': 'Choose...', 'eq.none': 'None',
-        'eq.type.ski': 'Skis + Poles', 'eq.type.snowboard': 'Snowboard + Boots', 'eq.type.both': 'Both (group)', 'eq.level': 'Gear level',
+        'eq.type.ski': 'Ski Set', 'eq.type.snowboard': 'Snowboard Set', 'eq.type.both': 'Both (group)', 'eq.level': 'Gear level',
         'eq.fs.sizing': 'Sizes', 'eq.boot': 'Boot size (EU)', 'eq.helmet': 'Helmet size', 'eq.jacket': 'Jacket size', 'eq.pants': 'Pants size',
         'eq.goggles': 'Ski goggles', 'eq.goggles.yes': 'Yes, I need goggles', 'eq.goggles.no': 'No, I have my own',
         'eq.fs.personal': 'Personal Details', 'eq.name': 'Full name', 'eq.phone': 'Phone', 'eq.email': 'Email (optional)',
@@ -2105,12 +2281,12 @@
         'eq.pay.modal.title': 'Secure Payment — 10% Deposit',
         'eq.pay.loading': 'Redirecting to secure payment...',
         'eq.err.pay_data': 'Please fill in dates, equipment type and level before paying.',
-        'eq.summary.est': 'Estimated cost', 'eq.summary.pkg': 'full package incl. helmet',
+        'eq.summary.est': 'Estimated cost', 'eq.summary.pkg': 'per person, incl. selected items',
         'eq.sending': 'Sending...', 'eq.success': 'Order sent! We\'ll get back to you shortly to arrange your gear.',
         'eq.err.required': 'Please fill in name and phone.', 'eq.err.terms': 'Please accept the Terms and Privacy Policy.', 'eq.err.send': 'Couldn\'t send right now. Try again or reach us on WhatsApp.',
         'eq.faq.label': 'FAQ', 'eq.faq.title': 'Everything You Wanted to Know',
-        'eq.faq1.q': 'What\'s the difference between beginner, intermediate and advanced?', 'eq.faq1.a': 'Beginner gear is forgiving and easy to control — perfect for learners. Intermediate gear is balanced and stable, for riders who already descend confidently. Advanced gear is stiff and fast, for those who master all run types and want performance.',
-        'eq.faq2.q': 'Where are the shops in New Gudauri?', 'eq.faq2.a': 'Both shops, Ski Boom and Fanatic, are in the heart of New Gudauri — a short walk from the gondola and most hotels. We\'ll arrange a convenient pickup on your arrival day.',
+        'eq.faq1.q': 'What\'s the difference between Kids, Basic and Pro?', 'eq.faq1.a': 'The Basic set suits most riders — beginners and intermediates — with comfortable, forgiving gear. The Pro set is for experienced riders who want faster, stiffer and more precise equipment. The Kids set is sized and weighted for young riders.',
+        'eq.faq2.q': 'Where is the shop in New Gudauri?', 'eq.faq2.a': 'Ski Boom, our exclusive partner, is in the heart of New Gudauri next to Suite & LOFT 1 — a short walk from the gondola and most hotels. We arrange everything ahead, so you only come in for a quick fitting.',
         'eq.faq3.q': 'When do I pay for the gear?', 'eq.faq3.a': 'A 10% deposit is required upfront to lock in your booking and reserve your gear and sizes. The remaining 90% is paid directly at the store on pickup day — simple and transparent.',
         'eq.faq4.q': 'What if the gear or size doesn\'t fit?', 'eq.faq4.a': 'Swap at the shop, free of charge. If something doesn\'t feel right on the slope — come back and we\'ll adjust the size or gear level until it\'s perfect.',
         'eq.faq5.q': 'Can I change gear mid-stay?', 'eq.faq5.a': 'Absolutely. Want to switch from skis to a snowboard or upgrade a level? You can do it at the shop anytime, and we\'ll only charge the difference.',
@@ -2129,46 +2305,83 @@
         'nav.about': 'О Гудаури', 'nav.activities': 'Активности', 'nav.new_gudauri': 'Новый Гудаури', 'nav.equipment': 'Прокат', 'nav.accommodation': 'Проживание',
         'nav.investors': 'Инвесторам', 'nav.contact': 'Контакты', 'nav.cta_equipment': 'Забронировать', 'nav.equipment_rental': 'Прокат снаряжения',
         'eq.hero.kicker': 'Новый Гудаури · Профессиональный прокат',
-        'eq.hero.title': 'Снаряжение под вас —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.title': 'Снаряжение под вас —', 'eq.hero.title_accent': 'Ski Boom',
         'eq.hero.sub': 'Лыжи, сноуборды, шлемы, маски и лыжная одежда. Забронируйте заранее по размерам — и снаряжение ждёт вас готовым в день приезда.',
         'eq.hero.urgency': 'Ограниченный запас в пик сезона — бронируйте заранее и закрепите свои размеры',
         'eq.hero.cta_form': 'Забронировать снаряжение', 'eq.hero.cta_wa': 'Вопросы? WhatsApp',
         'eq.hero.trust1': 'Обновляется каждый сезон', 'eq.hero.trust2': 'Всего 10% заранее', 'eq.hero.trust3': 'Сервис на вашем языке',
-        'eq.stat1.label': 'Туристов арендовали у нас', 'eq.stat2.label': 'Магазина-партнёра в Гудаури',
+        'eq.stat1.label': 'Туристов арендовали у нас', 'eq.stat2.label': 'Эксклюзивный партнёр в Гудаури',
         'eq.stat3.label': 'Уровня снаряжения', 'eq.stat4.label': 'Профессиональное снаряжение',
-        'eq.shops.label': 'Наши магазины', 'eq.shops.title': 'Два магазина. Один стандарт — профессиональный.',
-        'eq.shops.sub': 'Мы работаем с двумя ведущими магазинами снаряжения в Новом Гудаури. Вы выбираете — мы готовим снаряжение.',
-        'eq.shop1.badge': 'Прокат + сервис',
-        'eq.shop1.desc': 'Широкий выбор лыж и сноубордов для всех уровней, команда подберёт вам точное снаряжение. Специалисты для новичков, которым нужна помощь, и продвинутых райдеров.',
+        'eq.shops.label': 'Наш эксклюзивный партнёр', 'eq.shops.title': 'Ski Boom. Эксклюзивное партнёрство — только для наших клиентов.',
+        'eq.shops.sub': 'Мы выбрали один магазин и работаем с ним по-настоящему. Вы бронируете заранее — обо всём остальном мы позаботимся заблаговременно.',
+        'eq.shop1.badge': 'Эксклюзивный партнёр · Gudauri Helper',
+        'eq.shop1.desc': 'Профессиональный прокат Нового Гудаури — лыжи, сноуборды, ботинки, шлемы, палки и маски для любого уровня. Благодаря эксклюзивному партнёрству снаряжение резервируется по вашим размерам ещё до приезда.',
         'eq.shop1.location': 'Рядом с Suite & LOFT 1 · центр Нового Гудаури', 'eq.shop1.hours': 'Открыто ежедневно · 08:00–20:00', 'eq.shop1.cta': 'Спросить о Ski Boom',
-        'eq.shop2.badge': 'Премиум снаряжение',
-        'eq.shop2.desc': 'Магазин для любителей спорта — ведущие бренды, качественная термоодежда и снаряжение высокого класса. Выбор тех, кто хочет лучшие ощущения на склоне.',
-        'eq.shop2.location': 'Рядом с блоком 4 · центр Нового Гудаури', 'eq.shop2.hours': 'Открыто ежедневно · 08:00–20:00', 'eq.shop2.cta': 'Спросить о Fanatic',
+        'eq.shop1.perk1': 'Снаряжение зарезервировано по вашим размерам — ещё до приезда',
+        'eq.shop1.perk2': 'Короткая профессиональная примерка — и сразу на склон',
+        'eq.shop1.perk3': 'Обслуженное, заточенное и безопасное снаряжение каждый сезон',
+        'eq.shop1.perk4': 'Прокат на день, неделю или весь сезон',
+        'eq.how.title': 'Как это работает',
+        'eq.how1.title': 'Бронируете заранее',
+        'eq.how1.text': 'Укажите даты, тип снаряжения и размеры в форме — 2 минуты.',
+        'eq.how2.title': 'Мы берём всё на себя',
+        'eq.how2.text': 'Заранее согласуем с Ski Boom — снаряжение зарезервировано и готово.',
+        'eq.how3.title': 'Короткая примерка — и на склон',
+        'eq.how3.text': 'Приезжаете спокойно, быстро примеряете в магазине и не теряете драгоценное время отпуска.',
         'eq.pricing.label': 'Цены за день', 'eq.pricing.title': 'Честная цена. Без сюрпризов.',
-        'eq.pricing.sub': 'Выберите подходящий уровень снаряжения. Полный пакет (снаряжение + шлем + одежда) экономит до 20%.',
+        'eq.pricing.sub': 'Цены Ski Boom для наших клиентов — в грузинских лари, с примерным пересчётом в шекели. Выберите комплект по уровню и добавьте нужные позиции.',
         'eq.pricing.urgency': 'В пик сезона снаряжение быстро заканчивается — бронь заранее гарантирует ваш размер и уровень',
         'eq.pricing.category': 'Категория',
-        'eq.level.beginner': 'Начинающий', 'eq.level.beginner.sub': 'Лёгкое и послушное',
-        'eq.level.intermediate': 'Средний', 'eq.level.intermediate.sub': 'Сбалансированное',
-        'eq.level.advanced': 'Продвинутый', 'eq.level.advanced.sub': 'Быстрое и точное', 'eq.level.popular': 'Популярный',
-        'eq.cat.ski': 'Лыжи + палки', 'eq.cat.ski.sub': 'Лыжи, палки и ботинки',
-        'eq.cat.snowboard': 'Сноуборд + ботинки', 'eq.cat.snowboard.sub': 'Доска и ботинки',
-        'eq.cat.helmet': 'Шлем + маска', 'eq.cat.helmet.sub': 'Безопасность и обзор',
-        'eq.cat.clothing': 'Одежда (куртка + штаны)', 'eq.cat.clothing.sub': 'Термо · S/M/L/XL',
-        'eq.per_day': '/день', 'eq.package': 'Полный пакет', 'eq.package.sub': 'Снаряжение + шлем + одежда',
-        'eq.save20': 'Скидка 20%', 'eq.save21': 'Скидка 21%',
-        'eq.pricing.note': 'Цены за человека в день в долларах. Бронь на несколько дней даёт дополнительную скидку — укажите даты в форме, и мы пришлём точный расчёт.',
+        'eq.level.kids': 'Детский',
+        'eq.level.kids.sub': 'Размеры для юных райдеров',
+        'eq.level.basic': 'Базовый',
+        'eq.level.basic.sub': 'Новички и средний уровень',
+        'eq.level.pro': 'Про',
+        'eq.level.pro.sub': 'Для опытных райдеров',
+        'eq.cat.skiset': 'Лыжный комплект',
+        'eq.cat.skiset.sub': 'Лыжи, палки и ботинки',
+        'eq.cat.sbset': 'Комплект сноуборда',
+        'eq.cat.sbset.sub': 'Доска, крепления и ботинки',
+        'eq.items.title': 'Отдельные позиции, аксессуары и одежда',
+        'eq.items.sub': 'Часть снаряжения уже есть? Добавьте только то, чего не хватает.',
+        'eq.items.ski': 'Лыжи',
+        'eq.items.sb': 'Сноуборд',
+        'eq.items.acc': 'Аксессуары и одежда',
+        'eq.item.skis': 'Только лыжи',
+        'eq.item.proskis': 'Лыжи Pro',
+        'eq.item.skiboots': 'Лыжные ботинки',
+        'eq.item.poles': 'Палки',
+        'eq.item.board': 'Только сноуборд',
+        'eq.item.proboard': 'Сноуборд Pro',
+        'eq.item.sbboots': 'Ботинки для сноуборда',
+        'eq.item.stepon': 'Комплект Step-On (доска, ботинки и крепления)',
+        'eq.item.helmet': 'Шлем',
+        'eq.item.goggles': 'Маска',
+        'eq.item.gloves': 'Перчатки',
+        'eq.item.jacket': 'Куртка',
+        'eq.item.pants': 'Штаны',
+        'eq.item.impact': 'Защитные шорты',
+        
+        'eq.level.popular': 'Популярный',
+        
+        
+        'eq.per_day': '/день', 
+        'eq.pricing.note': 'Цены за человека в день в грузинских лари (₾). Цена в шекелях — ориентировочная (1 ₾ ≈ 1.35 ₪); остаток оплачивается в магазине в день получения. Фотографии носят иллюстративный характер.',
+        'eq.img.rack': 'Лыжи, выстроенные в ряд у деревянного горного домика',
+        'eq.img.ski': 'Пара лыж с горнолыжными масками на фоне заснеженного леса',
+        'eq.img.sb': 'Ботинок для сноуборда, застёгнутый в креплении',
+        'eq.img.acc': 'Горнолыжная маска, в которой отражается заснеженный склон',
         'eq.trust.label': 'Почему через нас', 'eq.trust.title': 'Три причины спать спокойно',
         'eq.trust1.title': 'Профессиональное обновлённое снаряжение', 'eq.trust1.text': 'Снаряжение обслуживается и затачивается каждый сезон. Вы получаете лыжи и доски в отличном состоянии — а не изношенное оборудование.',
         'eq.trust2.title': '10% сейчас — 100% спокойствия.', 'eq.trust2.text': 'Небольшой депозит 10% фиксирует снаряжение и ваши размеры. Остаток оплачивается прямо в магазине в день получения — без нервов, без сюрпризов.',
         'eq.trust3.title': 'Сервис и поддержка на вашем языке', 'eq.trust3.text': 'Не нужно бороться с языком или гадать, поняли ли вас. Мы общаемся напрямую и следим, чтобы всё было готово как вы просили.',
         'eq.form.label': 'Предзаказ', 'eq.form.title': 'Приезжайте готовыми.<br/><span class="electric">Снаряжение уже ждёт.</span>',
-        'eq.form.sub': 'Заполните данные и размеры, а мы согласуем с Ski Boom / Fanatic, чтобы ваше снаряжение ждало в день приезда — без часа в очереди.',
+        'eq.form.sub': 'Заполните данные и размеры, а мы заранее согласуем с Ski Boom, чтобы ваше снаряжение ждало в день приезда — короткая примерка в магазине, без часа в очереди.',
         'eq.form.trust1': '10% депозит — остаток в магазине', 'eq.form.trust2': 'Бесплатная отмена за 24 часа до приезда',
         'eq.form.trust3': 'Замена размера или уровня бесплатно', 'eq.form.trust4': 'Живые ответы на вашем языке',
         'eq.fs.dates': 'Даты проката', 'eq.checkin': 'Дата приезда', 'eq.checkout': 'Дата отъезда', 'eq.days_label': 'дней проката',
         'eq.fs.equipment': 'Тип и уровень снаряжения', 'eq.type': 'Тип снаряжения', 'eq.choose': 'Выберите...', 'eq.none': 'Без',
-        'eq.type.ski': 'Лыжи + палки', 'eq.type.snowboard': 'Сноуборд + ботинки', 'eq.type.both': 'Оба (группа)', 'eq.level': 'Уровень',
+        'eq.type.ski': 'Лыжный комплект', 'eq.type.snowboard': 'Комплект сноуборда', 'eq.type.both': 'Оба (группа)', 'eq.level': 'Уровень',
         'eq.fs.sizing': 'Размеры', 'eq.boot': 'Размер ботинок (EU)', 'eq.helmet': 'Размер шлема', 'eq.jacket': 'Размер куртки', 'eq.pants': 'Размер штанов',
         'eq.goggles': 'Лыжная маска', 'eq.goggles.yes': 'Да, нужна маска', 'eq.goggles.no': 'Нет, своя есть',
         'eq.fs.personal': 'Личные данные', 'eq.name': 'Полное имя', 'eq.phone': 'Телефон', 'eq.email': 'Email (необязательно)',
@@ -2181,12 +2394,12 @@
         'eq.pay.modal.title': 'Безопасная оплата — депозит 10%',
         'eq.pay.loading': 'Переход к безопасному платежу...',
         'eq.err.pay_data': 'Укажите даты, тип и уровень снаряжения перед оплатой.',
-        'eq.summary.est': 'Примерная стоимость', 'eq.summary.pkg': 'полный пакет со шлемом',
+        'eq.summary.est': 'Примерная стоимость', 'eq.summary.pkg': 'на человека, с выбранными позициями',
         'eq.sending': 'Отправка...', 'eq.success': 'Заказ отправлен! Мы свяжемся с вами для согласования снаряжения.',
         'eq.err.required': 'Заполните имя и телефон.', 'eq.err.terms': 'Примите Условия и Политику конфиденциальности.', 'eq.err.send': 'Не удалось отправить. Попробуйте снова или напишите в WhatsApp.',
         'eq.faq.label': 'Вопросы', 'eq.faq.title': 'Всё, что вы хотели знать',
-        'eq.faq1.q': 'В чём разница между начинающим, средним и продвинутым?', 'eq.faq1.a': 'Снаряжение для начинающих послушное и лёгкое в управлении — для тех, кто учится. Среднее — сбалансированное и устойчивое, для уверенных райдеров. Продвинутое — жёсткое и быстрое, для тех, кто владеет всеми трассами.',
-        'eq.faq2.q': 'Где находятся магазины в Новом Гудаури?', 'eq.faq2.a': 'Оба магазина, Ski Boom и Fanatic, в центре Нового Гудаури — недалеко от гондолы и большинства отелей. Согласуем удобный самовывоз в день приезда.',
+        'eq.faq1.q': 'Чем отличаются Детский, Базовый и Про?', 'eq.faq1.a': 'Базовый комплект подходит большинству — новичкам и райдерам среднего уровня: удобное и прощающее ошибки снаряжение. Про — для опытных райдеров, которым нужно более быстрое, жёсткое и точное снаряжение. Детский комплект подобран по размеру и весу для юных райдеров.',
+        'eq.faq2.q': 'Где находится магазин в Новом Гудаури?', 'eq.faq2.a': 'Ski Boom, наш эксклюзивный партнёр, находится в центре Нового Гудаури рядом с Suite & LOFT 1 — недалеко от гондолы и большинства отелей. Мы всё организуем заранее, вам остаётся только короткая примерка.',
         'eq.faq3.q': 'Когда платить за снаряжение?', 'eq.faq3.a': '10% депозит оплачивается заранее для фиксации брони и резервирования снаряжения. Оставшиеся 90% оплачиваются прямо в магазине в день получения — всё прозрачно.',
         'eq.faq4.q': 'Что если снаряжение или размер не подходят?', 'eq.faq4.a': 'Замена в магазине бесплатно. Если что-то не так на склоне — вернитесь, и мы подберём размер или уровень, пока не будет идеально.',
         'eq.faq5.q': 'Можно сменить снаряжение посреди отдыха?', 'eq.faq5.a': 'Конечно. Хотите перейти с лыж на сноуборд или повысить уровень? Это можно сделать в магазине в любой момент, доплатите только разницу.',
@@ -2205,46 +2418,83 @@
         'nav.about': 'გუდაურის შესახებ', 'nav.activities': 'აქტივობები', 'nav.new_gudauri': 'ახალი გუდაური', 'nav.equipment': 'ინვენტარი', 'nav.accommodation': 'განთავსება',
         'nav.investors': 'ინვესტორებისთვის', 'nav.contact': 'კონტაქტი', 'nav.cta_equipment': 'დაჯავშნა', 'nav.equipment_rental': 'ინვენტარის გაქირავება',
         'eq.hero.kicker': 'ახალი გუდაური · პროფესიული ინვენტარის გაქირავება',
-        'eq.hero.title': 'ინვენტარი შენთვის —', 'eq.hero.title_accent': 'Ski Boom & Fanatic',
+        'eq.hero.title': 'ინვენტარი შენთვის —', 'eq.hero.title_accent': 'Ski Boom',
         'eq.hero.sub': 'თხილამურები, სნოუბორდი, ჩაფხუტები, სათვალეები და სასრიალო ტანსაცმელი. დაჯავშნეთ წინასწარ ზომის მიხედვით — და ინვენტარი მზად დაგხვდებათ.',
         'eq.hero.urgency': 'შეზღუდული მარაგი პიკის სეზონზე — დაჯავშნეთ წინასწარ და დააფიქსირეთ ზომები',
         'eq.hero.cta_form': 'ინვენტარის დაჯავშნა', 'eq.hero.cta_wa': 'კითხვები? WhatsApp',
         'eq.hero.trust1': 'განახლებული ყოველ სეზონზე', 'eq.hero.trust2': 'მხოლოდ 10% წინასწარ', 'eq.hero.trust3': 'სერვისი თქვენს ენაზე',
-        'eq.stat1.label': 'ტურისტმა იქირავა ჩვენთან', 'eq.stat2.label': 'პარტნიორი მაღაზია გუდაურში',
+        'eq.stat1.label': 'ტურისტმა იქირავა ჩვენთან', 'eq.stat2.label': 'ექსკლუზიური პარტნიორი გუდაურში',
         'eq.stat3.label': 'ინვენტარის დონე', 'eq.stat4.label': 'პროფესიული განახლებული ინვენტარი',
-        'eq.shops.label': 'ჩვენი მაღაზიები', 'eq.shops.title': 'ორი მაღაზია. ერთი სტანდარტი — პროფესიული.',
-        'eq.shops.sub': 'ვმუშაობთ გუდაურის ორ წამყვან ინვენტარის მაღაზიასთან. თქვენ ირჩევთ — ჩვენ ვამზადებთ ინვენტარს.',
-        'eq.shop1.badge': 'გაქირავება + სერვისი',
-        'eq.shop1.desc': 'თხილამურებისა და სნოუბორდის ფართო არჩევანი ყველა დონისთვის, გუნდი შეგირჩევთ ზუსტ ინვენტარს. სპეციალისტები დამწყებებისთვის და გამოცდილი მოყვარულებისთვის.',
+        'eq.shops.label': 'ჩვენი ექსკლუზიური პარტნიორი', 'eq.shops.title': 'Ski Boom. ექსკლუზიური პარტნიორობა — მხოლოდ ჩვენი კლიენტებისთვის.',
+        'eq.shops.sub': 'ავირჩიეთ ერთი მაღაზია და ვმუშაობთ ბოლომდე. თქვენ წინასწარ ჯავშნით — დანარჩენზე ჩვენ ვზრუნავთ წინასწარ.',
+        'eq.shop1.badge': 'ექსკლუზიური პარტნიორი · Gudauri Helper',
+        'eq.shop1.desc': 'ახალი გუდაურის პროფესიული გაქირავება — თხილამურები, სნოუბორდი, ბოტები, ჩაფხუტები, ჯოხები და სათვალეები ყველა დონისთვის. ექსკლუზიური პარტნიორობით ინვენტარი თქვენს ზომებზე ინახება ჩამოსვლამდე.',
         'eq.shop1.location': 'Suite & LOFT 1-თან · ახალი გუდაურის ცენტრი', 'eq.shop1.hours': 'ღია ყოველდღე · 08:00–20:00', 'eq.shop1.cta': 'იკითხეთ Ski Boom-ზე',
-        'eq.shop2.badge': 'პრემიუმ ინვენტარი',
-        'eq.shop2.desc': 'მაღაზია სპორტის მოყვარულთათვის — წამყვანი ბრენდები, ხარისხიანი თერმული ტანსაცმელი და მაღალი დონის ინვენტარი.',
-        'eq.shop2.location': 'ბლოკ 4-თან · ახალი გუდაურის ცენტრი', 'eq.shop2.hours': 'ღია ყოველდღე · 08:00–20:00', 'eq.shop2.cta': 'იკითხეთ Fanatic-ზე',
+        'eq.shop1.perk1': 'ინვენტარი თქვენს ზომებზე ინახება — ჩამოსვლამდე',
+        'eq.shop1.perk2': 'მოკლე პროფესიული მორგება მაღაზიაში — და პირდაპირ ფერდობზე',
+        'eq.shop1.perk3': 'მოვლილი, გალესილი და უსაფრთხო ინვენტარი ყოველ სეზონზე',
+        'eq.shop1.perk4': 'გაქირავება დღით, კვირით ან მთელი სეზონით',
+        'eq.how.title': 'როგორ მუშაობს',
+        'eq.how1.title': 'წინასწარ ჯავშნით',
+        'eq.how1.text': 'მიუთითეთ თარიღები, ინვენტარის ტიპი და ზომები ფორმაში — 2 წუთი.',
+        'eq.how2.title': 'ყველაფერზე ჩვენ ვზრუნავთ',
+        'eq.how2.text': 'წინასწარ ვუთანხმდებით Ski Boom-ს — ინვენტარი დაჯავშნილი და მზადაა.',
+        'eq.how3.title': 'მოკლე მორგება — და ფერდობზე',
+        'eq.how3.text': 'ჩამოდიხართ მშვიდად, მოკლე მორგება მაღაზიაში და ძვირფასი დრო არ იკარგება.',
         'eq.pricing.label': 'დღიური ფასი', 'eq.pricing.title': 'სამართლიანი ფასი. სიურპრიზების გარეშე.',
-        'eq.pricing.sub': 'აირჩიეთ თქვენთვის შესაფერისი ინვენტარის დონე. სრული პაკეტი (ინვენტარი + ჩაფხუტი + ტანსაცმელი) 20%-მდე ზოგავს.',
+        'eq.pricing.sub': 'Ski Boom-ის ფასები ჩვენი კლიენტებისთვის — ლარში, შეკელის მიახლოებითი ფასით. აირჩიეთ ნაკრები დონის მიხედვით და დაამატეთ საჭირო ნივთები.',
         'eq.pricing.urgency': 'პიკის სეზონზე ინვენტარი სწრაფად იწურება — წინასწარი ჯავშანი გიზრუნველყოფთ ზომასა და დონეს',
         'eq.pricing.category': 'კატეგორია',
-        'eq.level.beginner': 'დამწყები', 'eq.level.beginner.sub': 'მსუბუქი და მოქნილი',
-        'eq.level.intermediate': 'საშუალო', 'eq.level.intermediate.sub': 'დაბალანსებული',
-        'eq.level.advanced': 'მოწინავე', 'eq.level.advanced.sub': 'სწრაფი და ზუსტი', 'eq.level.popular': 'პოპულარული',
-        'eq.cat.ski': 'თხილამურები + ჯოხები', 'eq.cat.ski.sub': 'თხილამურები, ჯოხები და ფეხსაცმელი',
-        'eq.cat.snowboard': 'სნოუბორდი + ფეხსაცმელი', 'eq.cat.snowboard.sub': 'დაფა და ფეხსაცმელი',
-        'eq.cat.helmet': 'ჩაფხუტი + სათვალე', 'eq.cat.helmet.sub': 'უსაფრთხოება და ხედვა',
-        'eq.cat.clothing': 'ტანსაცმელი (ქურთუკი + შარვალი)', 'eq.cat.clothing.sub': 'თერმული · S/M/L/XL',
-        'eq.per_day': '/დღე', 'eq.package': 'სრული პაკეტი', 'eq.package.sub': 'ინვენტარი + ჩაფხუტი + ტანსაცმელი',
-        'eq.save20': 'დაზოგვა 20%', 'eq.save21': 'დაზოგვა 21%',
-        'eq.pricing.note': 'ფასები ერთ ადამიანზე დღეში დოლარში. რამდენიმედღიანი ჯავშანი დამატებით ფასდაკლებას იძლევა — მიუთითეთ თარიღები ფორმაში და ზუსტ შეთავაზებას მოგწერთ.',
+        'eq.level.kids': 'საბავშვო',
+        'eq.level.kids.sub': 'ზომები პატარებისთვის',
+        'eq.level.basic': 'საბაზისო',
+        'eq.level.basic.sub': 'დამწყები და საშუალო დონე',
+        'eq.level.pro': 'პრო',
+        'eq.level.pro.sub': 'გამოცდილებისთვის',
+        'eq.cat.skiset': 'თხილამურის ნაკრები',
+        'eq.cat.skiset.sub': 'თხილამურები, ჯოხები და ბოტები',
+        'eq.cat.sbset': 'სნოუბორდის ნაკრები',
+        'eq.cat.sbset.sub': 'დაფა, სამაგრები და ბოტები',
+        'eq.items.title': 'ცალკეული ნივთები, აქსესუარები და ტანსაცმელი',
+        'eq.items.sub': 'ინვენტარის ნაწილი უკვე გაქვთ? დაამატეთ მხოლოდ ის, რაც გაკლიათ.',
+        'eq.items.ski': 'თხილამური',
+        'eq.items.sb': 'სნოუბორდი',
+        'eq.items.acc': 'აქსესუარები და ტანსაცმელი',
+        'eq.item.skis': 'მხოლოდ თხილამურები',
+        'eq.item.proskis': 'პრო თხილამურები',
+        'eq.item.skiboots': 'თხილამურის ბოტები',
+        'eq.item.poles': 'ჯოხები',
+        'eq.item.board': 'მხოლოდ სნოუბორდი',
+        'eq.item.proboard': 'პრო სნოუბორდი',
+        'eq.item.sbboots': 'სნოუბორდის ბოტები',
+        'eq.item.stepon': 'Step-On ნაკრები (დაფა, ბოტები და სამაგრები)',
+        'eq.item.helmet': 'ჩაფხუტი',
+        'eq.item.goggles': 'სათვალე',
+        'eq.item.gloves': 'ხელთათმანები',
+        'eq.item.jacket': 'ქურთუკი',
+        'eq.item.pants': 'შარვალი',
+        'eq.item.impact': 'დამცავი შორტები',
+        
+        'eq.level.popular': 'პოპულარული',
+        
+        
+        'eq.per_day': '/დღე', 
+        'eq.pricing.note': 'ფასები ერთ ადამიანზე დღეში, ქართულ ლარში (₾). ფასი შეკელში მიახლოებითია (1 ₾ ≈ 1.35 ₪) — დარჩენილი თანხა იხდება მაღაზიაში აღების დღეს. ფოტოები მხოლოდ საილუსტრაციოა.',
+        'eq.img.rack': 'თხილამურები ჩამწკრივებული მთის ხის ქოხთან',
+        'eq.img.ski': 'თხილამურების წყვილი სათვალეებით დათოვლილი ტყის ფონზე',
+        'eq.img.sb': 'სნოუბორდის ბოტი სამაგრში ჩამაგრებული',
+        'eq.img.acc': 'სათხილამურო სათვალე, რომელშიც დათოვლილი ფერდობი ირეკლება',
         'eq.trust.label': 'რატომ ჩვენთან', 'eq.trust.title': 'სამი მიზეზი მშვიდად ძილისთვის',
         'eq.trust1.title': 'პროფესიული, განახლებული ინვენტარი', 'eq.trust1.text': 'ინვენტარი ყოველ სეზონზე მუშავდება და ილესება. იღებთ თხილამურებსა და დაფებს შესანიშნავ მდგომარეობაში.',
         'eq.trust2.title': '10% ახლა — 100% სიმშვიდე.', 'eq.trust2.text': '10%-იანი მცირე დეპოზიტი დაგიჯავშნებთ ინვენტარს და ზომებს. დარჩენილ თანხას პირდაპირ მაღაზიაში გადაიხდით აღების დღეს — სტრესის გარეშე.',
         'eq.trust3.title': 'სერვისი თქვენს ენაზე', 'eq.trust3.text': 'არ გჭირდებათ ენასთან ბრძოლა. ჩვენ პირდაპირ ვუკავშირდებით და ვზრუნავთ, რომ ყველაფერი მზად იყოს.',
         'eq.form.label': 'წინასწარი ჯავშანი', 'eq.form.title': 'ჩამოდით მზად.<br/><span class="electric">ინვენტარი უკვე გელოდებათ.</span>',
-        'eq.form.sub': 'შეავსეთ მონაცემები და ზომები, ჩვენ შევათანხმებთ Ski Boom / Fanatic-თან, რომ ინვენტარი მზად დაგხვდეთ ჩამოსვლის დღეს.',
+        'eq.form.sub': 'შეავსეთ მონაცემები და ზომები, ჩვენ წინასწარ შევათანხმებთ Ski Boom-თან, რომ ინვენტარი მზად დაგხვდეთ ჩამოსვლის დღეს — მოკლე მორგება მაღაზიაში, რიგის გარეშე.',
         'eq.form.trust1': '10% დეპოზიტი — დანარჩენი მაღაზიაში', 'eq.form.trust2': 'უფასო გაუქმება ჩამოსვლამდე 24 საათით ადრე',
         'eq.form.trust3': 'ზომის ან დონის შეცვლა მაღაზიაში უფასოდ', 'eq.form.trust4': 'ცოცხალი პასუხები თქვენს ენაზე',
         'eq.fs.dates': 'გაქირავების თარიღები', 'eq.checkin': 'ჩამოსვლის თარიღი', 'eq.checkout': 'გამგზავრების თარიღი', 'eq.days_label': 'გაქირავების დღე',
         'eq.fs.equipment': 'ინვენტარის ტიპი და დონე', 'eq.type': 'ინვენტარის ტიპი', 'eq.choose': 'აირჩიეთ...', 'eq.none': 'არცერთი',
-        'eq.type.ski': 'თხილამურები + ჯოხები', 'eq.type.snowboard': 'სნოუბორდი + ფეხსაცმელი', 'eq.type.both': 'ორივე (ჯგუფი)', 'eq.level': 'დონე',
+        'eq.type.ski': 'თხილამურის ნაკრები', 'eq.type.snowboard': 'სნოუბორდის ნაკრები', 'eq.type.both': 'ორივე (ჯგუფი)', 'eq.level': 'დონე',
         'eq.fs.sizing': 'ზომები', 'eq.boot': 'ფეხსაცმლის ზომა (EU)', 'eq.helmet': 'ჩაფხუტის ზომა', 'eq.jacket': 'ქურთუკის ზომა', 'eq.pants': 'შარვლის ზომა',
         'eq.goggles': 'სათხილამურო სათვალე', 'eq.goggles.yes': 'კი, მჭირდება სათვალე', 'eq.goggles.no': 'არა, საკუთარი მაქვს',
         'eq.fs.personal': 'პირადი მონაცემები', 'eq.name': 'სრული სახელი', 'eq.phone': 'ტელეფონი', 'eq.email': 'ელ-ფოსტა (არასავალდებულო)',
@@ -2257,12 +2507,12 @@
         'eq.pay.modal.title': 'უსაფრთხო გადახდა — 10% ავანსი',
         'eq.pay.loading': 'გადამისამართება გადახდის გვერდზე...',
         'eq.err.pay_data': 'შეავსეთ თარიღები, ინვენტარის ტიპი და დონე გადახდამდე.',
-        'eq.summary.est': 'სავარაუდო ღირებულება', 'eq.summary.pkg': 'სრული პაკეტი ჩაფხუტით',
+        'eq.summary.est': 'სავარაუდო ღირებულება', 'eq.summary.pkg': 'ერთ ადამიანზე, არჩეული ნივთებით',
         'eq.sending': 'იგზავნება...', 'eq.success': 'შეკვეთა გაიგზავნა! მალე დაგიკავშირდებით ინვენტარის შესათანხმებლად.',
         'eq.err.required': 'შეავსეთ სახელი და ტელეფონი.', 'eq.err.terms': 'დაეთანხმეთ წესებსა და კონფიდენციალობის პოლიტიკას.', 'eq.err.send': 'ვერ გაიგზავნა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ში.',
         'eq.faq.label': 'კითხვები', 'eq.faq.title': 'ყველაფერი, რისი ცოდნაც გსურდათ',
-        'eq.faq1.q': 'რა განსხვავებაა დამწყებს, საშუალოსა და მოწინავეს შორის?', 'eq.faq1.a': 'დამწყები ინვენტარი მოქნილი და მართვადია — სრულყოფილი მათთვის, ვინც სწავლობს. საშუალო დაბალანსებული და სტაბილურია. მოწინავე ხისტი და სწრაფია, მათთვის ვინც ყველა ტრასას ფლობს.',
-        'eq.faq2.q': 'სად მდებარეობს მაღაზიები ახალ გუდაურში?', 'eq.faq2.a': 'ორივე მაღაზია, Ski Boom და Fanatic, ახალი გუდაურის ცენტრშია — გონდოლასა და სასტუმროებთან ახლოს. შევათანხმებთ მოსახერხებელ აღებას ჩამოსვლის დღეს.',
+        'eq.faq1.q': 'რა განსხვავებაა საბავშვო, საბაზისო და პრო ნაკრებებს შორის?', 'eq.faq1.a': 'საბაზისო ნაკრები უმეტესობას ერგება — დამწყებებს და საშუალო დონეს: კომფორტული და მარტივად სამართავი ინვენტარი. პრო განკუთვნილია გამოცდილი მოთხილამურეებისთვის, ვისაც უფრო სწრაფი, ხისტი და ზუსტი ინვენტარი სჭირდება. საბავშვო ნაკრები ზომით და წონით მორგებულია ბავშვებზე.',
+        'eq.faq2.q': 'სად მდებარეობს მაღაზია ახალ გუდაურში?', 'eq.faq2.a': 'Ski Boom, ჩვენი ექსკლუზიური პარტნიორი, ახალი გუდაურის ცენტრშია Suite & LOFT 1-თან — გონდოლასა და სასტუმროებთან ახლოს. ყველაფერს წინასწარ ვაწყობთ, თქვენ მხოლოდ მოკლე მორგებაზე მოდიხართ.',
         'eq.faq3.q': 'როდის ვიხდი ინვენტარისთვის?', 'eq.faq3.a': '10% დეპოზიტი წინასწარ ადასტურებს ჯავშანს და ინარჩუნებს ინვენტარს. დარჩენილი 90% პირდაპირ მაღაზიაში გადაიხდება აღების დღეს.',
         'eq.faq4.q': 'რა მოხდება, თუ ინვენტარი ან ზომა არ მომერგო?', 'eq.faq4.a': 'შეცვლა მაღაზიაში უფასოდ. თუ რამე არ მოგწონთ ფერდობზე — დაბრუნდით და მოვარგებთ ზომას ან დონეს.',
         'eq.faq5.q': 'შემიძლია ინვენტარის შეცვლა შუა დასვენებაში?', 'eq.faq5.a': 'რა თქმა უნდა. გსურთ თხილამურებიდან სნოუბორდზე გადასვლა ან დონის ამაღლება? ეს მაღაზიაში ნებისმიერ დროს შეგიძლიათ, მხოლოდ სხვაობას გადაიხდით.',
@@ -2276,7 +2526,6 @@
         'footer.legal.privacy': 'კონფიდენციალობის პოლიტიკა', 'footer.legal.terms': 'გამოყენების პირობები', 'footer.legal.cookies': 'Cookie პარამეტრები'
       }
     };
-
     function setLanguage(lang) {
       var t = window.TRANSLATIONS[lang];
       if (!t) return;
@@ -2294,6 +2543,10 @@
       document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
         var key = el.getAttribute('data-i18n-placeholder');
         if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-alt');
+        if (t[key] !== undefined) el.alt = t[key];
       });
       document.querySelectorAll('.lang-btn').forEach(function(btn) {
         btn.classList.toggle('lang-active', btn.getAttribute('data-lang') === lang);
@@ -2349,6 +2602,7 @@
 
   <!-- Site Chat Assistant -->
   <script src="gudauri-chat.js" defer></script>
+  <script src="nav-fit.js" defer></script>
 
   <!-- Tabnav Accessibility Widget -->
   <script src="https://widget.tabnav.com/limited-widget.min.js.gz?req=7Pt8av9E8ZOoCLQweMa0cQJXnd-8BKc_-IT2" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#777391","buttonSize":"medium","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>

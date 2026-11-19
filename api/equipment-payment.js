@@ -2,25 +2,28 @@ import { applyCors } from './_cors.js';
 
 const CARDCOM_API = 'https://secure.cardcom.solutions/api/v11/LowProfile/Create';
 
+// Ski Boom prices — GEL per person per day. Keep in sync with equipment.html.
 const PRICES = {
-  ski:       { beginner: 25, intermediate: 35, advanced: 50 },
-  snowboard: { beginner: 28, intermediate: 38, advanced: 55 },
-  helmet:    12,
-  clothing:  20,
-  goggles:   5,
+  ski:       { kids: 40, basic: 50, pro: 70 },
+  snowboard: { kids: 60, basic: 70, pro: 90 },
+  helmet:    10,
+  jacket:    20,
+  pants:     20,
+  goggles:   10,
 };
-const PACKAGE_DISCOUNT = 0.20;
 
-function calcTotal({ equipmentType, equipmentLevel, jacketSize, pantsSize, goggles, days }) {
+function calcTotal({ equipmentType, equipmentLevel, helmetSize, jacketSize, pantsSize, goggles, days }) {
   const base = equipmentType === 'snowboard'
     ? PRICES.snowboard[equipmentLevel]
     : equipmentType === 'both'
     ? (PRICES.ski[equipmentLevel] + PRICES.snowboard[equipmentLevel])
     : PRICES.ski[equipmentLevel];
-  const clo = (jacketSize || pantsSize) ? PRICES.clothing : 0;
-  const gog = goggles === 'yes' ? PRICES.goggles : 0;
-  const daily = base + PRICES.helmet + clo + gog;
-  return Math.round(daily * days * (1 - PACKAGE_DISCOUNT));
+  const daily = base
+    + (helmetSize ? PRICES.helmet : 0)
+    + (jacketSize ? PRICES.jacket : 0)
+    + (pantsSize  ? PRICES.pants  : 0)
+    + (goggles === 'yes' ? PRICES.goggles : 0);
+  return daily * days;
 }
 
 function parseBody(body) {
@@ -47,6 +50,7 @@ export default async function handler(req, res) {
   const checkout      = (body.checkout      || '').trim();
   const equipmentType = (body.equipmentType || '').trim();
   const equipmentLevel= (body.equipmentLevel|| '').trim();
+  const helmetSize    = (body.helmetSize    || '').trim();
   const jacketSize    = (body.jacketSize    || '').trim();
   const pantsSize     = (body.pantsSize     || '').trim();
   const goggles       = (body.goggles       || '').trim();
@@ -57,17 +61,16 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: 'Dates required' });
   if (!['ski', 'snowboard', 'both'].includes(equipmentType))
     return json(res, 400, { ok: false, error: 'Invalid equipment type' });
-  if (!['beginner', 'intermediate', 'advanced'].includes(equipmentLevel))
+  if (!['kids', 'basic', 'pro'].includes(equipmentLevel))
     return json(res, 400, { ok: false, error: 'Invalid equipment level' });
 
   const days = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
   if (!days || days < 1 || days > 30)
     return json(res, 400, { ok: false, error: 'Invalid dates' });
 
-  const totalUsd   = calcTotal({ equipmentType, equipmentLevel, jacketSize, pantsSize, goggles, days });
-  const depositUsd = Math.ceil(totalUsd * 0.10);
-  const ilsRate    = parseFloat(process.env.USD_ILS_RATE || '3.7');
-  const depositIls = Math.ceil(depositUsd * ilsRate);
+  const totalGel   = calcTotal({ equipmentType, equipmentLevel, helmetSize, jacketSize, pantsSize, goggles, days });
+  const ilsRate    = parseFloat(process.env.GEL_ILS_RATE || '1.35');
+  const depositIls = Math.ceil(totalGel * 0.10 * ilsRate);
 
   const terminal = process.env.CARDCOM_TERMINAL || '1000';
   const apiName  = process.env.CARDCOM_API_NAME  || 'test2025';
@@ -83,7 +86,7 @@ export default async function handler(req, res) {
     Amount:                depositIls,
     Currency:              1,
     ProductName:           productName,
-    SuccessRedirectUrl:    `${baseUrl}/payment-success.html?type=equipment&days=${days}&total=${totalUsd}&ref=${encodeURIComponent(ref)}`,
+    SuccessRedirectUrl:    `${baseUrl}/payment-success.html?type=equipment&days=${days}&total=${totalGel}&dep=${depositIls}&ref=${encodeURIComponent(ref)}`,
     IndicatorUrl:          `${baseUrl}/api/payment-webhook`,
     Custom1:               ref,
     Custom2:               `${name}|${phone}|${email}|${checkin}|${checkout}|${equipmentType}|${days}`,
@@ -104,7 +107,7 @@ export default async function handler(req, res) {
       return json(res, 502, { ok: false, error: data.Description || 'Cardcom error', code: data.ResponseCode });
     }
 
-    return json(res, 200, { ok: true, paymentUrl: data.Url, ref, depositIls, totalUsd });
+    return json(res, 200, { ok: true, paymentUrl: data.Url, ref, depositIls, totalGel });
   } catch {
     return json(res, 500, { ok: false, error: 'Payment service unavailable' });
   }

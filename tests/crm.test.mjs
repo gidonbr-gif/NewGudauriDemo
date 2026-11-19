@@ -109,6 +109,67 @@ test('handler creates an Airtable record for a valid POST', async () => {
   process.env = originalEnv;
 });
 
+// Airtable rejects a whole record when one select field gets an option it does not know
+// (for example after the equipment levels were renamed to kids / basic / pro).
+function stubAirtable(responses) {
+  const calls = [];
+  const original = { fetch: globalThis.fetch, env: { ...process.env } };
+  process.env.AIRTABLE_API_KEY = 'test_key';
+  process.env.AIRTABLE_BASE_ID = 'app123';
+  process.env.AIRTABLE_LEADS_TABLE = 'Leads';
+  globalThis.fetch = async (url, options) => {
+    calls.push(JSON.parse(options.body).fields);
+    return responses[Math.min(calls.length, responses.length) - 1];
+  };
+  return { calls, restore() { globalThis.fetch = original.fetch; process.env = original.env; } };
+}
+
+const airtableRejects = {
+  ok: false,
+  status: 422,
+  json: async () => ({ error: { type: 'INVALID_MULTIPLE_CHOICE_OPTIONS', message: 'Insufficient permissions to create new select option "basic"' } })
+};
+const airtableAccepts = { ok: true, status: 200, json: async () => ({ id: 'rec456' }) };
+
+test('equipment order is still saved when Airtable rejects an equipment field', async () => {
+  const airtable = stubAirtable([airtableRejects, airtableAccepts]);
+
+  const res = createResponse();
+  await handler({
+    method: 'POST',
+    body: {
+      name: 'Test Lead', phone: '+972501234567', service: 'equipment', notes: 'two people',
+      checkin: '2026-12-01', equipmentType: 'ski', equipmentLevel: 'basic', bootSize: '42'
+    }
+  }, res);
+  airtable.restore();
+
+  assert.equal(res.statusCode, 201);
+  assert.deepEqual(res.body, { ok: true, id: 'rec456' });
+  assert.equal(airtable.calls.length, 2);
+  assert.equal(airtable.calls[0]['רמת ציוד'], 'basic', 'first attempt keeps the structured fields');
+
+  const retry = airtable.calls[1];
+  assert.equal(retry['שם'], 'Test Lead');
+  assert.equal(retry['שירות'], 'הזמנת ציוד');
+  for (const field of ['תאריך הגעה', 'סוג ציוד', 'רמת ציוד', 'מידת נעל']) {
+    assert.equal(field in retry, false, `${field} must move into the notes on retry`);
+  }
+  assert.equal(retry['הערות'], 'two people\nתאריך הגעה: 2026-12-01\nסוג ציוד: ski\nרמת ציוד: basic\nמידת נעל: 42');
+});
+
+test('a rejected lead without equipment details is reported, not retried', async () => {
+  const airtable = stubAirtable([airtableRejects]);
+
+  const res = createResponse();
+  await handler({ method: 'POST', body: { name: 'Test Lead', phone: '+972501234567', service: 'apartments' } }, res);
+  airtable.restore();
+
+  assert.equal(res.statusCode, 502);
+  assert.equal(res.body.ok, false);
+  assert.equal(airtable.calls.length, 1);
+});
+
 test('handler rejects invalid POST without calling Airtable', async () => {
   const originalFetch = globalThis.fetch;
   let called = false;

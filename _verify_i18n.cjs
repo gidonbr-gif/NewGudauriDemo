@@ -2,7 +2,7 @@ const fs = require('fs');
 const html = fs.readFileSync('equipment.html','utf8');
 
 const usedKeys = new Set();
-const re = /data-i18n(?:-html|-placeholder)?="([^"]+)"/g;
+const re = /data-i18n(?:-html|-placeholder|-alt)?="([^"]+)"/g;
 let m;
 while ((m = re.exec(html)) !== null) usedKeys.add(m[1]);
 

@@ -9,6 +9,19 @@ const SERVICE_LABELS = {
 
 const ALLOWED_SERVICES = new Set(Object.keys(SERVICE_LABELS));
 
+// Equipment order details: form field -> Airtable column.
+const EQUIPMENT_FIELDS = {
+  checkin: 'תאריך הגעה',
+  checkout: 'תאריך עזיבה',
+  equipmentType: 'סוג ציוד',
+  equipmentLevel: 'רמת ציוד',
+  bootSize: 'מידת נעל',
+  helmetSize: 'מידת קסדה',
+  jacketSize: "מידת ג'קט",
+  pantsSize: 'מידת מכנסיים',
+  goggles: 'משקפי סקי'
+};
+
 function clean(value) {
   return typeof value === 'string' ? value.trim() : '';
 }
@@ -59,24 +72,28 @@ export function buildAirtableFields(input) {
   if (Number.isFinite(estimatedValue) && estimatedValue > 0) fields['שווי משוער'] = estimatedValue;
 
   if (service === 'equipment') {
-    const eqLabels = {
-      checkin: 'תאריך הגעה',
-      checkout: 'תאריך עזיבה',
-      equipmentType: 'סוג ציוד',
-      equipmentLevel: 'רמת ציוד',
-      bootSize: 'מידת נעל',
-      helmetSize: 'מידת קסדה',
-      jacketSize: "מידת ג'קט",
-      pantsSize: 'מידת מכנסיים',
-      goggles: 'משקפי סקי'
-    };
-    for (const key of Object.keys(eqLabels)) {
+    for (const key of Object.keys(EQUIPMENT_FIELDS)) {
       const value = clean(input[key]);
-      if (value) fields[eqLabels[key]] = value;
+      if (value) fields[EQUIPMENT_FIELDS[key]] = value;
     }
   }
 
   return fields;
+}
+
+// Same lead with the equipment details written into the notes instead of their own
+// columns. Returns null when the lead has no equipment details to move.
+function withEquipmentInNotes(fields) {
+  const columns = Object.values(EQUIPMENT_FIELDS).filter((column) => column in fields);
+  if (columns.length === 0) return null;
+
+  const moved = { ...fields };
+  const lines = columns.map((column) => {
+    delete moved[column];
+    return `${column}: ${fields[column]}`;
+  });
+  moved['הערות'] = [fields['הערות'], ...lines].filter(Boolean).join('\n');
+  return moved;
 }
 
 function sendJson(res, statusCode, payload) {
@@ -111,7 +128,7 @@ export async function handler(req, res) {
     return sendJson(res, 500, { ok: false, error: 'CRM is not configured' });
   }
 
-  const airtableResponse = await fetch(
+  const createRecord = (fields) => fetch(
     `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`,
     {
       method: 'POST',
@@ -119,9 +136,20 @@ export async function handler(req, res) {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ fields: buildAirtableFields(body) })
+      body: JSON.stringify({ fields })
     }
   );
+
+  const fields = buildAirtableFields(body);
+  let airtableResponse = await createRecord(fields);
+
+  // Airtable rejects the whole record (422) when one column refuses its value, e.g. a
+  // select column that has no option for a new equipment level. An order must never be
+  // lost over that: save it again with the equipment details in the notes.
+  if (airtableResponse.status === 422) {
+    const fallback = withEquipmentInNotes(fields);
+    if (fallback) airtableResponse = await createRecord(fallback);
+  }
 
   const airtablePayload = await airtableResponse.json().catch(() => ({}));
   if (!airtableResponse.ok) {
